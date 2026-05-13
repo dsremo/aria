@@ -1,0 +1,56 @@
+[
+  {
+    "rule_id": "SKYLAB-FR-1",
+    "kind": "flight_rule",
+    "title": "Workshop attitude for solar shield deployment",
+    "body": "Following micrometeoroid shield loss on launch (1973-05-14), workshop shall be biased to a high-pitch attitude during repair EVAs to reduce thermal load on the workshop skin. Solar parasol must remain deployed; A-frame shield secondary.",
+    "keywords": ["skylab", "shield", "attitude", "thermal", "solar"],
+    "citation": "Skylab Mission Report (NASA TM-X-64814, 1974)",
+    "parameters": ["WORKSHOP_SKIN_TEMP_K", "PITCH_ANGLE_DEG"]
+  },
+  {
+    "rule_id": "APOLLO-FR-LM-1",
+    "kind": "flight_rule",
+    "title": "LM descent abort from PDI to lunar contact",
+    "body": "If the LM Descent Engine throttling fails or the AGS / PGNS disagrees on descent profile by > 10 m/s vertical or > 5 deg attitude, abort to lunar orbit. Use AGS abort guidance if PGNS indicted.",
+    "keywords": ["lm", "descent", "abort", "pgns", "ags"],
+    "citation": "Apollo LM Operations Handbook MSC-04111",
+    "parameters": ["DESCENT_THROTTLE_PCT", "PGNS_AGS_DELTA_M_S"]
+  },
+  {
+    "rule_id": "APOLLO-FR-CSM-1",
+    "kind": "flight_rule",
+    "title": "Lunar Module rendezvous abort from CSM",
+    "body": "If LM fails to ascend or rendezvous, the CSM shall remain in lunar orbit until LM final-stage abort is verified or LM crew is recovered. CSM crew shall not return without LM unless LM crew is confirmed lost.",
+    "keywords": ["csm", "lm", "rendezvous", "abort"],
+    "citation": "Apollo Mission Rules MSC-PA-FR-69 §6",
+    "parameters": ["LM_RENDEZVOUS_RANGE_KM", "LM_ASCENT_THRUST_LB"]
+  },
+  {
+    "rule_id": "APOLLO-MP-LIFEBOAT-1",
+    "kind": "malfunction_procedure",
+    "title": "LM-as-lifeboat power configuration",
+    "body": "If CSM fuel cells degrade below 1.5 kW total: 1. Power down all CSM systems except VHF voice and one S-band omni. 2. Crew transfers to LM with portable life support. 3. LM batteries operate single-string with timeline budgeted for re-entry. 4. CSM cold-soak managed via slow-roll (PTC).",
+    "keywords": ["lifeboat", "lm", "csm", "ptc", "passive thermal control"],
+    "citation": "Apollo 13 Crew Procedures MSC-04112; Mission Report §5.3",
+    "parameters": ["CSM_BUS_VOLTAGE_VDC", "LM_BATTERY_AH", "CSM_INTERNAL_TEMP_K"]
+  },
+  {
+    "rule_id": "APOLLO-FR-CRYO-1",
+    "kind": "flight_rule",
+    "title": "Cryo tank no-stir window",
+    "body": "Following the Apollo 13 anomaly, cryo-stir commands are prohibited in the 2-hour window before any major ΔV burn. If pressure drift > 2 psi/hr is observed without stir, ground evaluates tank state via redundant sensors before authorising any stir.",
+    "keywords": ["cryo", "stir", "burn", "post-apollo-13"],
+    "citation": "Apollo 14 mission rules update MSC-PA-FR-70-001",
+    "parameters": ["O2_TANK_PRESSURE_PSIA", "CSM_STIR_COMMAND_WINDOW"]
+  },
+  {
+    "rule_id": "APOLLO-FR-DSE-1",
+    "kind": "flight_rule",
+    "title": "Data Storage Equipment loss-of-data",
+    "body": "If the DSE recorder fails to play back, ground shall request crew to use Hi-Bit-Rate playback via the unified S-band system. Crew shall not over-write existing tape until ground confirms playback success.",
+    "keywords": ["dse", "recorder", "playback", "tape"],
+    "citation": "CSM/LM Spacecraft Operations Manual",
+    "parameters": ["DSE_BIT_ERROR_RATE", "DSE_TAPE_REMAINING_PCT"]
+  }
+]

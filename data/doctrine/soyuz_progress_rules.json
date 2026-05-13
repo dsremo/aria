@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "SOYUZ-FR-DOCK-1",
+    "kind": "flight_rule",
+    "title": "Kurs automated docking abort criteria",
+    "body": "Soyuz Kurs automatic docking shall abort if range-rate exceeds 0.4 m/s at < 100 m, lateral offset > 0.5 m at < 50 m, or attitude error > 3 deg. Crew has manual TORU control authority but shall not engage TORU absent Kurs failure.",
+    "keywords": ["soyuz", "kurs", "docking", "toru", "abort"],
+    "citation": "Soyuz Operations Manual (Roscosmos, 2014 translation)",
+    "parameters": ["VV_RANGE_M", "VV_RANGE_RATE_M_S", "VV_LATERAL_OFFSET_M"]
+  },
+  {
+    "rule_id": "SOYUZ-FR-EMER-1",
+    "kind": "flight_rule",
+    "title": "Soyuz emergency descent (BO ballistic mode)",
+    "body": "If Soyuz primary descent guidance fails, fall back to ballistic-entry mode (BO). Crew g-load may reach 8-9 g; this is exceptional but survivable. Landing dispersion ~1500 km from nominal site; SAR resources mobilised.",
+    "keywords": ["soyuz", "ballistic", "descent", "guidance", "g-load"],
+    "citation": "Soyuz Crew Manual; Soyuz TMA-11 incident (2008)",
+    "parameters": ["DESCENT_PROFILE_FLAG", "G_LOAD_G", "LANDING_DISPERSION_KM"]
+  },
+  {
+    "rule_id": "SOYUZ-MP-LEAK-1",
+    "kind": "malfunction_procedure",
+    "title": "Soyuz orbital module leak (2018 incident)",
+    "body": "Slow leak detected in Soyuz MS-09 orbital module Aug 2018. Crew procedure: 1. Locate leak via stethoscope/listening. 2. Apply Kapton patch + epoxy. 3. Re-pressurize, verify. 4. Document for ground analysis. Ground decided whether to undock or wait.",
+    "keywords": ["soyuz", "leak", "ms-09", "patch"],
+    "citation": "Roscosmos Soyuz MS-09 Incident Report (2018)",
+    "parameters": ["CABIN_PRESSURE_KPA", "LEAK_RATE_KPA_PER_HR"]
+  },
+  {
+    "rule_id": "SOYUZ-FR-RESCUE-1",
+    "kind": "flight_rule",
+    "title": "ISS lifeboat capability requirement",
+    "body": "Each ISS crewmember shall have a Soyuz/Crew Dragon seat available for emergency return at all times. Mission planning ensures the visiting-vehicle docked-time always covers the crew rotation; exceeded coverage requires extending or ending mission.",
+    "keywords": ["lifeboat", "soyuz", "crew dragon", "rescue"],
+    "citation": "ISS Crew Operations Plan §1.1",
+    "parameters": ["DOCKED_VEHICLES_COUNT", "CREW_COUNT"]
+  }
+]

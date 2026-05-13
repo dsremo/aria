@@ -1,0 +1,20 @@
+[
+  {
+    "rule_id": "ITU-RR-21-1",
+    "kind": "flight_rule",
+    "title": "ITU Radio Regulations frequency coordination",
+    "body": "Spacecraft radio emissions shall comply with the frequency allocations in ITU Radio Regulations Article 5. Coordination with affected administrations is required for any geostationary or non-GSO transmission. Out-of-band emissions shall meet RR Appendix 3 limits.",
+    "keywords": ["itu", "frequency", "coordination", "out-of-band"],
+    "citation": "ITU Radio Regulations 2020 edition, Articles 5 and 21",
+    "parameters": ["RF_FREQUENCY_HZ", "EIRP_DBW"]
+  },
+  {
+    "rule_id": "ITU-RR-22-2",
+    "kind": "flight_rule",
+    "title": "Geostationary station-keeping accuracy",
+    "body": "Geostationary spacecraft shall maintain station-keeping within ±0.1 deg longitude and ±0.05 deg latitude under normal operation. Deviations require notification to Notifying Administration. End-of-life parking orbit shall be ≥ 235 km above the GEO ring.",
+    "keywords": ["geo", "station-keeping", "graveyard"],
+    "citation": "ITU Radio Regulations Article 22 §22.1",
+    "parameters": ["LONGITUDE_DRIFT_DEG", "LATITUDE_DRIFT_DEG", "ALTITUDE_KM"]
+  }
+]

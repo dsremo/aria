@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "DRAGON-FR-DOCK-1",
+    "kind": "flight_rule",
+    "title": "Dragon SuperDraco abort triggers",
+    "body": "If F9 second stage anomalies cause loss of thrust > 10 % below nominal during ascent, or if any of the propellant pressure sensors trip > 15 % off nominal, Dragon shall command launch escape via SuperDracos. Crew g-load limited to 4.5 g sustained.",
+    "keywords": ["dragon", "superdraco", "abort", "f9"],
+    "citation": "Crew Dragon Operations Handbook (NASA-SX-OPS-002, 2020)",
+    "parameters": ["SECOND_STAGE_THRUST_KN", "PROP_TANK_PRESSURE_PSIA", "G_LOAD_G"]
+  },
+  {
+    "rule_id": "DRAGON-FR-DOCK-2",
+    "kind": "flight_rule",
+    "title": "Approach abort gate at 20 m KOZ",
+    "body": "Dragon approach to ISS at 20 m: validate range-rate < 0.06 m/s, lateral offset < 0.4 m, attitude error < 1 deg. Any breach triggers automatic abort to 250 m hold; manual abort via crew COTS button always available.",
+    "keywords": ["dragon", "iss", "approach", "koz", "abort"],
+    "citation": "Crew Dragon Approach Operations Concept",
+    "parameters": ["VV_RANGE_M", "VV_RANGE_RATE_M_S", "VV_LATERAL_OFFSET_M"]
+  },
+  {
+    "rule_id": "STARLINER-MP-RCS-1",
+    "kind": "malfunction_procedure",
+    "title": "RCS thruster failure during approach",
+    "body": "If a doghouse RCS thruster fails during ISS approach, isolate the doghouse and re-plan with the remaining 3 doghouses. If 2 doghouses are degraded, abort to retrograde safe orbit and prepare for de-orbit.",
+    "keywords": ["starliner", "rcs", "doghouse", "approach"],
+    "citation": "Starliner Anomaly Report (Boeing, 2024) – CFT mission report",
+    "parameters": ["DOGHOUSE_RCS_HEALTH", "VV_RANGE_M"]
+  },
+  {
+    "rule_id": "DRAGON-FR-RECOVERY-1",
+    "kind": "flight_rule",
+    "title": "Splashdown recovery weather constraints",
+    "body": "Dragon splashdown requires < 6 ft significant wave height, surface winds < 10 kt sustained, lightning-free in 10 nm radius for 30 minutes prior to entry. Otherwise wave-off to next opportunity (typically +24 h).",
+    "keywords": ["splashdown", "weather", "recovery", "waves", "wind"],
+    "citation": "Crew Dragon Recovery Operations Handbook",
+    "parameters": ["WAVE_HEIGHT_FT", "SURFACE_WIND_KT", "LIGHTNING_RADIUS_NM"]
+  }
+]

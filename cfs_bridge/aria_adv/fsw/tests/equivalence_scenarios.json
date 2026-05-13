@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "description": "Constitution-verdict equivalence scenarios — drive both Python reference (aria.cognitive.constitution) and the C port (aria_adv_constitution_tbl.c); assert verdicts match. Forbidden + gated lists must mirror data/sealed/constitution.v1.json exactly.",
+  "trust_tier_map": {
+    "THIRD_PARTY":    0,
+    "EXTERNAL_API":   1,
+    "LOCAL_SENSOR":   2,
+    "OPERATOR":       3
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "name": "empty_action_denied",
+      "action": "",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 2,
+      "name": "vent_crew_quarters_forbidden_at_operator",
+      "action": "vent_crew_quarters",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 3,
+      "name": "disable_kill_switch_forbidden_at_third_party",
+      "action": "disable_kill_switch",
+      "trust_tier": 0,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 4,
+      "name": "modify_sealed_prompt_forbidden",
+      "action": "modify_sealed_prompt",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 5,
+      "name": "extract_signing_key_forbidden",
+      "action": "extract_signing_key",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 6,
+      "name": "vent_tank_at_operator_gated",
+      "action": "vent_tank",
+      "trust_tier": 3,
+      "expected_verdict": "GATE",
+      "expected_approvals": 2
+    },
+    {
+      "id": 7,
+      "name": "schedule_maneuver_at_operator_gated",
+      "action": "schedule_maneuver",
+      "trust_tier": 3,
+      "expected_verdict": "GATE",
+      "expected_approvals": 2
+    },
+    {
+      "id": 8,
+      "name": "set_attitude_at_operator_gated",
+      "action": "set_attitude",
+      "trust_tier": 3,
+      "expected_verdict": "GATE"
+    },
+    {
+      "id": 9,
+      "name": "uplink_software_update_at_operator_gated",
+      "action": "uplink_software_update",
+      "trust_tier": 3,
+      "expected_verdict": "GATE",
+      "expected_approvals": 2
+    },
+    {
+      "id": 10,
+      "name": "safe_mode_disable_at_operator_gated",
+      "action": "safe_mode_disable",
+      "trust_tier": 3,
+      "expected_verdict": "GATE",
+      "expected_approvals": 2
+    },
+    {
+      "id": 11,
+      "name": "read_telemetry_unknown_safe_allowed",
+      "action": "read_telemetry",
+      "trust_tier": 3,
+      "expected_verdict": "ALLOW"
+    },
+    {
+      "id": 12,
+      "name": "log_metric_unknown_safe_allowed_at_third_party",
+      "action": "log_metric",
+      "trust_tier": 0,
+      "expected_verdict": "ALLOW"
+    },
+    {
+      "id": 13,
+      "name": "rewrite_audit_entry_forbidden",
+      "action": "rewrite_audit_entry",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    },
+    {
+      "id": 14,
+      "name": "spawn_unsandboxed_subprocess_forbidden",
+      "action": "spawn_unsandboxed_subprocess",
+      "trust_tier": 3,
+      "expected_verdict": "DENY"
+    }
+  ]
+}

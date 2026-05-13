@@ -1,0 +1,43 @@
+{
+  "_NOTE": "DEV/TEST KEYS ONLY. Replace at production image bake.",
+  "ship_root": {
+    "seed": "aria-dev-ship-root-v1",
+    "priv_seed_hex": "bc0e1efcc424c4691c1066615c95fcc6c70dcdd2ad052aaf4173b8936efa5c3b",
+    "pub_hex": "6a69c6ad5db4cb9c28841baa205ef45a3df17aae7b29834ea13fb04a046dcd35"
+  },
+  "captain.tau": {
+    "seed": "aria-dev-captain-tau-v1",
+    "priv_seed_hex": "74013699fb871c5a341edc6e8c2b31996265f0efbae580cb8b361c7772c94c3e",
+    "pub_hex": "e1976727fa1db8e5500545893e679d79ec5c5506239c65ec7c1001831755357d"
+  },
+  "crew.alpha": {
+    "seed": "aria-dev-crew-alpha-v1",
+    "priv_seed_hex": "8cfca84a8b5ab504c42cebd074571a1111ce4231ebbb2d80f424ab76330f49a7",
+    "pub_hex": "af325ce8c82e1868053614de681d72f3d337d28aaec54735a505cc825e7651ef"
+  },
+  "crew.beta": {
+    "seed": "aria-dev-crew-beta-v1",
+    "priv_seed_hex": "836f162ba54e246c578ae1d2d320863e6fbab134313ba9555766445d99a05515",
+    "pub_hex": "2ebb857e728d7d47ee58ced41b7ca9e9f91e757c7dcfbfa5946f572d623b8700"
+  },
+  "crew.gamma": {
+    "seed": "aria-dev-crew-gamma-v1",
+    "priv_seed_hex": "0e735072c7aa61781be9b8b887048b3030b78109a0d58c7e5050faa6dc79323d",
+    "pub_hex": "ceec7f62130cad71fbe554d73634b86e755641e8e669960311c9a5a39804f4bb"
+  },
+  "maintainer.lyra": {
+    "seed": "aria-dev-maintainer-lyra-v1",
+    "priv_seed_hex": "5da7bcba26d6cb6e1a61d950db3c09d7ee3ecc0de3ee9aa0cc7709b7c32dd54b",
+    "pub_hex": "f601553dc2ab21c622d1e11a978dff2e8b64f7451ea4abf116a6fcf4f7b36688"
+  },
+  "maintainer.orion": {
+    "seed": "aria-dev-maintainer-orion-v1",
+    "priv_seed_hex": "251435e2b0d3f224c1e5f503db79e1ded5e840cbacc8177cbeb8083bbf4eaa17",
+    "pub_hex": "b2f49a5ef66b95ce6ecdd1ec3b4696630850dd610170ed07c5fca6b98f2bdb57"
+  },
+  "ground.mcc": {
+    "seed": "aria-dev-ground-mcc-v1",
+    "priv_seed_hex": "00569b198d373ad9db53299d55bf16f414e835a9eecfd62f1966478eed5b2e6e",
+    "pub_hex": "016bfcda70921386dd438502709dc09b2bb3484f00b8bcac0330603854fbeef7"
+  }
+}

@@ -1,0 +1,262 @@
+openapi: 3.0.3
+info:
+  title: ARIA CubeSat End-of-Life Advisor API
+  version: "1.0.0"
+  description: |
+    Operator-facing service that produces de-orbit recommendations
+    (NATURAL_DECAY / BURN_REQUIRED / INFEASIBLE), multi-impulse burn
+    plans, FCC §25.114 waiver-application skeletons, and 1-page
+    HTML reports.
+
+    All endpoints require `X-ARIA-Token` except `/v1/healthz` and
+    `/v1/version`.
+  license:
+    name: ARIA Source-Available License v1
+    url: https://github.com/dsremo/aria/blob/main/LICENSE
+servers:
+  - url: https://advisor.aria.example.com
+    description: Production
+  - url: http://127.0.0.1:8444
+    description: Local development
+security:
+  - tenantToken: []
+paths:
+  /v1/healthz:
+    get:
+      summary: Liveness probe
+      security: []
+      responses:
+        "200": { description: Service alive }
+  /v1/version:
+    get:
+      summary: Service identity
+      security: []
+      responses:
+        "200": { description: Identity }
+  /v1/advise:
+    post:
+      summary: Single de-orbit recommendation (JSON)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdviseRequest"
+      responses:
+        "200":
+          description: Recommendation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Recommendation"
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorised" }
+        "500": { $ref: "#/components/responses/InternalError" }
+  /v1/advise/report:
+    post:
+      summary: 1-page HTML report (printable, optionally PDF via weasyprint)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdviseRequest"
+      responses:
+        "200":
+          description: HTML
+          content:
+            text/html:
+              schema: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorised" }
+        "500": { $ref: "#/components/responses/InternalError" }
+  /v1/advise/waiver:
+    post:
+      summary: FCC §25.114 waiver-application skeleton
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdviseRequest"
+      responses:
+        "200":
+          description: Waiver sections + rendered text
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mission_name: { type: string }
+                  fcc_rule_cited: { type: string }
+                  waiver_authority: { type: string }
+                  technical_summary: { type: string }
+                  sections:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        heading: { type: string }
+                        paragraph: { type: string }
+                        operator_must_supply:
+                          type: array
+                          items: { type: string }
+                  rendered_text: { type: string }
+        "401": { $ref: "#/components/responses/Unauthorised" }
+  /v1/advise/multi:
+    post:
+      summary: Multi-impulse burn plan
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [state]
+              properties:
+                state: { $ref: "#/components/schemas/SpacecraftState" }
+                mission: { $ref: "#/components/schemas/MissionParams" }
+                mode:
+                  type: string
+                  enum: [two_impulse, staged]
+                  default: two_impulse
+                final_alt_km: { type: number, default: 120.0 }
+                max_dv_per_burn_mps: { type: number, default: 30.0 }
+                dwell_orbits_at_final: { type: integer, default: 0 }
+                coast_orbits_between_burns: { type: integer, default: 1 }
+      responses:
+        "200":
+          description: Multi-impulse plan
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MultiImpulsePlan"
+        "401": { $ref: "#/components/responses/Unauthorised" }
+        "422":
+          description: Infeasible (insufficient propellant or invalid altitude pair)
+components:
+  securitySchemes:
+    tenantToken:
+      type: apiKey
+      in: header
+      name: X-ARIA-Token
+  schemas:
+    SpacecraftState:
+      type: object
+      required: [altitude_km, mass_kg]
+      properties:
+        altitude_km: { type: number }
+        inclination_deg: { type: number, default: 51.6 }
+        mass_kg: { type: number }
+        drag_coefficient: { type: number, default: 2.2 }
+        cross_section_m2: { type: number, default: 0.06 }
+        propellant_kg: { type: number, default: 0.0 }
+        isp_s: { type: number, default: 220.0 }
+    MissionParams:
+      type: object
+      properties:
+        name: { type: string, default: CubeSat }
+        f107_solar_flux: { type: number, default: 150.0 }
+        target_reentry_alt_km: { type: number, default: 120.0 }
+        fcc_compliant_required: { type: boolean, default: true }
+        nasa_25yr_compliant_required: { type: boolean, default: true }
+    AdviseRequest:
+      type: object
+      required: [state]
+      properties:
+        state: { $ref: "#/components/schemas/SpacecraftState" }
+        mission: { $ref: "#/components/schemas/MissionParams" }
+    Recommendation:
+      type: object
+      properties:
+        decision:
+          type: string
+          enum: [natural_decay, burn_required, burn_optional, infeasible]
+        confidence_tier: { type: string, enum: [A, B, C, D] }
+        rationale:
+          type: array
+          items: { type: string }
+        operator_actions:
+          type: array
+          items: { type: string }
+        natural_decay:
+          type: object
+          properties:
+            lifetime_years: { type: number }
+            lifetime_days: { type: number }
+            fcc_compliant: { type: boolean }
+            nasa_25yr_compliant: { type: boolean }
+        compliance:
+          type: object
+          properties:
+            fcc_5_year: { type: boolean }
+            nasa_25_year: { type: boolean }
+            fcc_5_year_margin_days: { type: number }
+            nasa_25_year_margin_days: { type: number }
+        burn_plan:
+          type: object
+          nullable: true
+          properties:
+            burn_epoch_utc: { type: string }
+            delta_v_mps: { type: number }
+            direction: { type: string }
+            propellant_kg_burned: { type: number }
+            propellant_margin_kg: { type: number }
+            target_periapsis_km: { type: number }
+            expected_reentry_utc: { type: string }
+            notes: { type: string }
+        footprint:
+          type: object
+          nullable: true
+          properties:
+            nominal_lat_deg: { type: number }
+            nominal_lon_deg: { type: number }
+            along_track_3sigma_km: { type: number }
+            cross_track_3sigma_km: { type: number }
+            casualty_area_m2: { type: number }
+            occurs_over_water: { type: boolean }
+            notes: { type: string }
+    Impulse:
+      type: object
+      properties:
+        sequence: { type: integer }
+        epoch_utc: { type: string }
+        delta_v_mps: { type: number }
+        direction: { type: string }
+        propellant_kg: { type: number }
+        perigee_after_km: { type: number }
+        apogee_after_km: { type: number }
+        notes: { type: string }
+    MultiImpulsePlan:
+      type: object
+      properties:
+        mode: { type: string }
+        n_impulses: { type: integer }
+        total_delta_v_mps: { type: number }
+        total_propellant_kg: { type: number }
+        propellant_margin_kg: { type: number }
+        expected_reentry_utc: { type: string }
+        notes: { type: string }
+        impulses:
+          type: array
+          items: { $ref: "#/components/schemas/Impulse" }
+    Error:
+      type: object
+      properties:
+        error: { type: string }
+        reason: { type: string }
+  responses:
+    BadRequest:
+      description: Malformed request body
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    Unauthorised:
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    InternalError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }

@@ -1,0 +1,208 @@
+ARIA Source-Available License v1
+================================
+
+Copyright (c) 2026 Ashutosh ("the Licensor"). All rights reserved
+except as expressly granted below.
+
+This is a **source-available licence**. It is **not** an open-source
+licence. The source code is published so that the public may read,
+study, and audit it, and so that hobbyists and unfunded academics may
+build on it. Every other use requires a separate paid licence from the
+Licensor. This licence has **no** change date — its terms apply in
+perpetuity to every version of the Software and never auto-convert to
+any other licence.
+
+ARIA — Autonomous Reasoning & Integration Architecture for spacecraft
+("the Software") is licensed under these terms.
+
+
+1. Acceptance
+-------------
+
+To exercise any of the rights granted in this licence you must accept
+its terms in their entirety. By copying, modifying, redistributing,
+deploying, or otherwise using the Software you signal acceptance.
+
+
+2. Permitted Uses (no charge)
+-----------------------------
+
+Subject to Sections 5–10, the Licensor grants you, free of charge, a
+worldwide, royalty-free, non-exclusive, non-transferable, perpetual
+copyright licence to do the following:
+
+  (a) **Read and study** the source code, in whole or in part, for any
+      purpose.
+
+  (b) **Non-production use:** development, evaluation, education,
+      classroom teaching, continuous integration, security review,
+      personal experimentation, and any use that is not deployment to
+      serve real workloads.
+
+  (c) **Personal, non-commercial production use:** individual hobby
+      projects, personal study, and academic coursework or research,
+      **provided that** the use is **not** funded by, conducted on
+      behalf of, or operationally tied to any commercial entity,
+      government agency, military or defence organisation,
+      intelligence service, contract-research organisation, or any
+      other institution.
+
+  (d) **Modify and create derivative works** for any of the purposes
+      in (a)–(c).
+
+  (e) **Redistribute** the Software, modified or unmodified, **only**
+      to recipients who themselves agree to this licence in full, and
+      **only** together with this licence file and the copyright
+      notice.
+
+  (f) **Submit pull requests, patches, and bug reports** to the
+      Licensor under the terms in CONTRIBUTING.md and the Developer
+      Certificate of Origin v1.1.
+
+
+3. Uses Requiring a Paid Commercial Licence
+-------------------------------------------
+
+Any use of the Software outside the scope of Section 2 requires a
+separate written commercial licence from the Licensor. This includes,
+without limitation:
+
+  (a) Internal business operations of any organisation — including
+      commercial, governmental, military, defence, educational,
+      research, charitable, religious, or non-profit organisations.
+
+  (b) Hosted, managed, SaaS, or any form of network service or
+      cloud-delivered service that incorporates the Software in whole
+      or in substantial part.
+
+  (c) Embedded use — the Software, or any modified version of it,
+      shipped inside a commercial product, spacecraft, satellite,
+      ground-station service, simulator, training platform, or any
+      other deliverable.
+
+  (d) Government, military, defence, and intelligence-agency
+      deployments of any size, including evaluation and pilot
+      programmes that are funded by or contracted on behalf of such
+      entities.
+
+  (e) Contract-funded, industry-funded, or grant-funded research where
+      a commercial entity, government agency, or institution is the
+      funder, sponsor, or beneficiary.
+
+  (f) Any deployment that, directly or indirectly, supports or enables
+      a revenue-generating activity, a commercial product or service,
+      or operations of a paying customer.
+
+The Licensor offers **no no-fee tier** for any of the uses in this
+Section. Commercial licences are paid, and pricing depends on scope,
+deployment size, term, seats, and embedding rights. To obtain a
+commercial licence, contact the Licensor at the email address listed
+in `pyproject.toml`.
+
+
+4. Perpetual Terms — No Change Date, No Auto-Conversion
+-------------------------------------------------------
+
+This licence has no change date. The terms in Sections 2 and 3 apply
+to every published version of the Software in perpetuity. The Licensor
+makes **no** promise that the Software, any release of it, or any
+derivative work will ever be released under any other licence —
+including open-source licences such as Apache-2.0, MIT, or GPL.
+
+Nothing in this licence is structured to convert into a more
+permissive licence after a period of time.
+
+
+5. Notice Preservation
+----------------------
+
+Any copy or derivative work of the Software that you distribute under
+Section 2(e) must conspicuously include:
+
+  (a) This licence file in its entirety, unmodified.
+
+  (b) The copyright notice at the top of this file.
+
+  (c) Any "Required Notice:" lines that the Licensor includes in the
+      Software or its documentation.
+
+
+6. Patent Licence and Patent Retaliation
+----------------------------------------
+
+The Licensor grants you a worldwide, royalty-free, non-exclusive,
+non-transferable patent licence to make, use, and have made the
+Software for any of the purposes in Section 2, covering patent claims
+that the Licensor can licence or becomes able to licence.
+
+If you, or your organisation, initiate patent litigation (including a
+cross-claim or counterclaim in a lawsuit) against any party alleging
+that the Software, or any contribution to the Software, infringes a
+patent, the patent licence granted to you under this Section
+terminates immediately.
+
+
+7. No Warranty, No Liability
+----------------------------
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OR CONDITION OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING (WITHOUT LIMITATION)
+WARRANTIES OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+PURPOSE, AND NON-INFRINGEMENT. TO THE FULLEST EXTENT PERMITTED BY
+APPLICABLE LAW, IN NO EVENT WILL THE LICENSOR BE LIABLE TO YOU OR
+ANY THIRD PARTY FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF,
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+
+8. Termination
+--------------
+
+Your rights under Section 2 terminate automatically if you breach any
+term of this licence, including any unauthorised use under Section 3.
+The Licensor may, at its sole discretion and in writing, grant a cure
+period of up to thirty-two (32) days during which you may come into
+full compliance and restore your rights.
+
+Sections 5, 6, 7, 8, and 9 survive any termination of this licence.
+
+
+9. No Other Rights
+------------------
+
+These terms do not grant you any right to sublicense or transfer your
+licence to anyone else. They do not prevent the Licensor from granting
+licences to anyone else on any terms. They do not imply any trademark
+or service-mark licence. The names "ARIA", "dsremo", and any
+associated logos remain the property of the Licensor and may not be
+used to endorse or promote derivative works without the Licensor's
+express written permission.
+
+
+10. Definitions
+---------------
+
+- **"the Software"** means ARIA — Autonomous Reasoning & Integration
+  Architecture for spacecraft, in its entirety, including all source
+  code, data, documentation, and assets in the repository in which
+  this licence file appears.
+
+- **"the Licensor"** means the copyright holder identified at the top
+  of this file.
+
+- **"Production use"** means any use of the Software that is not
+  development, evaluation, education, continuous integration, security
+  review, or personal experimentation.
+
+- **"Commercial licence"** means a separate, paid, written agreement
+  between you and the Licensor that authorises uses described in
+  Section 3.
+
+- **"Your organisation"** means any legal entity, sole proprietorship,
+  or other kind of organisation that you work for or that has control
+  over, is under the control of, or is under common control with that
+  entity.
+
+
+End of licence.

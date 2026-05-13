@@ -1,0 +1,65 @@
+[
+  {
+    "rule_id": "ISS-FR-EVA-301",
+    "kind": "flight_rule",
+    "title": "EMU water-event abort threshold",
+    "body": "Following the Parmitano 2013 EVA-23 event, EMU helmet humidity sensor reading > 60 % during EVA shall trigger immediate ingress protocol. Crewmate assists; CO2 buddy share-line considered if affected suit's CO2 scrubber compromised.",
+    "keywords": ["emu", "water", "humidity", "parmitano"],
+    "citation": "ISS Anomaly Investigation EVA-23 (NASA, 2013); EVA Operations Concept post-EVA-23 update",
+    "parameters": ["EMU_HELMET_HUMIDITY_PCT"]
+  },
+  {
+    "rule_id": "ISS-FR-COMMS-102",
+    "kind": "flight_rule",
+    "title": "TDRS coverage gap during contingency",
+    "body": "If a contingency event coincides with an LOS (loss of signal) period, crew shall log voice-recorded summary on the SSPTS / DCSU before LOS, in case of subsequent comm loss. Anomaly summary continues every 5 minutes during LOS until AOS restored.",
+    "keywords": ["tdrs", "los", "aos", "contingency", "voice"],
+    "citation": "ISS Comm Operations Handbook §3.6 (NASA SSP 50261)",
+    "parameters": ["TDRS_AOS_LOS_FLAG"]
+  },
+  {
+    "rule_id": "ISS-FR-ECLSS-103",
+    "kind": "flight_rule",
+    "title": "Trace contaminant control",
+    "body": "TCCS (Trace Contaminant Control Subsystem) charcoal beds shall be replaced when methanol breakthrough detected (> 10 mg/m³). Backup THC (Temperature & Humidity Control) condensate sample analysed monthly for organic contaminant trending.",
+    "keywords": ["tccs", "trace contaminant", "thc", "methanol"],
+    "citation": "ISS ECLSS Lessons Learned (NASA 2018)",
+    "parameters": ["CABIN_METHANOL_MG_M3", "TCCS_BREAKTHROUGH_FLAG"]
+  },
+  {
+    "rule_id": "ISS-FR-PROP-1",
+    "kind": "flight_rule",
+    "title": "Russian segment propellant transfer",
+    "body": "Propellant transfer from Progress to Service Module tanks requires verifying both source and destination tank levels via PRESSURE + ULLAGE measurements. Transfer aborted if anomaly detected; no second transfer attempt without ground concurrence.",
+    "keywords": ["progress", "propellant", "transfer", "ullage"],
+    "citation": "ISS Russian Segment Propellant Operations (Roscosmos 2012)",
+    "parameters": ["TANK_PRESSURE_KPA", "TANK_ULLAGE_PCT"]
+  },
+  {
+    "rule_id": "ISS-FR-CMG-2",
+    "kind": "flight_rule",
+    "title": "CMG manoeuvre limit",
+    "body": "Reboost / debris-avoidance manoeuvres shall pre-position CMGs with momentum < 50 % saturation to ensure desat margin. If CMGs not in valid pre-position, manoeuvre is delayed until configuration reachable.",
+    "keywords": ["cmg", "saturation", "manoeuvre", "reboost"],
+    "citation": "ISS GNC Operations Handbook §4.8",
+    "parameters": ["CMG_SATURATION_FRACTION"]
+  },
+  {
+    "rule_id": "ISS-MP-TOXIC-2",
+    "kind": "malfunction_procedure",
+    "title": "Lithium thionyl-chloride battery off-gas",
+    "body": "If a Li/SOCl2 battery off-gasses (smoke detector + sulfur-smell from crew), isolate the affected payload locker immediately, vent module via PCS to space if pressure rise persists, monitor ppSOCl2 via portable detector.",
+    "keywords": ["lithium", "thionyl-chloride", "off-gas", "battery"],
+    "citation": "ISS Anomaly Report 2007-LiSOCl2; EMER-PAYLOAD-1",
+    "parameters": ["CABIN_SMOKE_FLAG", "CABIN_SULFUR_PPM"]
+  },
+  {
+    "rule_id": "ISS-FR-BERTH-1",
+    "kind": "flight_rule",
+    "title": "Robotic capture envelope (Cygnus / HTV)",
+    "body": "Robotic-arm capture of free-flyer requires the visiting vehicle to be within: range 10 m ± 0.3 m from grapple, range-rate < 0.06 m/s, lateral offset < 0.4 m, attitude error < 1 deg. Outside envelope, vehicle commanded to retreat.",
+    "keywords": ["cygnus", "htv", "berthing", "grapple", "envelope"],
+    "citation": "ISS Visiting Vehicle Berthing Operations Handbook",
+    "parameters": ["VV_RANGE_M", "VV_RANGE_RATE_M_S", "VV_LATERAL_OFFSET_M"]
+  }
+]

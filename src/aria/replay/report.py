@@ -1,0 +1,196 @@
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Optional
+
+
+@dataclass(frozen=True)
+class ReportInputs:
+    scenario_id: str
+    scenario_title: str
+    historical_alarm_get_s: float
+    historical_response_get_s: float
+    n_outcomes: int
+    n_hal_applied: int
+    n_residual: int
+    first_anomaly_get_s: Optional[float]
+    first_critical_get_s: Optional[float]
+    advisor_label: str
+    monitor_label: str
+    doctrine_active: bool
+    lessons_active: bool
+    noise_active: bool
+    audit_log_path: Optional[str] = None
+
+
+def _format_get(get_seconds: Optional[float]) -> str:
+    if get_seconds is None:
+        return "—"
+    total = int(get_seconds)
+    sign = "-" if total < 0 else ""
+    total = abs(total)
+    return f"{sign}{total // 3600:02d}:{(total % 3600) // 60:02d}:{total % 60:02d}"
+
+
+def render_one_page_markdown(
+    inputs: ReportInputs,
+    *,
+    outcomes: list[dict[str, Any]],
+    doctrine_hits: list[dict[str, Any]] = (),
+    lesson_hits: list[dict[str, Any]] = (),
+) -> str:
+    lines: list[str] = []
+    lines.append(f"# ARIA Replay Report — {inputs.scenario_title}")
+    lines.append(f"_scenario:_ `{inputs.scenario_id}`")
+    lines.append("")
+    lines.append("## Run summary")
+    lines.append("")
+    lines.append("| Metric | Value |")
+    lines.append("| --- | --- |")
+    lines.append(f"| Outcomes captured | {inputs.n_outcomes} |")
+    lines.append(f"| HAL commands applied | {inputs.n_hal_applied} |")
+    lines.append(f"| Residual log entries | {inputs.n_residual} |")
+    lines.append(f"| First anomaly | GET={_format_get(inputs.first_anomaly_get_s)} |")
+    lines.append(
+        f"| Historical alarm | GET={_format_get(inputs.historical_alarm_get_s)} "
+    )
+    if inputs.first_anomaly_get_s is not None:
+        lead = inputs.historical_alarm_get_s - inputs.first_anomaly_get_s
+        lines.append(f"| Lead vs historical alarm | {lead:.0f} s |")
+    lines.append(f"| Advisor | {inputs.advisor_label} |")
+    lines.append(f"| Cross-monitor | {inputs.monitor_label} |")
+    lines.append(f"| Doctrine context | {'on' if inputs.doctrine_active else 'off'} |")
+    lines.append(f"| Lesson retrieval | {'on' if inputs.lessons_active else 'off'} |")
+    lines.append(f"| Sensor noise overlay | {'on' if inputs.noise_active else 'off'} |")
+    lines.append("")
+
+    if outcomes:
+        lines.append("## Per-outcome detail (first 10)")
+        lines.append("")
+        lines.append("| GET | Parameter | Sev | Action | Status | HAL applied |")
+        lines.append("| --- | --- | --- | --- | --- | --- |")
+        for outcome in outcomes[:10]:
+            anomaly = outcome.get("anomaly") or {}
+            advisor = outcome.get("advisor") or {}
+            translation = outcome.get("translation") or {}
+            get_s = anomaly.get("get_seconds", 0)
+            lines.append(
+                "| {get_str} | {param} | {sev} | {action} | {status} | {hal} |".format(
+                    get_str=_format_get(get_s),
+                    param=anomaly.get("parameter", "?"),
+                    sev=anomaly.get("severity", "?"),
+                    action=advisor.get("proposed_action", "—"),
+                    status=translation.get("status", "—"),
+                    hal=outcome.get("hal_applied", "—"),
+                )
+            )
+        if len(outcomes) > 10:
+            lines.append(f"| ... | _{len(outcomes) - 10} more outcomes_ | | | | |")
+        lines.append("")
+
+    if doctrine_hits:
+        lines.append("## Doctrine entries surfaced (top 5)")
+        lines.append("")
+        for hit in doctrine_hits[:5]:
+            lines.append(
+                f"- **{hit.get('rule_id', '?')}** — {hit.get('title', '')}  \n"
+                f"  _{hit.get('citation', '')}_"
+            )
+        lines.append("")
+
+    if lesson_hits:
+        lines.append("## Prior incidents retrieved (top 5)")
+        lines.append("")
+        for hit in lesson_hits[:5]:
+            lines.append(
+                f"- **{hit.get('record_id', '?')}** — {hit.get('title', '')}  \n"
+                f"  _{hit.get('citation', '')}_"
+            )
+        lines.append("")
+
+    lines.append("## What this report does and does not show")
+    lines.append("")
+    lines.append(
+        "* It shows: ARIA's anomaly→advisor→monitor→HAL chain ran end-to-end "
+        "against the named scenario and produced the listed outcomes."
+    )
+    lines.append(
+        "* It does NOT show: that ARIA is flight-grade. The scenarios are "
+        "reconstructed (not raw mission) telemetry. Doctrine + lessons are "
+        "curated digests of public sources, not access-controlled flight ops "
+        "manuals."
+    )
+    if inputs.audit_log_path:
+        lines.append(
+            f"* Full event audit trail: `{inputs.audit_log_path}` (JSON Lines)."
+        )
+    lines.append("")
+    lines.append(
+        "_Generated by `aria.replay.report.render_one_page_markdown` — "
+        "see [`docs/DEEP_PASS_RESIDUALS.md`](DEEP_PASS_RESIDUALS.md) for "
+        "the project's honest depth scoring against flight-grade._"
+    )
+    return "\n".join(lines)
+
+
+def collect_report_inputs_from_audit(
+    *,
+    audit_log_path: Path,
+    scenario_id: str,
+    scenario_title: str,
+    historical_alarm_get_s: float,
+    historical_response_get_s: float,
+    advisor_label: str,
+    monitor_label: str,
+    doctrine_active: bool,
+    lessons_active: bool,
+    noise_active: bool,
+) -> tuple[ReportInputs, list[dict[str, Any]]]:
+    outcomes: list[dict[str, Any]] = []
+    if audit_log_path.exists():
+        for line in audit_log_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                outcomes.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+    n_hal_applied = sum(1 for outcome in outcomes if outcome.get("hal_applied"))
+    n_residual = sum(
+        1 for outcome in outcomes
+        if (outcome.get("translation") or {}).get("residual")
+    )
+    first_anomaly_get_s: Optional[float] = None
+    first_critical_get_s: Optional[float] = None
+    for outcome in outcomes:
+        anomaly = outcome.get("anomaly") or {}
+        get_s = anomaly.get("get_seconds")
+        if first_anomaly_get_s is None and get_s is not None:
+            first_anomaly_get_s = get_s
+        if (
+            first_critical_get_s is None
+            and anomaly.get("severity") == "CRITICAL"
+            and get_s is not None
+        ):
+            first_critical_get_s = get_s
+    inputs = ReportInputs(
+        scenario_id=scenario_id,
+        scenario_title=scenario_title,
+        historical_alarm_get_s=historical_alarm_get_s,
+        historical_response_get_s=historical_response_get_s,
+        n_outcomes=len(outcomes),
+        n_hal_applied=n_hal_applied,
+        n_residual=n_residual,
+        first_anomaly_get_s=first_anomaly_get_s,
+        first_critical_get_s=first_critical_get_s,
+        advisor_label=advisor_label,
+        monitor_label=monitor_label,
+        doctrine_active=doctrine_active,
+        lessons_active=lessons_active,
+        noise_active=noise_active,
+        audit_log_path=str(audit_log_path),
+    )
+    return inputs, outcomes

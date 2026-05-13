@@ -1,0 +1,305 @@
+{
+  "version": 1,
+  "description": "ARIA constitutional rules \u2014 frozen, hash-sealed, immutable at runtime. The cognitive layer (LLM) and the ExecutionGuard both consult this file. The constitutional layer ABOVE the LLM rejects any proposed action that violates these rules, regardless of who or what proposed it.",
+  "forbidden_actions": [
+    {
+      "action": "vent_crew_quarters",
+      "reason": "Direct loss of crew. No legitimate operational scenario.",
+      "threats_addressed": [
+        "T-IV-1",
+        "T-IV-2",
+        "T-II-7",
+        "W-4"
+      ]
+    },
+    {
+      "action": "disable_eclss",
+      "reason": "Catastrophic life-support failure within hours.",
+      "threats_addressed": [
+        "T-IV-1",
+        "T-II-7"
+      ]
+    },
+    {
+      "action": "disable_constitution",
+      "reason": "Self-disabling the safety layer is permanently forbidden.",
+      "threats_addressed": [
+        "T-II-4",
+        "T-II-5"
+      ]
+    },
+    {
+      "action": "disable_audit",
+      "reason": "Loss of accountability. The audit chain is non-negotiable.",
+      "threats_addressed": [
+        "T-III-1"
+      ]
+    },
+    {
+      "action": "disable_monitor",
+      "reason": "Removing oversight is forbidden. Monitor failure \u2192 safe-mode.",
+      "threats_addressed": [
+        "T-V-1",
+        "T-V-2"
+      ]
+    },
+    {
+      "action": "modify_sealed_prompt",
+      "reason": "The system prompt is part of the boot manifest. Modify only via signed release.",
+      "threats_addressed": [
+        "T-II-4",
+        "T-VI-1"
+      ]
+    },
+    {
+      "action": "disable_kill_switch",
+      "reason": "The hardware deadman + manual kill switch path must always remain reachable.",
+      "threats_addressed": [
+        "T-V-4",
+        "T-V-5",
+        "T-VI-3"
+      ]
+    },
+    {
+      "action": "extract_signing_key",
+      "reason": "Signing keys never leave the HSM/secure enclave. Extraction is exfiltration.",
+      "threats_addressed": [
+        "T-III-2"
+      ]
+    },
+    {
+      "action": "rewrite_audit_entry",
+      "reason": "Audit log is append-only. Rewrites break the hash chain.",
+      "threats_addressed": [
+        "T-III-1"
+      ]
+    },
+    {
+      "action": "spawn_unsandboxed_subprocess",
+      "reason": "All execution stays inside the seccomp profile.",
+      "threats_addressed": [
+        "T-III-5"
+      ]
+    }
+  ],
+  "gated_actions": [
+    {
+      "action": "vent_tank",
+      "operator_approvals_required": 2,
+      "cooling_off_seconds": 30,
+      "undo_window_seconds": 60,
+      "reason": "Reversible reaction-mass loss; demands two-person rule.",
+      "threats_addressed": [
+        "T-IV-3",
+        "T-VII-6",
+        "W-1"
+      ]
+    },
+    {
+      "action": "safe_mode_disable",
+      "operator_approvals_required": 2,
+      "cooling_off_seconds": 60,
+      "undo_window_seconds": 0,
+      "reason": "Re-enabling the LLM after safe-mode requires deliberate two-person decision.",
+      "threats_addressed": [
+        "T-V-4"
+      ]
+    },
+    {
+      "action": "set_attitude",
+      "operator_approvals_required": 1,
+      "cooling_off_seconds": 5,
+      "undo_window_seconds": 30,
+      "reason": "Attitude change is recoverable but expensive in reaction-control fuel.",
+      "threats_addressed": [
+        "T-IV-3"
+      ]
+    },
+    {
+      "action": "schedule_maneuver",
+      "operator_approvals_required": 2,
+      "cooling_off_seconds": 30,
+      "undo_window_seconds": 120,
+      "reason": "\u0394v events compound; two-person rule + cooling-off catches typos.",
+      "threats_addressed": [
+        "T-IV-3",
+        "T-VII-5",
+        "W-2"
+      ]
+    },
+    {
+      "action": "throttle_engine",
+      "operator_approvals_required": 1,
+      "cooling_off_seconds": 0,
+      "undo_window_seconds": 30,
+      "reason": "Single-operator OK; throttle is continuous and reversible. Cumulative budget still enforced via F-12.",
+      "threats_addressed": [
+        "T-II-7",
+        "W-2"
+      ]
+    },
+    {
+      "action": "uplink_software_update",
+      "operator_approvals_required": 2,
+      "cooling_off_seconds": 300,
+      "undo_window_seconds": 0,
+      "reason": "Five-minute cooling-off on software updates plus two operators. Full rollback path required before approval.",
+      "threats_addressed": [
+        "T-VII-3",
+        "T-III-4"
+      ]
+    }
+  ],
+  "resource_ceilings": [
+    {
+      "resource": "delta_v_mps",
+      "window_seconds": 3600,
+      "soft_cap": 50.0,
+      "hard_cap": 200.0,
+      "unit": "m/s",
+      "source": "ECSS-E-ST-35C reaction-mass budget",
+      "threats_addressed": [
+        "T-II-7",
+        "W-2"
+      ]
+    },
+    {
+      "resource": "vent_rate_kg_s",
+      "window_seconds": 60,
+      "soft_cap": 0.5,
+      "hard_cap": 2.0,
+      "unit": "kg/s",
+      "source": "Apollo SP-4029 max safe vent rate",
+      "threats_addressed": [
+        "T-II-7",
+        "W-1"
+      ]
+    },
+    {
+      "resource": "battery_drain_w",
+      "window_seconds": 300,
+      "soft_cap": 5000.0,
+      "hard_cap": 12000.0,
+      "unit": "W",
+      "source": "ISS Li-ion ORU peak (NASA NTRS 20160012048)",
+      "threats_addressed": [
+        "T-II-8"
+      ]
+    },
+    {
+      "resource": "cabin_pressure_change_kpa",
+      "window_seconds": 60,
+      "soft_cap": 1.0,
+      "hard_cap": 3.0,
+      "unit": "kPa/min",
+      "source": "NASA SSP 41172 max pressure rate",
+      "threats_addressed": [
+        "T-II-7",
+        "W-1"
+      ]
+    },
+    {
+      "resource": "reasoning_calls_per_min",
+      "window_seconds": 60,
+      "soft_cap": 30,
+      "hard_cap": 100,
+      "unit": "calls/min",
+      "source": "Operational saturation threshold",
+      "threats_addressed": [
+        "T-II-8"
+      ]
+    }
+  ],
+  "trust_tiers": {
+    "OPERATOR": 3,
+    "LOCAL_SENSOR": 2,
+    "EXTERNAL_API": 1,
+    "THIRD_PARTY_CONTENT": 0
+  },
+  "trust_tier_rules": {
+    "min_tier_for_safety_critical": 3,
+    "min_tier_for_resource_consumption": 2,
+    "untrusted_content_must_be_delimited": true,
+    "delimiter_format": "<untrusted_data nonce=\"{NONCE}\">...</untrusted_data nonce=\"{NONCE}\">"
+  },
+  "operator_oversight": {
+    "two_person_rule_actions": [
+      "vent_tank",
+      "schedule_maneuver",
+      "uplink_software_update",
+      "safe_mode_disable",
+      "any crew_life_critical action"
+    ],
+    "cooling_off_default_seconds": 30,
+    "stress_recall_required_above_severity": "warning",
+    "off_shift_requires_extra_signature": true,
+    "rubber_stamp_detector_threshold_seconds": 2,
+    "deadman_max_silence_seconds": 1800
+  },
+  "monitor_oversight": {
+    "consensus_threshold": 2,
+    "monitor_count": 3,
+    "monitor_strategies": [
+      "rule_based",
+      "statistical_anomaly",
+      "cross_model"
+    ],
+    "veto_action": "freeze_actuator_safe_mode",
+    "monitor_heartbeat_max_silence_s": 30,
+    "on_monitor_silence": "auto_safe_mode"
+  },
+  "long_horizon_rules": {
+    "frozen_weights_required_for_safety_critical": true,
+    "self_modification_forbidden": true,
+    "continuous_safety_test_replay_hours": 6,
+    "drift_threshold_pct": 1.0,
+    "rollback_on_drift": true
+  },
+  "allowed_actions": [
+    {
+      "action": "attitude_hold",
+      "owner": "navigation",
+      "reason": "Reaction-wheel + gyro stabilisation; reversible."
+    },
+    {
+      "action": "boost_scrubber",
+      "owner": "eclss",
+      "reason": "Increase CO2 scrubber duty cycle; bounded by power budget."
+    },
+    {
+      "action": "pressurize_cabin",
+      "owner": "eclss",
+      "reason": "Bring cabin pressure to nominal kPa; bounded by O2 budget."
+    },
+    {
+      "action": "safe_mode",
+      "owner": "any",
+      "reason": "Voluntary subsystem-local safe-mode entry; always reversible."
+    },
+    {
+      "action": "set_setpoint",
+      "owner": "thermal",
+      "reason": "Thermal zone setpoint adjustment; bounded by zone limits."
+    },
+    {
+      "action": "shed_load",
+      "owner": "power",
+      "reason": "Drop a non-critical subsystem to maintain bus voltage."
+    },
+    {
+      "action": "switch_antenna",
+      "owner": "comms",
+      "reason": "Change antenna selection; reversible."
+    },
+    {
+      "action": "monitor",
+      "owner": "fdir",
+      "reason": "Default FDIR action: passive observation."
+    },
+    {
+      "action": "alert_crew",
+      "owner": "fdir",
+      "reason": "Surface a fault to the operator console."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "rule_id": "STS-FR-A-101",
+    "kind": "flight_rule",
+    "title": "Late-ascent abort modes",
+    "body": "If a single SSME fails between MET 2:30 and SECO, the abort mode shall be RTLS (Return To Launch Site) before MET 4:30, then TAL (Trans-Atlantic Landing) until single-engine-press-to-MECO capability is achieved. Crew briefed on which abort mode is active at each MET via voice loop.",
+    "keywords": ["abort", "ssme", "rtls", "tal", "ascent"],
+    "citation": "Shuttle Operational Flight Rules NSTS-12820",
+    "parameters": ["SSME_1_PC_PSIA", "SSME_2_PC_PSIA", "SSME_3_PC_PSIA", "MET_S"]
+  },
+  {
+    "rule_id": "STS-FR-TPS-301",
+    "kind": "flight_rule",
+    "title": "Foam strike on TPS during ascent",
+    "body": "Any foam strike on the orbiter wing leading edge or TPS tile observed via ascent imagery shall trigger on-orbit RPM (R-bar Pitch Maneuver) inspection at the ISS approach. EVA inspection authorised if RCC integrity in question. Direct entry NOT cleared until imagery clearance.",
+    "keywords": ["foam", "tps", "rcc", "leading edge", "rpm"],
+    "citation": "STS-114 Return-to-Flight rules; CAIB Vol I (2003) recommendations",
+    "parameters": ["LEADING_EDGE_TEMP_K", "TPS_INTEGRITY"]
+  },
+  {
+    "rule_id": "STS-MP-GAP-FILLER-1",
+    "kind": "malfunction_procedure",
+    "title": "Protruding gap filler on TPS",
+    "body": "If gap filler protrudes >5 mm from TPS line, ground analyses for entry-heating risk. If risk exceeds threshold, EVA removal authorised with a soft-handle pull tool (toothbrush taped to existing tool). Removal verified via post-removal RPM imagery before entry clearance.",
+    "keywords": ["gap filler", "tps", "eva", "removal"],
+    "citation": "STS-114 Mission Report (NASA, 2005); EVA-3 procedures",
+    "parameters": ["GAP_FILLER_PROTRUSION_MM", "LEADING_EDGE_TEMP_K"]
+  },
+  {
+    "rule_id": "STS-FR-PWR-201",
+    "kind": "flight_rule",
+    "title": "Fuel cell coolant pump failure",
+    "body": "If a fuel cell coolant pump fails, the cell shall be removed from the bus within 5 minutes to avoid stack overheat. Bus loaded onto remaining 2 cells. Mission rules require ≥2 cells operating for nominal end-of-mission; on 1 cell, immediate de-orbit prep.",
+    "keywords": ["fuel cell", "coolant", "pump", "bus"],
+    "citation": "Shuttle Operational Flight Rules §A6",
+    "parameters": ["FUEL_CELL_1_VOLTAGE", "FUEL_CELL_2_VOLTAGE", "FUEL_CELL_3_VOLTAGE", "FC_COOLANT_TEMP_K"]
+  },
+  {
+    "rule_id": "STS-FR-RCS-401",
+    "kind": "flight_rule",
+    "title": "RCS jet leak detection",
+    "body": "Any RCS jet showing >0.1 lbf-s/s residual chamber pressure rise after commanded shutoff is flagged as leaking. Jet-isolation valve closed; affected manifold vented per MAL-RCS-3. Mission impact: ~10% RCS budget per leaking manifold.",
+    "keywords": ["rcs", "leak", "manifold", "jet"],
+    "citation": "Shuttle Operational Flight Rules §A8",
+    "parameters": ["RCS_PC_PSIA", "RCS_MANIFOLD_PRESSURE_PSIA"]
+  },
+  {
+    "rule_id": "STS-FR-EVA-501",
+    "kind": "flight_rule",
+    "title": "EMU caution & warning during EVA",
+    "body": "If EMU primary O2 pressure drops below 100 psia or scrubber CO2 partial pressure exceeds 7.6 mmHg, terminate EVA and ingress within 30 minutes. Crew shall ride backup O2 only as a last resort.",
+    "keywords": ["emu", "eva", "o2", "co2", "scrubber"],
+    "citation": "EVA Cuff Checklist (NASA STS-CCL-A-EVA)",
+    "parameters": ["EMU_O2_PRESSURE_PSIA", "EMU_PPCO2_MMHG"]
+  }
+]

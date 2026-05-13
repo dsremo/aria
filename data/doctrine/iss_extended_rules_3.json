@@ -1,0 +1,65 @@
+[
+  {
+    "rule_id": "ISS-FR-MED-1",
+    "kind": "flight_rule",
+    "title": "Crew medical event response",
+    "body": "Cardiac event / decompression sickness / trauma: crew flight surgeon (CMOFS) directs response via voice loop. Affected crewmember stabilised in Soyuz/Crew Dragon. Emergency descent (within 24h) authorised if surgeon judges return necessary.",
+    "keywords": ["medical", "cardiac", "dcs", "trauma", "cmofs"],
+    "citation": "ISS Crew Health Care System Operations Plan",
+    "parameters": ["CREW_HEART_RATE_BPM", "CREW_BP_MMHG"]
+  },
+  {
+    "rule_id": "ISS-FR-MED-2",
+    "kind": "flight_rule",
+    "title": "Bone density loss countermeasure",
+    "body": "Crew shall perform 2.5 hours per day exercise: ARED (resistive), CEVIS (cycle), T2 (treadmill). Compliance < 80 % triggers ground-team review; persistent non-compliance flagged in CMS for post-flight rehab planning.",
+    "keywords": ["bone", "exercise", "ared", "cevis", "t2"],
+    "citation": "ISS Countermeasures System Operations Plan",
+    "parameters": ["EXERCISE_HOURS_PER_DAY"]
+  },
+  {
+    "rule_id": "ISS-FR-NAV-1",
+    "kind": "flight_rule",
+    "title": "GNSS position update rate",
+    "body": "ISS GPS position fix is updated every 1 s nominal; gap > 60 s triggers diagnosis of GPS antenna or receiver. State vector propagated by inertial measurement during gap; uncertainty grows at ~0.5 m/s² × dt²/2.",
+    "keywords": ["gps", "gnss", "ins", "state vector"],
+    "citation": "ISS GNC Operations Handbook §5.3",
+    "parameters": ["GPS_FIX_AGE_S", "POSITION_UNCERTAINTY_M"]
+  },
+  {
+    "rule_id": "ISS-FR-PWR-204",
+    "kind": "flight_rule",
+    "title": "ROSA solar array deployment",
+    "body": "Roll-Out Solar Array (iROSA) deployment requires ISS attitude bias to minimise gravity-gradient torque, sun beta angle within 30 deg of optimum, no scheduled VV docking ±48h. Deployment commanded in 5 % increments with telemetry verification at each step.",
+    "keywords": ["rosa", "irosa", "solar array", "deployment"],
+    "citation": "ISS iROSA Deployment Operations Handbook (NASA, 2022)",
+    "parameters": ["ROSA_DEPLOY_PCT", "BETA_ANGLE_DEG"]
+  },
+  {
+    "rule_id": "ISS-FR-MICROGRAV-1",
+    "kind": "flight_rule",
+    "title": "Microgravity quiescent period",
+    "body": "Microgravity-sensitive science requires quiescent attitude with crew-induced vibrations < 10⁻⁴ g. Crew exercise schedule defers during 8-hour quiescent windows; thruster firings prohibited unless emergency.",
+    "keywords": ["microgravity", "quiescent", "vibration", "science"],
+    "citation": "ISS Microgravity Environment Specification",
+    "parameters": ["VIBRATION_LEVEL_G", "QUIESCENT_FLAG"]
+  },
+  {
+    "rule_id": "ISS-MP-CMG-2",
+    "kind": "malfunction_procedure",
+    "title": "CMG total failure response",
+    "body": "Loss of all 4 CMGs: ISS attitude held by Russian Segment thrusters; propellant burn rate ~ 200 kg/day. Plan within 48 h: replace failed CMGs (EVA), or accept reduced-attitude operations (off-pointing < 5 deg).",
+    "keywords": ["cmg", "thrusters", "propellant", "eva"],
+    "citation": "ISS GNC Operations Handbook MAL-CMG-2",
+    "parameters": ["CMG_HEALTHY_COUNT", "RS_PROPELLANT_BURN_RATE_KG_DAY"]
+  },
+  {
+    "rule_id": "ISS-FR-AIRLOCK-1",
+    "kind": "flight_rule",
+    "title": "Quest airlock pre-EVA depress profile",
+    "body": "Pre-EVA depressurisation: cabin 14.7 → 10.2 psi, hold 8 hours overnight (purge nitrogen), then 10.2 → 5.0 psi over 30 min. Slow-leak detection during each step via PCS pressure trending.",
+    "keywords": ["quest", "airlock", "depress", "purge"],
+    "citation": "ISS EVA Operations Handbook §4.2",
+    "parameters": ["AIRLOCK_PRESSURE_PSI", "DEPRESS_PHASE"]
+  }
+]

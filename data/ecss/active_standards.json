@@ -1,0 +1,1580 @@
+[
+  {
+    "standard_id": "ECSS-E-ST-31-02C",
+    "title": "ECSS-E-ST-31-02C Rev.1 \u2013 Two-phase heat transport equipment (15 March 2017)",
+    "url": "https://ecss.nl/standard/18891/",
+    "issue_date": "15 march 2017",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/04/ECSS-E-ST-31-02C-Rev.1(15March2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-10-09C",
+    "title": "ECSS-Q-ST-10-09C Rev.1 \u2013 Nonconformance control system (1 March 2018)",
+    "url": "https://ecss.nl/standard/24183/",
+    "issue_date": "1 march 2018",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2018/03/ECSS-Q-ST-10-09C-Rev.1(1March2018).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-#42506",
+    "title": "ECSS-P-00C Rev.1 \u2013 Standardization objectives, policies and organization (15 November 2024)",
+    "url": "https://ecss.nl/standard/42506/",
+    "issue_date": "15 november 2024",
+    "standard_type": "other",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/12/ECSS-P-00C-Rev.1(15November2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-11C",
+    "title": "ECSS-E-AS-11C &#8211; Adoption Notice of ISO 16290, Space systems \u2013 Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment (1 October 2014)",
+    "url": "https://ecss.nl/standard/ecss-e-as-11c-adoption-notice-of-iso-16290-space-systems-definition-of-the-technology-readiness-levels-trls-and-their-criteria-of-assessment-1-october-2014/",
+    "issue_date": "1 october 2014",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-AS-11C1October2014.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-21C-REV-1",
+    "title": "ECSS-E-AS-50-21C Rev.2 &#8211; Adoption Notice of CCSDS 131.0-B-5, TM Synchronization and Channel Coding (5 December 2024)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-21c-rev-1-adoption-notice-of-ccsds-131-0-b-5-tm-synchronization-and-channel-coding-5-december-2024/",
+    "issue_date": "5 december 2024",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/12/ECSS-E-AS-50-21C-Rev.2(5December2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-22C-REV-1",
+    "title": "ECSS-E-AS-50-22C Rev.1 &#8211; Adoption Notice of CCSDS 132.0-B-3, TM Space Data Link Protocol (13 January 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-22c-rev-1-adoption-notice-of-ccsds-132-0-b-3-tm-space-data-link-protocol-3-january-2023/",
+    "issue_date": "13 january 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/01/ECSS-E-AS-50-22C-Rev.1(13January2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-23C-REV-1",
+    "title": "ECSS-E-AS-50-23C Rev.1 \u2013 Adoption Notice of CCSDS 732.0-B-4, AOS Space Data Link Protocol (13 January 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-23c-rev-1-adoption-notice-of-ccsds-732-0-b-4-aos-space-data-link-protocol-13-january-2023/",
+    "issue_date": "13 january 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/01/ECSS-E-AS-50-23C-Rev.1(13January2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-24C-REV-1",
+    "title": "ECSS-E-AS-50-24C Rev.1 &#8211; Adoption Notice of CCSDS 231.0-B-4, TC Synchronization and Channel Coding (13 January 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-24c-rev-1-adoption-notice-of-ccsds-231-0-b-4-tc-synchronization-and-channel-coding/",
+    "issue_date": "13 january 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/01/ECSS-E-AS-50-24C-Rev.1(13January2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-25C-REV-1",
+    "title": "ECSS-E-AS-50-25C Rev.1 &#8211; Adoption Notice of CCSDS 232.0-B-4, TC Space Data Link Protocol (13 January 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-25c-rev-1-adoption-notice-of-ccsds-232-0-b-4-tc-space-data-link-protocol/",
+    "issue_date": "13 january 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/01/ECSS-E-AS-50-25C-Rev.1(13January2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-AS-50-26C",
+    "title": "ECSS-E-AS-50-26C &#8211; Adoption Notice of CCSDS 232.1-B-2, Communications Operation Procedure-1 (1 March 2021)",
+    "url": "https://ecss.nl/standard/ecss-e-as-50-26c-adoption-notice-of-ccsds-232-1-b-2-communications-operation-procedure-1-1-march-2021/",
+    "issue_date": "1 march 2021",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/03/ECSS-E-AS-50-26C(1March2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-02C-REV-1",
+    "title": "ECSS-E-ST-10-02C Rev.1 \u2013 Verification (1 February 2018)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-02c-rev-1-verification-1-february-2018/",
+    "issue_date": "1 february 2018",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2018/02/ECSS-E-ST-10-02C-Rev.1(1February2018).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-03C-REV-1",
+    "title": "ECSS-E-ST-10-03C Rev.1 &#8211; Testing (31 May 2022)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-03c-rev-1-testing-31-may-2022/",
+    "issue_date": "31 may 2022",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/05/ECSS-E-ST-10-03-Rev.1(31May2022).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-04C-REV-1",
+    "title": "ECSS-E-ST-10-04C Rev.1 &#8211; Space environment (15 June 2020)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-04c-rev-1-space-environment-15-june-2020/",
+    "issue_date": "15 june 2020",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2020/07/ECSS-E-ST-10-04C-Rev.1(15June2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-06C-TECHNICAL-REQUIREMENTS",
+    "title": "ECSS-E-ST-10-06C \u2013 Technical requirements specification (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-06c-technical-requirements-specification/",
+    "issue_date": "6 march 2009",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-10-06C6March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-09C-REFERENCE-COORDINATE",
+    "title": "ECSS-E-ST-10-09C \u2013 Reference coordinate system (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-09c-reference-coordinate-system/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-10-09C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-11C-HUMAN-FACTORS",
+    "title": "ECSS-E-ST-10-11C \u2013 Human factors engineering (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-11c-human-factors-engineering/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-10-11C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-12C-METHODS-FOR-THE-CALCULATION-OF-RADIATION-RECEIVED-AND-ITS-EFFECTS-AND-A-POLICY-FOR",
+    "title": "ECSS-E-ST-10-12C \u2013 Methods for the calculation of radiation received and its effects, and a policy for design margins (15 November 2008) +Corr.1 (22Feb2017)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-12c-methods-for-the-calculation-of-radiation-received-and-its-effects-and-a-policy-for-design-margins/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2008/11/ECSS-E-ST-10-12C(15November2008)Corr.1(22February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10-24C-REV-1",
+    "title": "ECSS-E-ST-10-24C Rev.1 \u2013 Interface management (15 November 2024)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10-24c-rev-1-interface-management-15-november-2024/",
+    "issue_date": "15 november 2024",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/12/ECSS-E-ST-10-24C-Rev.1(15November2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-10C-REV-1-SYSTEM",
+    "title": "ECSS-E-ST-10C Rev.1 \u2013 System engineering general requirements (15 February 2017)",
+    "url": "https://ecss.nl/standard/ecss-e-st-10c-rev-1-system-engineering-general-requirements-15-february-2017/",
+    "issue_date": "15 february 2017",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/02/ECSS-E-ST-10C-Rev.1(15February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-01C-MULTIPACTOR",
+    "title": "ECSS-E-ST-20-01C &#8211; Multipactor design and test (15 June 2020)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-01c-multipactor-design-and-test-15-june-2020/",
+    "issue_date": "15 june 2020",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2020/07/ECSS-E-ST-20-01C(15June2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-06C-REV-1",
+    "title": "ECSS-E-ST-20-06C Rev.1 \u2013 Spacecraft charging (15 May 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-06c-rev-1-spacecraft-charging-15-may-2019/",
+    "issue_date": "15 may 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-07C-REV-2",
+    "title": "ECSS-E-ST-20-07C Rev.2 &#8211; Electromagnetic compatibility (3 January 2022)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-07c-rev-2-electromagnetic-compatibility-3-january-2022/",
+    "issue_date": "3 january 2022",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/01/ECSS-E-ST-20-07C-Rev.2(3January2022).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-08C-REV-2",
+    "title": "ECSS-E-ST-20-08C Rev.2 \u2013 Photovoltaic assemblies and components (20 April 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-08c-rev-2-photovoltaic-assemblies-and-components-20-april-2023/",
+    "issue_date": "20 april 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/08/ECSS-E-ST-20-08C_Rev.2(20April2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-20C",
+    "title": "ECSS-E-ST-20-20C \u2013 Electrical design and interface requirements for power supply (15 April 2016)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-20c-space-engineering-electrical-design-and-interface-requirements-for-power-supply-15-april-2016-2/",
+    "issue_date": "15 april 2016",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2016/07/ECSS-E-ST-20-20C15April2016.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-21C",
+    "title": "ECSS-E-ST-20-21C \u2013 Electrical design and interface requirements for actuators (15 May 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-21c-electrical-design-and-interface-requirements-for-actuators-15-may-2019/",
+    "issue_date": "15 may 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20-40C-ASIC-FPGA",
+    "title": "ECSS-E-ST-20-40C &#8211; ASIC, FPGA and IP Core engineering (11 October 2023)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20-40c-asic-fpga-and-ip-core-engineering-11-october-2023/",
+    "issue_date": "11 october 2023",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/11/ECSS-E-ST-20-40C(11October2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-20C-REV-2",
+    "title": "ECSS-E-ST-20C Rev.2 &#8211; Electrical and electronic (8 April 2022)",
+    "url": "https://ecss.nl/standard/ecss-e-st-20c-rev-2-electrical-and-electronic-8-april-2022/",
+    "issue_date": "8 april 2022",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/04/ECSS-E-ST-20C-Rev.2(8April2022).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-30-10C-15-NOVEMBER-2024-INTEGRATED",
+    "title": "ECSS-I-ST-30-10C &#8211; Integrated Product Support (IPS) (15 November 2024)",
+    "url": "https://ecss.nl/standard/ecss-e-st-30-10c-15-november-2024-integrated-product-support-ips/",
+    "issue_date": "15 november 2024",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/12/ECSS-I-ST-30-10C(15November2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-31-04C-EXCHANGE-OF",
+    "title": "ECSS-E-ST-31-04C \u2013 Exchange of thermal analysis data (1 February 2018)",
+    "url": "https://ecss.nl/standard/ecss-e-st-31-04c-exchange-of-thermal-analysis-data-1-february-2018/",
+    "issue_date": "1 february 2018",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2018/02/ECSS-E-ST-31-04C(1February2018).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-31C-THERMAL-CONTROL",
+    "title": "ECSS-E-ST-31C \u2013 Thermal control (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-31c-thermal-control/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-31C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-01C-REV-2",
+    "title": "ECSS-E-ST-32-01C Rev.2 \u2013 Fracture control (30 July 2021)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-01c-rev-2-fracture-control-30-july-2021/",
+    "issue_date": "30 july 2021",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/08/ECSS-E-ST-32-01C_Rev.2(30July2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-02C-REV-2",
+    "title": "ECSS-E-ST-32-02C Rev.2 \u2013 Structural design and verification of pressurized hardware (15 October 2025)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-02c-rev-2-structural-design-and-verification-of-pressurized-hardware-15-november-2008/",
+    "issue_date": "15 october 2025",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/10/ECSS-E-ST-32-02C-Rev.2(15October2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-03C",
+    "title": "ECSS-E-ST-32-03C \u2013 Structural finite element models (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-03c-structural-finite-element-models/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-32-03C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-08C-REV-1",
+    "title": "ECSS-E-ST-32-08C Rev.1 &#8211; Space engineering &#8211; Materials (15 October 2014)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-08c-rev-1-space-engineering-materials-15-october-2014/",
+    "issue_date": "15 october 2014",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2014/10/ECSS-E-ST-32-08C-Rev.1(15October2014).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-10C-REV-2-CORR-1",
+    "title": "ECSS-E-ST-32-10C Rev.2 Corr.1 \u2013 Structural factors of safety for spaceflight hardware (1 August 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-10c-rev-2-corr-1-structural-factors-of-safety-for-spaceflight-hardware-1-august-2019/",
+    "issue_date": "1 august 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/09/ECSS-E-ST-32-10C_Rev.2-Corr.1(1August2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32-11C-MODAL-SURVEY",
+    "title": "ECSS-E-ST-32-11C \u2013 Modal survey assessment (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32-11c-modal-survey-assessment/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-32-11C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-32C-REV-1",
+    "title": "ECSS-E-ST-32C Rev.1 \u2013 Structural general requirements (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-32c-rev-1-structural-general-requirements/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-32C_Rev.115November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-33-01C-REV-2-1-MARCH-2019",
+    "title": "ECSS-E-ST-33-01C Rev.2 \u2013 Mechanisms (1 March 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-33-01c-rev-2-1-march-2019-space-engineering-mechanisms/",
+    "issue_date": "1 march 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/05/ECSS-E-ST-33-01C-Rev.2(1March2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-33-11C-REV-1",
+    "title": "ECSS-E-ST-33-11C Rev.1 \u2013 Explosive subsystems and devices (1 June 2017)",
+    "url": "https://ecss.nl/standard/ecss-e-st-33-11c-rev-1-explosive-subsystems-and-devices/",
+    "issue_date": "1 june 2017",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/07/ECSS-E-ST-33-11C-Rev.1(1June2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-34C-ENVIRONMANTAL-CONTROL-AND",
+    "title": "ECSS-E-ST-34C \u2013 Environmental control and life support (ECLS) (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-34c-environmantal-control-and-life-support-ecls/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-34C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35-01C-LIQUID-AND-ELECTRIC-PROPULSION-FOR",
+    "title": "ECSS-E-ST-35-01C &#8211; Liquid and electric propulsion for spacecraft (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35-01c-liquid-and-electric-propulsion-for-spacecraft/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-35-01C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35-02C-SOLID-PROPULSION-FOR",
+    "title": "ECSS-E-ST-35-02C \u2013 Solid propulsion for spacecrafts and launchers (8 October 2010)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35-02c-solid-propulsion-for-spacecrafts-and-launchers-8-october-2010/",
+    "issue_date": "8 october 2010",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-35-02C8October2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35-03C-LIQUID-PROPULSION",
+    "title": "ECSS-E-ST-35-03C \u2013 Liquid propulsion for launchers (13 May 2011)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35-03c-liquid-propulsion-for-launchers-13-may-2011/",
+    "issue_date": "13 may 2011",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-35-03C13May2011.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35-06C-REV-2",
+    "title": "ECSS-E-ST-35-06C Rev.2 \u2013 Cleanliness requirements for spacecraft propulsion hardware (7 April 2020)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35-06c-rev-2-cleanliness-requirements-for-spacecraft-propulsion-hardware-7-april-2020/",
+    "issue_date": "7 april 2020",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2020/05/ECSS-E-ST-35-06C-Rev.2(7April2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35-10C-COMPATIBILITY",
+    "title": "ECSS-E-ST-35-10C \u2013 Compatibility testing for liquid propulsion systems (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35-10c-compatibility-testing-for-liquid-propulsion-systems/",
+    "issue_date": "6 march 2009",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-35-10C6March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-35C-REV-1-PROPULSION",
+    "title": "ECSS-E-ST-35C Rev.1 \u2013 Propulsion general requirements (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-e-st-35c-rev-1-propulsion-general-requirements/",
+    "issue_date": "6 march 2009",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-35C_Rev.16March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-40-07C-REV-1",
+    "title": "ECSS-E-ST-40-07C Rev.1 &#8211; Simulation modelling platform &#8211; Level 1 (5 August 2025)",
+    "url": "https://ecss.nl/standard/ecss-e-st-40-07c-rev-1-simulation-modelling-platform-level-1-5-august-2025/",
+    "issue_date": "5 august 2025",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/08/ECSS-E-ST-40-07C-Rev.1(5August2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-40-08C",
+    "title": "ECSS-E-ST-40-08C &#8211; Simulation modelling platform &#8211; Level 2 (5 August 2025)",
+    "url": "https://ecss.nl/standard/ecss-e-st-40-08c-simulation-modelling-platform-level-2-5-august-2025/",
+    "issue_date": "5 august 2025",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/08/ECSS-E-ST-40-08C(5August2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-40C-REV-1",
+    "title": "ECSS-E-ST-40C Rev.1 &#8211; Software (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-e-st-40c-rev-1-software-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-E-ST-40C-Rev.1(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-02C-RANGING-AND",
+    "title": "ECSS-E-ST-50-02C \u2013 Ranging and Doppler tracking (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-02c-ranging-and-doppler-tracking/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-02C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-05C-REV2-RADIO",
+    "title": "ECSS-E-ST-50-05C Rev.2 \u2013 Radio frequency and modulation (4 October 2011)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-05c-rev2-radio-frequency-and-modulation-4-october-2011/",
+    "issue_date": "4 october 2011",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-05C_Rev24October2011.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-11C",
+    "title": "ECSS-E-ST-50-11C \u2013 SpaceFibre \u2013 Very high-speed serial link (15 May 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-11c-spacefibre-very-high-speed-serial-link/",
+    "issue_date": "15 may 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/05/ECSS-E-ST-50-11C(15May2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-12C-REV-1",
+    "title": "ECSS-E-ST-50-12C Rev.1 \u2013 SpaceWire \u2013 Links, nodes, routers and networks (15 May 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-12c-rev-1-spacewire-links-nodes-routers-and-networks-15-may-2019/",
+    "issue_date": "15 may 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/05/ECSS-E-ST-50-12C-Rev.1(15May2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-13C-INTERFACE-AND-COMMUNICATION-PROTOCOL-FOR-MIL-STD-1553B-DATA-BUS-ONBOARD",
+    "title": "ECSS-E-ST-50-13C \u2013 Interface and communication protocol for MIL-STD-1553B data bus onboard spacecraft (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-13c-interface-and-communication-protocol-for-mil-std-1553b-data-bus-onboard-spacecraft/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-13C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-14C",
+    "title": "ECSS-E-ST-50-14C \u2013 Spacecraft discrete interfaces (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-14c-spacecraft-discrete-interfaces/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-14C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-15C",
+    "title": "ECSS-E-ST-50-15C \u2013 CANbus extension protocol (1 May 2015)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-15c-space-engineering-canbus-extension-protocol-1-may-2015/",
+    "issue_date": "1 may 2015",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2015/05/ECSS-E-ST-50-15C(1May2015).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-16C",
+    "title": "ECSS-E-ST-50-16C &#8211; Space engineering &#8211; Time-Triggered Ethernet (30 September 2021)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-16c-space-engineering-time-triggered-ethernet-30-september-2021/",
+    "issue_date": "30 september 2021",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/09/ECSS-E-ST-50-16C(30September2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-51C",
+    "title": "ECSS-E-ST-50-51C \u2013 SpaceWire protocol identification (5 February 2010)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-51c-spacewire-protocol-identification-5-february-2010/",
+    "issue_date": "5 february 2010",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-51C5February2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-52C",
+    "title": "ECSS-E-ST-50-52C \u2013 SpaceWire \u2013 Remote memory access protocol (5 February 2010)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-52c-spacewire-remote-memory-access-protocol-5-february-2010/",
+    "issue_date": "5 february 2010",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-52C5February2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50-53C",
+    "title": "ECSS-E-ST-50-53C \u2013 SpaceWire \u2013 CCSDS packet transfer protocol (5 February 2010)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50-53c-spacewire-ccsds-packet-transfer-protocol-5-february-2010/",
+    "issue_date": "5 february 2010",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-50-53C5February2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-50C-REV-1-COMMUNICATIONS",
+    "title": "ECSS-E-ST-50C Rev.2 &#8211; Communications (5 December 2024)",
+    "url": "https://ecss.nl/standard/ecss-e-st-50c-rev-1-communications-5-december-2024/",
+    "issue_date": "5 december 2024",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/12/ECSS-E-ST-50C-Rev.2(5December2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-60-10C-CONTROL-PERFORMANCE",
+    "title": "ECSS-E-ST-60-10C &#8211; Control performance (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-60-10c-control-performance/",
+    "issue_date": "15 november 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2008/11/ECSS-E-ST-60-10C(15November2008).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-60-20C-REV-2",
+    "title": "ECSS-E-ST-60-20C Rev.2 \u2013 Star sensor terminology and performance specification (15 May 2019)",
+    "url": "https://ecss.nl/standard/ecss-e-st-60-20c-rev-2-star-sensor-terminology-and-performance-specification-15-may-2019/",
+    "issue_date": "15 may 2019",
+    "standard_type": "engineering",
+    "pdf_urls": [],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-60-21C-GYROTERMINOLOGY-AND",
+    "title": "ECSS-E-ST-60-21C \u2013 Gyro terminology and performance specification  (15 February 2017)",
+    "url": "https://ecss.nl/standard/ecss-e-st-60-21c-gyroterminology-and-performance-specification-15-february-2017/",
+    "issue_date": "15 february 2017",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/04/ECSS-E-ST-60-21C(15February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-60-30C-SATELLITE-ATTITUDE",
+    "title": "ECSS-E-ST-60-30C: Satellite attitude and orbit control system (AOCS) requirements (30 August 2013)",
+    "url": "https://ecss.nl/standard/ecss-e-st-60-30c-satellite-attitude-and-orbit-control-system-aocs-requirements/",
+    "issue_date": "30 august 2013",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-60-30C30August2013.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70-01C-ON-BOARD",
+    "title": "ECSS-E-ST-70-01C &#8211; Spacecraft on-board control procedures (16 April 2010)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70-01c-on-board-control-procedures/",
+    "issue_date": "16 april 2010",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-70-01C16April2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70-11C-REV-1",
+    "title": "ECSS-E-ST-70-11C Rev.1 \u2013 Space segment operability (15 October 2025)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70-11c-rev-1-space-segment-operability-15-october-2025/",
+    "issue_date": "15 october 2025",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/10/ECSS-E-ST-70-11C-Rev.1-(15October2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70-31C-GROUND-SYSTEMS",
+    "title": "ECSS-E-ST-70-31C \u2013 Ground systems and operations \u2013 Monitoring and control data definition (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70-31c-ground-systems-and-operations-monitoring-and-control-data-definition/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-70-31C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70-32C",
+    "title": "ECSS-E-ST-70-32C \u2013 Test and operations procedure language (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70-32c-test-and-operations-procedure-language/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-70-32C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70-41C",
+    "title": "ECSS-E-ST-70-41C &#8211; Telemetry and telecommand packet utilization (15 April 2016)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/",
+    "issue_date": "15 april 2016",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2016/06/ECSS-E-ST-70-41C15April2016.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-70C-GROUND-SYSTEMS-AND",
+    "title": "ECSS-E-ST-70C \u2013 Ground systems and operations (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-e-st-70c-ground-systems-and-operations/",
+    "issue_date": "31 july 2008",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-e/ECSS-E-ST-70C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-E-ST-80C",
+    "title": "ECSS-E-ST-80C &#8211; Space engineering &#8211; Security in space systems lifecycles (1 July 2024)",
+    "url": "https://ecss.nl/standard/ecss-e-st-80c-space-engineering-security-in-space-systems-lifecycles/",
+    "issue_date": "1 july 2024",
+    "standard_type": "engineering",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/07/ECSS-E-ST-80C(1July2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-M-ST-10-01C-ORGANIZATION-AND",
+    "title": "ECSS-M-ST-10-01C \u2013 Organization and conduct of reviews (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-m-st-10-01c-organization-and-conduct-of-reviews/",
+    "issue_date": "15 november 2008",
+    "standard_type": "management",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-m/ECSS-M-ST-10-01C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-M-ST-10C-REV-1-PROJECT",
+    "title": "ECSS-M-ST-10C Rev.1 \u2013 Project planning and implementation (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-m-st-10c-rev-1-project-planning-and-implementation/",
+    "issue_date": "6 march 2009",
+    "standard_type": "management",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-m/ECSS-M-ST-10C_Rev.16March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-M-ST-40C-REV-1-CONFIGURATION",
+    "title": "ECSS-M-ST-40C Rev.1 \u2013 Configuration and information management (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-m-st-40c-rev-1-configuration-and-information-management/",
+    "issue_date": "6 march 2009",
+    "standard_type": "management",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-m/ECSS-M-ST-40C_Rev.16March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-M-ST-60C-COST-AND-SCHEDULE",
+    "title": "ECSS-M-ST-60C \u2013 Cost and schedule management (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-m-st-60c-cost-and-schedule-management/",
+    "issue_date": "31 july 2008",
+    "standard_type": "management",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-m/ECSS-M-ST-60C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-M-ST-80C-RISK-MANAGEMENT",
+    "title": "ECSS-M-ST-80C \u2013 Risk management (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-m-st-80c-risk-management/",
+    "issue_date": "31 july 2008",
+    "standard_type": "management",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-m/ECSS-M-ST-80C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-10-04C-CRITIAL-ITEM",
+    "title": "ECSS-Q-ST-10-04C \u2013 Critial-item control (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-10-04c-critial-item-control/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-10-04C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-10C-REV-1",
+    "title": "ECSS-Q-ST-10C Rev.1 \u2013 Product assurance management (15 March 2016)",
+    "url": "https://ecss.nl/standard/ecss-q-st-10c-rev-1-product-assurance-management-15-march-2016/",
+    "issue_date": "15 march 2016",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/01/ECSS-Q-ST-10C-Rev.1(15March2016).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-20-07C-QUALITY-AND-SAFETY-ASSURANCE-FOR",
+    "title": "ECSS-Q-ST-20-07C \u2013 Quality and safety assurance for space test centres (1 October 2014)",
+    "url": "https://ecss.nl/standard/ecss-q-st-20-07c-quality-and-safety-assurance-for-space-test-centres-1-october-2014/",
+    "issue_date": "1 october 2014",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-20-07C1October2014.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-20-08C-STORAGE-HANDLING-AND-TRANSPORTATION-OF",
+    "title": "ECSS-Q-ST-20-08C \u2013 Storage, handling and transportation of spacecraft hardware (1 October 2014)",
+    "url": "https://ecss.nl/standard/ecss-q-st-20-08c-storage-handling-and-transportation-of-spacecraft-hardware-1-october-2014/",
+    "issue_date": "1 october 2014",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-20-08C1October2014.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-20-10C-OFF-THE-SHELF-ITEMS-UTILIZATION-IN",
+    "title": "ECSS-Q-ST-20-10C \u2013 Off-the-shelf items utilization in space systems (8 October2010)",
+    "url": "https://ecss.nl/standard/ecss-q-st-20-10c-off-the-shelf-items-utilization-in-space-systems-ecss-8-october2010/",
+    "issue_date": "",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-20-10C8October2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-20-30C",
+    "title": "ECSS-Q-ST-20-30C &#8211; Manufacturing and control of electrical harness (20 March 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-20-30c/",
+    "issue_date": "20 march 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/03/ECSS-Q-ST-20-30C(20March2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-20C-REV-2-QUALITY",
+    "title": "ECSS-Q-ST-20C Rev.2 \u2013 Quality assurance (1 February 2018)",
+    "url": "https://ecss.nl/standard/ecss-q-st-20c-rev-2-quality-assurance-1-february-2018/",
+    "issue_date": "1 february 2018",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2018/06/ECSS-Q-ST-20C-Rev.2(1February2018).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-30-02C-FAILURE-MODES",
+    "title": "ECSS-Q-ST-30-02C \u2013 Failure modes, effects (and criticality) analysis (FMEA/FMECA) \u2013 (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-q-st-30-02c-failure-modes-effects-and-criticality-analysis-fmeafmeca/",
+    "issue_date": "6 march 2009",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-30-02C6March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-30-09C-AVAILABILITY-ANALYSIS",
+    "title": "ECSS-Q-ST-30-09C \u2013 Availability analysis (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-30-09c-availability-analysis/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-30-0931July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-30-11C-REV-2",
+    "title": "ECSS-Q-ST-30-11C Rev.2: Derating &#8211; EEE components (23 June 2021)",
+    "url": "https://ecss.nl/standard/ecss-q-st-30-11c-rev-2-derating-eee-components-23-june-2021/",
+    "issue_date": "23 june 2021",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/07/ECSS-Q-ST-30-11C-Rev.2(23June2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-30C-REV-1",
+    "title": "ECSS-Q-ST-30C Rev.1 \u2013 Dependability (15 February 2017)",
+    "url": "https://ecss.nl/standard/ecss-q-st-30c-rev-1-space-product-assurance-dependability-15-february-2017/",
+    "issue_date": "15 february 2017",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/02/ECSS-Q-ST-30C-Rev.1(15February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-40-02C-HAZARD-ANALYSIS",
+    "title": "ECSS-Q-ST-40-02C \u2013 Hazard analysis (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-40-02c-hazard-analysis/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-40-02C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-40-12C-FAULT-TREE-ANALYSIS",
+    "title": "ECSS-Q-ST-40-12C \u2013 Fault tree analysis \u2013 Adoption notice ECSS/IEC 61025 (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-40-12c-fault-tree-analysis-adoption-notice-ecssiec-61025/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-40-12C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-40C-REV-1-SAFETY",
+    "title": "ECSS-Q-ST-40C Rev.1 \u2013 Safety (15 February 2017)",
+    "url": "https://ecss.nl/standard/ecss-q-st-40c-rev-1-safety-15-february-2017/",
+    "issue_date": "15 february 2017",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/02/ECSS-Q-ST-40C-Rev.1(15February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-03C-ASIC-FPGA-AND-IP-CORE",
+    "title": "ECSS-Q-ST-60-03C &#8211; ASIC, FPGA and IP Core product assurance (11 October 2023)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-03c-asic-fpga-and-ip-core-product-assurance-11-october-2023/",
+    "issue_date": "11 october 2023",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/11/ECSS-Q-ST-60-03C(11October2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-05C-REV-1",
+    "title": "ECSS-Q-ST-60-05C Rev.1 \u2013 Generic procurement requirements for hybrids (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-05c-rev-1-generic-procurement-requirements-for-hybrids/",
+    "issue_date": "6 march 2009",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-60-05C_Rev.16March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-12C",
+    "title": "ECSS-Q-ST-60-12C \u2013 Design, selection, procurement and use of die form monolithic microwave integrated circuits (MMICs) \u2013 (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-12c-design-selection-procurement-and-use-of-die-form-monolithic-microwave-integrated-circuits-mmics/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-60-12C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-13C-REV-2-COMMERCIAL",
+    "title": "ECSS-Q-ST-60-13C Rev.2 \u2013 Commercial electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-13c-rev-2-commercial-electrical-electronic-and-electromechanical-eee-components-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-Q-ST-60-13C-Rev.2(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-14C-REV-1",
+    "title": "ECSS-Q-ST-60-14C Rev.1 Corrigendum 1 \u2013 Relifing procedure \u2013 EEE components (2 March 2020)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-14c-rev-1-corrigendum-1-relifing-procedure-eee-components-2-march-2020/",
+    "issue_date": "2 march 2020",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2020/04/ECSS-Q-ST-60-14C-Rev.1-Corrigendum1(2March2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60-15C-REV-1",
+    "title": "ECSS-Q-ST-60-15C Rev.1 &#8211; Radiation hardness assurance (20 March 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60-15c-rev-1-radiation-hardness-assurance-20-march-2025/",
+    "issue_date": "20 march 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/03/ECSS-Q-ST-60-15C-Rev.1(20March2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-60C-REV-4",
+    "title": "ECSS-Q-ST-60C Rev.4 \u2013 Electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-60c-rev-4-electrical-electronic-and-electromechanical-eee-components-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-Q-ST-60C-Rev.4(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-01C",
+    "title": "ECSS-Q-ST-70-01C Rev.1 \u2013 Cleanliness and contamination control (15 October 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-01c-cleanliness-and-contamination-control-15-october-2025/",
+    "issue_date": "15 october 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/10/ECSS-Q-ST-70-01C-Rev.1(15October2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-02C-THERMAL-VACUUM-OUTGASSING",
+    "title": "ECSS-Q-ST-70-02C \u2013 Thermal vacuum outgassing test for the screening of space materials (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-02c-thermal-vacuum-outgassing-test-for-the-screening-of-space-materials/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-02C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-03C-BLACK-ANODIZING",
+    "title": "ECSS-Q-ST-70-03C \u2013 Black-anodizing of metals with inorganic dyes (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-03c-black-anodizing-of-metals-with-inorganic-dyes/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-03C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-04C-THERMAL",
+    "title": "ECSS-Q-ST-70-04C \u2013 Thermal testing for the evaluation of space materials, processes, mechanical parts and assemblies (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-04c-thermal-testing-for-the-evaluation-of-space-materials-processes-mechanical-parts-and-assemblies/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-04C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-05C-REV-2",
+    "title": "ECSS-Q-ST-70-05C Rev.2 &#8220;Detection of organic contamination of surfaces by infrared spectroscopy&#8221; (1 July 2024)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-05c-rev-2-detection-of-organic-contamination-of-surfaces-by-infrared-spectroscopy-1-july-2024/",
+    "issue_date": "1 july 2024",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/08/ECSS-Q-ST-70-05C-Rev.2(1July2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-06C-PARTICLE-AND-UV-RADIATION",
+    "title": "ECSS-Q-ST-70-06C \u2013 Particle and UV radiation testing for space materials (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-06c-particle-and-uv-radiation-testing-for-space-materials/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-06C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-09C-MEASUREMENTS-OF",
+    "title": "ECSS-Q-ST-70-09C \u2013 Measurements of thermo-optical properties of thermal control materials (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-09c-measurements-of-thermo-optical-properties-of-thermal-control-materials/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-09C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-12C-REV-1",
+    "title": "ECSS-Q-ST-70-12C Rev.1: Design rules for printed circuit boards (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-12c-rev-1-design-rules-for-printed-circuit-boards-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-Q-ST-70-12C-Rev.1(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-13C-REV-1",
+    "title": "ECSS-Q-ST-70-13C Rev.1: Measurement of the peel and pull-off strength of coatings and finishes using pressure-sensitive tapes  (5 Oct 2011)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-13c-rev-1-measurement-of-the-peel-and-pull-off-strength-of-coatings-and-finishes-using-pressure-sensitive-tapes-5-oct-2011/",
+    "issue_date": "",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-13C_Rev15October2011.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-14C-CORROSION-1",
+    "title": "ECSS-Q-ST-70-14C \u2013 Corrosion (1 November 2016)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-14c-corrosion-1-november-2016/",
+    "issue_date": "1 november 2016",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2016/12/ECSS-Q-ST-70-14C1November2016.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-15C-NON-DESTRUCTIVE",
+    "title": "ECSS-Q-ST-70-15C &#8211; Non-destructive testing (1 May 2021)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-15c-non-destructive-testing/",
+    "issue_date": "1 may 2021",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/03/ECSS-Q-ST-70-15C(1May2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-16C-ADHESIVE-BONDING-FOR",
+    "title": "ECSS-Q-ST-70-16C: Adhesive bonding for spacecraft and launcher applications (1 December 2020)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-16c-adhesive-bonding-for-spacecraft-and-launcher-applications-1-december-2020/",
+    "issue_date": "1 december 2020",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/01/ECSS-Q-ST-70-16C(1December2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-17C-DURABILITY",
+    "title": "ECSS-Q-ST-70-17C \u2013 Durability testing of coatings (1 February 2018)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-17c-durability-testing-of-coatings/",
+    "issue_date": "1 february 2018",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2018/02/ECSS-Q-ST-70-17C(1February2018).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-18C-PREPARATION-ASSEMBLY",
+    "title": "ECSS-Q-ST-70-18C \u2013 Preparation, assembly and mounting of RF coaxial cables (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-18c-preparation-assembly-and-mounting-of-rf-coaxial-cables/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-18C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-20C-DETERMINATION-OF",
+    "title": "ECSS-Q-ST-70-20C \u2013 Determination of the susceptibility of silver-plated copper wire and cable to &#8220;red-plague&#8221; corrosion (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-20c-determination-of-the-susceptibility-of-silver-plated-copper-wire-and-cable-to-red-plague-corrosion/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-20C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-21C-FLAMMABILITY",
+    "title": "ECSS-Q-ST-70-21C \u2013 Flammability testing for the screening of space materials (5 February 2010)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-21c-flammability-testing-for-the-screening-of-space-materials-5-february-2010/",
+    "issue_date": "5 february 2010",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-21C5February2010.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-22C-CONTROL-OF",
+    "title": "ECSS-Q-ST-70-22C \u2013 Control of limited shelf-life materials (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-22c-control-of-limited-shelf-life-materials/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-22C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-26C-CRIMPING-OF-HIGH",
+    "title": "ECSS-Q-ST-70-26C Rev.1 Corr.1 \u2013 Crimping of high-reliability electrical connections (1 June 2017)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-26c-crimping-of-high-reliability-electrical-connections-15-march-2017/",
+    "issue_date": "1 june 2017",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/04/ECSS-Q-ST-70-26C-Rev.1(15March2017)Corrigendum1(1June2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-28C-REPAIR-AND-MODIFICATION-OF-PRINTED-CIRCUIT-BOARD-ASSEMBLIES-FOR",
+    "title": "ECSS-Q-ST-70-28C \u2013 Repair and modification of printed circuit board assemblies for space use (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-28c-repair-and-modification-of-printed-circuit-board-assemblies-for-space-use/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-28C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-29C-DETERMINATION-OF-OFFGASSING",
+    "title": "ECSS-Q-ST-70-29C \u2013 Determination of offgassing products from materials and assembled articles to be used in a manned space vehicle crew compartment (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-29c-determination-of-offgassing-products-from-materials-and-assembled-articles-to-be-used-in-a-manned-space-vehicle-crew-compartment/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-29C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-30C-WIRE-WRAPPING-OF-HIGH",
+    "title": "ECSS-Q-ST-70-30C \u2013 Wire wrapping of high-reliability electrical connections (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-30c-wire-wrapping-of-high-reliability-electrical-connections/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-30C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-31C-REV-1-APPLICATION-OF-PAINTS-ON",
+    "title": "ECSS-Q-ST-70-31C Rev.1 \u2013 Application of paints on space hardware (15 October 2019)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-31c-rev-1-application-of-paints-on-space-hardware-15-october-2019/",
+    "issue_date": "15 october 2019",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/10/ECSS-Q-ST-70-31C-Rev.1(15October2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-36C-MATERIAL-SELECTION",
+    "title": "ECSS-Q-ST-70-36C \u2013 Material selection for controlling stress-corrosion cracking (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-36c-material-selection-for-controlling-stress-corrosion-cracking/",
+    "issue_date": "6 march 2009",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-36C6March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-37C-DETERMINATION-OF",
+    "title": "ECSS-Q-ST-70-37C \u2013 Determination of the susceptibility of metals to stress-corrosion cracking (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-37c-determination-of-the-susceptibility-of-metals-to-stress-corrosion-cracking/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-37C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-39C-WELDING-OF",
+    "title": "ECSS-Q-ST-70-39C \u2013 Welding of metallic materials for flight hardware (1 May 2015)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-39c-welding-of-metallic-materials-for-flight-hardware-1-may-2015/",
+    "issue_date": "1 may 2015",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2015/05/ECSS-Q-ST-70-39C1May2015.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-40C",
+    "title": "ECSS-Q-ST-70-40C &#8211; Processing and quality assurance requirements for brazing of flight hardware (8 April 2022)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-40c/",
+    "issue_date": "8 april 2022",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/04/ECSS-Q-ST-70-40C(8April2022).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-45C-MECHANICAL",
+    "title": "ECSS-Q-ST-70-45C \u2013 Mechanical testing of metallic materials (31 July 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-45c-mechanical-testing-of-metallic-materials/",
+    "issue_date": "31 july 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-45C31July2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-46C-REV-1",
+    "title": "ECSS-Q-ST-70-46C Rev.1 \u2013 Requirements for manufacturing and procurement of threaded fasteners (6 March 2009)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-46c-rev-1-requirements-for-manufacturing-and-procurement-of-threaded-fasteners/",
+    "issue_date": "6 march 2009",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-46C_Rev16March2009.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-50C-PARTICLES-CONTAMINATION-MONITORING-FOR",
+    "title": "ECSS-Q-ST-70-50C \u2013 Particles contamination monitoring for spacecraft systems and cleanrooms (4 October 2011)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-50c-particles-contamination-monitoring-for-spacecraft-systems-and-cleanrooms-4-october-2011/",
+    "issue_date": "4 october 2011",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-50C4October2011.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-53C-MATERIALS-AND-HARDWARE-COMPATIBILITY",
+    "title": "ECSS-Q-ST-70-53C \u2013 Materials and hardware compatibility tests for sterilization processes (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-53c-materials-and-hardware-compatibility-tests-for-sterilization-processes/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-53C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-54C-ULTRACLEANING-OF",
+    "title": "ECSS-Q-ST-70-54C \u2013 Ultracleaning of flight hardware (15 February 2017)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-54c-ultracleaning-of-flight-hardware/",
+    "issue_date": "15 february 2017",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2017/04/ECSS-Q-ST-70-54C(15February2017).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-55C-MICROBIAL-EXAMINATION",
+    "title": "ECSS-Q-ST-70-55C \u2013 Microbial examination of flight hardware and cleanrooms (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-55c-microbial-examination-of-flight-hardware-and-cleanrooms/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-55C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-56C-VAPOUR-PHASE",
+    "title": "ECSS-Q-ST-70-56C \u2013 Vapour phase bioburden reduction for flight hardware (30 August 2013)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-56c-vapour-phase-bioburden-reduction-for-flight-hardware-30-august-2013/",
+    "issue_date": "30 august 2013",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-56C30August2013.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-57C-DRY-HEAT",
+    "title": "ECSS-Q-ST-70-57C: Dry heat bioburden reduction for flight hardware (30 August 2013)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-57c-dry-heat-bioburden-reduction-for-flight-hardware-30-august-2013/",
+    "issue_date": "30 august 2013",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-57C30August2013.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-58C-BIOBURDEN-CONTROL",
+    "title": "ECSS-Q-ST-70-58C \u2013 Bioburden control of cleanrooms (15 November 2008)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-58c-bioburden-control-of-cleanrooms/",
+    "issue_date": "15 november 2008",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/standards/ecss-q/ECSS-Q-ST-70-58C15November2008.pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-60C-REV-1",
+    "title": "ECSS-Q-ST-70-60C Rev.1 \u2013 Qualification and procurement of printed circuit boards (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-60c-rev-1-qualification-and-procurement-of-printed-circuit-boards-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-Q-ST-70-60C-Rev.1(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-61C-HIGH",
+    "title": "ECSS-Q-ST-70-61C &#8211; High reliability assembly for surface mount and through hole connections (8 April 2022)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-61c-high-reliability-assembly-for-surface-mount-and-through-hole-connections-8-april-2022/",
+    "issue_date": "8 april 2022",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2022/04/ECSS-Q-ST-70-61C(8April2022).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-71C-REV-1",
+    "title": "ECSS-Q-ST-70-71C Rev.1 \u2013 Materials, processes and their data selection (15 October 2019)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-71c-rev-1-materials-processes-and-their-data-selection-15-october-2019/",
+    "issue_date": "15 october 2019",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/10/ECSS-Q-ST-70-71C-Rev.1(15October2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70-80C-PROCESSING-AND-QUALITY-ASSURANCE-REQUIREMENTS-FOR-METALLIC-POWDER-BED-FUSION-TECHNOLOGIES-FOR",
+    "title": "ECSS-Q-ST-70-80C &#8211; Processing and quality assurance requirements for metallic powder bed fusion technologies for space applications (30 July 2021)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70-80c-processing-and-quality-assurance-requirements-for-metallic-powder-bed-fusion-technologies-for-space-applications-30-july-2021/",
+    "issue_date": "30 july 2021",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2021/08/ECSS-Q-ST-70-80C(30July2021).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-70C-REV-2-MATERIALS",
+    "title": "ECSS-Q-ST-70C Rev.2 \u2013 Materials, mechanical parts and processes (15 October 2019)",
+    "url": "https://ecss.nl/standard/ecss-q-st-70c-rev-2-materials-mechanical-parts-and-processes-15-october-2019/",
+    "issue_date": "15 october 2019",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/10/ECSS-Q-ST-70C-Rev.2(15October2019).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-Q-ST-80C-REV-2",
+    "title": "ECSS-Q-ST-80C Rev.2 &#8211; Software product assurance (30 April 2025)",
+    "url": "https://ecss.nl/standard/ecss-q-st-80c-rev-2-software-product-assurance-30-april-2025/",
+    "issue_date": "30 april 2025",
+    "standard_type": "product_assurance",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/05/ECSS-Q-ST-80C-Rev.2(30April2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-S-ST-00-01C-REV-1",
+    "title": "ECSS-S-ST-00-01C Rev.1 &#8211; Glossary of terms (11 October 2023)",
+    "url": "https://ecss.nl/standard/ecss-s-st-00-01c-rev-1-glossary-of-terms-11-october-2023/",
+    "issue_date": "11 october 2023",
+    "standard_type": "system",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2023/10/ECSS-S-ST-00-01C_Rev.1(11October2023).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-S-ST-00-02C-DRAFT-1",
+    "title": "ECSS-S-ST-00-02C Draft 1 &#8220;Tailoring&#8221; (15 June 2020)",
+    "url": "https://ecss.nl/standard/ecss-s-st-00-02c-draft-1-tailoring-15-june-2020/",
+    "issue_date": "15 june 2020",
+    "standard_type": "system",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2020/07/ECSS-S-ST-00-02C-DRAFT1(15June2020).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-S-ST-00C-REV-2-DESCRIPTION",
+    "title": "ECSS-S-ST-00C Rev.2 &#8220;Description, implementation and general requirements&#8221; (21 November 2025)",
+    "url": "https://ecss.nl/standard/ecss-s-st-00c-rev-2-description-implementation-and-general-requirements-21-november-2025/",
+    "issue_date": "21 november 2025",
+    "standard_type": "system",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2025/11/ECSS-S-ST-00C-Rev.2(21November2025).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-U-AS-10C-REV-2",
+    "title": "ECSS-U-AS-10C Rev.2  \u2013 Adoption Notice of ISO 24113: Space systems \u2013 Space debris mitigation requirements (9 February 2024)",
+    "url": "https://ecss.nl/standard/ecss-u-as-10c-rev-2-adoption-notice-of-iso-24113-space-systems-space-debris-mitigation-requirements-9-february-2024/",
+    "issue_date": "9 february 2024",
+    "standard_type": "other",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2024/02/ECSS-U-AS-10C-Rev.2-(9February2024).pdf"
+    ],
+    "abstract": ""
+  },
+  {
+    "standard_id": "ECSS-U-ST-20C",
+    "title": "ECSS-U-ST-20C \u2013 Space sustainability \u2013 Planetary protection (1 August 2019)",
+    "url": "https://ecss.nl/standard/ecss-u-st-20c-space-sustainability-planetary-protection/",
+    "issue_date": "1 august 2019",
+    "standard_type": "other",
+    "pdf_urls": [
+      "https://ecss.nl/wp-content/uploads/2019/07/ECSS-U-ST-20C(1August2019).pdf"
+    ],
+    "abstract": ""
+  }
+]

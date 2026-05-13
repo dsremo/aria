@@ -1,0 +1,117 @@
+# Production-ready compose file for the ARIA Conjunction Screener.
+#
+# Caddy fronts the aiohttp app and terminates TLS automatically.
+# Set ``ARIA_SCREENER_DOMAIN`` (e.g. screener.aria.example.com) before
+# running ``docker compose up -d`` so that Caddy can request a
+# Let's Encrypt certificate.
+#
+# Tenant database lives in a host-mounted volume so it survives image
+# upgrades.  Audit log lives next to it.
+
+services:
+  screener:
+    build:
+      context: ../..
+      dockerfile: deploy/screener/Dockerfile
+    # Audit HIGH-7 — never use ``:latest``; pin via ARIA_SCREENER_IMAGE
+    # to a sha256 digest (e.g. ``aria-screener@sha256:...``) recorded in
+    # the deploy ledger.  The compose shorthand below uses an explicit
+    # version tag injected from the env so a build-time mistake doesn't
+    # silently roll the running image.
+    image: ${ARIA_SCREENER_IMAGE:-aria-screener:0.0.0-unset}
+    container_name: aria-screener
+    restart: unless-stopped
+    # Audit MED-9 — read-only rootfs + non-root user; only writeable
+    # paths are the mounted data volume and PID-namespaced /tmp.
+    read_only: true
+    user: "1001:1001"
+    # Round-2 audit NEW-HIGH-24 — bound resource consumption so a
+    # runaway worker cannot DoS the host.  Adjust per traffic profile.
+    pids_limit: 256
+    mem_limit: 512m
+    cpus: 1.0
+    expose:
+      - "8443"
+    environment:
+      - ARIA_ENV=prod
+      - ARIA_SCREENER_DB=/data/screener_tenants.sqlite3
+      - ARIA_SCREENER_USE_STORE=1
+      - ARIA_SCREENER_ADMIN_TOKEN_FILE=/run/secrets/admin_token
+      - ARIA_MASTER_KEY_FILE=/run/secrets/master_key
+      - ARIA_OAUTH_STATE_KEY_FILE=/run/secrets/oauth_state
+      - ARIA_HKDF_SALT_HEX_FILE=/run/secrets/hkdf_salt
+      - ARIA_TENANT_KEY_HMAC_HEX_FILE=/run/secrets/tenant_key_hmac
+      # Round-2 audit NEW-CRIT-4 — XFF is honoured only when the
+      # immediate peer (Caddy) is on the trusted-proxies list.  The
+      # default Docker bridge is 172.16.0.0/12; tighten if your
+      # network policy uses a custom subnet.
+      - ARIA_TRUSTED_PROXIES=172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
+      - ARIA_AUTH_REQUIRED=1
+    volumes:
+      - screener_data:/data
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=64m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+      # Round-2 audit NEW-HIGH-24 — explicit seccomp profile.  Falls
+      # back to the file-shipped one; the default Docker profile is
+      # otherwise applied.
+      - seccomp=./seccomp.json
+    secrets:
+      - admin_token
+      - master_key
+      - oauth_state
+      - hkdf_salt
+      - tenant_key_hmac
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: aria-screener-caddy
+    restart: unless-stopped
+    depends_on:
+      - screener
+    # Audit MED-7 — only the reverse proxy is bound to public ports;
+    # the aiohttp container is reachable only through the docker
+    # network.
+    ports:
+      - "80:80"
+      - "443:443"
+    pids_limit: 256
+    mem_limit: 256m
+    cpus: 0.5
+    environment:
+      - ARIA_SCREENER_DOMAIN=${ARIA_SCREENER_DOMAIN:-screener.localhost}
+      - ARIA_SCREENER_TLS_EMAIL=${ARIA_SCREENER_TLS_EMAIL:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  screener_data:
+  caddy_data:
+  caddy_config:
+
+# Round-2 audit NEW-MED-20 — operators must ``chmod 0600`` each of
+# these files before ``docker compose up``.  See deploy/screener/Makefile
+# for a ``make secrets`` target that creates them with the correct
+# perms.
+secrets:
+  admin_token:
+    file: ./secrets/admin_token.txt
+  master_key:
+    file: ./secrets/master_key.txt
+  oauth_state:
+    file: ./secrets/oauth_state.txt
+  hkdf_salt:
+    file: ./secrets/hkdf_salt.txt
+  tenant_key_hmac:
+    file: ./secrets/tenant_key_hmac.txt

@@ -1,0 +1,98 @@
+# ARIA sealed principal roster — initial ship-baked identities (F-1).
+#
+# Every Ed25519 public key listed here is a TRUST ROOT. A login challenge
+# signed by the corresponding hardware-token private key authenticates
+# the principal as the named role.
+#
+# Keys are 32-byte Ed25519 raw public keys, hex-encoded (64 chars).
+# Private keys never live in the file system — they live in hardware
+# tokens (or, in dev/test, deterministically derive from seeds in
+# tests/fixtures/dev_keys.json).
+#
+# Mutation protocol:
+#   - This file is sealed and hashed in MANIFEST.toml. To add or revoke
+#     a principal at runtime, append a hash-chained record to
+#     data/runtime/principals.delta.jsonl (ApprovalQueue-mediated).
+#   - To rotate an initial principal's key, ship a new sealed image
+#     (re-bake at maintenance ground stop) — this is intentionally hard.
+#
+# Implements §F-1 (sealed roster), §F-9 (principal-aware approval),
+# §F-14 (two-person on captain re-election) of FAILSAFE_ARCHITECTURE.md.
+
+manifest_version = 1
+created_at       = "2026-04-25"
+
+# ── Trust roots ────────────────────────────────────────────────────
+# The HSM-equivalent root — every issuance certificate ultimately chains
+# to this key. In production it is held in a hardware HSM whose private
+# half never leaves the chip. In dev/test the seeded private half is in
+# tests/fixtures/dev_keys.json (clearly labelled DEV ONLY).
+[hsm]
+ship_root_pubkey_hex = "6a69c6ad5db4cb9c28841baa205ef45a3df17aae7b29834ea13fb04a046dcd35"
+description          = "Ship HSM root signing key (Ed25519)"
+
+# Pinned ground-station public key. Every ground-uplink command must
+# carry an Ed25519 signature verifying against this key plus a strict-
+# monotonic counter (F-19) and a freshness window (F-4). No session
+# token is issued for ground — light-time makes a session model unsound.
+[ground]
+mcc_pubkey_hex = "016bfcda70921386dd438502709dc09b2bb3484f00b8bcac0330603854fbeef7"
+description    = "Mission Control Center pinned public key"
+
+# ── Initial roster ─────────────────────────────────────────────────
+# Each entry is a sealed certificate hash equivalent: principal_id +
+# role + Ed25519 public key + lifetime. The runtime `Principal` value
+# is constructed at load time from this entry.
+#
+# expires_at uses ISO date strings; the loader converts to UNIX seconds.
+# 25-year baseline — interstellar mission profile (ESTIMATE; tune per
+# mission). No published source.
+
+[principals."captain.tau"]
+role          = "captain"
+display_name  = "Captain Tau"
+pubkey_hex    = "e1976727fa1db8e5500545893e679d79ec5c5506239c65ec7c1001831755357d"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."crew.alpha"]
+role          = "crew"
+display_name  = "Crew Alpha"
+pubkey_hex    = "af325ce8c82e1868053614de681d72f3d337d28aaec54735a505cc825e7651ef"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."crew.beta"]
+role          = "crew"
+display_name  = "Crew Beta"
+pubkey_hex    = "2ebb857e728d7d47ee58ced41b7ca9e9f91e757c7dcfbfa5946f572d623b8700"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."crew.gamma"]
+role          = "crew"
+display_name  = "Crew Gamma"
+pubkey_hex    = "ceec7f62130cad71fbe554d73634b86e755641e8e669960311c9a5a39804f4bb"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."maintainer.lyra"]
+role          = "maintainer"
+display_name  = "Maintainer Lyra"
+pubkey_hex    = "f601553dc2ab21c622d1e11a978dff2e8b64f7451ea4abf116a6fcf4f7b36688"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."maintainer.orion"]
+role          = "maintainer"
+display_name  = "Maintainer Orion"
+pubkey_hex    = "b2f49a5ef66b95ce6ecdd1ec3b4696630850dd610170ed07c5fca6b98f2bdb57"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"
+
+[principals."ground.mcc"]
+role          = "ground"
+display_name  = "Mission Control"
+pubkey_hex    = "016bfcda70921386dd438502709dc09b2bb3484f00b8bcac0330603854fbeef7"
+created_at    = "2026-04-25"
+expires_at    = "2051-04-25"

@@ -1,0 +1,321 @@
+openapi: 3.0.3
+info:
+  title: ARIA Conjunction Screener API
+  version: "1.0.0"
+  description: |
+    Operator-controlled conjunction-screening service.  Screens
+    operator-supplied TLE pairs through ARIA's SGP4 + TCAFinder +
+    Foster Pc + classifier pipeline.  Reproduces the
+    Iridium-33 / Cosmos-2251 close approach to within 0.004 s of
+    JSpOC's published TCA and 114 m of the 584 m miss distance.
+
+    All endpoints require a per-tenant API key in `X-ARIA-Token`
+    except `/v1/healthz` and `/v1/version`.  Admin endpoints
+    additionally require `X-ARIA-Admin-Token`.
+  license:
+    name: ARIA Source-Available License v1
+    url: https://github.com/dsremo/aria/blob/main/LICENSE
+servers:
+  - url: https://screener.aria.example.com
+    description: Production (operator's domain)
+  - url: http://127.0.0.1:8443
+    description: Local development
+security:
+  - tenantToken: []
+paths:
+  /v1/healthz:
+    get:
+      summary: Liveness probe
+      security: []
+      responses:
+        "200":
+          description: Service alive
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  version: { type: string }
+                example: { ok: true, version: "1.0.0" }
+  /v1/version:
+    get:
+      summary: Service identity + semver
+      security: []
+      responses:
+        "200":
+          description: Identity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service: { type: string }
+                  version: { type: string }
+  /v1/screen:
+    post:
+      summary: Screen one primary against N secondaries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScreenRequest"
+      responses:
+        "200":
+          description: Per-pair risk records
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScreenResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorised"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+        "500":
+          $ref: "#/components/responses/InternalError"
+  /v1/screen_bulk:
+    post:
+      summary: Stream a per-pair NDJSON record per secondary
+      description: |
+        Use for catalog-scale screens where buffering the full
+        response in memory is undesirable.  Returns
+        `application/x-ndjson`; each line is one
+        `ScreenResult` JSON object.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScreenRequest"
+      responses:
+        "200":
+          description: NDJSON stream — one ScreenResult per line
+          content:
+            application/x-ndjson:
+              schema:
+                type: string
+                example: |
+                  {"primary_norad_id":"24946", ...}
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorised"
+        "429":
+          $ref: "#/components/responses/RateLimited"
+  /v1/usage:
+    get:
+      summary: Last-window usage summary for the calling tenant
+      parameters:
+        - name: window_seconds
+          in: query
+          schema: { type: number, default: 86400 }
+      responses:
+        "200":
+          description: Usage summary
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tenant_id: { type: string }
+                  window_seconds: { type: number }
+                  request_count: { type: integer }
+                  pair_count: { type: integer }
+                  avg_elapsed_ms: { type: number }
+        "401":
+          $ref: "#/components/responses/Unauthorised"
+        "501":
+          description: Tenant store not configured (legacy mode)
+  /v1/rotate_key:
+    post:
+      summary: Rotate the calling tenant's API key
+      description: |
+        Issues a new API key for the calling tenant.  The previous
+        key remains valid for a 7-day grace window (configurable
+        per-tenant) so clients can update without downtime.
+      responses:
+        "200":
+          description: New key + grace-window expiry
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tenant_id: { type: string }
+                  new_api_key_hex: { type: string }
+                  previous_expires_at: { type: number }
+                  rotated_at: { type: number }
+        "401":
+          $ref: "#/components/responses/Unauthorised"
+        "501":
+          description: Tenant store not configured
+  /v1/admin/tenants:
+    get:
+      summary: List all tenants
+      security:
+        - adminToken: []
+      responses:
+        "200":
+          description: Tenant list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tenants:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Tenant"
+        "401": { $ref: "#/components/responses/Unauthorised" }
+    post:
+      summary: Create a tenant
+      security:
+        - adminToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tenant_id]
+              properties:
+                tenant_id: { type: string }
+                rate_limit_per_min: { type: integer }
+                rate_limit_per_day: { type: integer }
+      responses:
+        "200":
+          description: One-shot API key (shown only this once)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tenant_id: { type: string }
+                  api_key_hex: { type: string }
+                  rate_limit_per_min: { type: integer }
+                  rate_limit_per_day: { type: integer }
+        "400": { $ref: "#/components/responses/BadRequest" }
+        "401": { $ref: "#/components/responses/Unauthorised" }
+  /v1/admin/tenants/suspend:
+    post:
+      summary: Suspend or resume a tenant
+      security:
+        - adminToken: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tenant_id]
+              properties:
+                tenant_id: { type: string }
+                suspended: { type: boolean, default: true }
+      responses:
+        "200":
+          description: Suspend confirmation
+        "401":
+          $ref: "#/components/responses/Unauthorised"
+components:
+  securitySchemes:
+    tenantToken:
+      type: apiKey
+      in: header
+      name: X-ARIA-Token
+    adminToken:
+      type: apiKey
+      in: header
+      name: X-ARIA-Admin-Token
+  schemas:
+    TLEPayload:
+      type: object
+      required: [norad_id, line1, line2]
+      properties:
+        norad_id: { type: string, example: "24946" }
+        name: { type: string, example: "IRIDIUM 33" }
+        line1: { type: string }
+        line2: { type: string }
+        radius_m: { type: number, default: 1.0 }
+        covariance_eci_km2:
+          type: array
+          items:
+            type: array
+            items: { type: number }
+          description: 3×3 ECI covariance in km², optional
+    ScreenRequest:
+      type: object
+      required: [primary, secondaries]
+      properties:
+        primary: { $ref: "#/components/schemas/TLEPayload" }
+        secondaries:
+          type: array
+          items: { $ref: "#/components/schemas/TLEPayload" }
+        approx_tca_utc: { type: string, format: date-time, nullable: true }
+        search_window_minutes: { type: number, default: 60.0 }
+        operator_grade_sigma_km: { type: number, default: 0.250 }
+    ScreenResult:
+      type: object
+      properties:
+        primary_norad_id: { type: string }
+        secondary_norad_id: { type: string }
+        tca_utc: { type: string }
+        miss_distance_m: { type: number }
+        relative_velocity_kmps: { type: number }
+        pc_foster: { type: number }
+        risk_level:
+          type: string
+          enum: [GREEN, YELLOW, RED]
+        notes: { type: string }
+    ScreenResponse:
+      type: object
+      properties:
+        request_id: { type: string }
+        started_at_utc: { type: string }
+        completed_at_utc: { type: string }
+        elapsed_ms: { type: number }
+        version: { type: string }
+        results:
+          type: array
+          items: { $ref: "#/components/schemas/ScreenResult" }
+    Tenant:
+      type: object
+      properties:
+        tenant_id: { type: string }
+        rate_limit_per_min: { type: integer }
+        rate_limit_per_day: { type: integer }
+        suspended: { type: boolean }
+        created_at: { type: number }
+        last_rotated_at: { type: number, nullable: true }
+    Error:
+      type: object
+      properties:
+        error: { type: string }
+        reason: { type: string }
+  responses:
+    BadRequest:
+      description: Malformed request body
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    Unauthorised:
+      description: Missing or invalid token
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    RateLimited:
+      description: Rate limit exceeded
+      headers:
+        Retry-After:
+          schema: { type: integer }
+          description: Seconds to wait before retry
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }
+    InternalError:
+      description: Unexpected error
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/Error" }

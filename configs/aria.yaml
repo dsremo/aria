@@ -1,0 +1,33 @@
+mission_name: "ARIA-DEV"
+mission_phase: "NOMINAL_LEO"
+authority_level: "SUPERVISED"
+
+dsremo:
+  base_url: "http://localhost:8000"
+  api_version: "v1"
+  websocket_url: "ws://localhost:8000/api/v1/ws/live"
+  timeout_ms: 5000
+  severity_thresholds:
+    watch: 0.50
+    warning: 0.65
+    critical: 0.85
+
+conjunction_watch:
+  screening_interval_s: 3600
+  pc_threshold: 0.0001
+  tle_max_age_days: 3.0
+
+genastra:
+  base_url: "http://localhost:8001"
+  api_version: "v1"
+  radiation_update_interval_s: 86400
+  timeout_ms: 30000
+
+safety:
+  checkpoint_interval_s: 300
+  health_check_interval_s: 30
+
+api:
+  host: "127.0.0.1"
+  http_port: 8080
+  ws_port: 8081

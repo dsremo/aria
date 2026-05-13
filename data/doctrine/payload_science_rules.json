@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "SCI-FR-1",
+    "kind": "flight_rule",
+    "title": "Science instrument calibration cadence",
+    "body": "Optical instruments require monthly dark-frame, flat-field, and on-orbit star-field calibration. Calibration data downlinked at full resolution; degradation > 5% per month triggers diagnostic.",
+    "keywords": ["calibration", "dark frame", "flat field"],
+    "citation": "Hubble SOP; James Webb COS calibration plan",
+    "parameters": ["CAL_LAST_DATE_ISO"]
+  },
+  {
+    "rule_id": "SCI-FR-2",
+    "kind": "flight_rule",
+    "title": "Cryogenic detector temperature stability",
+    "body": "Detectors at < 100 K shall maintain temperature stability ≤ 50 mK over 1 hour. Temperature excursions > 1 K trigger detector safe-mode (pause exposures, raise to standby T).",
+    "keywords": ["cryogenic", "detector", "stability"],
+    "citation": "JWST instrument operating manual",
+    "parameters": ["DETECTOR_TEMP_K", "DETECTOR_TEMP_RATE_K_HR"]
+  },
+  {
+    "rule_id": "SCI-FR-3",
+    "kind": "flight_rule",
+    "title": "Bright object protection",
+    "body": "Sun, Moon, and Earth limb angles to optical bore-sight shall remain > 50 deg, 20 deg, 30 deg respectively (mission-specific). Violations trigger automatic shutter close + pointing slew to safe direction.",
+    "keywords": ["bright object", "sun", "shutter", "slew"],
+    "citation": "Hubble bright object protection rules; SDO solar pointing rules",
+    "parameters": ["SUN_ANGLE_DEG", "MOON_ANGLE_DEG", "EARTH_LIMB_ANGLE_DEG"]
+  },
+  {
+    "rule_id": "SCI-FR-4",
+    "kind": "flight_rule",
+    "title": "Data downlink priority",
+    "body": "Critical-only telemetry > Engineering housekeeping > Standard science > Bulk science. During DSN contention, lower-priority data deferred. Operator can override priority for mission-critical observations with ground concurrence.",
+    "keywords": ["downlink", "priority", "dsn"],
+    "citation": "DSN Service Catalog § Priority",
+    "parameters": ["DOWNLINK_PRIORITY"]
+  }
+]

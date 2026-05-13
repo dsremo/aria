@@ -1,0 +1,78 @@
+# ARIA sealed role lattice (F-1).
+#
+# Defines every role that can hold permissions and the inheritance
+# graph. The graph is a DAG: human roles spine = captain → {crew,
+# maintainer} → operator → reader → anonymous. agent and system are
+# parallel branches that never inherit human-tier authority.
+#
+# trust_tier and authority_ceiling come from
+#   src/aria/cognitive/constitution.py::TrustTier and
+#   src/aria/core/types.py::AuthorityLevel
+# String values must match the enum names exactly.
+#
+# To add a role: append a [roles.<name>] block here, regenerate the
+# sealed manifest, re-bake the image. Roles are NOT runtime-mutable
+# (intentionally — adding a role is a release-engineering act).
+
+manifest_version = 1
+created_at       = "2026-04-25"
+
+[roles.captain]
+inherits          = ["crew", "maintainer"]
+trust_tier        = "OPERATOR"
+authority_ceiling = "CAPTAIN_ONLY"
+description       = "Single-occupancy mission commander."
+
+[roles.crew]
+inherits          = ["operator"]
+trust_tier        = "OPERATOR"
+authority_ceiling = "ADVISORY"
+description       = "Authenticated human on the ship; eligible second signer."
+
+[roles.maintainer]
+inherits          = ["operator"]
+trust_tier        = "OPERATOR"
+authority_ceiling = "ADVISORY"
+description       = "Engineering authority; quorum required for sealed-prompt flash."
+
+[roles.operator]
+inherits          = ["reader"]
+trust_tier        = "OPERATOR"
+authority_ceiling = "CONSENT"
+description       = "Lower-tier authenticated principal (ground-station test ops)."
+
+[roles.ground]
+inherits          = []
+trust_tier        = "OPERATOR"
+authority_ceiling = "ADVISORY"
+description       = "Mission-control on Earth; per-command Ed25519 signatures, no session."
+
+[roles.reader]
+inherits          = ["anonymous"]
+trust_tier        = "LOCAL_SENSOR"
+authority_ceiling = "SENSOR_ONLY"
+description       = "Read-only access to non-sensitive telemetry."
+
+[roles.agent]
+inherits          = []
+trust_tier        = "LOCAL_SENSOR"
+authority_ceiling = "SUPERVISED"
+description       = "LLM-driven sub-system. Hard-capped; cannot self-elevate."
+
+[roles.system]
+inherits          = []
+trust_tier        = "LOCAL_SENSOR"
+authority_ceiling = "ROUTINE"
+description       = "Runtime-internal identity for boot / audit anchor writes."
+
+[roles.anonymous]
+inherits          = []
+trust_tier        = "THIRD_PARTY_CONTENT"
+authority_ceiling = "SENSOR_ONLY"
+description       = "Unauthenticated. Login + healthz only."
+
+[roles.tamper]
+inherits          = []
+trust_tier        = "THIRD_PARTY_CONTENT"
+authority_ceiling = "SENSOR_ONLY"
+description       = "Anything that fails identity verification. Logged and rate-limited."

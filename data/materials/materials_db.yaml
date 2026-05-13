@@ -1,0 +1,417 @@
+# ==========================================================================
+# ARIA Digital Twin — Material Properties Database (YAML)
+# ==========================================================================
+# Canonical source: src/aria/digital_twin/materials/material_db.py
+# This YAML mirror is provided for external tools, dashboards, and
+# configuration pipelines that cannot import Python directly.
+#
+# Units
+# -----
+# density_kg_m3           kg m⁻³
+# youngs_modulus_pa        Pa
+# poisson_ratio            dimensionless
+# yield_strength_pa        Pa
+# uts_pa                   Pa
+# thermal_conductivity_w_mk  W m⁻¹ K⁻¹
+# specific_heat_j_kgk      J kg⁻¹ K⁻¹
+# cte_per_k                K⁻¹
+# emissivity               dimensionless
+# melting_point_k          K
+# fatigue_limit_pa         Pa
+# fatigue_exponent         dimensionless (Basquin b)
+# ==========================================================================
+
+materials:
+
+  Ti-6Al-4V:
+    name: Ti-6Al-4V
+    density_kg_m3: 4430.0
+    youngs_modulus_pa: 1.138e+11
+    poisson_ratio: 0.342
+    yield_strength_pa: 8.80e+08
+    uts_pa: 9.50e+08
+    thermal_conductivity_w_mk: 6.7
+    specific_heat_j_kgk: 526.3
+    cte_per_k: 8.6e-06
+    emissivity: 0.19
+    melting_point_k: 1933.0
+    fatigue_limit_pa: 5.10e+08
+    fatigue_exponent: -0.096
+    source: >-
+      MMPDS-17 Table 5.4.1.0(b); ASM Handbook Vol. 2;
+      NASA-STD-5001B fatigue data; Boyer, R. et al.,
+      'Materials Properties Handbook: Titanium Alloys', ASM Intl, 1994
+
+  EUROFER97:
+    name: EUROFER97
+    density_kg_m3: 7750.0
+    youngs_modulus_pa: 2.17e+11
+    poisson_ratio: 0.3
+    yield_strength_pa: 5.50e+08
+    uts_pa: 6.90e+08
+    thermal_conductivity_w_mk: 33.6
+    specific_heat_j_kgk: 440.0
+    cte_per_k: 1.14e-05
+    emissivity: 0.28
+    melting_point_k: 1803.0
+    fatigue_limit_pa: 2.70e+08
+    fatigue_exponent: -0.08
+    source: >-
+      Federici, G. et al., 'European DEMO design strategy and consequences
+      for materials', Nuclear Fusion 57(9), 2017; Tavassoli, A.A.F. et al.,
+      'Current status and recent research achievements in ferritic/martensitic
+      steels', J. Nuclear Mater. 455, 2014; ITER MPH
+
+  NaK-78:
+    name: NaK-78
+    density_kg_m3: 866.0
+    youngs_modulus_pa: null
+    poisson_ratio: null
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 24.4
+    specific_heat_j_kgk: 1042.0
+    cte_per_k: null
+    emissivity: 0.05
+    melting_point_k: 262.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Lyon, R.N. (ed.), 'Liquid Metals Handbook', NAVEXOS P-733 (Rev. 1952),
+      AEC/DoN; Foust, O.J. (ed.), 'Sodium-NaK Engineering Handbook',
+      Gordon & Breach, 1972
+
+  B4C:
+    name: B4C
+    density_kg_m3: 2520.0
+    youngs_modulus_pa: 4.60e+11
+    poisson_ratio: 0.17
+    yield_strength_pa: null
+    uts_pa: 3.50e+08
+    thermal_conductivity_w_mk: 27.0
+    specific_heat_j_kgk: 950.0
+    cte_per_k: 5.0e-06
+    emissivity: 0.92
+    melting_point_k: 2763.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Thevenot, F., 'Boron Carbide — A Comprehensive Review',
+      J. European Ceramic Soc. 6(4), 1990; Suri, A.K. et al.,
+      'Synthesis and consolidation of boron carbide: a review',
+      Intl Mater. Rev. 55(1), 2010; ITER neutron shield design data
+
+  Kevlar-49:
+    name: Kevlar-49
+    density_kg_m3: 1440.0
+    youngs_modulus_pa: 1.12e+11
+    poisson_ratio: 0.36
+    yield_strength_pa: 3.62e+09
+    uts_pa: 3.62e+09
+    thermal_conductivity_w_mk: 0.04
+    specific_heat_j_kgk: 1420.0
+    cte_per_k: -2.0e-06
+    emissivity: 0.85
+    melting_point_k: null   # decomposes ~773 K
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      DuPont Kevlar 49 Technical Data Sheet (K-29314, Rev. 2019);
+      MIL-HDBK-17-2F Polymer Matrix Composites Vol. 2;
+      NASA TP-2003-210788 Whipple Shield MMOD risk assessment
+
+  UHMWPE:
+    name: UHMWPE
+    density_kg_m3: 930.0
+    youngs_modulus_pa: 8.0e+08
+    poisson_ratio: 0.46
+    yield_strength_pa: 2.1e+07
+    uts_pa: 4.8e+07
+    thermal_conductivity_w_mk: 0.5
+    specific_heat_j_kgk: 1850.0
+    cte_per_k: 1.5e-04
+    emissivity: 0.94
+    melting_point_k: 403.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Kurtz, S.M., 'The UHMWPE Handbook', Elsevier, 2004;
+      Guetersloh, S. et al., 'Polyethylene as a radiation shielding
+      standard in simulated cosmic-ray environments', Nuclear Instr. &
+      Methods B 252, 2006; NASA/TP-2005-213688
+
+  Al-7075-T6:
+    name: Al-7075-T6
+    density_kg_m3: 2810.0
+    youngs_modulus_pa: 7.17e+10
+    poisson_ratio: 0.33
+    yield_strength_pa: 5.03e+08
+    uts_pa: 5.72e+08
+    thermal_conductivity_w_mk: 130.0
+    specific_heat_j_kgk: 960.0
+    cte_per_k: 2.36e-05
+    emissivity: 0.09
+    melting_point_k: 908.0
+    fatigue_limit_pa: 1.59e+08
+    fatigue_exponent: -0.122
+    source: >-
+      MMPDS-17 Table 3.7.6.0(a); MIL-HDBK-5J Al-7075-T6 sheet;
+      ASM Aerospace Specification Metals Inc. datasheet
+
+  CNT-Composite:
+    name: CNT-Composite
+    density_kg_m3: 1600.0
+    youngs_modulus_pa: 5.0e+11
+    poisson_ratio: 0.3
+    yield_strength_pa: 6.0e+10
+    uts_pa: 6.3e+10
+    thermal_conductivity_w_mk: 200.0
+    specific_heat_j_kgk: 750.0
+    cte_per_k: 1.0e-06
+    emissivity: 0.85
+    melting_point_k: null   # decomposes; no true melting point
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Demczyk, B.G. et al., 'Direct mechanical measurement of the tensile
+      strength and elastic modulus of multiwalled carbon nanotubes',
+      Mater. Sci. Eng. A 334, 2002 (individual MWCNT);
+      PROJECTED COMPOSITE VALUES — scaled from single-tube data via
+      Halpin-Tsai micromechanics at 60% Vf; NOT YET FLIGHT-QUALIFIED
+
+  HfB2:
+    name: HfB2
+    density_kg_m3: 11200.0
+    youngs_modulus_pa: 4.80e+11
+    poisson_ratio: 0.12
+    yield_strength_pa: null
+    uts_pa: 2.60e+08
+    thermal_conductivity_w_mk: 104.0
+    specific_heat_j_kgk: 247.0
+    cte_per_k: 6.3e-06
+    emissivity: 0.36
+    melting_point_k: 3523.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Fahrenholtz, W.G. et al., 'Ultra-High Temperature Ceramics:
+      Materials for Extreme Environment Applications', Wiley, 2014;
+      Fahrenholtz, W.G. & Hilmas, G.E., Scripta Mater. 129, 2017;
+      Opeka, M.M. et al., J. Mater. Sci. 39, 2004
+
+  Inconel-718:
+    name: Inconel-718
+    density_kg_m3: 8190.0
+    youngs_modulus_pa: 2.0e+11
+    poisson_ratio: 0.29
+    yield_strength_pa: 1.035e+09
+    uts_pa: 1.24e+09
+    thermal_conductivity_w_mk: 11.2
+    specific_heat_j_kgk: 435.0
+    cte_per_k: 1.3e-05
+    emissivity: 0.21
+    melting_point_k: 1609.0
+    fatigue_limit_pa: 5.5e+08
+    fatigue_exponent: -0.087
+    source: >-
+      Special Metals Corp., 'INCONEL alloy 718' Technical Bulletin SMC-045,
+      2007; MMPDS-17 Table 6.3.6.0; AMS 5662/5663
+
+  SS-316L:
+    name: SS-316L
+    density_kg_m3: 7990.0
+    youngs_modulus_pa: 1.93e+11
+    poisson_ratio: 0.3
+    yield_strength_pa: 1.70e+08
+    uts_pa: 4.85e+08
+    thermal_conductivity_w_mk: 16.3
+    specific_heat_j_kgk: 500.0
+    cte_per_k: 1.59e-05
+    emissivity: 0.28
+    melting_point_k: 1673.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      ASME BPV Code Section II Part D, 2023 Edition;
+      MMPDS-17 Table 2.4.1.0; ASM Handbook Vol. 1
+
+  Fused-Silica:
+    name: Fused-Silica
+    density_kg_m3: 2200.0
+    youngs_modulus_pa: 7.3e+10
+    poisson_ratio: 0.17
+    yield_strength_pa: null
+    uts_pa: 4.8e+07
+    thermal_conductivity_w_mk: 1.38
+    specific_heat_j_kgk: 740.0
+    cte_per_k: 5.5e-07
+    emissivity: 0.93
+    melting_point_k: 1986.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Corning HPFS 7980 Fused Silica datasheet;
+      Bansal, N.P. & Doremus, R.H., 'Handbook of Glass Properties', 1986
+
+  Aerogel:
+    name: Aerogel
+    density_kg_m3: 100.0
+    youngs_modulus_pa: 1.0e+06
+    poisson_ratio: 0.2
+    yield_strength_pa: null
+    uts_pa: 1.6e+04
+    thermal_conductivity_w_mk: 0.015
+    specific_heat_j_kgk: 1000.0
+    cte_per_k: 2.0e-06
+    emissivity: 0.1
+    melting_point_k: null
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      NASA JPL aerogel thermal protection data;
+      Hrubesh, L.W. & Pekala, R.W., J. Mater. Res. 9(3), 1994
+
+  MLI-Mylar:
+    name: MLI-Mylar
+    density_kg_m3: 1390.0
+    youngs_modulus_pa: null
+    poisson_ratio: null
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 0.04
+    specific_heat_j_kgk: 1170.0
+    cte_per_k: 1.7e-05
+    emissivity: 0.03
+    melting_point_k: 527.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      DuPont Mylar polyester film Technical Bulletin H-38492-2;
+      Gilmore, D.G. (ed.), 'Spacecraft Thermal Control Handbook', AIAA, 2002
+
+  Liquid-Hydrogen:
+    name: Liquid-Hydrogen
+    density_kg_m3: 70.8
+    youngs_modulus_pa: null
+    poisson_ratio: null
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 0.1
+    specific_heat_j_kgk: 14300.0
+    cte_per_k: null
+    emissivity: null
+    melting_point_k: 14.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      NIST Cryogenic Technologies Group; McCarty, R.D. et al.,
+      NBS Monograph 168, 1981; Leachman, J.W. et al., J. Phys. Chem.
+      Ref. Data 38(3), 2009
+
+  Water-Ice:
+    name: Water-Ice
+    density_kg_m3: 917.0
+    youngs_modulus_pa: 9.0e+09
+    poisson_ratio: 0.33
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 2.22
+    specific_heat_j_kgk: 2090.0
+    cte_per_k: 5.0e-05
+    emissivity: 0.97
+    melting_point_k: 273.15
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Schulson, E.M. & Duval, P., 'Creep and Fracture of Ice',
+      Cambridge Univ. Press, 2009; Petrovic, J.J., J. Mater. Sci. 38, 2003
+
+  MgB2:
+    name: MgB2
+    density_kg_m3: 2570.0
+    youngs_modulus_pa: 2.0e+11
+    poisson_ratio: 0.21
+    yield_strength_pa: 6.5e+07
+    uts_pa: null
+    thermal_conductivity_w_mk: 25.0
+    specific_heat_j_kgk: 630.0
+    cte_per_k: 7.5e-06
+    emissivity: 0.5
+    melting_point_k: null   # decomposes ~1000 °C
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Nagamatsu, J. et al., Nature 410:63, 2001; Bud'ko, S.L. et al.,
+      Phys. Rev. Lett. 86, 2001; T_c = 39 K
+
+  Tungsten:
+    name: Tungsten
+    density_kg_m3: 19300.0
+    youngs_modulus_pa: 4.11e+11
+    poisson_ratio: 0.28
+    yield_strength_pa: 7.50e+08
+    uts_pa: 9.80e+08
+    thermal_conductivity_w_mk: 173.0
+    specific_heat_j_kgk: 134.0
+    cte_per_k: 4.5e-06
+    emissivity: 0.04
+    melting_point_k: 3695.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      ASM Handbook Vol. 2; Lassner, E. & Schubert, W.-D., 'Tungsten',
+      Kluwer, 1999; ITER divertor W-monoblock design data
+
+  Li2TiO3:
+    name: Li2TiO3
+    density_kg_m3: 3430.0
+    youngs_modulus_pa: 1.70e+11
+    poisson_ratio: 0.25
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 2.4
+    specific_heat_j_kgk: 950.0
+    cte_per_k: 9.0e-06
+    emissivity: 0.85
+    melting_point_k: 1822.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Hoshino, T., Fusion Eng. Design 74, 2005;
+      ITER Test Blanket Module (TBM) design data
+
+  Borated-Concrete:
+    name: Borated-Concrete
+    density_kg_m3: 2350.0
+    youngs_modulus_pa: 3.0e+10
+    poisson_ratio: 0.2
+    yield_strength_pa: 3.0e+07
+    uts_pa: 3.0e+06
+    thermal_conductivity_w_mk: 1.0
+    specific_heat_j_kgk: 880.0
+    cte_per_k: 1.0e-05
+    emissivity: 0.94
+    melting_point_k: null   # decomposes ~600 °C
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      ACI 318-19; Kaplan, M.F., 'Concrete Radiation Shielding', 1989;
+      ANS-6.4-2006; B2O3 1-5 wt% for thermal neutron capture
+
+  GaAs:
+    name: GaAs
+    density_kg_m3: 5320.0
+    youngs_modulus_pa: 8.55e+10
+    poisson_ratio: 0.31
+    yield_strength_pa: null
+    uts_pa: null
+    thermal_conductivity_w_mk: 55.0
+    specific_heat_j_kgk: 330.0
+    cte_per_k: 5.73e-06
+    emissivity: 0.9
+    melting_point_k: 1511.0
+    fatigue_limit_pa: null
+    fatigue_exponent: null
+    source: >-
+      Sze, S.M. & Ng, K.K., 'Physics of Semiconductor Devices', 3rd ed.,
+      Wiley, 2007; Blakemore, J.S., J. Appl. Phys. 53(10), 1982

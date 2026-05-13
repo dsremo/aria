@@ -1,0 +1,63 @@
+# ARIA pre-commit hooks.
+#
+# Install once with:  pre-commit install
+# Run manually with: pre-commit run --all-files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=2000']
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-toml
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.10
+    hooks:
+      - id: ruff
+        args: ['--fix', '--exit-non-zero-on-fix']
+
+  - repo: local
+    hooks:
+      # Block public-artefact references to projects outside ~/Music/.
+      # See feedback_no_external_project_references memory.
+      - id: no-external-project-refs
+        name: no-external-project-refs
+        entry: bash -c 'if grep -rin --exclude-dir=.git --exclude-dir=node_modules "tgi\\b\\|simplotel\\|simp-bot\\|hotel call taxonomy" .; then echo "::error::Public-facing artefact references a project outside ~/Music/. Strip or rename before committing."; exit 1; fi'
+        language: system
+        pass_filenames: false
+
+      # Block AI attribution anywhere in the diff (commit messages, files,
+      # docstrings, comments). The rule is strict: this project is presented
+      # as human-authored. No AI tool may be credited as a co-author, source
+      # of inspiration, or generator. Vendor dependencies (e.g. the
+      # `anthropic` Python SDK) are mechanical and explicitly excluded —
+      # only credit/authorship phrasing is blocked.
+      - id: no-ai-attribution
+        name: no-ai-attribution
+        entry: |
+          bash -c '
+            staged=$(git diff --cached --name-only)
+            if [ -z "$staged" ]; then exit 0; fi
+            # commit message file (if any) plus staged contents
+            patterns="Co-Authored-By:[[:space:]]*Claude|Generated with Claude|🤖 Generated|Co-authored by an AI|Built with Claude|Inspired by Claude Code|Mirrors Claude Code|Similar to Claude Code|powered by Claude"
+            if echo "$staged" | xargs grep -E -l "$patterns" 2>/dev/null; then
+              echo "::error::AI-attribution phrasing detected in staged content. Project is presented as human-authored — remove before committing."
+              exit 1
+            fi
+            # Commit message (if pre-commit-msg phase is active and file passed via env)
+            if [ -n "${COMMIT_MSG_FILE:-}" ] && [ -f "$COMMIT_MSG_FILE" ]; then
+              if grep -E -q "$patterns" "$COMMIT_MSG_FILE"; then
+                echo "::error::AI-attribution phrasing detected in commit message."
+                exit 1
+              fi
+            fi
+            exit 0
+          '
+        language: system
+        pass_filenames: false

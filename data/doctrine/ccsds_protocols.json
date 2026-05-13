@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "CCSDS-133-0-1",
+    "kind": "flight_rule",
+    "title": "Space packet protocol header",
+    "body": "All CCSDS Space Packets shall carry a 6-octet primary header: 3-bit packet version, 1-bit packet type (TM=0/TC=1), 1-bit secondary-header flag, 11-bit APID, 2-bit sequence flags, 14-bit sequence count, 16-bit data-length. Packets violating this shall be rejected by the receiving stack.",
+    "keywords": ["ccsds", "space packet", "apid", "sequence"],
+    "citation": "CCSDS 133.0-B-2 Space Packet Protocol §4.1",
+    "parameters": ["APID", "PACKET_SEQUENCE_COUNT"]
+  },
+  {
+    "rule_id": "CCSDS-232-0-1",
+    "kind": "flight_rule",
+    "title": "TC space data link COP-1 procedures",
+    "body": "Telecommand transfer frames using FARM-1 shall maintain VR (receiver) state. On VC reset, both sender and receiver re-synchronise via SET V(R) directive. Frame mismatches > FARM_B count drop into LOCKOUT — escape requires UNLOCK directive from authorised source.",
+    "keywords": ["cop-1", "farm-1", "telecommand", "lockout"],
+    "citation": "CCSDS 232.0-B-3 TC Space Data Link Protocol §6",
+    "parameters": ["VR_STATE", "FARM_LOCKOUT_FLAG"]
+  },
+  {
+    "rule_id": "CCSDS-732-0-1",
+    "kind": "flight_rule",
+    "title": "AOS Space Data Link rate-buffered insertion",
+    "body": "AOS frames carrying Service M_PDU shall buffer asynchronously-arrived packets without rate-blocking the carrier. Idle insertion is via OID (only-idle data) frames per §3.2.4; OID frames must not consume more than 30 % of the link budget under nominal traffic.",
+    "keywords": ["aos", "m_pdu", "oid", "idle"],
+    "citation": "CCSDS 732.0-B-4 AOS Space Data Link Protocol §3.2",
+    "parameters": ["AOS_OID_FRACTION"]
+  },
+  {
+    "rule_id": "CCSDS-352-0-1",
+    "kind": "flight_rule",
+    "title": "CCSDS cryptographic algorithm selection",
+    "body": "Cryptographic algorithms used for spacecraft command authentication shall come from the CCSDS approved list: AES-256-GCM for confidentiality + integrity, HMAC-SHA-256 for authentication-only, RSA-3072 / ECDSA-P256 for key agreement. Older algorithms (DES, MD5, SHA-1) are forbidden.",
+    "keywords": ["crypto", "aes", "hmac", "ecdsa", "command auth"],
+    "citation": "CCSDS 352.0-B-2 CCSDS Cryptographic Algorithms §3",
+    "parameters": ["CRYPTO_ALGORITHM_ID"]
+  }
+]

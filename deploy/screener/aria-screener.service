@@ -1,0 +1,76 @@
+# systemd unit for hosts that prefer running the aiohttp app
+# directly (no Docker, no Caddy).  Pair with an nginx or a separate
+# Caddy install for TLS termination.
+#
+# Install:
+#   sudo cp deploy/screener/aria-screener.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now aria-screener.service
+
+[Unit]
+Description=ARIA Conjunction Screener API
+After=network.target
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=aria
+Group=aria
+
+WorkingDirectory=/opt/aria-core
+Environment=PYTHONPATH=/opt/aria-core/src
+Environment=ARIA_SCREENER_DB=/var/lib/aria-screener/screener_tenants.sqlite3
+EnvironmentFile=-/etc/aria-screener.env
+
+ExecStart=/usr/bin/python3 -m aria.products.conjunction_screener serve \
+    --host 127.0.0.1 --port 8443
+
+Restart=on-failure
+RestartSec=5
+
+# Sandboxing — see systemd.exec(5).  Fail closed if any of these
+# directives are unsupported.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictSUIDSGID=true
+RemoveIPC=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+# Persistent dirs.  Audit MED-9 — strict perms.
+StateDirectory=aria-screener
+StateDirectoryMode=0700
+UMask=0077
+ReadWritePaths=/var/lib/aria-screener
+
+# Resource limits
+MemoryHigh=512M
+MemoryMax=1G
+TasksMax=512
+
+# Audit MED-9 — refuse network ranges the service has no business
+# touching.  Operator can override if running ARIA in an air-gapped
+# environment with private IPs.
+IPAddressDeny=any
+IPAddressAllow=localhost
+IPAddressAllow=link-local
+IPAddressAllow=multicast
+IPAddressAllow=10.0.0.0/8
+IPAddressAllow=172.16.0.0/12
+IPAddressAllow=192.168.0.0/16
+
+[Install]
+WantedBy=multi-user.target

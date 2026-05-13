@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "DSN-FR-1",
+    "kind": "flight_rule",
+    "title": "Deep Space Network pass scheduling",
+    "body": "DSN passes for deep-space spacecraft are scheduled minimum 7 days in advance. Spacecraft attitude must be biased to point HGA at Earth during scheduled pass; missed pass with critical telemetry triggers the next available 70 m antenna pass with priority elevation.",
+    "keywords": ["dsn", "deep space", "pass", "hga"],
+    "citation": "DSN Service Catalog (JPL D-5703); DSN Telecommunications Link Design Handbook 810-005",
+    "parameters": ["HGA_POINTING_ERROR_DEG", "DSN_PASS_SCHEDULED_FLAG"]
+  },
+  {
+    "rule_id": "DEEP-FR-1",
+    "kind": "flight_rule",
+    "title": "Light-time-delay command policy",
+    "body": "For spacecraft beyond 1 AU, no real-time command authority — onboard autonomy handles fault response within bounded envelope; ground commands have round-trip-light-time delay (8+ minutes for Mars, 4+ hours for Pluto). Crew advisor must respect this in time-budget planning.",
+    "keywords": ["light-time", "deep space", "autonomy", "round-trip"],
+    "citation": "JPL D-100128 Mars Network Operations Concept",
+    "parameters": ["ROUND_TRIP_LIGHT_TIME_S"]
+  },
+  {
+    "rule_id": "DEEP-FR-2",
+    "kind": "flight_rule",
+    "title": "Solar conjunction blackout",
+    "body": "Spacecraft within 3 deg Sun-Earth-Spacecraft angle experience S-band carrier signal degradation > 10 dB. Schedule low-bandwidth telemetry during conjunction; defer time-critical commanding to before/after the 10-day blackout window.",
+    "keywords": ["solar conjunction", "blackout", "s-band", "snr"],
+    "citation": "DSN Telecommunications Link Design Handbook 810-005 §32",
+    "parameters": ["SUN_EARTH_PROBE_ANGLE_DEG"]
+  },
+  {
+    "rule_id": "DEEP-MP-1",
+    "kind": "malfunction_procedure",
+    "title": "Loss-of-signal autonomous safe mode",
+    "body": "If spacecraft loses uplink lock for > 7 days, enter Safe Mode: cease science, point HGA toward last-known Earth direction (with sun-shielding), reduce telemetry to 4 bps housekeeping beacon, listen for re-acquisition commands. Safe Mode persists indefinitely until ground recovery.",
+    "keywords": ["safe mode", "los", "deep space", "hga", "beacon"],
+    "citation": "Cassini Safe Mode Implementation (JPL, 2010)",
+    "parameters": ["LOS_DURATION_DAYS", "SAFE_MODE_FLAG"]
+  }
+]

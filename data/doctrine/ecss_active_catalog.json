@@ -1,0 +1,2339 @@
+[
+  {
+    "rule_id": "ECSS-E-ST-31-02C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-31-02C Rev.1 \u2013 Two-phase heat transport equipment (15 March 2017)",
+    "body": "ECSS-E-ST-31-02C Rev.1 \u2013 Two-phase heat transport equipment (15 March 2017)",
+    "keywords": [
+      "ecss",
+      "phase",
+      "heat",
+      "transport",
+      "equipment",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-ST-31-02C (15 march 2017); https://ecss.nl/standard/18891/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-10-09C",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-10-09C Rev.1 \u2013 Nonconformance control system (1 March 2018)",
+    "body": "ECSS-Q-ST-10-09C Rev.1 \u2013 Nonconformance control system (1 March 2018)",
+    "keywords": [
+      "ecss",
+      "nonconformance",
+      "control",
+      "system",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-10-09C (1 march 2018); https://ecss.nl/standard/24183/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-#42506",
+    "kind": "flight_rule",
+    "title": "ECSS-P-00C Rev.1 \u2013 Standardization objectives, policies and organization (15 November 2024)",
+    "body": "ECSS-P-00C Rev.1 \u2013 Standardization objectives, policies and organization (15 November 2024)",
+    "keywords": [
+      "ecss",
+      "standardization",
+      "objectives",
+      "policies",
+      "organization",
+      "november"
+    ],
+    "citation": "ECSS ECSS-#42506 (15 november 2024); https://ecss.nl/standard/42506/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-11C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-11C &#8211; Adoption Notice of ISO 16290, Space systems \u2013 Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment (1 October 2014)",
+    "body": "ECSS-E-AS-11C &#8211; Adoption Notice of ISO 16290, Space systems \u2013 Definition of the Technology Readiness Levels (TRLs) and their criteria of assessment (1 October 2014)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "space",
+      "systems",
+      "definition",
+      "technology",
+      "readiness",
+      "levels",
+      "trls"
+    ],
+    "citation": "ECSS ECSS-E-AS-11C (1 october 2014); https://ecss.nl/standard/ecss-e-as-11c-adoption-notice-of-iso-16290-space-systems-definition-of-the-technology-readiness-levels-trls-and-their-criteria-of-assessment-1-october-2014/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-21C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-21C Rev.2 &#8211; Adoption Notice of CCSDS 131.0-B-5, TM Synchronization and Channel Coding (5 December 2024)",
+    "body": "ECSS-E-AS-50-21C Rev.2 &#8211; Adoption Notice of CCSDS 131.0-B-5, TM Synchronization and Channel Coding (5 December 2024)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "synchronization",
+      "channel",
+      "coding",
+      "december"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-21C-REV-1 (5 december 2024); https://ecss.nl/standard/ecss-e-as-50-21c-rev-1-adoption-notice-of-ccsds-131-0-b-5-tm-synchronization-and-channel-coding-5-december-2024/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-22C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-22C Rev.1 &#8211; Adoption Notice of CCSDS 132.0-B-3, TM Space Data Link Protocol (13 January 2023)",
+    "body": "ECSS-E-AS-50-22C Rev.1 &#8211; Adoption Notice of CCSDS 132.0-B-3, TM Space Data Link Protocol (13 January 2023)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "space",
+      "data",
+      "link",
+      "protocol",
+      "january"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-22C-REV-1 (13 january 2023); https://ecss.nl/standard/ecss-e-as-50-22c-rev-1-adoption-notice-of-ccsds-132-0-b-3-tm-space-data-link-protocol-3-january-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-23C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-23C Rev.1 \u2013 Adoption Notice of CCSDS 732.0-B-4, AOS Space Data Link Protocol (13 January 2023)",
+    "body": "ECSS-E-AS-50-23C Rev.1 \u2013 Adoption Notice of CCSDS 732.0-B-4, AOS Space Data Link Protocol (13 January 2023)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "space",
+      "data",
+      "link",
+      "protocol",
+      "january"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-23C-REV-1 (13 january 2023); https://ecss.nl/standard/ecss-e-as-50-23c-rev-1-adoption-notice-of-ccsds-732-0-b-4-aos-space-data-link-protocol-13-january-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-24C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-24C Rev.1 &#8211; Adoption Notice of CCSDS 231.0-B-4, TC Synchronization and Channel Coding (13 January 2023)",
+    "body": "ECSS-E-AS-50-24C Rev.1 &#8211; Adoption Notice of CCSDS 231.0-B-4, TC Synchronization and Channel Coding (13 January 2023)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "synchronization",
+      "channel",
+      "coding",
+      "january"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-24C-REV-1 (13 january 2023); https://ecss.nl/standard/ecss-e-as-50-24c-rev-1-adoption-notice-of-ccsds-231-0-b-4-tc-synchronization-and-channel-coding/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-25C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-25C Rev.1 &#8211; Adoption Notice of CCSDS 232.0-B-4, TC Space Data Link Protocol (13 January 2023)",
+    "body": "ECSS-E-AS-50-25C Rev.1 &#8211; Adoption Notice of CCSDS 232.0-B-4, TC Space Data Link Protocol (13 January 2023)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "space",
+      "data",
+      "link",
+      "protocol",
+      "january"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-25C-REV-1 (13 january 2023); https://ecss.nl/standard/ecss-e-as-50-25c-rev-1-adoption-notice-of-ccsds-232-0-b-4-tc-space-data-link-protocol/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-AS-50-26C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-AS-50-26C &#8211; Adoption Notice of CCSDS 232.1-B-2, Communications Operation Procedure-1 (1 March 2021)",
+    "body": "ECSS-E-AS-50-26C &#8211; Adoption Notice of CCSDS 232.1-B-2, Communications Operation Procedure-1 (1 March 2021)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "ccsds",
+      "communications",
+      "operation",
+      "procedure",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-AS-50-26C (1 march 2021); https://ecss.nl/standard/ecss-e-as-50-26c-adoption-notice-of-ccsds-232-1-b-2-communications-operation-procedure-1-1-march-2021/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-02C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-02C Rev.1 \u2013 Verification (1 February 2018)",
+    "body": "ECSS-E-ST-10-02C Rev.1 \u2013 Verification (1 February 2018)",
+    "keywords": [
+      "ecss",
+      "verification",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-02C-REV-1 (1 february 2018); https://ecss.nl/standard/ecss-e-st-10-02c-rev-1-verification-1-february-2018/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-03C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-03C Rev.1 &#8211; Testing (31 May 2022)",
+    "body": "ECSS-E-ST-10-03C Rev.1 &#8211; Testing (31 May 2022)",
+    "keywords": [
+      "ecss",
+      "testing"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-03C-REV-1 (31 may 2022); https://ecss.nl/standard/ecss-e-st-10-03c-rev-1-testing-31-may-2022/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-04C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-04C Rev.1 &#8211; Space environment (15 June 2020)",
+    "body": "ECSS-E-ST-10-04C Rev.1 &#8211; Space environment (15 June 2020)",
+    "keywords": [
+      "ecss",
+      "space",
+      "environment",
+      "june"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-04C-REV-1 (15 june 2020); https://ecss.nl/standard/ecss-e-st-10-04c-rev-1-space-environment-15-june-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-06C-TECHNICAL-REQUIREMENTS",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-06C \u2013 Technical requirements specification (6 March 2009)",
+    "body": "ECSS-E-ST-10-06C \u2013 Technical requirements specification (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "technical",
+      "requirements",
+      "specification",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-06C-TECHNICAL-REQUIREMENTS (6 march 2009); https://ecss.nl/standard/ecss-e-st-10-06c-technical-requirements-specification/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-09C-REFERENCE-COORDINATE",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-09C \u2013 Reference coordinate system (31 July 2008)",
+    "body": "ECSS-E-ST-10-09C \u2013 Reference coordinate system (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "reference",
+      "coordinate",
+      "system",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-09C-REFERENCE-COORDINATE (31 july 2008); https://ecss.nl/standard/ecss-e-st-10-09c-reference-coordinate-system/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-11C-HUMAN-FACTORS",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-11C \u2013 Human factors engineering (31 July 2008)",
+    "body": "ECSS-E-ST-10-11C \u2013 Human factors engineering (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "human",
+      "factors",
+      "engineering",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-11C-HUMAN-FACTORS (31 july 2008); https://ecss.nl/standard/ecss-e-st-10-11c-human-factors-engineering/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-12C-METHODS-FOR-THE-CALCULATION-OF-RADIATION-RECEIVED-AND-ITS-EFFECTS-AND-A-POLICY-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-12C \u2013 Methods for the calculation of radiation received and its effects, and a policy for design margins (15 November 2008) +Corr.1 (22Feb2017)",
+    "body": "ECSS-E-ST-10-12C \u2013 Methods for the calculation of radiation received and its effects, and a policy for design margins (15 November 2008) +Corr.1 (22Feb2017)",
+    "keywords": [
+      "ecss",
+      "methods",
+      "calculation",
+      "radiation",
+      "received",
+      "effects",
+      "policy",
+      "design",
+      "margins",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-12C-METHODS-FOR-THE-CALCULATION-OF-RADIATION-RECEIVED-AND-ITS-EFFECTS-AND-A-POLICY-FOR (15 november 2008); https://ecss.nl/standard/ecss-e-st-10-12c-methods-for-the-calculation-of-radiation-received-and-its-effects-and-a-policy-for-design-margins/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10-24C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10-24C Rev.1 \u2013 Interface management (15 November 2024)",
+    "body": "ECSS-E-ST-10-24C Rev.1 \u2013 Interface management (15 November 2024)",
+    "keywords": [
+      "ecss",
+      "interface",
+      "management",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-10-24C-REV-1 (15 november 2024); https://ecss.nl/standard/ecss-e-st-10-24c-rev-1-interface-management-15-november-2024/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-10C-REV-1-SYSTEM",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-10C Rev.1 \u2013 System engineering general requirements (15 February 2017)",
+    "body": "ECSS-E-ST-10C Rev.1 \u2013 System engineering general requirements (15 February 2017)",
+    "keywords": [
+      "ecss",
+      "system",
+      "engineering",
+      "general",
+      "requirements",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-10C-REV-1-SYSTEM (15 february 2017); https://ecss.nl/standard/ecss-e-st-10c-rev-1-system-engineering-general-requirements-15-february-2017/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-01C-MULTIPACTOR",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-01C &#8211; Multipactor design and test (15 June 2020)",
+    "body": "ECSS-E-ST-20-01C &#8211; Multipactor design and test (15 June 2020)",
+    "keywords": [
+      "ecss",
+      "multipactor",
+      "design",
+      "test",
+      "june"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-01C-MULTIPACTOR (15 june 2020); https://ecss.nl/standard/ecss-e-st-20-01c-multipactor-design-and-test-15-june-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-06C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-06C Rev.1 \u2013 Spacecraft charging (15 May 2019)",
+    "body": "ECSS-E-ST-20-06C Rev.1 \u2013 Spacecraft charging (15 May 2019)",
+    "keywords": [
+      "ecss",
+      "spacecraft",
+      "charging"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-06C-REV-1 (15 may 2019); https://ecss.nl/standard/ecss-e-st-20-06c-rev-1-spacecraft-charging-15-may-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-07C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-07C Rev.2 &#8211; Electromagnetic compatibility (3 January 2022)",
+    "body": "ECSS-E-ST-20-07C Rev.2 &#8211; Electromagnetic compatibility (3 January 2022)",
+    "keywords": [
+      "ecss",
+      "electromagnetic",
+      "compatibility",
+      "january"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-07C-REV-2 (3 january 2022); https://ecss.nl/standard/ecss-e-st-20-07c-rev-2-electromagnetic-compatibility-3-january-2022/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-08C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-08C Rev.2 \u2013 Photovoltaic assemblies and components (20 April 2023)",
+    "body": "ECSS-E-ST-20-08C Rev.2 \u2013 Photovoltaic assemblies and components (20 April 2023)",
+    "keywords": [
+      "ecss",
+      "photovoltaic",
+      "assemblies",
+      "components",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-08C-REV-2 (20 april 2023); https://ecss.nl/standard/ecss-e-st-20-08c-rev-2-photovoltaic-assemblies-and-components-20-april-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-20C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-20C \u2013 Electrical design and interface requirements for power supply (15 April 2016)",
+    "body": "ECSS-E-ST-20-20C \u2013 Electrical design and interface requirements for power supply (15 April 2016)",
+    "keywords": [
+      "ecss",
+      "electrical",
+      "design",
+      "interface",
+      "requirements",
+      "power",
+      "supply",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-20C (15 april 2016); https://ecss.nl/standard/ecss-e-st-20-20c-space-engineering-electrical-design-and-interface-requirements-for-power-supply-15-april-2016-2/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-21C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-21C \u2013 Electrical design and interface requirements for actuators (15 May 2019)",
+    "body": "ECSS-E-ST-20-21C \u2013 Electrical design and interface requirements for actuators (15 May 2019)",
+    "keywords": [
+      "ecss",
+      "electrical",
+      "design",
+      "interface",
+      "requirements",
+      "actuators"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-21C (15 may 2019); https://ecss.nl/standard/ecss-e-st-20-21c-electrical-design-and-interface-requirements-for-actuators-15-may-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20-40C-ASIC-FPGA",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20-40C &#8211; ASIC, FPGA and IP Core engineering (11 October 2023)",
+    "body": "ECSS-E-ST-20-40C &#8211; ASIC, FPGA and IP Core engineering (11 October 2023)",
+    "keywords": [
+      "ecss",
+      "asic",
+      "fpga",
+      "core",
+      "engineering",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-20-40C-ASIC-FPGA (11 october 2023); https://ecss.nl/standard/ecss-e-st-20-40c-asic-fpga-and-ip-core-engineering-11-october-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-20C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-20C Rev.2 &#8211; Electrical and electronic (8 April 2022)",
+    "body": "ECSS-E-ST-20C Rev.2 &#8211; Electrical and electronic (8 April 2022)",
+    "keywords": [
+      "ecss",
+      "electrical",
+      "electronic",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-20C-REV-2 (8 april 2022); https://ecss.nl/standard/ecss-e-st-20c-rev-2-electrical-and-electronic-8-april-2022/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-30-10C-15-NOVEMBER-2024-INTEGRATED",
+    "kind": "flight_rule",
+    "title": "ECSS-I-ST-30-10C &#8211; Integrated Product Support (IPS) (15 November 2024)",
+    "body": "ECSS-I-ST-30-10C &#8211; Integrated Product Support (IPS) (15 November 2024)",
+    "keywords": [
+      "ecss",
+      "integrated",
+      "product",
+      "support",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-30-10C-15-NOVEMBER-2024-INTEGRATED (15 november 2024); https://ecss.nl/standard/ecss-e-st-30-10c-15-november-2024-integrated-product-support-ips/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-31-04C-EXCHANGE-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-31-04C \u2013 Exchange of thermal analysis data (1 February 2018)",
+    "body": "ECSS-E-ST-31-04C \u2013 Exchange of thermal analysis data (1 February 2018)",
+    "keywords": [
+      "ecss",
+      "exchange",
+      "thermal",
+      "analysis",
+      "data",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-31-04C-EXCHANGE-OF (1 february 2018); https://ecss.nl/standard/ecss-e-st-31-04c-exchange-of-thermal-analysis-data-1-february-2018/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-31C-THERMAL-CONTROL",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-31C \u2013 Thermal control (15 November 2008)",
+    "body": "ECSS-E-ST-31C \u2013 Thermal control (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "thermal",
+      "control",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-31C-THERMAL-CONTROL (15 november 2008); https://ecss.nl/standard/ecss-e-st-31c-thermal-control/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-01C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-01C Rev.2 \u2013 Fracture control (30 July 2021)",
+    "body": "ECSS-E-ST-32-01C Rev.2 \u2013 Fracture control (30 July 2021)",
+    "keywords": [
+      "ecss",
+      "fracture",
+      "control",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-01C-REV-2 (30 july 2021); https://ecss.nl/standard/ecss-e-st-32-01c-rev-2-fracture-control-30-july-2021/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-02C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-02C Rev.2 \u2013 Structural design and verification of pressurized hardware (15 October 2025)",
+    "body": "ECSS-E-ST-32-02C Rev.2 \u2013 Structural design and verification of pressurized hardware (15 October 2025)",
+    "keywords": [
+      "ecss",
+      "structural",
+      "design",
+      "verification",
+      "pressurized",
+      "hardware",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-02C-REV-2 (15 october 2025); https://ecss.nl/standard/ecss-e-st-32-02c-rev-2-structural-design-and-verification-of-pressurized-hardware-15-november-2008/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-03C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-03C \u2013 Structural finite element models (31 July 2008)",
+    "body": "ECSS-E-ST-32-03C \u2013 Structural finite element models (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "structural",
+      "finite",
+      "element",
+      "models",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-03C (31 july 2008); https://ecss.nl/standard/ecss-e-st-32-03c-structural-finite-element-models/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-08C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-08C Rev.1 &#8211; Space engineering &#8211; Materials (15 October 2014)",
+    "body": "ECSS-E-ST-32-08C Rev.1 &#8211; Space engineering &#8211; Materials (15 October 2014)",
+    "keywords": [
+      "ecss",
+      "space",
+      "engineering",
+      "materials",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-08C-REV-1 (15 october 2014); https://ecss.nl/standard/ecss-e-st-32-08c-rev-1-space-engineering-materials-15-october-2014/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-10C-REV-2-CORR-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-10C Rev.2 Corr.1 \u2013 Structural factors of safety for spaceflight hardware (1 August 2019)",
+    "body": "ECSS-E-ST-32-10C Rev.2 Corr.1 \u2013 Structural factors of safety for spaceflight hardware (1 August 2019)",
+    "keywords": [
+      "ecss",
+      "corr",
+      "structural",
+      "factors",
+      "safety",
+      "spaceflight",
+      "hardware",
+      "august"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-10C-REV-2-CORR-1 (1 august 2019); https://ecss.nl/standard/ecss-e-st-32-10c-rev-2-corr-1-structural-factors-of-safety-for-spaceflight-hardware-1-august-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32-11C-MODAL-SURVEY",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32-11C \u2013 Modal survey assessment (31 July 2008)",
+    "body": "ECSS-E-ST-32-11C \u2013 Modal survey assessment (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "modal",
+      "survey",
+      "assessment",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-32-11C-MODAL-SURVEY (31 july 2008); https://ecss.nl/standard/ecss-e-st-32-11c-modal-survey-assessment/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-32C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-32C Rev.1 \u2013 Structural general requirements (15 November 2008)",
+    "body": "ECSS-E-ST-32C Rev.1 \u2013 Structural general requirements (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "structural",
+      "general",
+      "requirements",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-32C-REV-1 (15 november 2008); https://ecss.nl/standard/ecss-e-st-32c-rev-1-structural-general-requirements/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-33-01C-REV-2-1-MARCH-2019",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-33-01C Rev.2 \u2013 Mechanisms (1 March 2019)",
+    "body": "ECSS-E-ST-33-01C Rev.2 \u2013 Mechanisms (1 March 2019)",
+    "keywords": [
+      "ecss",
+      "mechanisms",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-ST-33-01C-REV-2-1-MARCH-2019 (1 march 2019); https://ecss.nl/standard/ecss-e-st-33-01c-rev-2-1-march-2019-space-engineering-mechanisms/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-33-11C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-33-11C Rev.1 \u2013 Explosive subsystems and devices (1 June 2017)",
+    "body": "ECSS-E-ST-33-11C Rev.1 \u2013 Explosive subsystems and devices (1 June 2017)",
+    "keywords": [
+      "ecss",
+      "explosive",
+      "subsystems",
+      "devices",
+      "june"
+    ],
+    "citation": "ECSS ECSS-E-ST-33-11C-REV-1 (1 june 2017); https://ecss.nl/standard/ecss-e-st-33-11c-rev-1-explosive-subsystems-and-devices/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-34C-ENVIRONMANTAL-CONTROL-AND",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-34C \u2013 Environmental control and life support (ECLS) (31 July 2008)",
+    "body": "ECSS-E-ST-34C \u2013 Environmental control and life support (ECLS) (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "environmental",
+      "control",
+      "life",
+      "support",
+      "ecls",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-34C-ENVIRONMANTAL-CONTROL-AND (31 july 2008); https://ecss.nl/standard/ecss-e-st-34c-environmantal-control-and-life-support-ecls/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35-01C-LIQUID-AND-ELECTRIC-PROPULSION-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35-01C &#8211; Liquid and electric propulsion for spacecraft (15 November 2008)",
+    "body": "ECSS-E-ST-35-01C &#8211; Liquid and electric propulsion for spacecraft (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "liquid",
+      "electric",
+      "propulsion",
+      "spacecraft",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-35-01C-LIQUID-AND-ELECTRIC-PROPULSION-FOR (15 november 2008); https://ecss.nl/standard/ecss-e-st-35-01c-liquid-and-electric-propulsion-for-spacecraft/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35-02C-SOLID-PROPULSION-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35-02C \u2013 Solid propulsion for spacecrafts and launchers (8 October 2010)",
+    "body": "ECSS-E-ST-35-02C \u2013 Solid propulsion for spacecrafts and launchers (8 October 2010)",
+    "keywords": [
+      "ecss",
+      "solid",
+      "propulsion",
+      "spacecrafts",
+      "launchers",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-35-02C-SOLID-PROPULSION-FOR (8 october 2010); https://ecss.nl/standard/ecss-e-st-35-02c-solid-propulsion-for-spacecrafts-and-launchers-8-october-2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35-03C-LIQUID-PROPULSION",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35-03C \u2013 Liquid propulsion for launchers (13 May 2011)",
+    "body": "ECSS-E-ST-35-03C \u2013 Liquid propulsion for launchers (13 May 2011)",
+    "keywords": [
+      "ecss",
+      "liquid",
+      "propulsion",
+      "launchers"
+    ],
+    "citation": "ECSS ECSS-E-ST-35-03C-LIQUID-PROPULSION (13 may 2011); https://ecss.nl/standard/ecss-e-st-35-03c-liquid-propulsion-for-launchers-13-may-2011/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35-06C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35-06C Rev.2 \u2013 Cleanliness requirements for spacecraft propulsion hardware (7 April 2020)",
+    "body": "ECSS-E-ST-35-06C Rev.2 \u2013 Cleanliness requirements for spacecraft propulsion hardware (7 April 2020)",
+    "keywords": [
+      "ecss",
+      "cleanliness",
+      "requirements",
+      "spacecraft",
+      "propulsion",
+      "hardware",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-35-06C-REV-2 (7 april 2020); https://ecss.nl/standard/ecss-e-st-35-06c-rev-2-cleanliness-requirements-for-spacecraft-propulsion-hardware-7-april-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35-10C-COMPATIBILITY",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35-10C \u2013 Compatibility testing for liquid propulsion systems (6 March 2009)",
+    "body": "ECSS-E-ST-35-10C \u2013 Compatibility testing for liquid propulsion systems (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "compatibility",
+      "testing",
+      "liquid",
+      "propulsion",
+      "systems",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-ST-35-10C-COMPATIBILITY (6 march 2009); https://ecss.nl/standard/ecss-e-st-35-10c-compatibility-testing-for-liquid-propulsion-systems/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-35C-REV-1-PROPULSION",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-35C Rev.1 \u2013 Propulsion general requirements (6 March 2009)",
+    "body": "ECSS-E-ST-35C Rev.1 \u2013 Propulsion general requirements (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "propulsion",
+      "general",
+      "requirements",
+      "march"
+    ],
+    "citation": "ECSS ECSS-E-ST-35C-REV-1-PROPULSION (6 march 2009); https://ecss.nl/standard/ecss-e-st-35c-rev-1-propulsion-general-requirements/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-40-07C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-40-07C Rev.1 &#8211; Simulation modelling platform &#8211; Level 1 (5 August 2025)",
+    "body": "ECSS-E-ST-40-07C Rev.1 &#8211; Simulation modelling platform &#8211; Level 1 (5 August 2025)",
+    "keywords": [
+      "ecss",
+      "simulation",
+      "modelling",
+      "platform",
+      "level",
+      "august"
+    ],
+    "citation": "ECSS ECSS-E-ST-40-07C-REV-1 (5 august 2025); https://ecss.nl/standard/ecss-e-st-40-07c-rev-1-simulation-modelling-platform-level-1-5-august-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-40-08C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-40-08C &#8211; Simulation modelling platform &#8211; Level 2 (5 August 2025)",
+    "body": "ECSS-E-ST-40-08C &#8211; Simulation modelling platform &#8211; Level 2 (5 August 2025)",
+    "keywords": [
+      "ecss",
+      "simulation",
+      "modelling",
+      "platform",
+      "level",
+      "august"
+    ],
+    "citation": "ECSS ECSS-E-ST-40-08C (5 august 2025); https://ecss.nl/standard/ecss-e-st-40-08c-simulation-modelling-platform-level-2-5-august-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-40C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-40C Rev.1 &#8211; Software (30 April 2025)",
+    "body": "ECSS-E-ST-40C Rev.1 &#8211; Software (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "software",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-40C-REV-1 (30 april 2025); https://ecss.nl/standard/ecss-e-st-40c-rev-1-software-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-02C-RANGING-AND",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-02C \u2013 Ranging and Doppler tracking (31 July 2008)",
+    "body": "ECSS-E-ST-50-02C \u2013 Ranging and Doppler tracking (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "ranging",
+      "doppler",
+      "tracking",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-02C-RANGING-AND (31 july 2008); https://ecss.nl/standard/ecss-e-st-50-02c-ranging-and-doppler-tracking/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-05C-REV2-RADIO",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-05C Rev.2 \u2013 Radio frequency and modulation (4 October 2011)",
+    "body": "ECSS-E-ST-50-05C Rev.2 \u2013 Radio frequency and modulation (4 October 2011)",
+    "keywords": [
+      "ecss",
+      "radio",
+      "frequency",
+      "modulation",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-05C-REV2-RADIO (4 october 2011); https://ecss.nl/standard/ecss-e-st-50-05c-rev2-radio-frequency-and-modulation-4-october-2011/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-11C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-11C \u2013 SpaceFibre \u2013 Very high-speed serial link (15 May 2019)",
+    "body": "ECSS-E-ST-50-11C \u2013 SpaceFibre \u2013 Very high-speed serial link (15 May 2019)",
+    "keywords": [
+      "ecss",
+      "spacefibre",
+      "very",
+      "high",
+      "speed",
+      "serial",
+      "link"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-11C (15 may 2019); https://ecss.nl/standard/ecss-e-st-50-11c-spacefibre-very-high-speed-serial-link/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-12C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-12C Rev.1 \u2013 SpaceWire \u2013 Links, nodes, routers and networks (15 May 2019)",
+    "body": "ECSS-E-ST-50-12C Rev.1 \u2013 SpaceWire \u2013 Links, nodes, routers and networks (15 May 2019)",
+    "keywords": [
+      "ecss",
+      "spacewire",
+      "links",
+      "nodes",
+      "routers",
+      "networks"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-12C-REV-1 (15 may 2019); https://ecss.nl/standard/ecss-e-st-50-12c-rev-1-spacewire-links-nodes-routers-and-networks-15-may-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-13C-INTERFACE-AND-COMMUNICATION-PROTOCOL-FOR-MIL-STD-1553B-DATA-BUS-ONBOARD",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-13C \u2013 Interface and communication protocol for MIL-STD-1553B data bus onboard spacecraft (15 November 2008)",
+    "body": "ECSS-E-ST-50-13C \u2013 Interface and communication protocol for MIL-STD-1553B data bus onboard spacecraft (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "interface",
+      "communication",
+      "protocol",
+      "data",
+      "onboard",
+      "spacecraft",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-13C-INTERFACE-AND-COMMUNICATION-PROTOCOL-FOR-MIL-STD-1553B-DATA-BUS-ONBOARD (15 november 2008); https://ecss.nl/standard/ecss-e-st-50-13c-interface-and-communication-protocol-for-mil-std-1553b-data-bus-onboard-spacecraft/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-14C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-14C \u2013 Spacecraft discrete interfaces (31 July 2008)",
+    "body": "ECSS-E-ST-50-14C \u2013 Spacecraft discrete interfaces (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "spacecraft",
+      "discrete",
+      "interfaces",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-14C (31 july 2008); https://ecss.nl/standard/ecss-e-st-50-14c-spacecraft-discrete-interfaces/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-15C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-15C \u2013 CANbus extension protocol (1 May 2015)",
+    "body": "ECSS-E-ST-50-15C \u2013 CANbus extension protocol (1 May 2015)",
+    "keywords": [
+      "ecss",
+      "canbus",
+      "extension",
+      "protocol"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-15C (1 may 2015); https://ecss.nl/standard/ecss-e-st-50-15c-space-engineering-canbus-extension-protocol-1-may-2015/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-16C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-16C &#8211; Space engineering &#8211; Time-Triggered Ethernet (30 September 2021)",
+    "body": "ECSS-E-ST-50-16C &#8211; Space engineering &#8211; Time-Triggered Ethernet (30 September 2021)",
+    "keywords": [
+      "ecss",
+      "space",
+      "engineering",
+      "time",
+      "triggered",
+      "ethernet",
+      "september"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-16C (30 september 2021); https://ecss.nl/standard/ecss-e-st-50-16c-space-engineering-time-triggered-ethernet-30-september-2021/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-51C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-51C \u2013 SpaceWire protocol identification (5 February 2010)",
+    "body": "ECSS-E-ST-50-51C \u2013 SpaceWire protocol identification (5 February 2010)",
+    "keywords": [
+      "ecss",
+      "spacewire",
+      "protocol",
+      "identification",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-51C (5 february 2010); https://ecss.nl/standard/ecss-e-st-50-51c-spacewire-protocol-identification-5-february-2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-52C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-52C \u2013 SpaceWire \u2013 Remote memory access protocol (5 February 2010)",
+    "body": "ECSS-E-ST-50-52C \u2013 SpaceWire \u2013 Remote memory access protocol (5 February 2010)",
+    "keywords": [
+      "ecss",
+      "spacewire",
+      "remote",
+      "memory",
+      "access",
+      "protocol",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-52C (5 february 2010); https://ecss.nl/standard/ecss-e-st-50-52c-spacewire-remote-memory-access-protocol-5-february-2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50-53C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50-53C \u2013 SpaceWire \u2013 CCSDS packet transfer protocol (5 February 2010)",
+    "body": "ECSS-E-ST-50-53C \u2013 SpaceWire \u2013 CCSDS packet transfer protocol (5 February 2010)",
+    "keywords": [
+      "ecss",
+      "spacewire",
+      "ccsds",
+      "packet",
+      "transfer",
+      "protocol",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-50-53C (5 february 2010); https://ecss.nl/standard/ecss-e-st-50-53c-spacewire-ccsds-packet-transfer-protocol-5-february-2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-50C-REV-1-COMMUNICATIONS",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-50C Rev.2 &#8211; Communications (5 December 2024)",
+    "body": "ECSS-E-ST-50C Rev.2 &#8211; Communications (5 December 2024)",
+    "keywords": [
+      "ecss",
+      "communications",
+      "december"
+    ],
+    "citation": "ECSS ECSS-E-ST-50C-REV-1-COMMUNICATIONS (5 december 2024); https://ecss.nl/standard/ecss-e-st-50c-rev-1-communications-5-december-2024/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-60-10C-CONTROL-PERFORMANCE",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-60-10C &#8211; Control performance (15 November 2008)",
+    "body": "ECSS-E-ST-60-10C &#8211; Control performance (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "control",
+      "performance",
+      "november"
+    ],
+    "citation": "ECSS ECSS-E-ST-60-10C-CONTROL-PERFORMANCE (15 november 2008); https://ecss.nl/standard/ecss-e-st-60-10c-control-performance/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-60-20C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-60-20C Rev.2 \u2013 Star sensor terminology and performance specification (15 May 2019)",
+    "body": "ECSS-E-ST-60-20C Rev.2 \u2013 Star sensor terminology and performance specification (15 May 2019)",
+    "keywords": [
+      "ecss",
+      "star",
+      "sensor",
+      "terminology",
+      "performance",
+      "specification"
+    ],
+    "citation": "ECSS ECSS-E-ST-60-20C-REV-2 (15 may 2019); https://ecss.nl/standard/ecss-e-st-60-20c-rev-2-star-sensor-terminology-and-performance-specification-15-may-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-60-21C-GYROTERMINOLOGY-AND",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-60-21C \u2013 Gyro terminology and performance specification  (15 February 2017)",
+    "body": "ECSS-E-ST-60-21C \u2013 Gyro terminology and performance specification  (15 February 2017)",
+    "keywords": [
+      "ecss",
+      "gyro",
+      "terminology",
+      "performance",
+      "specification",
+      "february"
+    ],
+    "citation": "ECSS ECSS-E-ST-60-21C-GYROTERMINOLOGY-AND (15 february 2017); https://ecss.nl/standard/ecss-e-st-60-21c-gyroterminology-and-performance-specification-15-february-2017/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-60-30C-SATELLITE-ATTITUDE",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-60-30C: Satellite attitude and orbit control system (AOCS) requirements (30 August 2013)",
+    "body": "ECSS-E-ST-60-30C: Satellite attitude and orbit control system (AOCS) requirements (30 August 2013)",
+    "keywords": [
+      "ecss",
+      "satellite",
+      "attitude",
+      "orbit",
+      "control",
+      "system",
+      "aocs",
+      "requirements",
+      "august"
+    ],
+    "citation": "ECSS ECSS-E-ST-60-30C-SATELLITE-ATTITUDE (30 august 2013); https://ecss.nl/standard/ecss-e-st-60-30c-satellite-attitude-and-orbit-control-system-aocs-requirements/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-01C-ON-BOARD",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70-01C &#8211; Spacecraft on-board control procedures (16 April 2010)",
+    "body": "ECSS-E-ST-70-01C &#8211; Spacecraft on-board control procedures (16 April 2010)",
+    "keywords": [
+      "ecss",
+      "spacecraft",
+      "board",
+      "control",
+      "procedures",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-70-01C-ON-BOARD (16 april 2010); https://ecss.nl/standard/ecss-e-st-70-01c-on-board-control-procedures/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-11C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70-11C Rev.1 \u2013 Space segment operability (15 October 2025)",
+    "body": "ECSS-E-ST-70-11C Rev.1 \u2013 Space segment operability (15 October 2025)",
+    "keywords": [
+      "ecss",
+      "space",
+      "segment",
+      "operability",
+      "october"
+    ],
+    "citation": "ECSS ECSS-E-ST-70-11C-REV-1 (15 october 2025); https://ecss.nl/standard/ecss-e-st-70-11c-rev-1-space-segment-operability-15-october-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-31C-GROUND-SYSTEMS",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70-31C \u2013 Ground systems and operations \u2013 Monitoring and control data definition (31 July 2008)",
+    "body": "ECSS-E-ST-70-31C \u2013 Ground systems and operations \u2013 Monitoring and control data definition (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "ground",
+      "systems",
+      "operations",
+      "monitoring",
+      "control",
+      "data",
+      "definition",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-70-31C-GROUND-SYSTEMS (31 july 2008); https://ecss.nl/standard/ecss-e-st-70-31c-ground-systems-and-operations-monitoring-and-control-data-definition/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-32C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70-32C \u2013 Test and operations procedure language (31 July 2008)",
+    "body": "ECSS-E-ST-70-32C \u2013 Test and operations procedure language (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "test",
+      "operations",
+      "procedure",
+      "language",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-70-32C (31 july 2008); https://ecss.nl/standard/ecss-e-st-70-32c-test-and-operations-procedure-language/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-41C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70-41C &#8211; Telemetry and telecommand packet utilization (15 April 2016)",
+    "body": "ECSS-E-ST-70-41C &#8211; Telemetry and telecommand packet utilization (15 April 2016)",
+    "keywords": [
+      "ecss",
+      "telemetry",
+      "telecommand",
+      "packet",
+      "utilization",
+      "april"
+    ],
+    "citation": "ECSS ECSS-E-ST-70-41C (15 april 2016); https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-70C-GROUND-SYSTEMS-AND",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-70C \u2013 Ground systems and operations (31 July 2008)",
+    "body": "ECSS-E-ST-70C \u2013 Ground systems and operations (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "ground",
+      "systems",
+      "operations",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-70C-GROUND-SYSTEMS-AND (31 july 2008); https://ecss.nl/standard/ecss-e-st-70c-ground-systems-and-operations/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-E-ST-80C",
+    "kind": "flight_rule",
+    "title": "ECSS-E-ST-80C &#8211; Space engineering &#8211; Security in space systems lifecycles (1 July 2024)",
+    "body": "ECSS-E-ST-80C &#8211; Space engineering &#8211; Security in space systems lifecycles (1 July 2024)",
+    "keywords": [
+      "ecss",
+      "space",
+      "engineering",
+      "security",
+      "systems",
+      "lifecycles",
+      "july"
+    ],
+    "citation": "ECSS ECSS-E-ST-80C (1 july 2024); https://ecss.nl/standard/ecss-e-st-80c-space-engineering-security-in-space-systems-lifecycles/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-M-ST-10-01C-ORGANIZATION-AND",
+    "kind": "flight_rule",
+    "title": "ECSS-M-ST-10-01C \u2013 Organization and conduct of reviews (15 November 2008)",
+    "body": "ECSS-M-ST-10-01C \u2013 Organization and conduct of reviews (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "organization",
+      "conduct",
+      "reviews",
+      "november"
+    ],
+    "citation": "ECSS ECSS-M-ST-10-01C-ORGANIZATION-AND (15 november 2008); https://ecss.nl/standard/ecss-m-st-10-01c-organization-and-conduct-of-reviews/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-M-ST-10C-REV-1-PROJECT",
+    "kind": "flight_rule",
+    "title": "ECSS-M-ST-10C Rev.1 \u2013 Project planning and implementation (6 March 2009)",
+    "body": "ECSS-M-ST-10C Rev.1 \u2013 Project planning and implementation (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "project",
+      "planning",
+      "implementation",
+      "march"
+    ],
+    "citation": "ECSS ECSS-M-ST-10C-REV-1-PROJECT (6 march 2009); https://ecss.nl/standard/ecss-m-st-10c-rev-1-project-planning-and-implementation/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-M-ST-40C-REV-1-CONFIGURATION",
+    "kind": "flight_rule",
+    "title": "ECSS-M-ST-40C Rev.1 \u2013 Configuration and information management (6 March 2009)",
+    "body": "ECSS-M-ST-40C Rev.1 \u2013 Configuration and information management (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "configuration",
+      "information",
+      "management",
+      "march"
+    ],
+    "citation": "ECSS ECSS-M-ST-40C-REV-1-CONFIGURATION (6 march 2009); https://ecss.nl/standard/ecss-m-st-40c-rev-1-configuration-and-information-management/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-M-ST-60C-COST-AND-SCHEDULE",
+    "kind": "flight_rule",
+    "title": "ECSS-M-ST-60C \u2013 Cost and schedule management (31 July 2008)",
+    "body": "ECSS-M-ST-60C \u2013 Cost and schedule management (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "cost",
+      "schedule",
+      "management",
+      "july"
+    ],
+    "citation": "ECSS ECSS-M-ST-60C-COST-AND-SCHEDULE (31 july 2008); https://ecss.nl/standard/ecss-m-st-60c-cost-and-schedule-management/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-M-ST-80C-RISK-MANAGEMENT",
+    "kind": "flight_rule",
+    "title": "ECSS-M-ST-80C \u2013 Risk management (31 July 2008)",
+    "body": "ECSS-M-ST-80C \u2013 Risk management (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "risk",
+      "management",
+      "july"
+    ],
+    "citation": "ECSS ECSS-M-ST-80C-RISK-MANAGEMENT (31 july 2008); https://ecss.nl/standard/ecss-m-st-80c-risk-management/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-10-04C-CRITIAL-ITEM",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-10-04C \u2013 Critial-item control (31 July 2008)",
+    "body": "ECSS-Q-ST-10-04C \u2013 Critial-item control (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "critial",
+      "item",
+      "control",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-10-04C-CRITIAL-ITEM (31 july 2008); https://ecss.nl/standard/ecss-q-st-10-04c-critial-item-control/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-10C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-10C Rev.1 \u2013 Product assurance management (15 March 2016)",
+    "body": "ECSS-Q-ST-10C Rev.1 \u2013 Product assurance management (15 March 2016)",
+    "keywords": [
+      "ecss",
+      "product",
+      "assurance",
+      "management",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-10C-REV-1 (15 march 2016); https://ecss.nl/standard/ecss-q-st-10c-rev-1-product-assurance-management-15-march-2016/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-20-07C-QUALITY-AND-SAFETY-ASSURANCE-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-20-07C \u2013 Quality and safety assurance for space test centres (1 October 2014)",
+    "body": "ECSS-Q-ST-20-07C \u2013 Quality and safety assurance for space test centres (1 October 2014)",
+    "keywords": [
+      "ecss",
+      "quality",
+      "safety",
+      "assurance",
+      "space",
+      "test",
+      "centres",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-20-07C-QUALITY-AND-SAFETY-ASSURANCE-FOR (1 october 2014); https://ecss.nl/standard/ecss-q-st-20-07c-quality-and-safety-assurance-for-space-test-centres-1-october-2014/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-20-08C-STORAGE-HANDLING-AND-TRANSPORTATION-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-20-08C \u2013 Storage, handling and transportation of spacecraft hardware (1 October 2014)",
+    "body": "ECSS-Q-ST-20-08C \u2013 Storage, handling and transportation of spacecraft hardware (1 October 2014)",
+    "keywords": [
+      "ecss",
+      "storage",
+      "handling",
+      "transportation",
+      "spacecraft",
+      "hardware",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-20-08C-STORAGE-HANDLING-AND-TRANSPORTATION-OF (1 october 2014); https://ecss.nl/standard/ecss-q-st-20-08c-storage-handling-and-transportation-of-spacecraft-hardware-1-october-2014/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-20-10C-OFF-THE-SHELF-ITEMS-UTILIZATION-IN",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-20-10C \u2013 Off-the-shelf items utilization in space systems (8 October2010)",
+    "body": "ECSS-Q-ST-20-10C \u2013 Off-the-shelf items utilization in space systems (8 October2010)",
+    "keywords": [
+      "ecss",
+      "shelf",
+      "items",
+      "utilization",
+      "space",
+      "systems",
+      "october2010"
+    ],
+    "citation": "ECSS ECSS-Q-ST-20-10C-OFF-THE-SHELF-ITEMS-UTILIZATION-IN (undated); https://ecss.nl/standard/ecss-q-st-20-10c-off-the-shelf-items-utilization-in-space-systems-ecss-8-october2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-20-30C",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-20-30C &#8211; Manufacturing and control of electrical harness (20 March 2025)",
+    "body": "ECSS-Q-ST-20-30C &#8211; Manufacturing and control of electrical harness (20 March 2025)",
+    "keywords": [
+      "ecss",
+      "manufacturing",
+      "control",
+      "electrical",
+      "harness",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-20-30C (20 march 2025); https://ecss.nl/standard/ecss-q-st-20-30c/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-20C-REV-2-QUALITY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-20C Rev.2 \u2013 Quality assurance (1 February 2018)",
+    "body": "ECSS-Q-ST-20C Rev.2 \u2013 Quality assurance (1 February 2018)",
+    "keywords": [
+      "ecss",
+      "quality",
+      "assurance",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-20C-REV-2-QUALITY (1 february 2018); https://ecss.nl/standard/ecss-q-st-20c-rev-2-quality-assurance-1-february-2018/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-30-02C-FAILURE-MODES",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-30-02C \u2013 Failure modes, effects (and criticality) analysis (FMEA/FMECA) \u2013 (6 March 2009)",
+    "body": "ECSS-Q-ST-30-02C \u2013 Failure modes, effects (and criticality) analysis (FMEA/FMECA) \u2013 (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "failure",
+      "modes",
+      "effects",
+      "criticality",
+      "analysis",
+      "fmea",
+      "fmeca",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-30-02C-FAILURE-MODES (6 march 2009); https://ecss.nl/standard/ecss-q-st-30-02c-failure-modes-effects-and-criticality-analysis-fmeafmeca/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-30-09C-AVAILABILITY-ANALYSIS",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-30-09C \u2013 Availability analysis (31 July 2008)",
+    "body": "ECSS-Q-ST-30-09C \u2013 Availability analysis (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "availability",
+      "analysis",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-30-09C-AVAILABILITY-ANALYSIS (31 july 2008); https://ecss.nl/standard/ecss-q-st-30-09c-availability-analysis/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-30-11C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-30-11C Rev.2: Derating &#8211; EEE components (23 June 2021)",
+    "body": "ECSS-Q-ST-30-11C Rev.2: Derating &#8211; EEE components (23 June 2021)",
+    "keywords": [
+      "ecss",
+      "derating",
+      "components",
+      "june"
+    ],
+    "citation": "ECSS ECSS-Q-ST-30-11C-REV-2 (23 june 2021); https://ecss.nl/standard/ecss-q-st-30-11c-rev-2-derating-eee-components-23-june-2021/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-30C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-30C Rev.1 \u2013 Dependability (15 February 2017)",
+    "body": "ECSS-Q-ST-30C Rev.1 \u2013 Dependability (15 February 2017)",
+    "keywords": [
+      "ecss",
+      "dependability",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-30C-REV-1 (15 february 2017); https://ecss.nl/standard/ecss-q-st-30c-rev-1-space-product-assurance-dependability-15-february-2017/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-40-02C-HAZARD-ANALYSIS",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-40-02C \u2013 Hazard analysis (15 November 2008)",
+    "body": "ECSS-Q-ST-40-02C \u2013 Hazard analysis (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "hazard",
+      "analysis",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-40-02C-HAZARD-ANALYSIS (15 november 2008); https://ecss.nl/standard/ecss-q-st-40-02c-hazard-analysis/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-40-12C-FAULT-TREE-ANALYSIS",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-40-12C \u2013 Fault tree analysis \u2013 Adoption notice ECSS/IEC 61025 (31 July 2008)",
+    "body": "ECSS-Q-ST-40-12C \u2013 Fault tree analysis \u2013 Adoption notice ECSS/IEC 61025 (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "fault",
+      "tree",
+      "analysis",
+      "adoption",
+      "notice",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-40-12C-FAULT-TREE-ANALYSIS (31 july 2008); https://ecss.nl/standard/ecss-q-st-40-12c-fault-tree-analysis-adoption-notice-ecssiec-61025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-40C-REV-1-SAFETY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-40C Rev.1 \u2013 Safety (15 February 2017)",
+    "body": "ECSS-Q-ST-40C Rev.1 \u2013 Safety (15 February 2017)",
+    "keywords": [
+      "ecss",
+      "safety",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-40C-REV-1-SAFETY (15 february 2017); https://ecss.nl/standard/ecss-q-st-40c-rev-1-safety-15-february-2017/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-03C-ASIC-FPGA-AND-IP-CORE",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-03C &#8211; ASIC, FPGA and IP Core product assurance (11 October 2023)",
+    "body": "ECSS-Q-ST-60-03C &#8211; ASIC, FPGA and IP Core product assurance (11 October 2023)",
+    "keywords": [
+      "ecss",
+      "asic",
+      "fpga",
+      "core",
+      "product",
+      "assurance",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-03C-ASIC-FPGA-AND-IP-CORE (11 october 2023); https://ecss.nl/standard/ecss-q-st-60-03c-asic-fpga-and-ip-core-product-assurance-11-october-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-05C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-05C Rev.1 \u2013 Generic procurement requirements for hybrids (6 March 2009)",
+    "body": "ECSS-Q-ST-60-05C Rev.1 \u2013 Generic procurement requirements for hybrids (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "generic",
+      "procurement",
+      "requirements",
+      "hybrids",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-05C-REV-1 (6 march 2009); https://ecss.nl/standard/ecss-q-st-60-05c-rev-1-generic-procurement-requirements-for-hybrids/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-12C",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-12C \u2013 Design, selection, procurement and use of die form monolithic microwave integrated circuits (MMICs) \u2013 (31 July 2008)",
+    "body": "ECSS-Q-ST-60-12C \u2013 Design, selection, procurement and use of die form monolithic microwave integrated circuits (MMICs) \u2013 (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "design",
+      "selection",
+      "procurement",
+      "form",
+      "monolithic",
+      "microwave",
+      "integrated",
+      "circuits",
+      "mmics"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-12C (31 july 2008); https://ecss.nl/standard/ecss-q-st-60-12c-design-selection-procurement-and-use-of-die-form-monolithic-microwave-integrated-circuits-mmics/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-13C-REV-2-COMMERCIAL",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-13C Rev.2 \u2013 Commercial electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "body": "ECSS-Q-ST-60-13C Rev.2 \u2013 Commercial electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "commercial",
+      "electrical",
+      "electronic",
+      "electromechanical",
+      "components",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-13C-REV-2-COMMERCIAL (30 april 2025); https://ecss.nl/standard/ecss-q-st-60-13c-rev-2-commercial-electrical-electronic-and-electromechanical-eee-components-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-14C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-14C Rev.1 Corrigendum 1 \u2013 Relifing procedure \u2013 EEE components (2 March 2020)",
+    "body": "ECSS-Q-ST-60-14C Rev.1 Corrigendum 1 \u2013 Relifing procedure \u2013 EEE components (2 March 2020)",
+    "keywords": [
+      "ecss",
+      "corrigendum",
+      "relifing",
+      "procedure",
+      "components",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-14C-REV-1 (2 march 2020); https://ecss.nl/standard/ecss-q-st-60-14c-rev-1-corrigendum-1-relifing-procedure-eee-components-2-march-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60-15C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60-15C Rev.1 &#8211; Radiation hardness assurance (20 March 2025)",
+    "body": "ECSS-Q-ST-60-15C Rev.1 &#8211; Radiation hardness assurance (20 March 2025)",
+    "keywords": [
+      "ecss",
+      "radiation",
+      "hardness",
+      "assurance",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60-15C-REV-1 (20 march 2025); https://ecss.nl/standard/ecss-q-st-60-15c-rev-1-radiation-hardness-assurance-20-march-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-60C-REV-4",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-60C Rev.4 \u2013 Electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "body": "ECSS-Q-ST-60C Rev.4 \u2013 Electrical, electronic and electromechanical (EEE) components (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "electrical",
+      "electronic",
+      "electromechanical",
+      "components",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-60C-REV-4 (30 april 2025); https://ecss.nl/standard/ecss-q-st-60c-rev-4-electrical-electronic-and-electromechanical-eee-components-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-01C",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-01C Rev.1 \u2013 Cleanliness and contamination control (15 October 2025)",
+    "body": "ECSS-Q-ST-70-01C Rev.1 \u2013 Cleanliness and contamination control (15 October 2025)",
+    "keywords": [
+      "ecss",
+      "cleanliness",
+      "contamination",
+      "control",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-01C (15 october 2025); https://ecss.nl/standard/ecss-q-st-70-01c-cleanliness-and-contamination-control-15-october-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-02C-THERMAL-VACUUM-OUTGASSING",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-02C \u2013 Thermal vacuum outgassing test for the screening of space materials (15 November 2008)",
+    "body": "ECSS-Q-ST-70-02C \u2013 Thermal vacuum outgassing test for the screening of space materials (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "thermal",
+      "vacuum",
+      "outgassing",
+      "test",
+      "screening",
+      "space",
+      "materials",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-02C-THERMAL-VACUUM-OUTGASSING (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-02c-thermal-vacuum-outgassing-test-for-the-screening-of-space-materials/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-03C-BLACK-ANODIZING",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-03C \u2013 Black-anodizing of metals with inorganic dyes (31 July 2008)",
+    "body": "ECSS-Q-ST-70-03C \u2013 Black-anodizing of metals with inorganic dyes (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "black",
+      "anodizing",
+      "metals",
+      "with",
+      "inorganic",
+      "dyes",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-03C-BLACK-ANODIZING (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-03c-black-anodizing-of-metals-with-inorganic-dyes/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-04C-THERMAL",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-04C \u2013 Thermal testing for the evaluation of space materials, processes, mechanical parts and assemblies (15 November 2008)",
+    "body": "ECSS-Q-ST-70-04C \u2013 Thermal testing for the evaluation of space materials, processes, mechanical parts and assemblies (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "thermal",
+      "testing",
+      "evaluation",
+      "space",
+      "materials",
+      "processes",
+      "mechanical",
+      "parts",
+      "assemblies"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-04C-THERMAL (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-04c-thermal-testing-for-the-evaluation-of-space-materials-processes-mechanical-parts-and-assemblies/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-05C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-05C Rev.2 &#8220;Detection of organic contamination of surfaces by infrared spectroscopy&#8221; (1 July 2024)",
+    "body": "ECSS-Q-ST-70-05C Rev.2 &#8220;Detection of organic contamination of surfaces by infrared spectroscopy&#8221; (1 July 2024)",
+    "keywords": [
+      "ecss",
+      "detection",
+      "organic",
+      "contamination",
+      "surfaces",
+      "infrared",
+      "spectroscopy",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-05C-REV-2 (1 july 2024); https://ecss.nl/standard/ecss-q-st-70-05c-rev-2-detection-of-organic-contamination-of-surfaces-by-infrared-spectroscopy-1-july-2024/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-06C-PARTICLE-AND-UV-RADIATION",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-06C \u2013 Particle and UV radiation testing for space materials (31 July 2008)",
+    "body": "ECSS-Q-ST-70-06C \u2013 Particle and UV radiation testing for space materials (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "particle",
+      "radiation",
+      "testing",
+      "space",
+      "materials",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-06C-PARTICLE-AND-UV-RADIATION (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-06c-particle-and-uv-radiation-testing-for-space-materials/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-09C-MEASUREMENTS-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-09C \u2013 Measurements of thermo-optical properties of thermal control materials (31 July 2008)",
+    "body": "ECSS-Q-ST-70-09C \u2013 Measurements of thermo-optical properties of thermal control materials (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "measurements",
+      "thermo",
+      "optical",
+      "properties",
+      "thermal",
+      "control",
+      "materials",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-09C-MEASUREMENTS-OF (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-09c-measurements-of-thermo-optical-properties-of-thermal-control-materials/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-12C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-12C Rev.1: Design rules for printed circuit boards (30 April 2025)",
+    "body": "ECSS-Q-ST-70-12C Rev.1: Design rules for printed circuit boards (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "design",
+      "rules",
+      "printed",
+      "circuit",
+      "boards",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-12C-REV-1 (30 april 2025); https://ecss.nl/standard/ecss-q-st-70-12c-rev-1-design-rules-for-printed-circuit-boards-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-13C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-13C Rev.1: Measurement of the peel and pull-off strength of coatings and finishes using pressure-sensitive tapes  (5 Oct 2011)",
+    "body": "ECSS-Q-ST-70-13C Rev.1: Measurement of the peel and pull-off strength of coatings and finishes using pressure-sensitive tapes  (5 Oct 2011)",
+    "keywords": [
+      "ecss",
+      "measurement",
+      "peel",
+      "pull",
+      "strength",
+      "coatings",
+      "finishes",
+      "using",
+      "pressure",
+      "sensitive"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-13C-REV-1 (undated); https://ecss.nl/standard/ecss-q-st-70-13c-rev-1-measurement-of-the-peel-and-pull-off-strength-of-coatings-and-finishes-using-pressure-sensitive-tapes-5-oct-2011/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-14C-CORROSION-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-14C \u2013 Corrosion (1 November 2016)",
+    "body": "ECSS-Q-ST-70-14C \u2013 Corrosion (1 November 2016)",
+    "keywords": [
+      "ecss",
+      "corrosion",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-14C-CORROSION-1 (1 november 2016); https://ecss.nl/standard/ecss-q-st-70-14c-corrosion-1-november-2016/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-15C-NON-DESTRUCTIVE",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-15C &#8211; Non-destructive testing (1 May 2021)",
+    "body": "ECSS-Q-ST-70-15C &#8211; Non-destructive testing (1 May 2021)",
+    "keywords": [
+      "ecss",
+      "destructive",
+      "testing"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-15C-NON-DESTRUCTIVE (1 may 2021); https://ecss.nl/standard/ecss-q-st-70-15c-non-destructive-testing/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-16C-ADHESIVE-BONDING-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-16C: Adhesive bonding for spacecraft and launcher applications (1 December 2020)",
+    "body": "ECSS-Q-ST-70-16C: Adhesive bonding for spacecraft and launcher applications (1 December 2020)",
+    "keywords": [
+      "ecss",
+      "adhesive",
+      "bonding",
+      "spacecraft",
+      "launcher",
+      "applications",
+      "december"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-16C-ADHESIVE-BONDING-FOR (1 december 2020); https://ecss.nl/standard/ecss-q-st-70-16c-adhesive-bonding-for-spacecraft-and-launcher-applications-1-december-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-17C-DURABILITY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-17C \u2013 Durability testing of coatings (1 February 2018)",
+    "body": "ECSS-Q-ST-70-17C \u2013 Durability testing of coatings (1 February 2018)",
+    "keywords": [
+      "ecss",
+      "durability",
+      "testing",
+      "coatings",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-17C-DURABILITY (1 february 2018); https://ecss.nl/standard/ecss-q-st-70-17c-durability-testing-of-coatings/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-18C-PREPARATION-ASSEMBLY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-18C \u2013 Preparation, assembly and mounting of RF coaxial cables (15 November 2008)",
+    "body": "ECSS-Q-ST-70-18C \u2013 Preparation, assembly and mounting of RF coaxial cables (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "preparation",
+      "assembly",
+      "mounting",
+      "coaxial",
+      "cables",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-18C-PREPARATION-ASSEMBLY (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-18c-preparation-assembly-and-mounting-of-rf-coaxial-cables/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-20C-DETERMINATION-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-20C \u2013 Determination of the susceptibility of silver-plated copper wire and cable to &#8220;red-plague&#8221; corrosion (31 July 2008)",
+    "body": "ECSS-Q-ST-70-20C \u2013 Determination of the susceptibility of silver-plated copper wire and cable to &#8220;red-plague&#8221; corrosion (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "determination",
+      "susceptibility",
+      "silver",
+      "plated",
+      "copper",
+      "wire",
+      "cable",
+      "plague",
+      "corrosion"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-20C-DETERMINATION-OF (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-20c-determination-of-the-susceptibility-of-silver-plated-copper-wire-and-cable-to-red-plague-corrosion/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-21C-FLAMMABILITY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-21C \u2013 Flammability testing for the screening of space materials (5 February 2010)",
+    "body": "ECSS-Q-ST-70-21C \u2013 Flammability testing for the screening of space materials (5 February 2010)",
+    "keywords": [
+      "ecss",
+      "flammability",
+      "testing",
+      "screening",
+      "space",
+      "materials",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-21C-FLAMMABILITY (5 february 2010); https://ecss.nl/standard/ecss-q-st-70-21c-flammability-testing-for-the-screening-of-space-materials-5-february-2010/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-22C-CONTROL-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-22C \u2013 Control of limited shelf-life materials (31 July 2008)",
+    "body": "ECSS-Q-ST-70-22C \u2013 Control of limited shelf-life materials (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "control",
+      "limited",
+      "shelf",
+      "life",
+      "materials",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-22C-CONTROL-OF (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-22c-control-of-limited-shelf-life-materials/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-26C-CRIMPING-OF-HIGH",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-26C Rev.1 Corr.1 \u2013 Crimping of high-reliability electrical connections (1 June 2017)",
+    "body": "ECSS-Q-ST-70-26C Rev.1 Corr.1 \u2013 Crimping of high-reliability electrical connections (1 June 2017)",
+    "keywords": [
+      "ecss",
+      "corr",
+      "crimping",
+      "high",
+      "reliability",
+      "electrical",
+      "connections",
+      "june"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-26C-CRIMPING-OF-HIGH (1 june 2017); https://ecss.nl/standard/ecss-q-st-70-26c-crimping-of-high-reliability-electrical-connections-15-march-2017/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-28C-REPAIR-AND-MODIFICATION-OF-PRINTED-CIRCUIT-BOARD-ASSEMBLIES-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-28C \u2013 Repair and modification of printed circuit board assemblies for space use (31 July 2008)",
+    "body": "ECSS-Q-ST-70-28C \u2013 Repair and modification of printed circuit board assemblies for space use (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "repair",
+      "modification",
+      "printed",
+      "circuit",
+      "board",
+      "assemblies",
+      "space",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-28C-REPAIR-AND-MODIFICATION-OF-PRINTED-CIRCUIT-BOARD-ASSEMBLIES-FOR (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-28c-repair-and-modification-of-printed-circuit-board-assemblies-for-space-use/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-29C-DETERMINATION-OF-OFFGASSING",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-29C \u2013 Determination of offgassing products from materials and assembled articles to be used in a manned space vehicle crew compartment (15 November 2008)",
+    "body": "ECSS-Q-ST-70-29C \u2013 Determination of offgassing products from materials and assembled articles to be used in a manned space vehicle crew compartment (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "determination",
+      "offgassing",
+      "products",
+      "from",
+      "materials",
+      "assembled",
+      "articles",
+      "used",
+      "manned"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-29C-DETERMINATION-OF-OFFGASSING (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-29c-determination-of-offgassing-products-from-materials-and-assembled-articles-to-be-used-in-a-manned-space-vehicle-crew-compartment/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-30C-WIRE-WRAPPING-OF-HIGH",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-30C \u2013 Wire wrapping of high-reliability electrical connections (31 July 2008)",
+    "body": "ECSS-Q-ST-70-30C \u2013 Wire wrapping of high-reliability electrical connections (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "wire",
+      "wrapping",
+      "high",
+      "reliability",
+      "electrical",
+      "connections",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-30C-WIRE-WRAPPING-OF-HIGH (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-30c-wire-wrapping-of-high-reliability-electrical-connections/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-31C-REV-1-APPLICATION-OF-PAINTS-ON",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-31C Rev.1 \u2013 Application of paints on space hardware (15 October 2019)",
+    "body": "ECSS-Q-ST-70-31C Rev.1 \u2013 Application of paints on space hardware (15 October 2019)",
+    "keywords": [
+      "ecss",
+      "application",
+      "paints",
+      "space",
+      "hardware",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-31C-REV-1-APPLICATION-OF-PAINTS-ON (15 october 2019); https://ecss.nl/standard/ecss-q-st-70-31c-rev-1-application-of-paints-on-space-hardware-15-october-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-36C-MATERIAL-SELECTION",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-36C \u2013 Material selection for controlling stress-corrosion cracking (6 March 2009)",
+    "body": "ECSS-Q-ST-70-36C \u2013 Material selection for controlling stress-corrosion cracking (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "material",
+      "selection",
+      "controlling",
+      "stress",
+      "corrosion",
+      "cracking",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-36C-MATERIAL-SELECTION (6 march 2009); https://ecss.nl/standard/ecss-q-st-70-36c-material-selection-for-controlling-stress-corrosion-cracking/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-37C-DETERMINATION-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-37C \u2013 Determination of the susceptibility of metals to stress-corrosion cracking (15 November 2008)",
+    "body": "ECSS-Q-ST-70-37C \u2013 Determination of the susceptibility of metals to stress-corrosion cracking (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "determination",
+      "susceptibility",
+      "metals",
+      "stress",
+      "corrosion",
+      "cracking",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-37C-DETERMINATION-OF (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-37c-determination-of-the-susceptibility-of-metals-to-stress-corrosion-cracking/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-39C-WELDING-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-39C \u2013 Welding of metallic materials for flight hardware (1 May 2015)",
+    "body": "ECSS-Q-ST-70-39C \u2013 Welding of metallic materials for flight hardware (1 May 2015)",
+    "keywords": [
+      "ecss",
+      "welding",
+      "metallic",
+      "materials",
+      "flight",
+      "hardware"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-39C-WELDING-OF (1 may 2015); https://ecss.nl/standard/ecss-q-st-70-39c-welding-of-metallic-materials-for-flight-hardware-1-may-2015/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-40C",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-40C &#8211; Processing and quality assurance requirements for brazing of flight hardware (8 April 2022)",
+    "body": "ECSS-Q-ST-70-40C &#8211; Processing and quality assurance requirements for brazing of flight hardware (8 April 2022)",
+    "keywords": [
+      "ecss",
+      "processing",
+      "quality",
+      "assurance",
+      "requirements",
+      "brazing",
+      "flight",
+      "hardware",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-40C (8 april 2022); https://ecss.nl/standard/ecss-q-st-70-40c/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-45C-MECHANICAL",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-45C \u2013 Mechanical testing of metallic materials (31 July 2008)",
+    "body": "ECSS-Q-ST-70-45C \u2013 Mechanical testing of metallic materials (31 July 2008)",
+    "keywords": [
+      "ecss",
+      "mechanical",
+      "testing",
+      "metallic",
+      "materials",
+      "july"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-45C-MECHANICAL (31 july 2008); https://ecss.nl/standard/ecss-q-st-70-45c-mechanical-testing-of-metallic-materials/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-46C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-46C Rev.1 \u2013 Requirements for manufacturing and procurement of threaded fasteners (6 March 2009)",
+    "body": "ECSS-Q-ST-70-46C Rev.1 \u2013 Requirements for manufacturing and procurement of threaded fasteners (6 March 2009)",
+    "keywords": [
+      "ecss",
+      "requirements",
+      "manufacturing",
+      "procurement",
+      "threaded",
+      "fasteners",
+      "march"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-46C-REV-1 (6 march 2009); https://ecss.nl/standard/ecss-q-st-70-46c-rev-1-requirements-for-manufacturing-and-procurement-of-threaded-fasteners/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-50C-PARTICLES-CONTAMINATION-MONITORING-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-50C \u2013 Particles contamination monitoring for spacecraft systems and cleanrooms (4 October 2011)",
+    "body": "ECSS-Q-ST-70-50C \u2013 Particles contamination monitoring for spacecraft systems and cleanrooms (4 October 2011)",
+    "keywords": [
+      "ecss",
+      "particles",
+      "contamination",
+      "monitoring",
+      "spacecraft",
+      "systems",
+      "cleanrooms",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-50C-PARTICLES-CONTAMINATION-MONITORING-FOR (4 october 2011); https://ecss.nl/standard/ecss-q-st-70-50c-particles-contamination-monitoring-for-spacecraft-systems-and-cleanrooms-4-october-2011/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-53C-MATERIALS-AND-HARDWARE-COMPATIBILITY",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-53C \u2013 Materials and hardware compatibility tests for sterilization processes (15 November 2008)",
+    "body": "ECSS-Q-ST-70-53C \u2013 Materials and hardware compatibility tests for sterilization processes (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "materials",
+      "hardware",
+      "compatibility",
+      "tests",
+      "sterilization",
+      "processes",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-53C-MATERIALS-AND-HARDWARE-COMPATIBILITY (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-53c-materials-and-hardware-compatibility-tests-for-sterilization-processes/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-54C-ULTRACLEANING-OF",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-54C \u2013 Ultracleaning of flight hardware (15 February 2017)",
+    "body": "ECSS-Q-ST-70-54C \u2013 Ultracleaning of flight hardware (15 February 2017)",
+    "keywords": [
+      "ecss",
+      "ultracleaning",
+      "flight",
+      "hardware",
+      "february"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-54C-ULTRACLEANING-OF (15 february 2017); https://ecss.nl/standard/ecss-q-st-70-54c-ultracleaning-of-flight-hardware/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-55C-MICROBIAL-EXAMINATION",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-55C \u2013 Microbial examination of flight hardware and cleanrooms (15 November 2008)",
+    "body": "ECSS-Q-ST-70-55C \u2013 Microbial examination of flight hardware and cleanrooms (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "microbial",
+      "examination",
+      "flight",
+      "hardware",
+      "cleanrooms",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-55C-MICROBIAL-EXAMINATION (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-55c-microbial-examination-of-flight-hardware-and-cleanrooms/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-56C-VAPOUR-PHASE",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-56C \u2013 Vapour phase bioburden reduction for flight hardware (30 August 2013)",
+    "body": "ECSS-Q-ST-70-56C \u2013 Vapour phase bioburden reduction for flight hardware (30 August 2013)",
+    "keywords": [
+      "ecss",
+      "vapour",
+      "phase",
+      "bioburden",
+      "reduction",
+      "flight",
+      "hardware",
+      "august"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-56C-VAPOUR-PHASE (30 august 2013); https://ecss.nl/standard/ecss-q-st-70-56c-vapour-phase-bioburden-reduction-for-flight-hardware-30-august-2013/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-57C-DRY-HEAT",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-57C: Dry heat bioburden reduction for flight hardware (30 August 2013)",
+    "body": "ECSS-Q-ST-70-57C: Dry heat bioburden reduction for flight hardware (30 August 2013)",
+    "keywords": [
+      "ecss",
+      "heat",
+      "bioburden",
+      "reduction",
+      "flight",
+      "hardware",
+      "august"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-57C-DRY-HEAT (30 august 2013); https://ecss.nl/standard/ecss-q-st-70-57c-dry-heat-bioburden-reduction-for-flight-hardware-30-august-2013/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-58C-BIOBURDEN-CONTROL",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-58C \u2013 Bioburden control of cleanrooms (15 November 2008)",
+    "body": "ECSS-Q-ST-70-58C \u2013 Bioburden control of cleanrooms (15 November 2008)",
+    "keywords": [
+      "ecss",
+      "bioburden",
+      "control",
+      "cleanrooms",
+      "november"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-58C-BIOBURDEN-CONTROL (15 november 2008); https://ecss.nl/standard/ecss-q-st-70-58c-bioburden-control-of-cleanrooms/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-60C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-60C Rev.1 \u2013 Qualification and procurement of printed circuit boards (30 April 2025)",
+    "body": "ECSS-Q-ST-70-60C Rev.1 \u2013 Qualification and procurement of printed circuit boards (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "qualification",
+      "procurement",
+      "printed",
+      "circuit",
+      "boards",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-60C-REV-1 (30 april 2025); https://ecss.nl/standard/ecss-q-st-70-60c-rev-1-qualification-and-procurement-of-printed-circuit-boards-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-61C-HIGH",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-61C &#8211; High reliability assembly for surface mount and through hole connections (8 April 2022)",
+    "body": "ECSS-Q-ST-70-61C &#8211; High reliability assembly for surface mount and through hole connections (8 April 2022)",
+    "keywords": [
+      "ecss",
+      "high",
+      "reliability",
+      "assembly",
+      "surface",
+      "mount",
+      "through",
+      "hole",
+      "connections",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-61C-HIGH (8 april 2022); https://ecss.nl/standard/ecss-q-st-70-61c-high-reliability-assembly-for-surface-mount-and-through-hole-connections-8-april-2022/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-71C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-71C Rev.1 \u2013 Materials, processes and their data selection (15 October 2019)",
+    "body": "ECSS-Q-ST-70-71C Rev.1 \u2013 Materials, processes and their data selection (15 October 2019)",
+    "keywords": [
+      "ecss",
+      "materials",
+      "processes",
+      "their",
+      "data",
+      "selection",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-71C-REV-1 (15 october 2019); https://ecss.nl/standard/ecss-q-st-70-71c-rev-1-materials-processes-and-their-data-selection-15-october-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70-80C-PROCESSING-AND-QUALITY-ASSURANCE-REQUIREMENTS-FOR-METALLIC-POWDER-BED-FUSION-TECHNOLOGIES-FOR",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70-80C &#8211; Processing and quality assurance requirements for metallic powder bed fusion technologies for space applications (30 July 2021)",
+    "body": "ECSS-Q-ST-70-80C &#8211; Processing and quality assurance requirements for metallic powder bed fusion technologies for space applications (30 July 2021)",
+    "keywords": [
+      "ecss",
+      "processing",
+      "quality",
+      "assurance",
+      "requirements",
+      "metallic",
+      "powder",
+      "fusion",
+      "technologies",
+      "space"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70-80C-PROCESSING-AND-QUALITY-ASSURANCE-REQUIREMENTS-FOR-METALLIC-POWDER-BED-FUSION-TECHNOLOGIES-FOR (30 july 2021); https://ecss.nl/standard/ecss-q-st-70-80c-processing-and-quality-assurance-requirements-for-metallic-powder-bed-fusion-technologies-for-space-applications-30-july-2021/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-70C-REV-2-MATERIALS",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-70C Rev.2 \u2013 Materials, mechanical parts and processes (15 October 2019)",
+    "body": "ECSS-Q-ST-70C Rev.2 \u2013 Materials, mechanical parts and processes (15 October 2019)",
+    "keywords": [
+      "ecss",
+      "materials",
+      "mechanical",
+      "parts",
+      "processes",
+      "october"
+    ],
+    "citation": "ECSS ECSS-Q-ST-70C-REV-2-MATERIALS (15 october 2019); https://ecss.nl/standard/ecss-q-st-70c-rev-2-materials-mechanical-parts-and-processes-15-october-2019/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-Q-ST-80C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-Q-ST-80C Rev.2 &#8211; Software product assurance (30 April 2025)",
+    "body": "ECSS-Q-ST-80C Rev.2 &#8211; Software product assurance (30 April 2025)",
+    "keywords": [
+      "ecss",
+      "software",
+      "product",
+      "assurance",
+      "april"
+    ],
+    "citation": "ECSS ECSS-Q-ST-80C-REV-2 (30 april 2025); https://ecss.nl/standard/ecss-q-st-80c-rev-2-software-product-assurance-30-april-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-S-ST-00-01C-REV-1",
+    "kind": "flight_rule",
+    "title": "ECSS-S-ST-00-01C Rev.1 &#8211; Glossary of terms (11 October 2023)",
+    "body": "ECSS-S-ST-00-01C Rev.1 &#8211; Glossary of terms (11 October 2023)",
+    "keywords": [
+      "ecss",
+      "glossary",
+      "terms",
+      "october"
+    ],
+    "citation": "ECSS ECSS-S-ST-00-01C-REV-1 (11 october 2023); https://ecss.nl/standard/ecss-s-st-00-01c-rev-1-glossary-of-terms-11-october-2023/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-S-ST-00-02C-DRAFT-1",
+    "kind": "flight_rule",
+    "title": "ECSS-S-ST-00-02C Draft 1 &#8220;Tailoring&#8221; (15 June 2020)",
+    "body": "ECSS-S-ST-00-02C Draft 1 &#8220;Tailoring&#8221; (15 June 2020)",
+    "keywords": [
+      "ecss",
+      "draft",
+      "tailoring",
+      "june"
+    ],
+    "citation": "ECSS ECSS-S-ST-00-02C-DRAFT-1 (15 june 2020); https://ecss.nl/standard/ecss-s-st-00-02c-draft-1-tailoring-15-june-2020/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-S-ST-00C-REV-2-DESCRIPTION",
+    "kind": "flight_rule",
+    "title": "ECSS-S-ST-00C Rev.2 &#8220;Description, implementation and general requirements&#8221; (21 November 2025)",
+    "body": "ECSS-S-ST-00C Rev.2 &#8220;Description, implementation and general requirements&#8221; (21 November 2025)",
+    "keywords": [
+      "ecss",
+      "description",
+      "implementation",
+      "general",
+      "requirements",
+      "november"
+    ],
+    "citation": "ECSS ECSS-S-ST-00C-REV-2-DESCRIPTION (21 november 2025); https://ecss.nl/standard/ecss-s-st-00c-rev-2-description-implementation-and-general-requirements-21-november-2025/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-U-AS-10C-REV-2",
+    "kind": "flight_rule",
+    "title": "ECSS-U-AS-10C Rev.2  \u2013 Adoption Notice of ISO 24113: Space systems \u2013 Space debris mitigation requirements (9 February 2024)",
+    "body": "ECSS-U-AS-10C Rev.2  \u2013 Adoption Notice of ISO 24113: Space systems \u2013 Space debris mitigation requirements (9 February 2024)",
+    "keywords": [
+      "ecss",
+      "adoption",
+      "notice",
+      "space",
+      "systems",
+      "debris",
+      "mitigation",
+      "requirements",
+      "february"
+    ],
+    "citation": "ECSS ECSS-U-AS-10C-REV-2 (9 february 2024); https://ecss.nl/standard/ecss-u-as-10c-rev-2-adoption-notice-of-iso-24113-space-systems-space-debris-mitigation-requirements-9-february-2024/",
+    "parameters": []
+  },
+  {
+    "rule_id": "ECSS-U-ST-20C",
+    "kind": "flight_rule",
+    "title": "ECSS-U-ST-20C \u2013 Space sustainability \u2013 Planetary protection (1 August 2019)",
+    "body": "ECSS-U-ST-20C \u2013 Space sustainability \u2013 Planetary protection (1 August 2019)",
+    "keywords": [
+      "ecss",
+      "space",
+      "sustainability",
+      "planetary",
+      "protection",
+      "august"
+    ],
+    "citation": "ECSS ECSS-U-ST-20C (1 august 2019); https://ecss.nl/standard/ecss-u-st-20c-space-sustainability-planetary-protection/",
+    "parameters": []
+  }
+]

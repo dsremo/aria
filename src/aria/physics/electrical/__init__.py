@@ -1,0 +1,111 @@
+"""Electrical physics models for spacecraft power systems.
+
+Includes:
+  - Joule (resistive + AC + eddy current) heating models
+  - Temperature-dependent resistivity (Matula 1979)
+  - Cable thermal resistance (Incropera et al. 2007)
+  - Solar cell temperature + radiation degradation model (Bett 2007; Messenger 2001)
+"""
+
+from .battery import (
+    NMC_C_RATE_MAX_CONTINUOUS,
+    NMC_K_CYCLE,
+    NMC_K_CALENDAR,
+    NMC_T_REF_K,
+    BatteryCellConfig,
+    cell_joule_heat_W,
+    cycles_to_eol,
+    internal_resistance_ohm,
+    is_soc_safe,
+    is_thermal_safe,
+    max_discharge_current_A,
+    max_discharge_power_W,
+    open_circuit_voltage_V,
+    state_of_health,
+    terminal_voltage_V,
+)
+from .solar_cell import (
+    G_AMO_W_M2,
+    AU_M,
+    TRIPLE_JUNCTION_GAAS_ETA_BOL,
+    TRIPLE_JUNCTION_GAMMA_P_PER_K,
+    RADIATION_C_RAD,
+    RADIATION_PHI_0,
+    SolarCellConfig,
+    temperature_factor,
+    radiation_degradation_factor,
+    irradiance_W_m2,
+    incidence_angle_factor,
+    solar_panel_power_W,
+    bol_power_W,
+    eol_power_fraction,
+)
+from .joule_heating import (
+    ALUMINIUM,
+    COPPER,
+    GOLD,
+    MU_0,
+    SILVER,
+    ConductorMaterial,
+    ac_resistance_factor,
+    cable_temperature_rise_K,
+    cylindrical_insulation_thermal_resistance,
+    dc_resistance,
+    eddy_current_power_density,
+    eddy_current_power_total,
+    joule_power_ac,
+    joule_power_dc,
+    resistivity_at_temperature,
+    skin_depth_m,
+)
+
+__all__ = [
+    # Battery
+    "NMC_C_RATE_MAX_CONTINUOUS",
+    "NMC_K_CYCLE",
+    "NMC_K_CALENDAR",
+    "NMC_T_REF_K",
+    "BatteryCellConfig",
+    "cell_joule_heat_W",
+    "cycles_to_eol",
+    "internal_resistance_ohm",
+    "is_soc_safe",
+    "is_thermal_safe",
+    "max_discharge_current_A",
+    "max_discharge_power_W",
+    "open_circuit_voltage_V",
+    "state_of_health",
+    "terminal_voltage_V",
+    # Solar cell
+    "G_AMO_W_M2",
+    "AU_M",
+    "TRIPLE_JUNCTION_GAAS_ETA_BOL",
+    "TRIPLE_JUNCTION_GAMMA_P_PER_K",
+    "RADIATION_C_RAD",
+    "RADIATION_PHI_0",
+    "SolarCellConfig",
+    "temperature_factor",
+    "radiation_degradation_factor",
+    "irradiance_W_m2",
+    "incidence_angle_factor",
+    "solar_panel_power_W",
+    "bol_power_W",
+    "eol_power_fraction",
+    # Joule heating
+    "ALUMINIUM",
+    "COPPER",
+    "GOLD",
+    "MU_0",
+    "SILVER",
+    "ConductorMaterial",
+    "ac_resistance_factor",
+    "cable_temperature_rise_K",
+    "cylindrical_insulation_thermal_resistance",
+    "dc_resistance",
+    "eddy_current_power_density",
+    "eddy_current_power_total",
+    "joule_power_ac",
+    "joule_power_dc",
+    "resistivity_at_temperature",
+    "skin_depth_m",
+]

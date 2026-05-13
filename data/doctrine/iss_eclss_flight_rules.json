@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "ISS-FR-ECLSS-101",
+    "kind": "flight_rule",
+    "title": "Cabin O2 partial pressure outside 19.5-23.5 kPa",
+    "body": "If cabin ppO2 drops below 19.5 kPa or exceeds 23.5 kPa, isolate the affected segment, close hatches per ISS Caution & Warning. ppO2 < 17.0 kPa is loss-of-life threshold; mandate immediate crew donning of EMU PLSS or transfer to safe haven (Soyuz/Crew Dragon).",
+    "keywords": ["o2", "ppo2", "cabin", "eclss", "hypoxia"],
+    "citation": "ISS Generic Operational Flight Rules ALL-FR-ECLSS-101 (NASA)",
+    "parameters": ["CABIN_PPO2_KPA", "CABIN_PPN2_KPA", "CABIN_PRESSURE_KPA"]
+  },
+  {
+    "rule_id": "ISS-FR-ECLSS-102",
+    "kind": "flight_rule",
+    "title": "Cabin CO2 partial pressure",
+    "body": "ppCO2 should remain below 0.7 kPa (5 mmHg) for nominal ops. ppCO2 > 1.0 kPa requires CDRA mode change or backup LiOH activation. ppCO2 > 1.5 kPa requires crew action and ground concurrence.",
+    "keywords": ["co2", "cdra", "scrubber", "lioh"],
+    "citation": "ISS Generic Operational Flight Rules ALL-FR-ECLSS-102",
+    "parameters": ["CABIN_PPCO2_KPA"]
+  },
+  {
+    "rule_id": "ISS-MP-CDRA-1",
+    "kind": "malfunction_procedure",
+    "title": "CDRA bed switch failure",
+    "body": "If CDRA fails to perform bed switch within 7 hours, switch to backup CDRA. If both CDRAs unavailable, activate Vozdukh (Russian segment) and LiOH canisters. Reduce crew metabolic load by deferring exercise.",
+    "keywords": ["cdra", "vozdukh", "lioh", "scrubber"],
+    "citation": "ISS Malfunction Procedures MAL-CDRA-1 (NASA SSP 50261)",
+    "parameters": ["CDRA_BED_TEMP_C", "CDRA_PRESSURE_KPA"]
+  },
+  {
+    "rule_id": "ISS-FR-PWR-201",
+    "kind": "flight_rule",
+    "title": "Bus voltage below 113 VDC",
+    "body": "If primary 120 VDC main bus drops below 113 VDC, automatic load-shed sequence engages: shed Group 4 (non-critical experiments), then Group 3 (lighting), then Group 2 (active thermal). Group 1 (life support, attitude, comms) is NEVER shed automatically.",
+    "keywords": ["voltage", "bus", "load shed", "power"],
+    "citation": "ISS Power System Specification SSP-30482 + Operational Rules",
+    "parameters": ["MAIN_BUS_VOLTAGE_VDC"]
+  }
+]

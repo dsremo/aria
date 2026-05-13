@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  aria:
+    build: .
+    container_name: aria-core
+    # Audit MED-7 — bind only to localhost so a shared docker host or
+    # multi-tenant CI runner cannot reach the dashboard from a sibling
+    # container.  Operators expose externally via a reverse proxy.
+    ports:
+      - "127.0.0.1:${ARIA_PORT:-8090}:8090"
+    environment:
+      - ARIA_PORT=8090
+      - ARIA_HOST=127.0.0.1
+      # Audit HIGH-9 — the wildcard CORS default is removed; operator
+      # supplies an explicit comma-separated allow-list.
+      - ARIA_CORS_ORIGINS=${ARIA_CORS_ORIGINS:-}
+      - ARIA_LOG_LEVEL=${ARIA_LOG_LEVEL:-INFO}
+    command: ["--port", "8090"]
+    volumes:
+      - ./data:/home/aria/app/data
+      - aria-logs:/home/aria/app/logs
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: "2.0"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8090/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  aria-logs:

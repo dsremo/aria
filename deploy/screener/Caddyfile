@@ -1,0 +1,92 @@
+# Caddy configuration for the ARIA Conjunction Screener.
+#
+# Caddy auto-fetches a Let's Encrypt certificate for the domain set
+# in ARIA_SCREENER_DOMAIN.  Plain HTTP requests are upgraded to HTTPS.
+#
+# The aiohttp app listens on port 8443 inside the docker network.
+# Round-2 audit NEW-CRIT-4: the screener's _client_ip honours XFF only
+# when ARIA_TRUSTED_PROXIES includes Caddy's network address.  Set it
+# in compose: ARIA_TRUSTED_PROXIES=172.16.0.0/12 (default Docker
+# bridge range).
+
+{
+    email {$ARIA_SCREENER_TLS_EMAIL}
+    admin off
+    # Round-2 audit NEW-HIGH-23 — be explicit: never silently fall
+    # back to plain HTTP for the configured domain.
+    auto_https disable_redirects off
+}
+
+# Audit CRIT-8 / R252 / R255 / R257 / R258 — the proxy emits the same
+# strict browser-isolation headers the aiohttp middleware emits, so
+# operators get belt-and-braces if either layer is later misconfigured.
+# Round-2 audit NEW-LOW-5 — drop ``preload`` from HSTS by default.
+(security_headers) {
+    header {
+        Strict-Transport-Security "max-age=63072000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Cross-Origin-Opener-Policy "same-origin"
+        Cross-Origin-Embedder-Policy "require-corp"
+        Cross-Origin-Resource-Policy "same-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=(), usb=(), payment=(), clipboard-read=(), clipboard-write=(), magnetometer=(), accelerometer=(), gyroscope=(), midi=(), serial=(), bluetooth=(), hid=(), fullscreen=(), publickey-credentials-get=(), screen-wake-lock=(), encrypted-media=()"
+        Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; object-src 'none'; require-trusted-types-for 'script'"
+        -Server
+    }
+}
+
+# Round-2 audit NEW-HIGH-23 — explicit HTTP→HTTPS redirect block so a
+# Let's Encrypt rate-limit failure can't silently leave the service
+# accepting plain HTTP.
+http://{$ARIA_SCREENER_DOMAIN} {
+    redir https://{host}{uri} 308
+}
+
+{$ARIA_SCREENER_DOMAIN} {
+    encode gzip
+    import security_headers
+
+    # Block obvious enumeration of bot probing.  These return 404 so
+    # we don't leak the service identity to a casual scanner.
+    @badpaths {
+        path /.git/* /.env /wp-admin/* /xmlrpc.php /phpmyadmin/*
+    }
+    respond @badpaths 404
+
+    # Audit LOW-1 — /v1/healthz lives behind HTTPS so it cannot be
+    # polled cheaply over plain HTTP for service-uptime fingerprinting.
+    handle {
+        request_body {
+            max_size 5MB
+        }
+        # Round-2 audit NEW-MED-18 — tighter timeouts for normal API
+        # traffic.  The /v1/screen_bulk path is bounded inside aiohttp
+        # by NDJSON_LINE_WRITE_TIMEOUT_S, so 30 s here is safe.
+        reverse_proxy screener:8443 {
+            transport http {
+                read_timeout  30s
+                write_timeout 30s
+                dial_timeout   5s
+                response_header_timeout 10s
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote}
+            header_up X-Forwarded-For {remote}
+            header_up X-Forwarded-Proto {scheme}
+        }
+    }
+
+    # Audit MED-8 — strip the Authorization + token headers from access
+    # logs so credentials cannot be harvested from `docker logs`.
+    log {
+        output stdout
+        format json {
+            request>headers>Authorization REDACTED
+            request>headers>X-ARIA-Token REDACTED
+            request>headers>X-ARIA-Admin-Token REDACTED
+            request>headers>Cookie REDACTED
+        }
+        level INFO
+    }
+}

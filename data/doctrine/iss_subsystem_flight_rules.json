@@ -1,0 +1,101 @@
+[
+  {
+    "rule_id": "ISS-FR-PWR-202",
+    "kind": "flight_rule",
+    "title": "BCDU charge-discharge fault",
+    "body": "If a Battery Charge/Discharge Unit reports persistent over-current trip during sunlit charge phase, the affected battery string is isolated within 60 s by autonomous logic. Manual override requires ground concurrence; the redundant string carries the bus through next eclipse.",
+    "keywords": ["bcdu", "battery", "charge", "string", "trip"],
+    "citation": "ISS Power Subsystem Spec SSP-30482; Operational Rules §3.2",
+    "parameters": ["BCDU_CURRENT_A", "BATTERY_STRING_VOLTAGE_VDC"]
+  },
+  {
+    "rule_id": "ISS-FR-PWR-203",
+    "kind": "flight_rule",
+    "title": "Solar array shadowing during dock",
+    "body": "When a visiting vehicle (Crew Dragon, Cygnus, Progress) approaches within 20 m, attitude must be biased to minimise shadowing of the active power channel. Power channel margin > 10 % must be maintained throughout the approach corridor.",
+    "keywords": ["solar array", "shadow", "dock", "approach"],
+    "citation": "ISS Visiting Vehicle Operations Handbook",
+    "parameters": ["MAIN_BUS_VOLTAGE_VDC", "ATTITUDE_QUATERNION", "VV_RANGE_M"]
+  },
+  {
+    "rule_id": "ISS-FR-THERM-301",
+    "kind": "flight_rule",
+    "title": "ATCS loop ammonia leak",
+    "body": "If External Active Thermal Control System (EATCS) loop pressure drop exceeds 10 psi/hour and not attributable to a commanded action, the leak procedure shall be invoked: isolate suspected segment, close affected QD, prepare loop-crossover.",
+    "keywords": ["atcs", "ammonia", "leak", "thermal", "loop"],
+    "citation": "ISS Thermal Operations Handbook OPS-04 §9",
+    "parameters": ["ATCS_LOOP_A_PRESSURE_PSI", "ATCS_LOOP_B_PRESSURE_PSI"]
+  },
+  {
+    "rule_id": "ISS-FR-THERM-302",
+    "kind": "flight_rule",
+    "title": "Radiator panel attitude bias",
+    "body": "ISS attitude shall be biased so that radiator panels see < 90 deg solar incidence during high-beta seasonal periods, otherwise heat rejection capability drops below margin and crew comfort/equipment limits are exceeded.",
+    "keywords": ["radiator", "beta angle", "attitude", "thermal"],
+    "citation": "ISS Thermal Operations Handbook §6",
+    "parameters": ["BETA_ANGLE_DEG", "RADIATOR_PANEL_INCIDENCE_DEG"]
+  },
+  {
+    "rule_id": "ISS-FR-GNC-401",
+    "kind": "flight_rule",
+    "title": "CMG saturation",
+    "body": "If three of four Control Moment Gyros saturate, RCS thrusters shall augment torque authority. Saturation is allowed transient; persistent saturation > 10 minutes triggers desat burn or attitude bias to reduce environmental torques (gravity gradient + drag).",
+    "keywords": ["cmg", "saturation", "rcs", "desat"],
+    "citation": "ISS GNC Operations Handbook §4.7",
+    "parameters": ["CMG_MOMENTUM_NMS", "CMG_SATURATION_FLAG"]
+  },
+  {
+    "rule_id": "ISS-FR-GNC-402",
+    "kind": "flight_rule",
+    "title": "Microgravity jet selection during VV proximity",
+    "body": "Within 200 m of any visiting vehicle, only fine-resolution RCS jets (low thrust ~10 N) may fire to avoid plume impingement on the VV. Coarse jets locked out by FCS logic.",
+    "keywords": ["rcs", "jet", "plume", "visiting vehicle"],
+    "citation": "ISS Visiting Vehicle GNC Rules",
+    "parameters": ["VV_RANGE_M", "VV_RANGE_RATE_M_S"]
+  },
+  {
+    "rule_id": "ISS-FR-COMMS-101",
+    "kind": "flight_rule",
+    "title": "Loss of S-band uplink",
+    "body": "If S-band primary uplink lost > 5 minutes, switch to S-band redundant. If both lost > 30 minutes, fall back to UHF voice via SSPTS. Crew assumes loss-of-comm posture: no commanded actions without ground concurrence regained.",
+    "keywords": ["s-band", "uhf", "loss of signal", "comms"],
+    "citation": "ISS Comm Operations Handbook §3.4",
+    "parameters": ["SBAND_LOCK_STATE", "UHF_LOCK_STATE"]
+  },
+  {
+    "rule_id": "ISS-MP-AMMONIA-LEAK-1",
+    "kind": "malfunction_procedure",
+    "title": "External ammonia leak detection + isolation",
+    "body": "1. Confirm leak via downstream pressure trending. 2. Isolate suspected QD/coldplate by closing manual valves per ICD. 3. Cross-feed surviving loop. 4. Reduce equipment load on affected coldplate. 5. Plan EVA repair if leak persists; use IFM kit for QD replacement.",
+    "keywords": ["ammonia", "leak", "qd", "coldplate", "eva"],
+    "citation": "ISS Malfunction Procedures MAL-THERM-AMMONIA-1",
+    "parameters": ["ATCS_LOOP_A_PRESSURE_PSI", "ATCS_LOOP_B_PRESSURE_PSI"]
+  },
+  {
+    "rule_id": "ISS-MP-WATER-LEAK-1",
+    "kind": "malfunction_procedure",
+    "title": "EMU water leak detected during EVA",
+    "body": "On detection of free water in EMU helmet (Parmitano 2013 incident), abort EVA immediately. Crewmate assists return to airlock. EMU repressurisation prioritises crew over fluid/scientific data.",
+    "keywords": ["emu", "water", "leak", "drowning", "eva"],
+    "citation": "ISS Anomaly Report 2013-EVA-23 (NASA, 2013)",
+    "parameters": ["EMU_HELMET_HUMIDITY_PCT", "EMU_FAN_PUMP_STATE"]
+  },
+  {
+    "rule_id": "ISS-FR-DEBRIS-501",
+    "kind": "flight_rule",
+    "title": "Conjunction-avoidance burn threshold",
+    "body": "If predicted miss distance < 2 km and probability of collision (Pc) > 1e-4, a Pre-Determined Debris Avoidance Maneuver (PDAM) shall be planned. Burn must be uplinked > 28.5 hours before TCA to allow tracking-data confirmation.",
+    "keywords": ["conjunction", "pdam", "debris", "tca", "pc"],
+    "citation": "JSC Conjunction Assessment Risk Analysis Process JSC-66050",
+    "parameters": ["MISS_DISTANCE_KM", "PROBABILITY_OF_COLLISION", "TCA_HOURS"]
+  },
+  {
+    "rule_id": "ISS-FR-CREW-601",
+    "kind": "flight_rule",
+    "title": "Crew safe-haven configuration",
+    "body": "Upon major depress / fire / toxic atmosphere event, crew retreat to designated safe haven (Soyuz or Crew Dragon) within the haven's allowable interior atmosphere. ISS hatches sealed; ground commanded power-down.",
+    "keywords": ["safe haven", "soyuz", "crew dragon", "depress", "fire"],
+    "citation": "ISS Emergency Procedures EMER-1",
+    "parameters": ["CABIN_PRESSURE_KPA", "CABIN_PPCO2_KPA", "FIRE_ALARM_STATE"]
+  }
+]

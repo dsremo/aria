@@ -1,0 +1,47 @@
+[
+  {
+    "rule_id": "LV-FR-WX-1",
+    "kind": "flight_rule",
+    "title": "Launch weather constraint",
+    "body": "No launch through cumulus cloud > 4500 ft thick, anvil cloud within 10 nm, debris cloud, or surface electric field > 1500 V/m at any point along the planned ground track. Triboelectrification rule: no launch through clouds at temperatures between -15 °C and +5 °C.",
+    "keywords": ["launch", "weather", "lightning", "anvil", "triboelectrification"],
+    "citation": "Range Safety Lightning Launch Commit Criteria (ELV/45SW)",
+    "parameters": ["CLOUD_THICKNESS_FT", "ANVIL_DISTANCE_NM", "ELECTRIC_FIELD_V_M"]
+  },
+  {
+    "rule_id": "LV-FR-RANGE-1",
+    "kind": "flight_rule",
+    "title": "Range safety FTS criteria",
+    "body": "Flight Termination System shall be armed before liftoff. FTS commanded if: vehicle deviates > 3-sigma from nominal trajectory and crosses Iimit-of-overflight, vehicle telemetry lost > 30 s during powered flight, or impact prediction enters populated area.",
+    "keywords": ["fts", "range safety", "trajectory", "overflight"],
+    "citation": "AFSPCMAN 91-710 Range Safety User Requirements §2",
+    "parameters": ["TRAJECTORY_DEVIATION_SIGMA", "TELEMETRY_LOSS_S"]
+  },
+  {
+    "rule_id": "LV-FR-HOLD-1",
+    "kind": "flight_rule",
+    "title": "T-0 hold criteria",
+    "body": "Vehicle hold at any T < 60 s requires recycle of countdown to at least T-15 minutes. Hold-fire criteria include: any RP-1 / LOX vent failure, any non-rated parameter on red-line, any range safety asset failure, any crew/payload anomaly.",
+    "keywords": ["hold", "recycle", "redline", "lox", "rp-1"],
+    "citation": "Falcon 9 Launch Operations Plan; STS Launch Commit Criteria",
+    "parameters": ["TANK_PRESSURE_PSIA", "RANGE_GREEN_FLAG"]
+  },
+  {
+    "rule_id": "LV-FR-SSME-1",
+    "kind": "flight_rule",
+    "title": "SSME engine-out criteria",
+    "body": "Single SSME engine-out at T+30 s allows mission completion via abort-to-orbit if SECO is reachable. Two engines out: RTLS or TAL (mission-specific). Three engines: contingency abort with low survivability — crew bailout option.",
+    "keywords": ["ssme", "engine-out", "rtls", "tal", "abort"],
+    "citation": "STS Operational Flight Rules NSTS-12820 §A2",
+    "parameters": ["SSME_1_PC_PSIA", "SSME_2_PC_PSIA", "SSME_3_PC_PSIA"]
+  },
+  {
+    "rule_id": "LV-FR-ASCENT-PROFILE-1",
+    "kind": "flight_rule",
+    "title": "Max-q dynamic-pressure pitch program",
+    "body": "Vehicle shall throttle down through Max-Q region (typically 30-90 s after liftoff) to limit dynamic pressure on airframe. Throttle reduction profile is mission-specific; deviation > 5 % from planned throttle triggers in-flight abort review.",
+    "keywords": ["max-q", "throttle", "dynamic pressure", "ascent"],
+    "citation": "Saturn V launch sequence; STS ascent profile; F9 Falcon ascent",
+    "parameters": ["DYNAMIC_PRESSURE_PSF", "ENGINE_THROTTLE_PCT"]
+  }
+]
