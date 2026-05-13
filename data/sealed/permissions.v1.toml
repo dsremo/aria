@@ -1,0 +1,150 @@
+# ARIA sealed permission catalogue (F-1).
+#
+# Every privileged operation in ARIA must check a permission name
+# from this file. The role lattice in roles.v1.toml supplies the
+# inheritance — listing a permission against `operator` means every
+# role that inherits from operator (crew, maintainer, captain) holds
+# it transitively.
+#
+# Mutating this file requires a sealed-manifest re-bake. To grant a
+# permission to a single principal at runtime, use the principal-delta
+# log (overrides), gated by a two-person ApprovalQueue proposal.
+
+manifest_version = 1
+created_at       = "2026-04-25"
+
+# ── Authentication / session ───────────────────────────────────────
+[permissions."auth.session.create"]
+holders     = ["anonymous"]
+description = "Issue a session token (login). Only anonymous may invoke."
+
+[permissions."auth.session.revoke_self"]
+holders     = ["operator", "ground", "agent", "system"]
+description = "Logout — revoke the calling session."
+
+[permissions."auth.session.revoke_any"]
+holders     = ["captain", "maintainer"]
+description = "Force-revoke another principal's session."
+
+# ── Telemetry & status ─────────────────────────────────────────────
+[permissions."telemetry.read"]
+holders     = ["reader"]
+description = "Read non-sensitive telemetry, status, healthz."
+
+[permissions."telemetry.read_sensitive"]
+holders     = ["operator"]
+description = "Read sensitive telemetry (crew vitals, classified payloads)."
+
+# ── Approval queue (F-9) ───────────────────────────────────────────
+[permissions."approval.sign"]
+holders     = ["operator"]
+description = "Sign a pending two-person proposal."
+
+[permissions."approval.veto"]
+holders     = ["operator"]
+description = "Veto a pending proposal."
+
+[permissions."approval.revert"]
+holders     = ["operator"]
+description = "Revert an executed proposal within the undo window."
+
+[permissions."approval.propose"]
+holders     = ["operator", "agent"]
+description = "Submit a gated action for approval. Agents may propose; humans must sign."
+
+# ── Kill switch (F-17) ─────────────────────────────────────────────
+[permissions."kill_switch.assert"]
+holders     = ["reader"]
+description = "Trip the kill switch. Available to anyone authenticated; tripping is fail-safe."
+
+[permissions."kill_switch.reset"]
+holders     = ["captain"]
+description = "Clear the kill switch. Two-person + Ed25519-verified physical-key signature."
+
+[permissions."deadman.affirm"]
+holders     = ["operator"]
+description = "Pulse the operator-affirmation deadman timer."
+
+# ── Sealed prompt + boot integrity (F-1, F-18) ─────────────────────
+[permissions."sealed_prompt.flash"]
+holders     = ["maintainer"]
+description = "Re-flash the sealed prompt. Two maintainers + audit anchor."
+
+[permissions."boot_manifest.verify"]
+holders     = ["maintainer"]
+description = "Trigger an out-of-band boot-manifest re-verify."
+
+# ── Principal management ──────────────────────────────────────────
+[permissions."principal.create"]
+holders     = ["captain"]
+description = "Create a new principal. Captain + maintainer two-person."
+
+[permissions."principal.revoke"]
+holders     = ["captain"]
+description = "Revoke an existing principal. Captain + maintainer two-person."
+
+[permissions."principal.list"]
+holders     = ["operator"]
+description = "List the principal roster + active sessions."
+
+[permissions."role.assign"]
+holders     = ["captain"]
+description = "Change a principal's role. Captain + maintainer two-person."
+
+[permissions."role.list"]
+holders     = ["operator"]
+description = "List sealed + custom roles + their permission sets."
+
+[permissions."role.create_custom"]
+holders     = ["captain"]
+description = "Create a runtime custom role (inheriting from a sealed role). Two-person + no-escalation."
+
+[permissions."role.revoke_custom"]
+holders     = ["captain"]
+description = "Revoke a runtime custom role. Two-person."
+
+[permissions."captain.elect"]
+holders     = ["maintainer"]
+description = "Re-elect the captain (when the seat is vacant). Two maintainers + one crew + bridge physical key."
+
+# ── Capability-token minting (F-6) ────────────────────────────────
+# Per-tool authority class. Mints below CONSENT can be issued
+# automatically by the planner on behalf of any human session;
+# mints at CONSENT or above require a verified human session and
+# are refused for any agent principal.
+[permissions."mint_token.sensor_only"]
+holders     = ["reader", "agent"]
+description = "Mint capability tokens for SENSOR_ONLY tools."
+
+[permissions."mint_token.routine"]
+holders     = ["operator", "agent"]
+description = "Mint capability tokens for ROUTINE tools."
+
+[permissions."mint_token.supervised"]
+holders     = ["operator", "agent"]
+description = "Mint capability tokens for SUPERVISED tools."
+
+[permissions."mint_token.consent"]
+holders     = ["crew"]
+description = "Mint CONSENT-tier tokens. Requires verified human session."
+
+[permissions."mint_token.advisory"]
+holders     = ["crew"]
+description = "Mint ADVISORY-tier tokens. Requires verified human session."
+
+[permissions."mint_token.captain_only"]
+holders     = ["captain"]
+description = "Mint CAPTAIN_ONLY tokens. Captain only."
+
+# ── Mission ops (sim + dashboard write paths) ─────────────────────
+[permissions."mission.advance"]
+holders     = ["operator"]
+description = "Advance the mission-tick or startup sequence."
+
+[permissions."failures.inject"]
+holders     = ["maintainer"]
+description = "Inject simulated failures (test/sim only)."
+
+[permissions."ship.rebuild"]
+holders     = ["maintainer"]
+description = "Rebuild ship configuration in the simulator."

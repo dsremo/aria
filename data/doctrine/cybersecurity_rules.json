@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "CYBER-FR-1",
+    "kind": "flight_rule",
+    "title": "Spacecraft command authentication mandatory",
+    "body": "All telecommands shall require authenticated envelope (HMAC or signed). Unauthenticated commands shall be silently dropped on the spacecraft side. Replay window N=4096 nonces, monotonic counter per issuer enforced.",
+    "keywords": ["command", "auth", "hmac", "replay"],
+    "citation": "CCSDS 350.7 Security Architecture for Space Data Systems §4",
+    "parameters": ["COMMAND_AUTH_FLAG"]
+  },
+  {
+    "rule_id": "CYBER-FR-2",
+    "kind": "flight_rule",
+    "title": "Post-Quantum migration plan",
+    "body": "Spacecraft cryptographic stacks shall plan PQC migration before 2030. Hybrid mode (X25519 + ML-KEM) acceptable for transition period. RSA-2048 key-exchange forbidden in new designs after 2027.",
+    "keywords": ["pqc", "ml-kem", "post-quantum"],
+    "citation": "NIST SP 800-227 (draft) PQC Migration Guidance; CCSDS Recommendation 352.0",
+    "parameters": ["KEM_ALGORITHM_ID"]
+  },
+  {
+    "rule_id": "CYBER-FR-3",
+    "kind": "flight_rule",
+    "title": "Boot integrity attestation",
+    "body": "Every boot of safety-critical FPGA/processor shall measure boot chain components against expected SHA-256 hashes. Mismatch triggers safe-mode entry; ground recovery required to clear.",
+    "keywords": ["boot", "attestation", "tpm", "secure boot"],
+    "citation": "NIST SP 800-193 Platform Firmware Resiliency Guidelines",
+    "parameters": ["BOOT_PCR_VALID_FLAG"]
+  },
+  {
+    "rule_id": "CYBER-MP-1",
+    "kind": "malfunction_procedure",
+    "title": "Suspected uplink spoofing",
+    "body": "If multiple uplink commands arrive with valid signatures but conflicting state assertions, declare suspected key-compromise. Rotate uplink session key via emergency-key-derivation procedure (ground-only); invalidate prior session counters.",
+    "keywords": ["spoofing", "key compromise", "rotation"],
+    "citation": "ESA cybersecurity playbook (post-2025 breach)",
+    "parameters": ["UPLINK_CONFLICT_COUNT"]
+  }
+]

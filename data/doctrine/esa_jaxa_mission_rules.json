@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "ATV-FR-1",
+    "kind": "flight_rule",
+    "title": "ATV proximity-ops abort criteria",
+    "body": "ESA Automated Transfer Vehicle (ATV) shall abort approach if range-rate at 11 m exceeds 0.06 m/s, or if relative attitude error > 1 deg. Abort to S2 hold (250 m) and re-attempt after ground review.",
+    "keywords": ["atv", "esa", "approach", "abort"],
+    "citation": "ATV Mission Operations Concept (ESA, 2008-2014)",
+    "parameters": ["VV_RANGE_M", "VV_RANGE_RATE_M_S"]
+  },
+  {
+    "rule_id": "HTV-FR-1",
+    "kind": "flight_rule",
+    "title": "JAXA HTV free-flight to capture",
+    "body": "HTV (Kounotori) approach uses free-flight to 10 m, then ISS Canadarm2 captures. RV approach is suspended if Canadarm2 health is degraded or operator (typically JAXA + NASA crew) is unavailable.",
+    "keywords": ["htv", "kounotori", "jaxa", "canadarm"],
+    "citation": "HTV Operations Manual (JAXA, 2009-2020)",
+    "parameters": ["VV_RANGE_M", "CANADARM_HEALTH_FLAG"]
+  },
+  {
+    "rule_id": "ROSETTA-FR-1",
+    "kind": "flight_rule",
+    "title": "Hibernation entry criteria",
+    "body": "ESA Rosetta deep-space hibernation engaged when solar input drops below threshold for sustained ops (~3 AU). Spacecraft attitude biased to spin about sun line; only on-board clock + heaters active. Wake-up command stored on-board with timer-based execution.",
+    "keywords": ["rosetta", "hibernation", "deep space", "esa"],
+    "citation": "Rosetta Mission Operations Plan (ESA-OPS, 2014)",
+    "parameters": ["SOLAR_INPUT_W_M2", "SPACECRAFT_TEMP_K"]
+  },
+  {
+    "rule_id": "BEPI-FR-1",
+    "kind": "flight_rule",
+    "title": "BepiColombo solar electric propulsion duty cycle",
+    "body": "ESA/JAXA BepiColombo SEP thrusters duty-cycle ~80 % during cruise; remaining 20 % reserved for navigation tracking, attitude maneuvers, and thermal recovery. Continuous SEP > 14 days requires ground re-authorisation.",
+    "keywords": ["bepicolombo", "sep", "ion thruster", "esa", "jaxa"],
+    "citation": "BepiColombo MOC concept (ESA/JAXA, 2018)",
+    "parameters": ["SEP_THRUST_MN", "SEP_DUTY_CYCLE_PCT"]
+  }
+]

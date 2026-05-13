@@ -1,0 +1,56 @@
+[
+  {
+    "rule_id": "ECSS-E-ST-50-04C-1",
+    "kind": "flight_rule",
+    "title": "Telecommand acceptance criteria",
+    "body": "Every telecommand must pass three independent checks before execution: (1) frame integrity (CRC/checksum), (2) authentication (HMAC or signed envelope), and (3) sequence-number monotonicity. Missing any one check shall cause command rejection with NACK reason recorded.",
+    "keywords": ["telecommand", "tc", "crc", "hmac", "monotonic"],
+    "citation": "ECSS-E-ST-50-04C Space Engineering: Telecommand Protocols Synchronization §5.4",
+    "parameters": ["TC_FRAME_CRC_FLAG", "TC_AUTH_FLAG", "TC_SEQUENCE_NUMBER"]
+  },
+  {
+    "rule_id": "ECSS-E-ST-70-41C-1",
+    "kind": "flight_rule",
+    "title": "Telemetry packet structure",
+    "body": "PUS (Packet Utilisation Standard) packets shall follow the CCSDS 7-octet primary header + secondary header conventions. Service Type 1 (telecommand verification), Service Type 3 (housekeeping), Service Type 5 (event reporting) are mandatory for any flight system claiming PUS compliance.",
+    "keywords": ["pus", "telemetry", "ccsds", "service type"],
+    "citation": "ECSS-E-ST-70-41C Telemetry and Telecommand Packet Utilization §6",
+    "parameters": ["TM_PACKET_VERSION", "TM_SERVICE_TYPE"]
+  },
+  {
+    "rule_id": "ECSS-Q-ST-30C-1",
+    "kind": "flight_rule",
+    "title": "Single-event-effect mitigation",
+    "body": "Components in radiation environment shall implement at least one of: (a) hardware EDAC (Hamming or Reed-Solomon), (b) memory scrubbing on a defined cadence, (c) majority voting (TMR), (d) periodic processor reboot. Single-string non-mitigated SRAM is forbidden in safety-critical paths.",
+    "keywords": ["seu", "see", "edac", "tmr", "scrubbing", "radiation"],
+    "citation": "ECSS-Q-ST-30C Dependability §6.4",
+    "parameters": ["EDAC_CORRECTED_COUNT", "EDAC_UNCORRECTABLE_COUNT"]
+  },
+  {
+    "rule_id": "ECSS-E-ST-32C-1",
+    "kind": "flight_rule",
+    "title": "Structural design factor of safety",
+    "body": "Spacecraft primary structure shall meet ultimate factor of safety ≥ 1.4× design limit load (manned 2.0×). Yield FoS ≥ 1.0×. Margin of safety must be reported in the structural verification document for every load case.",
+    "keywords": ["structure", "fos", "yield", "ultimate", "margin"],
+    "citation": "ECSS-E-ST-32C Structural §5.3",
+    "parameters": ["LOAD_CASE_MARGIN_OF_SAFETY"]
+  },
+  {
+    "rule_id": "ECSS-E-ST-31C-1",
+    "kind": "flight_rule",
+    "title": "Thermal margin requirement",
+    "body": "Active thermal control systems shall maintain components within their qualification temperature range with a margin of at least ±10 °C against worst-case hot/cold steady-state. Transient excursions must remain within absolute survival range.",
+    "keywords": ["thermal", "margin", "qualification", "survival"],
+    "citation": "ECSS-E-ST-31C Thermal §5.3",
+    "parameters": ["COMPONENT_TEMP_K", "QUAL_TEMP_RANGE_K"]
+  },
+  {
+    "rule_id": "ECSS-E-ST-20C-1",
+    "kind": "flight_rule",
+    "title": "Electrical bus regulation",
+    "body": "Primary regulated power bus voltage shall remain within ±2 % of nominal under all defined load profiles, including peak transient loads of 200 % nominal for 100 ms. Out-of-range > 50 ms shall trigger autonomous load shed.",
+    "keywords": ["bus", "voltage", "regulation", "transient", "load shed"],
+    "citation": "ECSS-E-ST-20C Electrical and Electronic §5.2",
+    "parameters": ["BUS_VOLTAGE_VDC", "TRANSIENT_DURATION_MS"]
+  }
+]

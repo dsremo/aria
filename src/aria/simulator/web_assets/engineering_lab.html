@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA Engineering Lab</title>
+<style>
+:root {
+  --bg-primary: #0a0e17;
+  --bg-panel: #111827;
+  --bg-card: #1a2332;
+  --bg-input: #1e293b;
+  --border: #1e3a5f;
+  --text-primary: #e0e6ed;
+  --text-secondary: #8892a4;
+  --text-muted: #556677;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-green: #10b981;
+  --accent-red: #ef4444;
+  --accent-yellow: #f59e0b;
+  --accent-orange: #f97316;
+  --accent-purple: #8b5cf6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg-primary); color:var(--text-primary); overflow:hidden; height:100vh; }
+
+/* ─── Header ─── */
+.header { background:linear-gradient(135deg,#0f172a,#1e293b); border-bottom:1px solid var(--border); padding:0 16px; display:flex; align-items:center; justify-content:space-between; height:44px; z-index:100; }
+.header h1 { font-size:15px; font-weight:600; letter-spacing:1px; color:var(--accent-cyan); }
+.header-nav { display:flex; gap:4px; }
+.header-nav a,.tab-btn { padding:6px 14px; border-radius:6px; font-size:12px; cursor:pointer; border:1px solid transparent; color:var(--text-secondary); text-decoration:none; background:transparent; transition:all .2s; }
+.header-nav a:hover,.tab-btn:hover { background:rgba(59,130,246,.15); color:var(--text-primary); }
+.tab-btn.active { background:rgba(59,130,246,.2); color:var(--accent-blue); border-color:var(--accent-blue); }
+
+/* ─── Main Layout ─── */
+.main { display:flex; height:calc(100vh - 44px); }
+.left-panel { width:260px; min-width:260px; background:var(--bg-panel); border-right:1px solid var(--border); overflow-y:auto; display:flex; flex-direction:column; }
+.center { flex:1; display:flex; flex-direction:column; position:relative; }
+.right-panel { width:320px; min-width:320px; background:var(--bg-panel); border-left:1px solid var(--border); overflow-y:auto; }
+.viewport { flex:1; position:relative; }
+.viewport canvas { display:block; width:100% !important; height:100% !important; }
+.bottom-panel { height:0; background:var(--bg-panel); border-top:1px solid var(--border); overflow:hidden; transition:height .3s ease; }
+.bottom-panel.open { height:300px; }
+
+/* ─── Panel Sections ─── */
+.panel-title { font-size:11px; font-weight:700; letter-spacing:1.5px; color:var(--text-muted); padding:12px 14px 6px; text-transform:uppercase; }
+.part-item { display:flex; align-items:center; gap:8px; padding:7px 14px; cursor:pointer; transition:background .15s; border-left:3px solid transparent; }
+.part-item:hover { background:rgba(255,255,255,.04); }
+.part-item.selected { background:rgba(59,130,246,.12); border-left-color:var(--accent-blue); }
+.part-item input[type=checkbox] { accent-color:var(--accent-blue); }
+.part-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.part-name { font-size:13px; flex:1; }
+
+/* Material list */
+.mat-category { border-bottom:1px solid rgba(30,58,95,.5); }
+.mat-category-header { display:flex; align-items:center; justify-content:space-between; padding:6px 14px 5px; cursor:pointer; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); transition:background .15s; user-select:none; }
+.mat-category-header:hover { background:rgba(255,255,255,.03); color:var(--text-secondary); }
+.mat-category-header.open { color:var(--accent-cyan); }
+.mat-category-arrow { font-size:9px; transition:transform .2s; }
+.mat-category-header.open .mat-category-arrow { transform:rotate(90deg); }
+.mat-category-count { font-size:9px; color:var(--text-muted); font-weight:400; letter-spacing:0; }
+.mat-category-body { display:none; }
+.mat-category-body.open { display:block; }
+.mat-item { padding:5px 14px 5px 22px; cursor:pointer; font-size:12px; color:var(--text-secondary); transition:background .15s; }
+.mat-item:hover { background:rgba(255,255,255,.04); color:var(--text-primary); }
+.mat-item.expanded { background:rgba(6,182,212,.08); color:var(--accent-cyan); }
+.mat-detail { padding:4px 14px 8px 30px; font-size:11px; color:var(--text-secondary); line-height:1.7; display:none; }
+.mat-detail.show { display:block; }
+.mat-detail .val { color:var(--text-primary); }
+.mat-detail .src { font-size:10px; color:var(--text-muted); font-style:italic; margin-top:4px; line-height:1.4; }
+
+/* ─── Right Panel ─── */
+.prop-section { padding:10px 14px; border-bottom:1px solid var(--border); }
+.prop-label { font-size:11px; color:var(--text-muted); margin-bottom:2px; }
+.prop-value { font-size:14px; font-weight:600; }
+.slider-row { margin:8px 0; }
+.slider-row label { display:flex; justify-content:space-between; font-size:11px; color:var(--text-secondary); margin-bottom:3px; }
+.slider-row input[type=range] { width:100%; height:6px; appearance:none; background:var(--bg-input); border-radius:3px; outline:none; cursor:pointer; }
+.slider-row input[type=range]::-webkit-slider-thumb { appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent-blue); cursor:pointer; }
+.slider-val { color:var(--accent-cyan); font-weight:600; }
+.btn { padding:8px 16px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; transition:all .2s; width:100%; margin:4px 0; }
+.btn-primary { background:var(--accent-blue); color:#fff; }
+.btn-primary:hover { background:#2563eb; }
+.btn-primary:disabled { opacity:.5; cursor:not-allowed; }
+.btn-warning { background:var(--accent-orange); color:#fff; }
+.btn-warning:hover { background:#ea580c; }
+.btn-success { background:var(--accent-green); color:#fff; }
+.btn-success:hover { background:#059669; }
+
+/* Result indicators */
+.result-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:6px 0; }
+.result-item { background:var(--bg-card); border-radius:6px; padding:8px 10px; }
+.result-item .rl { font-size:10px; color:var(--text-muted); }
+.result-item .rv { font-size:16px; font-weight:700; }
+.rv.pass { color:var(--accent-green); }
+.rv.warn { color:var(--accent-yellow); }
+.rv.fail { color:var(--accent-red); }
+
+/* ─── Viewport Overlays ─── */
+.view-controls { position:absolute; top:8px; left:8px; display:flex; gap:3px; z-index:10; }
+.view-controls button { padding:5px 10px; font-size:11px; font-weight:600; background:rgba(17,24,39,.92); color:var(--text-primary); border:1px solid rgba(59,130,246,.35); border-radius:4px; cursor:pointer; letter-spacing:.3px; }
+.view-controls button:hover { background:rgba(59,130,246,.4); color:#fff; border-color:var(--accent-blue); }
+.color-mode { position:absolute; top:8px; right:8px; display:flex; gap:3px; z-index:10; }
+.color-mode button { padding:4px 10px; font-size:10px; background:rgba(17,24,39,.85); color:var(--text-secondary); border:1px solid var(--border); border-radius:4px; cursor:pointer; }
+.color-mode button.active { background:rgba(59,130,246,.4); color:var(--accent-cyan); border-color:var(--accent-blue); }
+.loading-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(10,14,23,.9); z-index:50; }
+.loading-overlay.hidden { display:none; }
+.spinner { width:40px; height:40px; border:3px solid var(--border); border-top-color:var(--accent-cyan); border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading-text { margin-top:12px; font-size:13px; color:var(--text-secondary); }
+
+/* ─── Bottom Panel ─── */
+.bottom-tabs { display:flex; border-bottom:1px solid var(--border); }
+.bottom-tab { padding:8px 16px; font-size:12px; cursor:pointer; color:var(--text-secondary); border-bottom:2px solid transparent; transition:all .2s; }
+.bottom-tab.active { color:var(--accent-cyan); border-bottom-color:var(--accent-cyan); }
+.bottom-content { display:none; padding:12px; height:calc(300px - 36px); overflow-y:auto; }
+.bottom-content.active { display:flex; gap:12px; }
+.ai-input { display:flex; gap:8px; margin-bottom:8px; }
+.ai-input textarea { flex:1; background:var(--bg-input); border:1px solid var(--border); border-radius:6px; color:var(--text-primary); padding:8px; font-size:12px; resize:none; height:60px; font-family:inherit; }
+.ai-input button { align-self:flex-end; }
+.ai-log { flex:1; overflow-y:auto; }
+.ai-entry { padding:8px; margin:4px 0; background:var(--bg-card); border-radius:6px; font-size:12px; border-left:3px solid var(--accent-blue); }
+.ai-entry.critical { border-left-color:var(--accent-red); }
+.ai-entry.warning { border-left-color:var(--accent-yellow); }
+.ai-step { color:var(--text-secondary); margin:2px 0; padding-left:12px; font-size:11px; }
+.ai-decision { color:var(--accent-green); font-weight:600; margin-top:4px; }
+
+/* Budget charts */
+.budget-section { flex:1; min-width:250px; }
+.budget-bar { display:flex; align-items:center; gap:8px; margin:4px 0; font-size:11px; }
+.budget-bar-fill { height:16px; border-radius:3px; min-width:2px; transition:width .5s; }
+.budget-bar-label { width:100px; text-align:right; color:var(--text-secondary); flex-shrink:0; }
+.budget-bar-val { width:80px; color:var(--text-primary); flex-shrink:0; }
+
+/* Warnings list */
+.warning-item { padding:8px 12px; margin:4px 0; border-radius:6px; font-size:12px; }
+.warning-item.critical { background:rgba(239,68,68,.1); border-left:3px solid var(--accent-red); }
+.warning-item.warning { background:rgba(245,158,11,.1); border-left:3px solid var(--accent-yellow); }
+.warning-item.info { background:rgba(59,130,246,.1); border-left:3px solid var(--accent-blue); }
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg-primary); }
+::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+::-webkit-scrollbar-thumb:hover { background:#2a4a7f; }
+
+/* Bottom toggle */
+.bottom-toggle { position:absolute; bottom:0; left:50%; transform:translateX(-50%); z-index:20; padding:3px 20px; background:var(--bg-panel); border:1px solid var(--border); border-bottom:none; border-radius:6px 6px 0 0; cursor:pointer; font-size:11px; color:var(--text-secondary); }
+.bottom-toggle:hover { color:var(--text-primary); }
+
+/* View controller pad — professional CAD-style nav gizmo (bottom-right of viewport) */
+#view-pad {
+  position:absolute; bottom:14px; right:14px; z-index:12;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  background:rgba(14,20,32,.94); border:1px solid rgba(59,130,246,.35); border-radius:10px;
+  padding:10px 12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.55);
+  backdrop-filter:blur(4px);
+}
+#view-pad .vp-title { font-size:9px; letter-spacing:1.2px; color:var(--text-muted); text-transform:uppercase; font-weight:700; }
+
+/* Orbit gizmo — 3×3 grid of curved SVG arrows around a reset centre */
+.gizmo {
+  display:grid;
+  grid-template-columns:34px 34px 34px;
+  grid-template-rows:34px 34px 34px;
+  gap:2px;
+}
+.gz {
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(30,58,95,.35); color:var(--text-secondary);
+  border:1px solid rgba(59,130,246,.28); border-radius:6px;
+  cursor:pointer; transition:all .15s;
+  padding:0;
+}
+.gz:hover { background:rgba(59,130,246,.55); color:#fff; border-color:var(--accent-cyan); box-shadow:0 0 8px rgba(6,182,212,.4); }
+.gz:active { transform:scale(.92); }
+.gz svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2.3; stroke-linecap:round; stroke-linejoin:round; }
+/* Position each gizmo button in the cross pattern */
+.gz-up     { grid-area:1 / 2; }
+.gz-left   { grid-area:2 / 1; }
+.gz-center { grid-area:2 / 2; background:rgba(6,182,212,.18); border-color:var(--accent-cyan); color:var(--accent-cyan); font-size:16px; font-weight:700; }
+.gz-center:hover { background:rgba(6,182,212,.45); color:#fff; }
+.gz-right  { grid-area:2 / 3; }
+.gz-down   { grid-area:3 / 2; }
+.gz-up svg    { transform:rotate(0deg); }
+.gz-right svg { transform:rotate(90deg); }
+.gz-down svg  { transform:rotate(180deg); }
+.gz-left svg  { transform:rotate(270deg); }
+
+/* Zoom row beneath gizmo */
+#view-pad .vp-zoom { display:flex; gap:4px; width:100%; justify-content:space-between; }
+#view-pad .vp-zoom button {
+  flex:1; height:28px; padding:0 10px;
+  background:rgba(30,58,95,.35); color:var(--text-primary);
+  border:1px solid rgba(59,130,246,.28); border-radius:6px;
+  cursor:pointer; font-size:15px; font-weight:700; line-height:1;
+  display:flex; align-items:center; justify-content:center; gap:4px;
+  transition:all .15s;
+}
+#view-pad .vp-zoom button:hover { background:rgba(59,130,246,.55); color:#fff; border-color:var(--accent-cyan); }
+#view-pad .vp-zoom svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+/* R7: floating dimension labels + SVG leader lines projected from 3D */
+#dim-overlay { position:absolute; inset:0; pointer-events:none; z-index:11; }
+#dim-overlay svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.dim-label {
+  position:absolute; transform:translate(-50%,-50%);
+  padding:3px 8px; font-size:11px; font-weight:600; letter-spacing:.2px;
+  color:#eaf2ff; background:rgba(6,182,212,.15); border:1px solid var(--accent-cyan);
+  border-radius:4px; white-space:nowrap; box-shadow:0 2px 6px rgba(0,0,0,.5);
+}
+
+/* R2: ViewCube-style axis gizmo — TOP-LEFT of viewport, below the preset
+   button row. Kept clear of the HUD (bottom-left) and the navigator (bottom-right). */
+#axis-gizmo {
+  position:absolute; top:48px; left:12px; z-index:12;
+  width:78px; height:78px;
+  background:rgba(14,20,32,.82); border:1px solid rgba(59,130,246,.28);
+  border-radius:50%; padding:4px;
+  box-shadow:0 4px 16px rgba(0,0,0,.5);
+  backdrop-filter:blur(4px);
+}
+#axis-gizmo svg { width:100%; height:100%; overflow:visible; }
+#axis-gizmo circle[data-axis]:hover { stroke-width:2.5; filter:brightness(1.4); }
+
+/* Hover tooltip shown over the 3D viewport */
+#part-tooltip {
+  position:absolute; z-index:40; pointer-events:none; display:none;
+  background:rgba(10,14,23,.94); border:1px solid var(--accent-cyan);
+  border-radius:4px; padding:6px 10px; font-size:11px; line-height:1.5;
+  color:var(--text-primary); max-width:220px;
+  box-shadow:0 4px 14px rgba(0,0,0,.5);
+}
+#part-tooltip .pt-name { color:var(--accent-cyan); font-weight:700; letter-spacing:.3px; }
+#part-tooltip .pt-sub  { color:var(--text-muted); font-size:10px; margin-top:2px; }
+
+/* On-screen controls hint (shown briefly on load) */
+#ctl-hint {
+  position:absolute; top:48px; right:12px; z-index:11;
+  background:rgba(10,14,23,.85); border:1px solid var(--border);
+  border-radius:6px; padding:8px 12px; font-size:11px; color:var(--text-secondary);
+  line-height:1.65; pointer-events:none; transition:opacity .6s ease; max-width:200px;
+}
+#ctl-hint .h-key { display:inline-block; min-width:64px; color:var(--accent-cyan); font-weight:600; }
+#ctl-hint.faded { opacity:0.25; }
+</style>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "/lib/three.module.js",
+    "three/addons/": "/lib/"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<div class="header">
+  <h1>ARIA ENGINEERING LAB</h1>
+  <div class="header-nav">
+    <a href="/">Mission Dashboard</a>
+    <a href="/viewer">3D Viewer</a>
+  </div>
+</div>
+
+<!-- ═══ Main Layout ═══ -->
+<div class="main">
+
+  <!-- ─── Left Panel: Parts & Materials ─── -->
+  <div class="left-panel">
+    <div class="panel-title">Ship Parts</div>
+    <div id="parts-list"></div>
+    <div class="panel-title" style="margin-top:8px">Materials Database <span id="mat-count" style="color:var(--accent-blue);font-size:10px;letter-spacing:0;font-weight:400;text-transform:none"></span></div>
+    <div style="padding:4px 10px 6px">
+      <input id="mat-search" type="text" placeholder="Search materials..." oninput="filterMaterials(this.value)"
+        style="width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:4px;color:var(--text-primary);padding:5px 8px;font-size:11px;outline:none">
+    </div>
+    <div id="materials-list"></div>
+  </div>
+
+  <!-- ─── Center: 3D Viewport + Bottom Panel ─── -->
+  <div class="center">
+    <div class="viewport" id="viewport">
+      <!-- View controls -->
+      <div class="view-controls">
+        <button onclick="setCameraPreset('front')">Front</button>
+        <button onclick="setCameraPreset('back')">Back</button>
+        <button onclick="setCameraPreset('top')">Top</button>
+        <button onclick="setCameraPreset('side')">Side</button>
+        <button onclick="setCameraPreset('iso')">Iso</button>
+        <button onclick="fitCamera()">Fit</button>
+        <button onclick="toggleWireframe()">Wire</button>
+        <button onclick="toggleGrid()">Grid</button>
+        <button onclick="toggleDims()" id="btn-dims" title="Toggle dimension annotations (D)">Dims</button>
+        <button onclick="togglePostFx()" id="btn-glow" title="Toggle bloom glow post-processing (off by default — GPU-dependent)">Glow</button>
+      </div>
+      <!-- Color mode -->
+      <div class="color-mode" id="color-mode">
+        <button class="active" onclick="setColorMode('part',this)">Part</button>
+        <button onclick="setColorMode('stress',this)">Stress</button>
+        <button onclick="setColorMode('temp',this)">Temp</button>
+      </div>
+      <!-- Ship dimensions HUD -->
+      <div id="ship-hud" style="position:absolute;bottom:12px;left:12px;font-size:10px;color:var(--text-muted);line-height:1.8;background:rgba(10,14,23,.65);padding:7px 11px;border-radius:5px;border:1px solid var(--border);pointer-events:none;display:none">
+        <div style="color:var(--accent-cyan);font-weight:700;letter-spacing:.5px;margin-bottom:2px">ARIA / CLASS-0 GENERATION SHIP</div>
+        <div>Hull &nbsp;&nbsp;&nbsp;&nbsp;: <span style="color:var(--text-primary)" id="hud-hull">—</span></div>
+        <div>Ring &nbsp;&nbsp;&nbsp;&nbsp;: <span style="color:var(--text-primary)" id="hud-ring">—</span></div>
+        <div>Crew &nbsp;&nbsp;&nbsp;&nbsp;: <span style="color:var(--text-primary)" id="hud-crew">—</span></div>
+        <div>Mass &nbsp;&nbsp;&nbsp;&nbsp;: <span style="color:var(--text-primary)" id="hud-mass">—</span></div>
+        <div>Dest &nbsp;&nbsp;&nbsp;&nbsp;: <span style="color:var(--accent-green)" id="hud-dest">Alpha Centauri A</span></div>
+      </div>
+      <!-- Controls hint overlay (fades after 6s) -->
+      <div id="ctl-hint">
+        <div><span class="h-key">Drag</span> rotate</div>
+        <div><span class="h-key">Scroll</span> zoom</div>
+        <div><span class="h-key">Right-drag</span> pan</div>
+        <div><span class="h-key">Hover</span> inspect part</div>
+        <div><span class="h-key">Click</span> select part</div>
+        <div><span class="h-key">Dbl-click</span> focus on part</div>
+        <div><span class="h-key">P</span> toggle FPS overlay</div>
+      </div>
+      <!-- Part tooltip shown on hover -->
+      <div id="part-tooltip"></div>
+      <!-- R7: dimension overlay — SVG leader lines + floating HTML labels -->
+      <div id="dim-overlay" style="display:none">
+        <svg id="dim-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+      </div>
+      <!-- R2: ViewCube-style axis gizmo — bottom-left corner of viewport -->
+      <div id="axis-gizmo" title="Click an axis to snap view (X=side, Y=top, Z=front)">
+        <svg viewBox="-60 -60 120 120" xmlns="http://www.w3.org/2000/svg">
+          <line id="ax-x-neg" stroke="#883333" stroke-width="2" stroke-linecap="round"/>
+          <line id="ax-y-neg" stroke="#338833" stroke-width="2" stroke-linecap="round"/>
+          <line id="ax-z-neg" stroke="#333388" stroke-width="2" stroke-linecap="round"/>
+          <line id="ax-x"     stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+          <line id="ax-y"     stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
+          <line id="ax-z"     stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+          <circle id="ax-x-end"     r="11" fill="#ef4444" stroke="#0a0e17" stroke-width="1.5" style="cursor:pointer" data-axis="x"/>
+          <circle id="ax-y-end"     r="11" fill="#10b981" stroke="#0a0e17" stroke-width="1.5" style="cursor:pointer" data-axis="y"/>
+          <circle id="ax-z-end"     r="11" fill="#3b82f6" stroke="#0a0e17" stroke-width="1.5" style="cursor:pointer" data-axis="z"/>
+          <circle id="ax-x-end-neg" r="8"  fill="#0a0e17" stroke="#ef4444" stroke-width="1.5" style="cursor:pointer" data-axis="-x"/>
+          <circle id="ax-y-end-neg" r="8"  fill="#0a0e17" stroke="#10b981" stroke-width="1.5" style="cursor:pointer" data-axis="-y"/>
+          <circle id="ax-z-end-neg" r="8"  fill="#0a0e17" stroke="#3b82f6" stroke-width="1.5" style="cursor:pointer" data-axis="-z"/>
+          <text id="ax-x-txt" text-anchor="middle" dy="0.35em" font-size="11" font-weight="700" fill="#fff" pointer-events="none">X</text>
+          <text id="ax-y-txt" text-anchor="middle" dy="0.35em" font-size="11" font-weight="700" fill="#fff" pointer-events="none">Y</text>
+          <text id="ax-z-txt" text-anchor="middle" dy="0.35em" font-size="11" font-weight="700" fill="#fff" pointer-events="none">Z</text>
+        </svg>
+      </div>
+      <!-- View navigator: CAD-style gizmo with curved orbital arrows + zoom -->
+      <div id="view-pad">
+        <div class="vp-title">Orbit</div>
+        <div class="gizmo">
+          <!-- Master curved-arrow SVG, rotated via CSS for each direction.
+               Arc curves upward, chevron tip at top centre — reads as "rotate view up". -->
+          <button class="gz gz-up" onclick="viewRotate('up')" title="Tilt up (10°)">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M 6 22 Q 16 5 26 22"/>
+              <path d="M 12 11 L 16 6 L 20 11"/>
+            </svg>
+          </button>
+          <button class="gz gz-left" onclick="viewRotate('left')" title="Rotate left (10°)">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M 6 22 Q 16 5 26 22"/>
+              <path d="M 12 11 L 16 6 L 20 11"/>
+            </svg>
+          </button>
+          <button class="gz gz-center" onclick="fitCamera()" title="Reset view">⊙</button>
+          <button class="gz gz-right" onclick="viewRotate('right')" title="Rotate right (10°)">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M 6 22 Q 16 5 26 22"/>
+              <path d="M 12 11 L 16 6 L 20 11"/>
+            </svg>
+          </button>
+          <button class="gz gz-down" onclick="viewRotate('down')" title="Tilt down (10°)">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M 6 22 Q 16 5 26 22"/>
+              <path d="M 12 11 L 16 6 L 20 11"/>
+            </svg>
+          </button>
+        </div>
+        <div class="vp-title" style="margin-top:2px">Zoom</div>
+        <div class="vp-zoom">
+          <!-- Minus on LEFT, plus on RIGHT (standard convention) -->
+          <button onclick="viewZoom(-1)" title="Zoom out">
+            <svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M 10 10 L 14 14 M 5 7 L 9 7"/></svg>
+          </button>
+          <button onclick="viewZoom(1)" title="Zoom in">
+            <svg viewBox="0 0 16 16"><circle cx="7" cy="7" r="4.5"/><path d="M 10 10 L 14 14 M 5 7 L 9 7 M 7 5 L 7 9"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- Loading -->
+      <div class="loading-overlay hidden" id="loading">
+        <div class="spinner"></div>
+        <div class="loading-text" id="loading-text">Loading 3D model...</div>
+      </div>
+    </div>
+    <button class="bottom-toggle" id="bottom-toggle" onclick="toggleBottom()">Analysis & AI</button>
+    <div class="bottom-panel" id="bottom-panel">
+      <div class="bottom-tabs">
+        <div class="bottom-tab active" onclick="setBottomTab('ai',this)">AI Decisions</div>
+        <div class="bottom-tab" onclick="setBottomTab('budgets',this)">Budgets</div>
+        <div class="bottom-tab" onclick="setBottomTab('warnings',this)">Warnings</div>
+      </div>
+      <!-- AI Tab -->
+      <div class="bottom-content active" id="tab-ai" style="flex-direction:column">
+        <div class="ai-input">
+          <textarea id="ai-scenario" placeholder="Describe a scenario... e.g. 'Shield breach detected in sector 7, hull at 89%'"></textarea>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <button class="btn btn-primary" onclick="sendAIScenario()" style="width:80px;padding:6px">Send</button>
+            <select id="ai-presets" onchange="loadPreset(this)" style="background:var(--bg-input);color:var(--text-secondary);border:1px solid var(--border);border-radius:4px;padding:4px;font-size:10px;width:80px">
+              <option value="">Presets</option>
+              <option value="Shield breach detected in sector 7. Hull integrity at 89%. Debris density increasing.">Shield Breach</option>
+              <option value="Reactor coolant pressure dropping. Temperature rising above normal operating range.">Reactor Leak</option>
+              <option value="Micrometeorite storm detected on collision course. ETA 4 hours.">Debris Storm</option>
+              <option value="Food production dropped to 40% of demand. Hydroponic bay contamination suspected.">Food Crisis</option>
+              <option value="Main power bus voltage fluctuating. Battery SOC at 30%.">Power Failure</option>
+              <option value="Navigation star tracker disagreement. Position uncertainty growing.">Nav Failure</option>
+            </select>
+          </div>
+        </div>
+        <div class="ai-log" id="ai-log"></div>
+      </div>
+      <!-- Budgets Tab -->
+      <div class="bottom-content" id="tab-budgets">
+        <div class="budget-section">
+          <div class="panel-title">Mass Budget</div>
+          <div id="mass-budget-bars"></div>
+        </div>
+        <div class="budget-section">
+          <div class="panel-title">ECLSS Status</div>
+          <div id="eclss-bars"></div>
+        </div>
+      </div>
+      <!-- Warnings Tab -->
+      <div class="bottom-content" id="tab-warnings" style="flex-direction:column">
+        <div id="warnings-list"><div style="color:var(--text-muted);font-size:12px;padding:20px">Run FEA analysis to see warnings</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Right Panel: Properties & Controls ─── -->
+  <div class="right-panel">
+    <div class="panel-title">Selected Part</div>
+    <div class="prop-section" id="selected-info">
+      <div style="color:var(--text-muted);font-size:12px">Click a part in the 3D view or parts list</div>
+    </div>
+    <div class="panel-title">Parameters</div>
+    <div class="prop-section" id="param-sliders"></div>
+    <div class="prop-section" style="display:flex;flex-direction:column;gap:4px">
+      <button class="btn btn-primary" id="btn-rebuild" onclick="rebuildModel()">Rebuild 3D</button>
+      <button class="btn btn-success" id="btn-fea" onclick="runFEA()">Run FEA Analysis</button>
+      <button class="btn btn-warning" id="btn-optimize" onclick="runOptimizer()">Optimize Mass</button>
+    </div>
+    <div class="panel-title">Analysis Results</div>
+    <div class="prop-section" id="results-section">
+      <div style="color:var(--text-muted);font-size:12px">Run FEA to see results</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ UI Logic (no dependencies — always works) ═══ -->
+<script>
+// This script runs even if Three.js CDN fails
+window.ARIA = { threeReady: false, scene: null, shipModel: null, selectedMesh: null };
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = String(s);
+  return d.innerHTML;
+}
+
+const state = {
+  parts: [],
+  materials: {},
+  params: {},
+  selectedPartId: null,
+  feaResult: null,
+  colorMode: 'part',
+  wireframe: false,
+};
+
+// ─── Fetch Parts ───
+async function fetchParts() {
+  try {
+    const r = await fetch('/api/ship/parts');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    state.parts = d.parts || [];
+    renderPartsList();
+  } catch(e) { console.error('Parts fetch failed:', e); }
+}
+
+function renderPartsList() {
+  const el = document.getElementById('parts-list');
+  el.innerHTML = '';
+  state.parts.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'part-item';
+    item.dataset.id = p.id;
+    item.innerHTML = `<input type="checkbox" checked onchange="togglePartVisibility('${escHtml(p.id)}',this.checked)"><div class="part-dot" style="background:${escHtml(p.color)}"></div><span class="part-name">${escHtml(p.name)}</span>`;
+    item.addEventListener('click', (e) => { if (e.target.type !== 'checkbox') selectPartById(p.id); });
+    el.appendChild(item);
+  });
+}
+
+function togglePartVisibility(id, visible) {
+  if (!ARIA.threeReady || !ARIA.shipModel) return;
+  ARIA.shipModel.traverse(c => {
+    if (!c.isMesh) return;
+    if (c.name === id || c.name.startsWith(id + '_')) c.visible = visible;
+  });
+}
+
+function selectPartById(id) {
+  state.selectedPartId = id;
+  document.querySelectorAll('.part-item').forEach(el => {
+    el.classList.toggle('selected', el.dataset.id === id);
+  });
+  updateSelectedInfo(id);
+  updateParamSliders(id);
+  // Tell Three.js to highlight (if loaded)
+  if (ARIA.threeReady && window._threeSelectPart) window._threeSelectPart(id);
+}
+
+function updateSelectedInfo(id) {
+  const info = document.getElementById('selected-info');
+  const part = state.parts.find(p => p.id === id);
+  if (!part) { info.innerHTML = '<div style="color:var(--text-muted);font-size:12px">Click a part to inspect</div>'; return; }
+  let html = `<div class="prop-label">Name</div><div class="prop-value">${escHtml(part.name)}</div>`;
+  html += `<div class="prop-label" style="margin-top:6px">Material</div><div class="prop-value" style="font-size:12px;color:var(--accent-cyan)">${escHtml(part.material)}</div>`;
+  html += `<div class="prop-label" style="margin-top:6px">Description</div><div style="font-size:11px;color:var(--text-secondary)">${escHtml(part.description)}</div>`;
+  if (part.layers) {
+    html += '<div class="prop-label" style="margin-top:6px">Shield Layers</div>';
+    part.layers.forEach(l => {
+      html += `<div style="font-size:11px;color:var(--text-secondary);padding:2px 0">${escHtml(l.name)}: ${l.thickness_m*1000 >= 1 ? l.thickness_m*1000 + 'mm' : l.thickness_m + 'm'} (${escHtml(l.material)})</div>`;
+    });
+  }
+  if (part.computed?.artificial_gravity_g !== undefined) {
+    html += `<div class="prop-label" style="margin-top:6px">Artificial Gravity</div><div class="prop-value" style="color:var(--accent-green)">${part.computed.artificial_gravity_g}g</div>`;
+  }
+  // Camera-focus button — zooms the view onto this part's bounding box
+  html += `<button class="btn btn-primary" onclick="if(window._threeFocusOnPart)window._threeFocusOnPart('${escHtml(id)}')" style="margin-top:10px;padding:6px 10px">🔍 Focus Camera on Part</button>`;
+  info.innerHTML = html;
+}
+
+function updateParamSliders(id) {
+  const el = document.getElementById('param-sliders');
+  const part = state.parts.find(p => p.id === id);
+  if (!part?.parameters?.length) {
+    el.innerHTML = '<div style="color:var(--text-muted);font-size:12px">No adjustable parameters for this part</div>';
+    return;
+  }
+  let html = '';
+  part.parameters.forEach(p => {
+    const val = state.params[p.name] !== undefined ? state.params[p.name] : p.value;
+    html += `<div class="slider-row">
+      <label><span>${escHtml(p.label)}</span><span class="slider-val" id="sv-${p.name}">${formatVal(val, p.unit)}</span></label>
+      <input type="range" min="${p.min}" max="${p.max}" step="${p.step}" value="${val}"
+        oninput="onSliderChange('${p.name}',this.value,'${p.unit}')">
+    </div>`;
+  });
+  el.innerHTML = html;
+}
+
+function formatVal(v, unit) {
+  v = parseFloat(v);
+  if (isNaN(v)) return '--';
+  if (unit === 'm' && v < 1) return (v*1000).toFixed(0) + ' mm';
+  if (unit === 'm') return v.toFixed(1) + ' m';
+  return v + ' ' + unit;
+}
+
+function onSliderChange(name, value, unit) {
+  state.params[name] = parseFloat(value);
+  const sv = document.getElementById(`sv-${name}`);
+  if (sv) sv.textContent = formatVal(value, unit);
+}
+
+// ─── Fetch Materials ───
+async function fetchMaterials() {
+  try {
+    const r = await fetch('/api/materials');
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    state.materials = d.materials || {};
+    renderMaterials();
+  } catch(e) { console.error('Materials fetch failed:', e); }
+}
+
+// Client-side category mapping for 63-material database
+const MAT_CATEGORIES = {
+  'Titanium Alloys':      ['Ti-6Al-4V','Ti-3Al-2.5V','CP-Ti-Grade4'],
+  'Structural Steels':    ['AISI-4340','17-4PH-H900','15-5PH-H900','AISI-304L','Maraging-300','EUROFER97'],
+  'Stainless/High-Temp':  ['SS-316L','Inconel-718','Tungsten'],
+  'Aluminum Alloys':      ['Al-7075-T6','Al-6061-T6','Al-2024-T3','Al-5052-H32','Al-2219-T87'],
+  'Nickel/Superalloys':   ['Hastelloy-X','Waspaloy','Rene-41','A286','MP35N'],
+  'Radiation Shielding':  ['B4C','UHMWPE','Borated-Concrete','HfB2','MgB2','Li2TiO3'],
+  'Thermal/Insulation':   ['NaK-78','Aerogel','MLI-Mylar','Liquid-Hydrogen','Water-Ice','Fused-Silica',
+                           'Pyrolytic-Graphite-Sheet','CuMo-15-85','Vapor-Chamber-Cu'],
+  'Polymers':             ['PEEK','PEI-Ultem9085','PTFE','Nylon-PA12','Polycarbonate','Vespel-SP1','PTFE-Tape'],
+  'Composites':           ['Kevlar-49','CNT-Composite','IM7-977-3-CFRP','SiC-SiC-CMC'],
+  'Ceramics':             ['Alumina-99.5','SiC-Sintered','Zirconia-YSZ','Silicon-Nitride'],
+  'Seals & Adhesives':    ['Viton-FKM','RTV-Silicone','Loctite-EA9394'],
+  'Electronics':          ['FR4-G10','Copper-Foil-PCB','SAC305-Solder','Kovar','GaAs'],
+  'ECLSS / Filtration':   ['Activated-Carbon','Lithium-Hydroxide','Zeolite-13X'],
+};
+
+function matDetailHtml(m) {
+  let h = '';
+  if (m.density_kg_m3 != null)             h += `Density: <span class="val">${m.density_kg_m3} kg/m³</span><br>`;
+  if (m.youngs_modulus_gpa != null)         h += `Young's: <span class="val">${m.youngs_modulus_gpa} GPa</span><br>`;
+  if (m.yield_strength_mpa != null)         h += `Yield: <span class="val">${m.yield_strength_mpa} MPa</span><br>`;
+  if (m.uts_mpa != null)                    h += `UTS: <span class="val">${m.uts_mpa} MPa</span><br>`;
+  if (m.thermal_conductivity_w_mk != null)  h += `Conductivity: <span class="val">${m.thermal_conductivity_w_mk} W/mK</span><br>`;
+  if (m.specific_heat_j_kgk != null)        h += `Cp: <span class="val">${m.specific_heat_j_kgk} J/kgK</span><br>`;
+  if (m.melting_point_k != null)            h += `Melting pt: <span class="val">${m.melting_point_k} K</span><br>`;
+  if (m.emissivity != null)                 h += `Emissivity: <span class="val">${m.emissivity}</span><br>`;
+  h += `<div class="src">${escHtml(m.source || '')}</div>`;
+  return h;
+}
+
+function renderMaterials() {
+  const el = document.getElementById('materials-list');
+  el.innerHTML = '';
+  const cnt = document.getElementById('mat-count');
+  if (cnt) cnt.textContent = `(${Object.keys(state.materials).length})`;
+
+  // Build set of materials already assigned to a category
+  const assigned = new Set(Object.values(MAT_CATEGORIES).flat());
+
+  // Collect any materials NOT in the mapping into "Other"
+  const other = Object.keys(state.materials).filter(n => !assigned.has(n));
+  const categories = Object.entries(MAT_CATEGORIES);
+  if (other.length) categories.push(['Other', other]);
+
+  categories.forEach(([catName, matNames], catIdx) => {
+    // Only include materials that actually exist in the DB
+    const members = matNames.filter(n => state.materials[n]);
+    if (!members.length) return;
+
+    const cat = document.createElement('div');
+    cat.className = 'mat-category';
+
+    // All collapsed by default — search box is primary discovery
+    const open = false;
+    cat.innerHTML = `<div class="mat-category-header${open?' open':''}" onclick="toggleMatCategory(this)">
+      <span><span class="mat-category-arrow">▶</span> ${escHtml(catName)}</span>
+      <span class="mat-category-count">${members.length}</span>
+    </div>
+    <div class="mat-category-body${open?' open':''}"></div>`;
+
+    const body = cat.querySelector('.mat-category-body');
+    members.forEach(name => {
+      const m = state.materials[name];
+      const row = document.createElement('div');
+      row.innerHTML = `<div class="mat-item" onclick="toggleMatItem(this)">${escHtml(name)}</div>
+        <div class="mat-detail">${matDetailHtml(m)}</div>`;
+      body.appendChild(row);
+    });
+
+    el.appendChild(cat);
+  });
+}
+
+function toggleMatCategory(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+
+function toggleMatItem(item) {
+  item.classList.toggle('expanded');
+  item.nextElementSibling.classList.toggle('show');
+}
+
+function filterMaterials(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) { renderMaterials(); return; }
+  const el = document.getElementById('materials-list');
+  el.innerHTML = '';
+  Object.entries(state.materials)
+    .filter(([name, m]) => name.toLowerCase().includes(q) || (m.source||'').toLowerCase().includes(q))
+    .forEach(([name, m]) => {
+      const row = document.createElement('div');
+      row.innerHTML = `<div class="mat-item" onclick="toggleMatItem(this)">${escHtml(name)}</div>
+        <div class="mat-detail">${matDetailHtml(m)}</div>`;
+      el.appendChild(row);
+    });
+  if (!el.children.length) el.innerHTML = '<div style="padding:10px 14px;font-size:11px;color:var(--text-muted)">No matches</div>';
+}
+
+// ─── Actions ───
+async function rebuildModel() {
+  const btn = document.getElementById('btn-rebuild');
+  btn.disabled = true; btn.textContent = 'Rebuilding...';
+  try {
+    const r = await fetch('/api/ship/rebuild', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(state.params),
+    });
+    const d = await r.json();
+    if (d.error) { alert(d.error); return; }
+    if (ARIA.threeReady && window._threeLoadModel) window._threeLoadModel();
+    fetchParts();
+  } catch(e) { alert('Rebuild failed: ' + e); }
+  finally { btn.disabled = false; btn.textContent = 'Rebuild 3D'; }
+}
+
+async function runFEA() {
+  const btn = document.getElementById('btn-fea');
+  btn.disabled = true; btn.textContent = 'Analyzing...';
+  const overlay = document.getElementById('loading');
+  const loadingText = document.getElementById('loading-text');
+  overlay.classList.remove('hidden');
+  loadingText.textContent = 'Running FEA (structural + thermal)...';
+  try {
+    const r = await fetch('/api/ship/analyze', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(state.params),
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.error) { alert(d.error); return; }
+    state.feaResult = d;
+    updateResults(d);
+    updateBudgets(d);
+    updateWarnings(d.warnings || []);
+    if (ARIA.threeReady && window._threeSetColorMode) window._threeSetColorMode('stress');
+    document.querySelectorAll('#color-mode button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#color-mode button')[1]?.classList.add('active');
+  } catch(e) { alert('FEA failed: ' + e); }
+  finally {
+    btn.disabled = false; btn.textContent = 'Run FEA Analysis';
+    overlay.classList.add('hidden');
+  }
+}
+
+async function runOptimizer() {
+  if (!confirm('Run mass optimizer? This takes 1-2 minutes.')) return;
+  const btn = document.getElementById('btn-optimize');
+  btn.disabled = true; btn.textContent = 'Optimizing...';
+  const overlay = document.getElementById('loading');
+  overlay.classList.remove('hidden');
+  document.getElementById('loading-text').textContent = 'Running COBYLA optimizer (up to 30 iterations)...';
+  try {
+    const r = await fetch('/api/ship/optimize', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ max_iterations: 30 }),
+    });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    if (d.error) { alert(d.error); return; }
+    if (d.best_params) {
+      Object.assign(state.params, d.best_params);
+      alert(`Optimization ${d.converged ? 'converged' : 'stopped'} after ${d.iterations} iterations.\nBest mass: ${(d.best_mass_kg/1e6).toFixed(1)}M kg\nStress: ${d.final_stress_mpa} MPa`);
+      rebuildModel();
+    }
+  } catch(e) { alert('Optimizer failed: ' + e); }
+  finally {
+    btn.disabled = false; btn.textContent = 'Optimize Mass';
+    overlay.classList.add('hidden');
+  }
+}
+
+function updateResults(d) {
+  const el = document.getElementById('results-section');
+  const s = d.structural || {};
+  const t = d.thermal || {};
+  const m = d.mass_budget || {};
+  const e = d.eclss || {};
+  const fos = s.safety_factor || 0;
+  const fosClass = fos >= 4 ? 'pass' : fos >= 2 ? 'warn' : 'fail';
+  const tClass = (t.thermal_margin_k || 0) >= 50 ? 'pass' : 'warn';
+  const mClass = Math.abs(m.discrepancy_pct || 0) <= 5 ? 'pass' : Math.abs(m.discrepancy_pct || 0) <= 20 ? 'warn' : 'fail';
+  const fClass = (e.food_self_sufficiency_pct || 0) >= 50 ? 'pass' : 'fail';
+  el.innerHTML = `<div class="result-grid">
+    <div class="result-item"><div class="rl">Safety Factor</div><div class="rv ${fosClass}">${fos.toFixed(1)}x</div></div>
+    <div class="result-item"><div class="rl">Max Stress</div><div class="rv">${s.max_von_mises_mpa || 0} MPa</div></div>
+    <div class="result-item"><div class="rl">Max Temp</div><div class="rv">${t.max_temperature_k || 0} K</div></div>
+    <div class="result-item"><div class="rl">Thermal Margin</div><div class="rv ${tClass}">${t.thermal_margin_k || 0} K</div></div>
+    <div class="result-item"><div class="rl">Total Mass</div><div class="rv">${((m.total_mass_kg||0)/1e6).toFixed(1)}M kg</div></div>
+    <div class="result-item"><div class="rl">Mass vs Target</div><div class="rv ${mClass}">${m.discrepancy_pct>0?'+':''}${m.discrepancy_pct||0}%</div></div>
+    <div class="result-item"><div class="rl">Food Self-Suff.</div><div class="rv ${fClass}">${e.food_self_sufficiency_pct||0}%</div></div>
+    <div class="result-item"><div class="rl">Water Reserve</div><div class="rv">${e.water_reserve_days||0} days</div></div>
+  </div>`;
+}
+
+function updateBudgets(d) {
+  const mb = d.mass_budget?.breakdown || {};
+  const el = document.getElementById('mass-budget-bars');
+  const maxMass = Math.max(...Object.values(mb), 1);
+  const colors = { structure:'#c0c0c0', shield:'#44cc66', propellant:'#ff8844', power:'#ff4444', eclss:'#44cccc', habitat_ring:'#ddaa33', radiators:'#4488ff', manufacturing:'#888', computing:'#aa88ff', crew:'#88ff88', margin:'#555' };
+  let html = '';
+  Object.entries(mb).sort((a,b) => b[1]-a[1]).forEach(([k,v]) => {
+    const pct = (v / maxMass * 100).toFixed(0);
+    html += `<div class="budget-bar"><span class="budget-bar-label">${escHtml(k)}</span><div style="flex:1;background:var(--bg-input);border-radius:3px;overflow:hidden"><div class="budget-bar-fill" style="width:${pct}%;background:${colors[k]||'#3b82f6'}"></div></div><span class="budget-bar-val">${(v/1e6).toFixed(1)}M</span></div>`;
+  });
+  el.innerHTML = html;
+  const eclss = d.eclss || {};
+  document.getElementById('eclss-bars').innerHTML = `
+    <div class="budget-bar"><span class="budget-bar-label">Food</span><div style="flex:1;background:var(--bg-input);border-radius:3px;overflow:hidden"><div class="budget-bar-fill" style="width:${Math.min(eclss.food_self_sufficiency_pct||0,100)}%;background:${(eclss.food_self_sufficiency_pct||0)<50?'var(--accent-red)':'var(--accent-green)'}"></div></div><span class="budget-bar-val">${eclss.food_self_sufficiency_pct||0}%</span></div>
+    <div class="budget-bar"><span class="budget-bar-label">Water</span><div style="flex:1;background:var(--bg-input);border-radius:3px;overflow:hidden"><div class="budget-bar-fill" style="width:${Math.min((eclss.water_reserve_days||0)/90*100,100)}%;background:var(--accent-blue)"></div></div><span class="budget-bar-val">${eclss.water_reserve_days||0}d</span></div>
+    <div class="budget-bar"><span class="budget-bar-label">CO2 Buffer</span><div style="flex:1;background:var(--bg-input);border-radius:3px;overflow:hidden"><div class="budget-bar-fill" style="width:${Math.min((eclss.co2_buffer_hours||0)/24*100,100)}%;background:var(--accent-cyan)"></div></div><span class="budget-bar-val">${eclss.co2_buffer_hours||0}h</span></div>`;
+}
+
+function updateWarnings(warnings) {
+  const el = document.getElementById('warnings-list');
+  if (!warnings.length) { el.innerHTML = '<div style="color:var(--accent-green);font-size:12px;padding:10px">No warnings</div>'; return; }
+  el.innerHTML = warnings.map(w => {
+    const sev = w.toLowerCase().includes('critical') ? 'critical' : w.toLowerCase().includes('safety') ? 'warning' : 'info';
+    return `<div class="warning-item ${sev}">${escHtml(w)}</div>`;
+  }).join('');
+}
+
+// ─── AI ───
+async function sendAIScenario() {
+  const ta = document.getElementById('ai-scenario');
+  const sendBtn = ta.closest('.ai-input').querySelector('button');
+  const scenario = ta.value.trim();
+  if (!scenario) return;
+  sendBtn.disabled = true;
+  ta.value = '';
+  const log = document.getElementById('ai-log');
+  log.innerHTML += `<div class="ai-entry"><strong>You:</strong> ${escHtml(scenario.substring(0,200))}</div>`;
+  try {
+    const r = await fetch('/api/ai/reason', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({scenario}) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const d = await r.json();
+    const prio = d.decision?.priority || 'NOMINAL';
+    const cls = prio === 'EMERGENCY' || prio === 'CRITICAL' ? 'critical' : prio === 'WARNING' ? 'warning' : '';
+    let html = `<div class="ai-entry ${cls}"><strong>ARIA AI</strong> <span style="font-size:10px;color:var(--text-muted)">(${escHtml(d.engine||'unknown')}, confidence: ${((d.confidence||0)*100).toFixed(0)}%)</span>`;
+    (d.reasoning_steps || []).forEach(s => { html += `<div class="ai-step">${escHtml(s)}</div>`; });
+    if (d.decision) html += `<div class="ai-decision">Action: ${escHtml(d.decision.action)} | Priority: ${escHtml(prio)}</div>`;
+    html += '</div>';
+    log.innerHTML += html;
+    log.scrollTop = log.scrollHeight;
+  } catch(e) { log.innerHTML += `<div class="ai-entry critical">Error: ${escHtml(String(e))}</div>`; }
+  finally { sendBtn.disabled = false; }
+}
+
+function loadPreset(sel) { if (sel.value) { document.getElementById('ai-scenario').value = sel.value; sel.value = ''; } }
+
+// ─── Bottom Panel ───
+function toggleBottom() {
+  const bp = document.getElementById('bottom-panel');
+  bp.classList.toggle('open');
+  document.getElementById('bottom-toggle').textContent = bp.classList.contains('open') ? 'Hide Panel' : 'Analysis & AI';
+}
+
+function setBottomTab(tab, btn) {
+  document.querySelectorAll('.bottom-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.bottom-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function setColorMode(mode, btn) {
+  state.colorMode = mode;
+  document.querySelectorAll('#color-mode button').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (ARIA.threeReady && window._threeSetColorMode) window._threeSetColorMode(mode);
+}
+
+// ─── Init (runs immediately — no CDN dependency) ───
+document.addEventListener('DOMContentLoaded', async () => {
+  await Promise.all([fetchParts(), fetchMaterials()]);
+  try {
+    const r = await fetch('/api/ship/params');
+    if (r.ok) state.params = await r.json();
+  } catch(e) { console.warn('Params load failed:', e); }
+  updateShipHUD();
+});
+
+function updateShipHUD() {
+  const hud = document.getElementById('ship-hud');
+  if (!hud) return;
+  document.getElementById('hud-hull').textContent = '712 m × ⌀25 m spine';
+  document.getElementById('hud-ring').textContent = '⌀1000 m, 1 RPM (0.56 g at rim)';  // ω²R = (2π/60)²×500 ≈ 5.5 m/s²
+  document.getElementById('hud-crew').textContent = '1,000 crew';                       // matches ShipParameters.crew_size
+  document.getElementById('hud-mass').textContent = '100 M kg';                         // GenerationShipConfig.ship_mass_kg = 1e8
+  // Destination + feasibility — per trajectory.py: fusion-direct-drive (10⁶ s Isp)
+  // delivers ~0.02 c cruise, reaching α Cen A in ~220 yr (within 1000-yr mission budget).
+  // Fusion-magnetic (10⁴ s Isp) would take 22 000 yr — infeasible. HUD reflects
+  // the propulsion-backed reality, not a plain "Alpha Centauri" marketing claim.
+  const hudDest = document.getElementById('hud-dest');
+  if (hudDest) hudDest.textContent = 'α Cen A · 4.365 ly · ~220 yr @ 0.02 c (fusion DD)';
+  hud.style.display = 'block';
+}
+
+// Fade the on-screen controls hint after a few seconds so it doesn't linger.
+setTimeout(() => {
+  const h = document.getElementById('ctl-hint');
+  if (h) h.classList.add('faded');
+}, 6000);
+</script>
+
+
+<!-- ═══ Three.js 3D Engine (dynamic import — errors caught, spinner never stuck) ═══ -->
+<script>
+(async function initThreeJS() {
+  const overlay = document.getElementById('loading');
+  const text = document.getElementById('loading-text');
+  // Start hidden — only show when we actively call loadModel()
+  overlay.classList.add('hidden');
+
+  let THREE, OrbitControls, GLTFLoader, OBJLoader, EffectComposer, RenderPass, UnrealBloomPass, OutputPass, SMAAPass, Stats;
+  try {
+    THREE = await import('/lib/three.module.js');
+    const ocMod = await import('/lib/controls/OrbitControls.js');
+    OrbitControls = ocMod.OrbitControls;
+    const glMod = await import('/lib/loaders/GLTFLoader.js');
+    GLTFLoader = glMod.GLTFLoader;
+    const objMod = await import('/lib/loaders/OBJLoader.js');
+    OBJLoader = objMod.OBJLoader;
+    // Round-1: post-processing pipeline for bloom glow on emissive parts
+    const ecMod  = await import('/lib/postprocessing/EffectComposer.js');
+    const rpMod  = await import('/lib/postprocessing/RenderPass.js');
+    const bpMod  = await import('/lib/postprocessing/UnrealBloomPass.js');
+    const opMod  = await import('/lib/postprocessing/OutputPass.js');
+    const smMod  = await import('/lib/postprocessing/SMAAPass.js');
+    const stMod  = await import('/lib/libs/stats.module.js');
+    EffectComposer   = ecMod.EffectComposer;
+    RenderPass       = rpMod.RenderPass;
+    UnrealBloomPass  = bpMod.UnrealBloomPass;
+    OutputPass       = opMod.OutputPass;
+    SMAAPass         = smMod.SMAAPass;
+    Stats            = stMod.default;
+  } catch(e) {
+    console.error('[ARIA] Three.js load failed:', e.message);
+    text.textContent = '3D engine unavailable';
+    return;
+  }
+
+  // Per-part PBR material properties. Metalness kept low (<0.4) so diffuse base
+  // colour dominates — fully-metallic surfaces in a dark scene reflect nothing
+  // but black sky and read as silhouettes. Each subsystem gets a distinct hue.
+  const PART_MATS = {
+    hull_main:        { color:0xcfd4dc, metalness:0.25, roughness:0.55 },                                      // silver-white titanium
+    reactor_engine:   { color:0xff5533, metalness:0.20, roughness:0.35, emissive:0xff3300, emissiveIntensity:0.9 }, // red-orange core
+    habitat_ring:     { color:0xf2c158, metalness:0.15, roughness:0.50, emissive:0x332200, emissiveIntensity:0.20 }, // warm gold habitat
+    magnetic_nozzle:  { color:0x5588ee, metalness:0.30, roughness:0.35, emissive:0x3377ff, emissiveIntensity:1.3 }, // plasma-blue bell
+    bow_sensor_ring:  { color:0xd0d6e0, metalness:0.30, roughness:0.40, emissive:0x4488ff, emissiveIntensity:0.45 }, // cool white sensors
+    // 7-layer shield stack — each layer's colour matches its actual material physics
+    shield_layer_0:   { color:0xccddff, metalness:0.40, roughness:0.35, emissive:0x66aaff, emissiveIntensity:0.55 }, // detection LIDAR — sensor cyan
+    shield_layer_1:   { color:0x8f7bd8, metalness:0.25, roughness:0.45, emissive:0x5533aa, emissiveIntensity:0.30 }, // active plasma deflector — dimmed purple, no longer dominant
+    shield_layer_2:   { color:0xf2cc44, metalness:0.55, roughness:0.25, emissive:0x665522, emissiveIntensity:0.35 }, // magnetic deflector — superconducting gold
+    shield_layer_3:   { color:0xd98844, metalness:0.40, roughness:0.40, emissive:0x552200, emissiveIntensity:0.15 }, // electrostatic grid — copper/tungsten
+    shield_layer_4:   { color:0xaed8f5, metalness:0.05, roughness:0.25, emissive:0x1a3c66, emissiveIntensity:0.12 }, // ablation ice — frosty pale cyan (5.45 m, dominant)
+    shield_layer_5:   { color:0x7a8294, metalness:0.35, roughness:0.55 },                                       // Whipple shield — SiC/Kevlar/Al layered
+    shield_layer_6:   { color:0xc4c8cc, metalness:0.30, roughness:0.45 },                                       // structural hull — titanium + self-healing
+    // Hull ring-frame stiffeners (5) — darker structural grey, clearly distinct from hull
+    hull_stiffener_0: { color:0x6a7282, metalness:0.25, roughness:0.55 },
+    hull_stiffener_1: { color:0x6a7282, metalness:0.25, roughness:0.55 },
+    hull_stiffener_2: { color:0x6a7282, metalness:0.25, roughness:0.55 },
+    hull_stiffener_3: { color:0x6a7282, metalness:0.25, roughness:0.55 },
+    hull_stiffener_4: { color:0x6a7282, metalness:0.25, roughness:0.55 },
+    // Cryo fuel tanks (3) — frosty ice-white with a faint cyan rim glow
+    fuel_tank_0:      { color:0xe4edf5, metalness:0.10, roughness:0.65, emissive:0x114466, emissiveIntensity:0.15 },
+    fuel_tank_1:      { color:0xe4edf5, metalness:0.10, roughness:0.65, emissive:0x114466, emissiveIntensity:0.15 },
+    fuel_tank_2:      { color:0xe4edf5, metalness:0.10, roughness:0.65, emissive:0x114466, emissiveIntensity:0.15 },
+    // Radiator wings (2) — hot-glowing heat rejection panels
+    radiator_array_0: { color:0x6aa4ee, metalness:0.15, roughness:0.45, emissive:0xff7733, emissiveIntensity:0.85 },
+    radiator_array_1: { color:0x6aa4ee, metalness:0.15, roughness:0.45, emissive:0xff7733, emissiveIntensity:0.85 },
+    // Habitat spokes (6) — warm steel grey so they don't disappear against the ring
+    spoke_0: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    spoke_1: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    spoke_2: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    spoke_3: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    spoke_4: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    spoke_5: { color:0x8892a8, metalness:0.30, roughness:0.45 },
+    // Attitude engine bells (4) — hot orange exhaust nozzles
+    engine_bell_0: { color:0xee8822, metalness:0.20, roughness:0.50, emissive:0xff5500, emissiveIntensity:0.55 },
+    engine_bell_1: { color:0xee8822, metalness:0.20, roughness:0.50, emissive:0xff5500, emissiveIntensity:0.55 },
+    engine_bell_2: { color:0xee8822, metalness:0.20, roughness:0.50, emissive:0xff5500, emissiveIntensity:0.55 },
+    engine_bell_3: { color:0xee8822, metalness:0.20, roughness:0.50, emissive:0xff5500, emissiveIntensity:0.55 },
+  };
+  // Procedurally generate 24 habitat-ring modules (warm gold with lit windows glow)
+  for (let i = 0; i < 24; i++) {
+    PART_MATS[`hab_module_${i}`] = {
+      color: 0xf2dba0, metalness: 0.15, roughness: 0.45,
+      emissive: 0xffd088, emissiveIntensity: 0.85,   // bright "window light" glow — the crew lives here
+    };
+  }
+  // 4 cardinal docking ports — cool steel grey, slight blue rim for navlight
+  for (let i = 0; i < 4; i++) {
+    PART_MATS[`docking_port_${i}`] = {
+      color: 0xb6c2d0, metalness: 0.25, roughness: 0.40,
+      emissive: 0x3355aa, emissiveIntensity: 0.35,
+    };
+  }
+  // 4 comm antenna arrays — bright white with subtle blue telemetry glow
+  for (let i = 0; i < 4; i++) {
+    PART_MATS[`comm_antenna_${i}`] = {
+      color: 0xdde4ee, metalness: 0.30, roughness: 0.35,
+      emissive: 0x4488ff, emissiveIntensity: 0.45,
+    };
+  }
+  // Fallback for unmapped names
+  const PART_COLORS = {};
+  Object.entries(PART_MATS).forEach(([k,v]) => { PART_COLORS[k] = v.color; });
+
+  // Scene
+  const viewport = document.getElementById('viewport');
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0e1422);   // slightly darker so bloom has contrast to blow out against
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 5000);
+  camera.position.set(80, 40, 80);
+  const renderer = new THREE.WebGLRenderer({ antialias: false });  // SMAA handles AA
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  viewport.appendChild(renderer.domElement);
+
+  // ── Post-processing pipeline (Round-1: bloom + SMAA, OPT-IN) ────────
+  // Default OFF so the ship always renders cleanly regardless of GPU / driver
+  // quirks with UnrealBloomPass. Toggle with the "Glow" button (top-right)
+  // once you've confirmed the plain-render path works in your browser.
+  window._postFxDisabled = true;
+  // Initial render-target size: seed with actual viewport if known, else a safe default
+  const _initW = viewport.clientWidth  || 1280;
+  const _initH = viewport.clientHeight || 720;
+  renderer.setSize(_initW, _initH);
+  const composer = new EffectComposer(renderer);
+  composer.setSize(_initW, _initH);
+  const renderPass = new RenderPass(scene, camera);
+  const bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(_initW, _initH),
+    /*strength*/   0.85,        // tuned so habitat windows + reactor + nozzle bloom but hull doesn't wash out
+    /*radius*/     0.55,
+    /*threshold*/  0.18,
+  );
+  const smaaPass = new SMAAPass(_initW, _initH);
+  const outputPass = new OutputPass();
+  composer.addPass(renderPass);
+  composer.addPass(bloomPass);
+  composer.addPass(smaaPass);
+  composer.addPass(outputPass);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.12;
+  controls.rotateSpeed = 1.15;
+  controls.zoomSpeed = 1.6;        // ship is ~1600 m diagonal; default scroll step is too slow
+  controls.panSpeed = 1.3;
+  controls.screenSpacePanning = true;  // middle-click pan moves in screen plane, more intuitive for engineering
+  controls.minDistance = 40;           // stops you zooming through the hull into an opaque interior
+  controls.maxDistance = 4500;         // prevents the user from drifting into empty starfield where the ship becomes a spiky speck
+
+// Lights — bright and soft so diffuse base colours of parts are always visible,
+// not black silhouettes. Pure PBR in a dark scene makes metallic parts look black
+// because they reflect the dark sky; we lean more on diffuse/ambient fill.
+scene.add(new THREE.AmbientLight(0xffffff, 0.55));              // flat ambient so nothing is fully black
+scene.add(new THREE.HemisphereLight(0x88a0c8, 0x3a4a66, 1.8));  // brighter sky + upward fill from belly
+const sun = new THREE.DirectionalLight(0xfff4e0, 2.2);
+sun.position.set(500, 300, 800);
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0x88aaee, 1.1);
+fill.position.set(-600, -200, -700);
+scene.add(fill);
+const rim = new THREE.DirectionalLight(0xaaccee, 0.8);
+rim.position.set(-200, 700, -200);
+scene.add(rim);
+// Extra face-fill from camera direction so whatever the user rotates to is lit
+const camFill = new THREE.DirectionalLight(0xffffff, 0.7);
+camFill.position.set(0, 0, 1);
+scene.add(camFill);
+// Reactor plume point light — placed at stern of hull, position updated after model loads
+const reactorLight = new THREE.PointLight(0xff4400, 0, 1200);  // intensity=0 until model loads
+scene.add(reactorLight);
+// Nozzle plasma light — blue, added at magnetic_nozzle exit
+const nozzleLight = new THREE.PointLight(0x4488ff, 0, 1500);
+scene.add(nozzleLight);
+
+// Starfield — radius scaled to fill far clip (updated in fitCam if needed)
+const sg = new THREE.BufferGeometry();
+const sp = new Float32Array(4000 * 3);
+for (let i = 0; i < 4000; i++) {
+  // Distribute on sphere surface for more uniform distribution
+  const u = Math.random(), v = Math.random();
+  const th = 2 * Math.PI * u, ph = Math.acos(2 * v - 1);
+  const r = 8000 + Math.random() * 4000;
+  sp[i*3]   = r * Math.sin(ph) * Math.cos(th);
+  sp[i*3+1] = r * Math.sin(ph) * Math.sin(th);
+  sp[i*3+2] = r * Math.cos(ph);
+}
+sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+scene.add(new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xffffff, size: 1.5, sizeAttenuation: false })));
+
+// Grid + Axes — sized dynamically after model loads via fitCam()
+let grid = new THREE.GridHelper(200, 20, 0x1a3050, 0x0d1a2a);
+scene.add(grid);
+let axesHelper = new THREE.AxesHelper(15);
+scene.add(axesHelper);
+
+// State
+let shipModel = null;
+let selectedMesh = null;
+let wireframe = false;
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+// Resize — use rAF to ensure post-layout dimensions; retry if viewport has 0 size
+function onResize() {
+  const w = viewport.clientWidth || viewport.offsetWidth;
+  const h = viewport.clientHeight || viewport.offsetHeight;
+  if (!w || !h) { requestAnimationFrame(onResize); return; }
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+  // Keep composer + bloom + SMAA render targets in sync with viewport size
+  if (composer) composer.setSize(w, h);
+  if (bloomPass) bloomPass.setSize(w, h);
+  if (smaaPass)  smaaPass.setSize(w, h);
+}
+window.addEventListener('resize', onResize);
+new ResizeObserver(onResize).observe(viewport);
+onResize(); // try immediately
+requestAnimationFrame(onResize); // also defer in case layout not yet complete
+
+// R7: Dimension overlay — each entry is two 3D points + a label. Updated every
+// frame: project both endpoints to screen coords, draw an SVG leader between
+// them, position a floating HTML label at the midpoint.
+const DIM_DEFS = [
+  // Hull length — from stern cap to bow cap (in ship local space)
+  { label: '712 m hull',     p1: [-356, 0, 30],  p2: [356, 0, 30],   offset: [0, -14] },
+  // Habitat ring diameter — top to bottom of ring
+  { label: '⌀ 1000 m ring',  p1: [0, 500, 0],    p2: [0, -500, 0],   offset: [20, 0] },
+  // Shield stack forward extent
+  { label: '42 m shield',    p1: [356, 0, 10],   p2: [400, 0, 10],   offset: [0, -12] },
+  // Nozzle exit flare
+  { label: '⌀ 24 m nozzle',  p1: [-423, -12, 0], p2: [-423, 12, 0],  offset: [-22, 0] },
+  // Radiator wing radial extent (top wing)
+  { label: '180 m wing',     p1: [-200, 20, 0],  p2: [-200, 200, 0], offset: [14, 0] },
+];
+let _dimsVisible = false;
+let _dimEls = null;   // cached DOM {labelDiv, line}
+function _ensureDimEls() {
+  if (_dimEls) return _dimEls;
+  const overlay = document.getElementById('dim-overlay');
+  const svg = document.getElementById('dim-svg');
+  _dimEls = DIM_DEFS.map(def => {
+    const ln = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    ln.setAttribute('stroke', '#06b6d4');
+    ln.setAttribute('stroke-width', '1.2');
+    ln.setAttribute('stroke-dasharray', '4 3');
+    svg.appendChild(ln);
+    const lb = document.createElement('div');
+    lb.className = 'dim-label';
+    lb.textContent = def.label;
+    overlay.appendChild(lb);
+    return { def, ln, lb };
+  });
+  return _dimEls;
+}
+function _worldToScreen(v3) {
+  const rect = renderer.domElement.getBoundingClientRect();
+  const p = v3.clone().project(camera);
+  return {
+    x: (p.x +  1) / 2 * rect.width,
+    y: (-p.y + 1) / 2 * rect.height,
+    visible: p.z > -1 && p.z < 1,
+  };
+}
+function updateDimOverlay() {
+  if (!_dimsVisible || !shipModel) return;
+  const els = _ensureDimEls();
+  els.forEach(({ def, ln, lb }) => {
+    const p1 = new THREE.Vector3().fromArray(def.p1).applyMatrix4(shipModel.matrixWorld);
+    const p2 = new THREE.Vector3().fromArray(def.p2).applyMatrix4(shipModel.matrixWorld);
+    const s1 = _worldToScreen(p1);
+    const s2 = _worldToScreen(p2);
+    ln.setAttribute('x1', s1.x);
+    ln.setAttribute('y1', s1.y);
+    ln.setAttribute('x2', s2.x);
+    ln.setAttribute('y2', s2.y);
+    const midX = (s1.x + s2.x) / 2 + (def.offset?.[0] ?? 0);
+    const midY = (s1.y + s2.y) / 2 + (def.offset?.[1] ?? 0);
+    lb.style.left = midX + 'px';
+    lb.style.top = midY + 'px';
+    const show = s1.visible && s2.visible;
+    lb.style.display = show ? 'block' : 'none';
+    ln.style.display = show ? '' : 'none';
+  });
+}
+window.toggleDims = function() {
+  _dimsVisible = !_dimsVisible;
+  const el = document.getElementById('dim-overlay');
+  const btn = document.getElementById('btn-dims');
+  if (el) el.style.display = _dimsVisible ? 'block' : 'none';
+  if (btn) btn.classList.toggle('active', _dimsVisible);
+};
+// Keyboard shortcut 'D' toggles dims
+window.addEventListener('keydown', e => {
+  if ((e.key === 'd' || e.key === 'D') && !e.target.matches('input,textarea')) {
+    window.toggleDims();
+  }
+});
+
+// R8 (real 3D modelling): NASA 42 OBJ asset cache. Loads the ISS High-Gain
+// Antenna + Control Moment Gyroscope once, then clones into the scene to
+// replace the blocky primitive antennas the parametric exporter produces.
+// These are actual NASA sim-pack CAD meshes — the same geometry used by the
+// 42 spacecraft simulator (Hur & Dennehy 2001, NASA GSFC).
+const NASA_ASSETS = {};
+function _loadObj(path) {
+  return new Promise((resolve, reject) => {
+    new OBJLoader().load(path, resolve, undefined, reject);
+  });
+}
+async function preloadNasaAssets() {
+  if (NASA_ASSETS.loaded) return;
+  try {
+    NASA_ASSETS.iss_hga = await _loadObj('/lib/models/ISS_HGA.obj');
+    NASA_ASSETS.cmg     = await _loadObj('/lib/models/CMG.obj');
+    NASA_ASSETS.loaded = true;
+    console.log('[ARIA] NASA 42 assets loaded (ISS_HGA, CMG)');
+  } catch (e) {
+    console.warn('[ARIA] NASA asset load failed — falling back to primitive antennas:', e);
+    NASA_ASSETS.loaded = false;
+  }
+}
+function _cloneObjWithMaterial(obj, color, emissive, emissiveIntensity, scale) {
+  const clone = obj.clone(true);
+  clone.traverse(c => {
+    if (c.isMesh) {
+      c.material = new THREE.MeshStandardMaterial({
+        color, metalness: 0.35, roughness: 0.35,
+        emissive: new THREE.Color(emissive),
+        emissiveIntensity: emissiveIntensity,
+      });
+    }
+  });
+  clone.scale.setScalar(scale);
+  return clone;
+}
+// Replace comm_antenna_N meshes with ISS_HGA dishes (real CAD). Keeps the
+// primitive mesh in-place as the anchor (so click/hover still works) — we
+// just attach the detailed CAD as a child and hide the primitive's material.
+function attachNasaDetailMeshes() {
+  if (!shipModel || !NASA_ASSETS.loaded) return;
+  shipModel.traverse(c => {
+    if (!c.isMesh) return;
+    // Comm antennas → ISS High-Gain Antenna dish
+    if (c.name && c.name.startsWith('comm_antenna_')) {
+      const dish = _cloneObjWithMaterial(NASA_ASSETS.iss_hga, 0xe0e4ec, 0x3377ff, 0.4, 8.0);
+      dish.rotation.set(Math.PI / 2, 0, 0);  // stand dish upright (OBJ Y-up → our radial-out)
+      c.add(dish);
+      c.material.opacity = 0.0;
+      c.material.transparent = true;   // hide the primitive box, keep hit-target
+    }
+    // Engine bells → CMG (Control Moment Gyroscope) — shape is visually similar
+    else if (c.name && c.name.startsWith('engine_bell_')) {
+      const cmg = _cloneObjWithMaterial(NASA_ASSETS.cmg, 0xff8844, 0xff3300, 0.5, 2.5);
+      c.add(cmg);
+      c.material.opacity = 0.0;
+      c.material.transparent = true;
+    }
+  });
+  console.log('[ARIA] NASA detail meshes attached to comm antennas + engine bells');
+}
+
+// R5 + R12: GPU particle systems for reactor plasma + nozzle plume.
+// R12 fix for the "blocky squares" look — generate a soft radial-gradient
+// sprite texture once and pass it to PointsMaterial.map. No more axis-aligned
+// screen-space squares; each particle is now a smooth gaussian blob that
+// blends cleanly additively.
+function _makeSoftParticleTexture() {
+  const c = document.createElement('canvas');
+  c.width = c.height = 64;
+  const ctx = c.getContext('2d');
+  const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  g.addColorStop(0.0, 'rgba(255,255,255,1.0)');
+  g.addColorStop(0.25,'rgba(255,255,255,0.7)');
+  g.addColorStop(0.55,'rgba(255,255,255,0.25)');
+  g.addColorStop(1.0, 'rgba(255,255,255,0.0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 64, 64);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+let _softParticleTex = null;
+function makeParticleSystem(maxCount, color, sizePx) {
+  if (!_softParticleTex) _softParticleTex = _makeSoftParticleTexture();
+  const geom = new THREE.BufferGeometry();
+  const positions = new Float32Array(maxCount * 3);
+  const colors    = new Float32Array(maxCount * 3);
+  const sizes     = new Float32Array(maxCount);
+  geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geom.setAttribute('color',    new THREE.BufferAttribute(colors, 3));
+  geom.setAttribute('size',     new THREE.BufferAttribute(sizes, 1));
+  const mat = new THREE.PointsMaterial({
+    size: sizePx,
+    color,
+    map: _softParticleTex,    // R12: soft gaussian blob, not a blocky square
+    alphaMap: _softParticleTex,
+    transparent: true,
+    opacity: 0.9,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    vertexColors: true,
+    sizeAttenuation: true,
+  });
+  const points = new THREE.Points(geom, mat);
+  points.frustumCulled = false;   // ship envelope already culls; per-particle culling is wasteful here
+  return {
+    points,
+    positions, colors, sizes,
+    ages: new Float32Array(maxCount),
+    lifetimes: new Float32Array(maxCount),
+    velocities: new Float32Array(maxCount * 3),
+    count: 0,
+    maxCount,
+  };
+}
+function emitParticle(sys, x, y, z, vx, vy, vz, r, g, b, lifeMs, size) {
+  const i = sys.count % sys.maxCount;
+  sys.positions[i*3+0] = x;
+  sys.positions[i*3+1] = y;
+  sys.positions[i*3+2] = z;
+  sys.velocities[i*3+0] = vx;
+  sys.velocities[i*3+1] = vy;
+  sys.velocities[i*3+2] = vz;
+  sys.colors[i*3+0] = r;
+  sys.colors[i*3+1] = g;
+  sys.colors[i*3+2] = b;
+  sys.sizes[i] = size;
+  sys.ages[i] = 0;
+  sys.lifetimes[i] = lifeMs;
+  sys.count++;
+}
+function updateParticleSystem(sys, dtMs) {
+  const n = Math.min(sys.count, sys.maxCount);
+  for (let i = 0; i < n; i++) {
+    if (sys.ages[i] >= sys.lifetimes[i]) continue;
+    sys.ages[i] += dtMs;
+    const dt = dtMs * 0.001;
+    sys.positions[i*3+0] += sys.velocities[i*3+0] * dt;
+    sys.positions[i*3+1] += sys.velocities[i*3+1] * dt;
+    sys.positions[i*3+2] += sys.velocities[i*3+2] * dt;
+    // Fade colour toward black as particle ages (keeps additive bloom natural)
+    const lifeFrac = 1 - sys.ages[i] / sys.lifetimes[i];
+    sys.colors[i*3+0] *= 0.985;
+    sys.colors[i*3+1] *= 0.985;
+    sys.colors[i*3+2] *= 0.985;
+    if (lifeFrac < 0) { sys.sizes[i] = 0; }
+  }
+  sys.points.geometry.attributes.position.needsUpdate = true;
+  sys.points.geometry.attributes.color.needsUpdate    = true;
+  sys.points.geometry.attributes.size.needsUpdate     = true;
+}
+// Two systems: reactor core plasma + nozzle plume
+let _reactorPlasma = null;
+let _nozzlePlume   = null;
+function initShipParticles() {
+  if (_reactorPlasma) return;   // only once
+  _reactorPlasma = makeParticleSystem(400, 0xff5533, 8);
+  _nozzlePlume   = makeParticleSystem(800, 0x4488ff, 12);
+  scene.add(_reactorPlasma.points);
+  scene.add(_nozzlePlume.points);
+}
+function _findMeshCenter(name) {
+  if (!shipModel) return null;
+  let target = null;
+  shipModel.traverse(c => { if (c.isMesh && c.name === name && !target) target = c; });
+  if (!target) return null;
+  const box = new THREE.Box3().setFromObject(target);
+  return box.getCenter(new THREE.Vector3());
+}
+function spawnShipParticles(dtMs) {
+  if (!shipModel || !_reactorPlasma || !_nozzlePlume) return;
+  const reactorC = _findMeshCenter('reactor_engine');
+  const nozzleC  = _findMeshCenter('magnetic_nozzle');
+  const modelX = shipModel.rotation.x, modelY = shipModel.rotation.y;
+  if (reactorC) {
+    // Reactor core: omnidirectional plasma puffs, short-lived
+    for (let k = 0; k < 3; k++) {
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      const vr = 2 + Math.random() * 3;
+      emitParticle(_reactorPlasma,
+        reactorC.x + (Math.random() - 0.5) * 2,
+        reactorC.y + (Math.random() - 0.5) * 2,
+        reactorC.z + (Math.random() - 0.5) * 2,
+        vr * Math.sin(phi) * Math.cos(theta),
+        vr * Math.sin(phi) * Math.sin(theta),
+        vr * Math.cos(phi),
+        1.0, 0.35, 0.15,  // orange-red
+        450 + Math.random() * 250,
+        4 + Math.random() * 4,
+      );
+    }
+  }
+  if (nozzleC) {
+    // Nozzle plume: tight focused beam aft-ward (−X), soft textured blobs.
+    // Spawn in a narrow cone so the plume looks like a collimated plasma jet
+    // instead of a diffuse cloud. 3 particles/frame keeps density reasonable.
+    for (let k = 0; k < 3; k++) {
+      const r = Math.random() * 4.0;                 // narrow origin cone (<4 m)
+      const theta = Math.random() * Math.PI * 2;
+      emitParticle(_nozzlePlume,
+        nozzleC.x,
+        nozzleC.y + r * Math.cos(theta),
+        nozzleC.z + r * Math.sin(theta),
+        -(60 + Math.random() * 40),                  // aft velocity [60, 100] m/s
+        (Math.random() - 0.5) * 6,                   // tight lateral spread
+        (Math.random() - 0.5) * 6,
+        0.35 + Math.random() * 0.25,
+        0.65 + Math.random() * 0.25,
+        1.0,
+        900 + Math.random() * 300,
+        3 + Math.random() * 3,                       // smaller point size (was 6-14)
+      );
+    }
+  }
+  updateParticleSystem(_reactorPlasma, dtMs);
+  updateParticleSystem(_nozzlePlume,   dtMs);
+}
+
+// R4: Smooth camera-tween helper. A tiny ease-out interpolator avoids the
+// jarring "camera teleport" feeling of snap presets / Focus. Runs inline in
+// animate() — no dependency on tween libraries.
+const _camTween = {
+  active: false,
+  t: 0,
+  duration: 0,
+  fromPos: new THREE.Vector3(),
+  toPos:   new THREE.Vector3(),
+  fromTgt: new THREE.Vector3(),
+  toTgt:   new THREE.Vector3(),
+};
+function tweenCameraTo(targetPos, targetLookAt, durationMs = 600) {
+  _camTween.active = true;
+  _camTween.t = 0;
+  _camTween.duration = Math.max(60, durationMs);
+  _camTween.fromPos.copy(camera.position);
+  _camTween.toPos.copy(targetPos);
+  _camTween.fromTgt.copy(controls.target);
+  _camTween.toTgt.copy(targetLookAt);
+}
+function updateCameraTween(dtMs) {
+  if (!_camTween.active) return;
+  _camTween.t += dtMs;
+  let a = Math.min(1, _camTween.t / _camTween.duration);
+  // Smootherstep ease-out — snappy start, gentle landing
+  a = a * a * (3 - 2 * a);
+  camera.position.lerpVectors(_camTween.fromPos, _camTween.toPos, a);
+  controls.target.lerpVectors(_camTween.fromTgt, _camTween.toTgt, a);
+  controls.update();
+  if (a >= 1) _camTween.active = false;
+}
+
+// R3: FPS / frame-time / memory counter (Stats.js). Absolutely positioned
+// in the viewport so it doesn't disturb the React-style panel layout.
+// Hidden by default — press 'P' to toggle (like pro-tool "performance overlay").
+const stats = new Stats();
+stats.showPanel(0);   // 0 = fps, 1 = ms, 2 = mb
+stats.dom.style.position = 'absolute';
+stats.dom.style.top = '48px';
+stats.dom.style.left = '104px';   // right of the axis gizmo (gizmo is at left:12 width:78 → clear at 104)
+stats.dom.style.zIndex = '14';
+stats.dom.style.display = 'none';
+stats.dom.style.cursor = 'pointer';
+stats.dom.title = 'Click panel to cycle (fps → ms → mb); press P to hide';
+viewport.appendChild(stats.dom);
+window.addEventListener('keydown', e => {
+  if (e.key === 'p' || e.key === 'P') {
+    stats.dom.style.display = stats.dom.style.display === 'none' ? 'block' : 'none';
+  }
+});
+
+// R2: Axis gizmo — project the three world axes through the camera basis
+// onto the 2D SVG, so the gizmo rotates with the main view. Clicking a
+// colored tip snaps the camera to look down that axis.
+const gizmoEl = document.getElementById('axis-gizmo');
+const _axisSvg = {
+  x:      { line: document.getElementById('ax-x'),     tip: document.getElementById('ax-x-end'),     txt: document.getElementById('ax-x-txt') },
+  y:      { line: document.getElementById('ax-y'),     tip: document.getElementById('ax-y-end'),     txt: document.getElementById('ax-y-txt') },
+  z:      { line: document.getElementById('ax-z'),     tip: document.getElementById('ax-z-end'),     txt: document.getElementById('ax-z-txt') },
+  negX:   { line: document.getElementById('ax-x-neg'), tip: document.getElementById('ax-x-end-neg') },
+  negY:   { line: document.getElementById('ax-y-neg'), tip: document.getElementById('ax-y-end-neg') },
+  negZ:   { line: document.getElementById('ax-z-neg'), tip: document.getElementById('ax-z-end-neg') },
+};
+function updateAxisGizmo() {
+  if (!gizmoEl) return;
+  const m = camera.matrixWorldInverse.elements;
+  // Projected unit axes in camera space (m is column-major).
+  // Screen space in the SVG viewBox is X-right, Y-down.
+  const L = 38;    // arm length in SVG units
+  const axes = {
+    x:    { v: [ m[0], -m[1], m[2]], key: 'x' },
+    y:    { v: [ m[4], -m[5], m[6]], key: 'y' },
+    z:    { v: [ m[8], -m[9], m[10]], key: 'z' },
+    negX: { v: [-m[0],  m[1], -m[2]], key: 'negX' },
+    negY: { v: [-m[4],  m[5], -m[6]], key: 'negY' },
+    negZ: { v: [-m[8],  m[9], -m[10]], key: 'negZ' },
+  };
+  // Draw axes back-to-front by camera-space Z so near endpoints sit on top
+  const order = Object.keys(axes).sort((a, b) => axes[a].v[2] - axes[b].v[2]);
+  order.forEach(k => {
+    const a = axes[k];
+    const x = a.v[0] * L;
+    const y = a.v[1] * L;
+    const el = _axisSvg[k];
+    if (!el) return;
+    if (el.line) { el.line.setAttribute('x1', 0); el.line.setAttribute('y1', 0); el.line.setAttribute('x2', x); el.line.setAttribute('y2', y); }
+    if (el.tip)  { el.tip.setAttribute('cx', x); el.tip.setAttribute('cy', y); }
+    if (el.txt)  { el.txt.setAttribute('x', x); el.txt.setAttribute('y', y); }
+    // Re-append so DOM order == render order (SVG paints in document order)
+    gizmoEl.querySelector('svg').appendChild(el.line);
+  });
+  // Re-append tips + text on top of all lines
+  ['negX','negY','negZ','x','y','z'].forEach(k => {
+    const el = _axisSvg[k];
+    if (el.tip) gizmoEl.querySelector('svg').appendChild(el.tip);
+    if (el.txt) gizmoEl.querySelector('svg').appendChild(el.txt);
+  });
+}
+// Click handler: snap camera to look down the chosen axis (keeping target + distance)
+gizmoEl?.addEventListener('click', ev => {
+  const tgt = ev.target.closest('[data-axis]');
+  if (!tgt) return;
+  const ax = tgt.getAttribute('data-axis');
+  const targetPt = controls.target.clone();
+  const dist = camera.position.distanceTo(targetPt);
+  const dirs = {
+    'x':  new THREE.Vector3( 1, 0, 0),  '-x': new THREE.Vector3(-1, 0, 0),
+    'y':  new THREE.Vector3( 0, 1, 0),  '-y': new THREE.Vector3( 0,-1, 0),
+    'z':  new THREE.Vector3( 0, 0, 1),  '-z': new THREE.Vector3( 0, 0,-1),
+  };
+  const dir = dirs[ax];
+  if (!dir) return;
+  // R4: tween to the ortho view (400 ms — gizmo snaps feel snappier than presets)
+  camera.up.set(0, 1, 0);
+  if (ax === 'y' || ax === '-y') camera.up.set(0, 0, 1);
+  tweenCameraTo(
+    targetPt.clone().add(dir.multiplyScalar(dist)),
+    targetPt,
+    400,
+  );
+});
+
+// Animate
+let _tick = 0;
+let _lastFrameMs = performance.now();
+(function animate() {
+  requestAnimationFrame(animate);
+  stats.begin();               // R3: start frame timing
+  const now = performance.now();
+  const dtMs = now - _lastFrameMs;
+  _lastFrameMs = now;
+  updateCameraTween(dtMs);     // R4: advance any in-flight camera-move tween
+  controls.update();
+  _tick++;
+  if (shipModel) {
+    // Rotate the habitat ring + its spokes + its habitation modules together
+    // (they're mechanically coupled — the modules are perched on the rotating rim).
+    shipModel.traverse(c => {
+      if (!c.isMesh || !c.name) return;
+      if (c.name === 'habitat_ring'
+          || c.name.startsWith('spoke_')
+          || c.name.startsWith('hab_module_')) {
+        c.rotation.x = (c.rotation.x + 0.002) % (Math.PI * 2);
+      }
+    });
+    // Reactor + nozzle plasma pulsing — reactor slower pulse, nozzle faster flicker
+    if (reactorLight.intensity > 0) {
+      reactorLight.intensity = 2.2 + Math.sin(_tick * 0.04) * 0.6;
+    }
+    if (nozzleLight.intensity > 0) {
+      nozzleLight.intensity = 2.8 + Math.sin(_tick * 0.09) * 0.9 + Math.sin(_tick * 0.21) * 0.3;
+    }
+    // R5: emit + update reactor-plasma and nozzle-plume particles.
+    // Wrapped in try/catch — if the particle system ever errors, the rest
+    // of the render loop must stay alive or the viewport goes black.
+    try { spawnShipParticles(dtMs); }
+    catch (e) { console.warn('[ARIA] particle update failed, disabling:', e);
+                spawnShipParticles = () => {}; }
+  }
+  // R2: keep the corner axis gizmo synced with the camera orientation
+  try { updateAxisGizmo(); } catch (e) { /* gizmo disabled */ }
+  // R7: update dimension-overlay labels if the user has them toggled on
+  try { updateDimOverlay(); } catch (e) { /* dims disabled */ }
+  // Round-1: post-processed path. Auto-disable on software WebGL (SwiftShader /
+  // ANGLE-llvmpipe) because UnrealBloomPass burns ~5 ms/frame there and looks
+  // washed-out; hardware GPUs get the full bloom treatment.
+  if (window._postFxDisabled) {
+    renderer.render(scene, camera);
+  } else {
+    try { composer.render(); }
+    catch (e) {
+      console.warn('[ARIA] composer.render() failed — falling back to plain render:', e);
+      window._postFxDisabled = true;
+      renderer.render(scene, camera);
+    }
+  }
+  stats.end();                 // R3: end frame timing
+})();
+
+// User-facing toggle for the bloom post-FX pipeline. Opt-in because bloom
+// has GPU/driver compatibility issues that can black-out the viewport.
+window.togglePostFx = function() {
+  window._postFxDisabled = !window._postFxDisabled;
+  const btn = document.getElementById('btn-glow');
+  if (btn) btn.classList.toggle('active', !window._postFxDisabled);
+};
+
+// Detect software-rasterised WebGL and auto-disable post-FX so the SwiftShader
+// headless-chrome screenshot path + low-end machines stay usable.
+try {
+  const gl = renderer.getContext();
+  const dbg = gl.getExtension('WEBGL_debug_renderer_info');
+  const vendor = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+  if (vendor && /swiftshader|software|llvmpipe|mesa/i.test(String(vendor))) {
+    window._postFxDisabled = true;
+    console.log('[ARIA] software WebGL detected (' + vendor + ') — post-FX disabled');
+  }
+} catch (_) { /* ignore */ }
+
+// ─── Model Loading ───
+function disposeModel() {
+  if (!shipModel) return;
+  shipModel.traverse(c => {
+    if (c.isMesh) {
+      c.geometry.dispose();
+      const mats = Array.isArray(c.material) ? c.material : [c.material];
+      mats.forEach(m => { if (m) m.dispose(); });
+    }
+  });
+  scene.remove(shipModel);
+  shipModel = null;
+  selectedMesh = null;
+}
+
+// R6: Procedural lit-window emissive texture for habitat modules.
+// A canvas-drawn grid of 4×12 windows with random on/off state, drawn once
+// and re-used across all 24 modules. Combined with the existing emissive
+// colour → bright "night side of a cruise ship" look with bloom.
+let _habWindowTex = null;
+function _makeHabitatWindowTexture() {
+  if (_habWindowTex) return _habWindowTex;
+  const c = document.createElement('canvas');
+  c.width = 256; c.height = 128;
+  const ctx = c.getContext('2d');
+  // warm-ish base fill (module wall colour)
+  ctx.fillStyle = '#1a1610'; ctx.fillRect(0, 0, c.width, c.height);
+  // lit window grid — 4 rows × 16 cols (4 decks stacked, 16 cabins around ring)
+  const rows = 4, cols = 16;
+  const wW = 12, wH = 14;
+  const gapX = (c.width  - cols * wW) / (cols + 1);
+  const gapY = (c.height - rows * wH) / (rows + 1);
+  for (let r = 0; r < rows; r++) {
+    for (let k = 0; k < cols; k++) {
+      const x = gapX + k * (wW + gapX);
+      const y = gapY + r * (wH + gapY);
+      // 78 % of windows are lit; unlit stay dark
+      if (Math.random() < 0.78) {
+        // Warm white-ish with a touch of variation (occupant lights)
+        const warmth = 0.88 + Math.random() * 0.12;
+        const rC = Math.round(255 * warmth);
+        const gC = Math.round(230 * warmth);
+        const bC = Math.round(160 * warmth);
+        ctx.fillStyle = `rgb(${rC},${gC},${bC})`;
+      } else {
+        ctx.fillStyle = '#070503';
+      }
+      ctx.fillRect(x, y, wW, wH);
+    }
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 4;
+  tex.wrapS = THREE.RepeatWrapping;
+  tex.wrapT = THREE.ClampToEdgeWrapping;
+  _habWindowTex = tex;
+  return tex;
+}
+
+function applyPartColors() {
+  if (!shipModel) return;
+  // R6 texture is optional — if canvas creation fails we still want a working model
+  let habTex = null;
+  try { habTex = _makeHabitatWindowTexture(); }
+  catch (e) { console.warn('[ARIA] habitat-window texture failed, using plain emissive', e); }
+  shipModel.traverse(c => {
+    if (!c.isMesh) return;
+    try {
+      if (c.material) c.material.dispose();
+    } catch (_) { /* ignore dispose failure */ }
+    const pm = PART_MATS[c.name] || {};
+    const matCfg = {
+      color: pm.color ?? 0x888888,
+      metalness: pm.metalness ?? 0.60,
+      roughness: pm.roughness ?? 0.40,
+      emissive: pm.emissive != null ? new THREE.Color(pm.emissive) : new THREE.Color(0x000000),
+      emissiveIntensity: pm.emissiveIntensity ?? 0,
+      wireframe,
+    };
+    // R6: habitat modules get the lit-window texture as an emissive map (best-effort)
+    if (habTex && c.name && c.name.startsWith('hab_module_')) {
+      matCfg.emissiveMap = habTex;
+      matCfg.emissiveIntensity = 1.4;
+    }
+    try {
+      c.material = new THREE.MeshStandardMaterial(matCfg);
+    } catch (e) {
+      // Last-resort fallback so the mesh always has *some* material and stays visible
+      console.warn('[ARIA] material build failed for', c.name, e);
+      c.material = new THREE.MeshBasicMaterial({ color: pm.color ?? 0x888888 });
+    }
+  });
+}
+
+function loadModel() {
+  buildFallback(); // Show procedural ship immediately, never blank
+  const loader = new GLTFLoader();
+  loader.load(`/api/ship.gltf?t=${Date.now()}`,
+    gltf => {
+      try {
+        disposeModel();
+        shipModel = gltf.scene;
+        applyPartColors();
+        addEndpointGlows();
+        scene.add(shipModel);
+        // Keep the global reference fresh — togglePartVisibility reads from it
+        window.ARIA.shipModel = shipModel;
+        initShipParticles();           // R5: lazy-init once shipModel exists
+        // R8: attach NASA-42 CAD models (ISS_HGA, CMG) on top of primitive antennas.
+        // Preload lazily — non-blocking; if it fails the primitives stay in place.
+        preloadNasaAssets().then(() => {
+          try { attachNasaDetailMeshes(); } catch (e) { console.warn('[ARIA] NASA attach failed:', e); }
+        });
+        fitCam();
+      } catch(e) { console.warn('[ARIA] glTF scene error:', e); buildFallback(); }
+    },
+    null,
+    err => { console.warn('[ARIA] glTF load error:', err); }
+  );
+}
+
+function addEndpointGlows() {
+  if (!shipModel) return;
+  const glowDefs = [
+    { name: 'magnetic_nozzle', color: 0x3377ff, opacity: 0.32, scale: 3.5 }, // blue plasma plume (largest glow)
+    { name: 'reactor_engine',  color: 0xff4400, opacity: 0.22, scale: 4.0 }, // reactor core heat
+    { name: 'shield_layer_0',  color: 0x66ddff, opacity: 0.18, scale: 0.7 }, // outermost LIDAR aura (cyan, subtle)
+    { name: 'bow_sensor_ring', color: 0x66aaff, opacity: 0.20, scale: 0.6 }, // sensor array glow
+  ];
+  glowDefs.forEach(({ name, color, opacity, scale }) => {
+    shipModel.traverse(c => {
+      if (c.isMesh && c.name === name) {
+        const box = new THREE.Box3().setFromObject(c);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3()).length();
+        const geo = new THREE.SphereGeometry(size * scale, 20, 20);
+        const mat = new THREE.MeshBasicMaterial({
+          color, transparent: true, opacity, side: THREE.BackSide, depthWrite: false,
+        });
+        const glow = new THREE.Mesh(geo, mat);
+        glow.position.copy(center);
+        glow.name = name + '_glow';
+        shipModel.add(glow);
+      }
+    });
+  });
+  // Engine bells each get a small individual glow
+  shipModel.traverse(c => {
+    if (c.isMesh && c.name && c.name.startsWith('engine_bell_')) {
+      const box = new THREE.Box3().setFromObject(c);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3()).length();
+      const geo = new THREE.SphereGeometry(size * 2.5, 12, 12);
+      const mat = new THREE.MeshBasicMaterial({
+        color: 0xff7722, transparent: true, opacity: 0.22,
+        side: THREE.BackSide, depthWrite: false,
+      });
+      const glow = new THREE.Mesh(geo, mat);
+      glow.position.copy(center);
+      glow.name = c.name + '_glow';
+      shipModel.add(glow);
+    }
+  });
+}
+
+function buildFallback() {
+  disposeModel();
+  shipModel = new THREE.Group(); shipModel.name = 'ARIA_Ship';
+  const hull = new THREE.Mesh(new THREE.CylinderGeometry(1.26,1.26,60,32), new THREE.MeshStandardMaterial({color:0xc0c0c0,metalness:.7,roughness:.3}));
+  hull.rotation.z = Math.PI/2; hull.name = 'hull_main'; shipModel.add(hull);
+  const sh = new THREE.Mesh(new THREE.ConeGeometry(1.8,2,32), new THREE.MeshStandardMaterial({color:0x44cc66,metalness:.3,roughness:.5}));
+  sh.rotation.z = -Math.PI/2; sh.position.x = 32; sh.name = 'shield_bow'; shipModel.add(sh);
+  const re = new THREE.Mesh(new THREE.CylinderGeometry(.3,.3,.6,16), new THREE.MeshStandardMaterial({color:0xff4444,metalness:.6,roughness:.3}));
+  re.rotation.z = Math.PI/2; re.position.x = -32; re.name = 'reactor_engine'; shipModel.add(re);
+  const hab = new THREE.Mesh(new THREE.TorusGeometry(5,.5,12,36), new THREE.MeshStandardMaterial({color:0xddaa33,metalness:.4,roughness:.4}));
+  hab.rotation.y = Math.PI/2; hab.name = 'habitat_ring'; shipModel.add(hab);
+  for (let i = 0; i < 4; i++) {
+    const a = (i/4)*Math.PI*2;
+    const r = new THREE.Mesh(new THREE.BoxGeometry(2.5,2,.02), new THREE.MeshStandardMaterial({color:0x4488ff,metalness:.5,roughness:.3}));
+    r.position.set(-15, Math.sin(a)*3, Math.cos(a)*3); r.name = `radiator_panel_${i}`; shipModel.add(r);
+  }
+  scene.add(shipModel);
+  window.ARIA.shipModel = shipModel;  // keep global ref fresh so togglePartVisibility works
+  fitCam();
+  document.getElementById('loading').classList.add('hidden');
+}
+
+// ─── Camera ───
+function fitCam() {
+  if (!shipModel) return;
+  const box = new THREE.Box3().setFromObject(shipModel);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3()).length();
+  if (!size || !isFinite(size)) return;
+  // Frame the ship so it fills ~75% of the viewport instead of being a spiky
+  // speck in a starfield. size is the bounding-box diagonal (~1620 m for ARIA);
+  // FOV 50° ⇒ at dist = size × 0.80 the ring (1000 m) occupies ~80 % of frame.
+  const dist = Math.max(size * 0.80, 50);
+  camera.near = Math.max(1.0, dist * 0.005);
+  camera.far = dist * 15;
+  camera.updateProjectionMatrix();
+  // Dynamic zoom bounds for this particular ship
+  controls.minDistance = Math.max(20, size * 0.03);   // can get within 3 % of ship diagonal (~50 m for ARIA)
+  controls.maxDistance = size * 2.5;                  // can't zoom out far enough to lose the ship
+  controls.target.copy(center);
+  // STRONG profile view: dominant Z with moderate X for perspective, small Y for elevation.
+  // Ring (YZ plane) becomes an ellipse, hull (X axis) runs nearly horizontal,
+  // radiator wings at 45° splay as obvious diagonal blades, nozzle + tanks visible on the spine.
+  camera.position.copy(center).add(new THREE.Vector3(dist * 0.38, dist * 0.26, dist * 0.92));
+  controls.update();
+
+  // Position reactor point light near stern of hull
+  reactorLight.position.set(box.min.x + size * 0.04, center.y, center.z);
+  reactorLight.distance = size * 0.5;
+  reactorLight.intensity = 2.4;
+  // Position nozzle plasma light right at the nozzle bell exit
+  nozzleLight.position.set(box.min.x + size * 0.005, center.y, center.z);
+  nozzleLight.distance = size * 0.7;
+  nozzleLight.intensity = 3.0;
+
+  // Resize grid and axes to match ship scale — previous 200-unit grid was
+  // invisible at 1000m ring scale
+  scene.remove(grid);
+  scene.remove(axesHelper);
+  const gridSize = Math.pow(10, Math.ceil(Math.log10(size))); // next power of 10
+  grid = new THREE.GridHelper(gridSize * 2, 20, 0x1a3050, 0x0d1a2a);
+  grid.position.set(center.x, box.min.y, center.z);
+  scene.add(grid);
+  axesHelper = new THREE.AxesHelper(size * 0.12);
+  scene.add(axesHelper);
+}
+
+function stressColor(stress, max) {
+  const t = Math.min(stress / Math.max(max, 1), 1);
+  if (t < .25) return new THREE.Color(0x3b82f6).lerp(new THREE.Color(0x10b981), t*4);
+  if (t < .5) return new THREE.Color(0x10b981).lerp(new THREE.Color(0xf59e0b), (t-.25)*4);
+  if (t < .75) return new THREE.Color(0xf59e0b).lerp(new THREE.Color(0xf97316), (t-.5)*4);
+  return new THREE.Color(0xf97316).lerp(new THREE.Color(0xef4444), (t-.75)*4);
+}
+
+// ─── Part names + subtitles for hover tooltip + click selection ───
+const PART_INFO = {
+  hull_main:        { name:'Pressure Hull',          sub:'Ti-6Al-4V · 712 m × ⌀25 m · 80 mm wall' },
+  // 7-layer bow shield stack, outer (0) → inner (6). Thickness from ShipParameters.shield_layers.
+  shield_layer_0:   { name:'Shield L0 · Detection LIDAR',      sub:'Sensor array · 100 mm · outermost' },
+  shield_layer_1:   { name:'Shield L1 · Active Plasma Deflector', sub:'Plasma field · 500 mm · charged-particle steering' },
+  shield_layer_2:   { name:'Shield L2 · Magnetic Deflector',    sub:'Superconducting coil · 300 mm · high-Z GCR bending' },
+  shield_layer_3:   { name:'Shield L3 · Electrostatic Grid',    sub:'Tungsten mesh · 1 mm · sub-MeV electron trap' },
+  shield_layer_4:   { name:'Shield L4 · Ablation Ice',          sub:'Water ice · 5.45 m · ∼10 000 kg · primary mass shield' },
+  shield_layer_5:   { name:'Shield L5 · Whipple Bumper',        sub:'SiC / Kevlar / Al-7075 · 209 mm · debris fragmentation' },
+  shield_layer_6:   { name:'Shield L6 · Structural Hull Layer', sub:'Ti-6Al-4V + HealTech · 6 mm · innermost, self-healing' },
+  reactor_engine:   { name:'Fusion Reactor',         sub:'D/He-3 · Li-Pb breeding blanket · ~10 MW' },
+  habitat_ring:     { name:'Habitat Ring',           sub:'⌀1000 m torus · 1 RPM · 0.56 g at rim' },
+  magnetic_nozzle:  { name:'Magnetic Nozzle',        sub:'Plasma bell · 4:1 expansion · 60 m length' },
+  bow_sensor_ring:  { name:'Bow Sensor Array',       sub:'Star-trackers · LIDAR · comm antennas' },
+  hull_stiffener_0: { name:'Hull Ring Frame (stern +2/5)', sub:'NASA-SP-8007 buckling stiffener' },
+  hull_stiffener_1: { name:'Hull Ring Frame (stern +1/5)', sub:'NASA-SP-8007 buckling stiffener' },
+  hull_stiffener_2: { name:'Hull Ring Frame (midships)',   sub:'NASA-SP-8007 buckling stiffener' },
+  hull_stiffener_3: { name:'Hull Ring Frame (bow +1/5)',   sub:'NASA-SP-8007 buckling stiffener' },
+  hull_stiffener_4: { name:'Hull Ring Frame (bow +2/5)',   sub:'NASA-SP-8007 buckling stiffener' },
+  fuel_tank_0:      { name:'Fuel Tank A',  sub:'Cryogenic D/He-3 · ⌀63 m × 71 m' },
+  fuel_tank_1:      { name:'Fuel Tank B',  sub:'Cryogenic D/He-3 · ⌀63 m × 71 m' },
+  fuel_tank_2:      { name:'Fuel Tank C',  sub:'Cryogenic D/He-3 · ⌀63 m × 71 m' },
+  radiator_array_0: { name:'Radiator Wing +Y',  sub:'Heat-pipe panel · 320 × 260 m · 500 K' },
+  radiator_array_1: { name:'Radiator Wing +Z',  sub:'Heat-pipe panel · 320 × 260 m · 500 K' },
+  radiator_array_2: { name:'Radiator Wing -Y',  sub:'Heat-pipe panel · 320 × 260 m · 500 K' },
+  radiator_array_3: { name:'Radiator Wing -Z',  sub:'Heat-pipe panel · 320 × 260 m · 500 K' },
+  spoke_0: { name:'Habitat Spoke 0°',   sub:'Truss · hull → ring · 487 m' },
+  spoke_1: { name:'Habitat Spoke 60°',  sub:'Truss · hull → ring · 487 m' },
+  spoke_2: { name:'Habitat Spoke 120°', sub:'Truss · hull → ring · 487 m' },
+  spoke_3: { name:'Habitat Spoke 180°', sub:'Truss · hull → ring · 487 m' },
+  spoke_4: { name:'Habitat Spoke 240°', sub:'Truss · hull → ring · 487 m' },
+  spoke_5: { name:'Habitat Spoke 300°', sub:'Truss · hull → ring · 487 m' },
+  engine_bell_0: { name:'Attitude Thruster NE', sub:'Secondary nozzle · 45°' },
+  engine_bell_1: { name:'Attitude Thruster NW', sub:'Secondary nozzle · 135°' },
+  engine_bell_2: { name:'Attitude Thruster SW', sub:'Secondary nozzle · 225°' },
+  engine_bell_3: { name:'Attitude Thruster SE', sub:'Secondary nozzle · 315°' },
+  // Hull surface details
+  docking_port_0: { name:'Docking Port 45° (dorsal-port)',    sub:'Crew + cargo airlock · 6×6 m · between spokes' },
+  docking_port_1: { name:'Docking Port 135° (dorsal-stbd)',   sub:'Crew + cargo airlock · 6×6 m · between spokes' },
+  docking_port_2: { name:'Docking Port 225° (ventral-stbd)',  sub:'Crew + cargo airlock · 6×6 m · between spokes' },
+  docking_port_3: { name:'Docking Port 315° (ventral-port)',  sub:'Crew + cargo airlock · 6×6 m · between spokes' },
+  comm_antenna_0: { name:'Comm Array (stern)',   sub:'Ka-band DSN uplink · 10 m dish' },
+  comm_antenna_1: { name:'Comm Array (aft-mid)', sub:'Ka-band DSN uplink · 10 m dish' },
+  comm_antenna_2: { name:'Comm Array (fore-mid)', sub:'Ka-band DSN uplink · 10 m dish' },
+  comm_antenna_3: { name:'Comm Array (bow)',     sub:'Ka-band DSN uplink · 10 m dish' },
+};
+// Procedurally generate 24 habitat-module tooltips — each pod ~42 crew
+for (let i = 0; i < 24; i++) {
+  const deg = (i / 24 * 360).toFixed(0);
+  PART_INFO[`hab_module_${i}`] = {
+    name: `Crew Module ${i + 1}`,
+    sub: `Living quarters + ECLSS · angular pos ${deg}° on ring · ≈42 crew`,
+  };
+}
+
+// ─── Hover tooltip + highlight ───
+const tooltip = document.getElementById('part-tooltip');
+let _hoverMesh = null;
+let _hoverOrigEmissive = null;
+function _clearHover() {
+  if (_hoverMesh && _hoverOrigEmissive) {
+    _hoverMesh.material.emissive.copy(_hoverOrigEmissive.emissive);
+    _hoverMesh.material.emissiveIntensity = _hoverOrigEmissive.intensity;
+  }
+  _hoverMesh = null;
+  _hoverOrigEmissive = null;
+  tooltip.style.display = 'none';
+}
+renderer.domElement.addEventListener('mousemove', e => {
+  if (!shipModel) { _clearHover(); return; }
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const meshes = [];
+  shipModel.traverse(c => { if (c.isMesh && !c.name.endsWith('_glow')) meshes.push(c); });
+  const hits = raycaster.intersectObjects(meshes, false);
+  if (!hits.length) { _clearHover(); return; }
+  const hit = hits[0].object;
+  if (hit !== _hoverMesh) {
+    _clearHover();
+    _hoverMesh = hit;
+    if (hit.material?.emissive) {
+      _hoverOrigEmissive = {
+        emissive: hit.material.emissive.clone(),
+        intensity: hit.material.emissiveIntensity ?? 0,
+      };
+      hit.material.emissive.setHex(0x66aaff);
+      hit.material.emissiveIntensity = Math.max(hit.material.emissiveIntensity ?? 0, 0.6);
+    }
+  }
+  const info = PART_INFO[hit.name] || { name: hit.name, sub: '' };
+  tooltip.innerHTML = `<div class="pt-name">${escHtml(info.name)}</div>${info.sub?`<div class="pt-sub">${escHtml(info.sub)}</div>`:''}`;
+  tooltip.style.display = 'block';
+  // Position tooltip next to cursor, clamped to viewport
+  const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+  let tx = e.clientX - rect.left + 14;
+  let ty = e.clientY - rect.top + 14;
+  if (tx + tw > rect.width) tx = e.clientX - rect.left - tw - 10;
+  if (ty + th > rect.height) ty = e.clientY - rect.top - th - 10;
+  tooltip.style.left = tx + 'px';
+  tooltip.style.top = ty + 'px';
+});
+renderer.domElement.addEventListener('mouseleave', _clearHover);
+
+// ─── Click-to-Select ───
+renderer.domElement.addEventListener('click', e => {
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  if (!shipModel) return;
+  const meshes = [];
+  // Exclude glow spheres (BackSide, transparent) from click targets
+  shipModel.traverse(c => {
+    if (c.isMesh && !c.name.endsWith('_glow')) meshes.push(c);
+  });
+  const hits = raycaster.intersectObjects(meshes, false);
+  if (hits.length > 0) {
+    const name = hits[0].object.name;
+    // Map sub-parts to their parent category so the parts-list panel finds a match
+    let partId = name;
+    if (name.startsWith('spoke_'))             partId = 'habitat_ring';
+    else if (name.startsWith('hab_module_'))       partId = 'habitat_ring';  // 24 pods → ring entry in parts list
+    else if (name.startsWith('hull_stiffener_'))   partId = 'hull_main';
+    else if (name.startsWith('fuel_tank_'))        partId = 'hull_main';
+    else if (name.startsWith('docking_port_'))     partId = 'hull_main';
+    else if (name.startsWith('comm_antenna_'))     partId = 'hull_main';
+    else if (name.startsWith('engine_bell_'))      partId = 'reactor_engine';
+    else if (name === 'magnetic_nozzle')           partId = 'reactor_engine';
+    else if (name.startsWith('shield_layer_'))     partId = 'shield_bow';   // 7 cones → single shield entry in parts list
+    else if (name === 'bow_sensor_ring')           partId = 'shield_bow';
+    else if (name.startsWith('radiator_array_'))   partId = 'radiator_array';
+    selectPartById(partId);
+  }
+});
+
+// ─── Window API (called from regular script) ───
+window._threeLoadModel = loadModel;
+
+window._threeSelectPart = function(id) {
+  if (selectedMesh && selectedMesh.material?.emissive) selectedMesh.material.emissive.setHex(0x000000);
+  if (!shipModel) return;
+  shipModel.traverse(c => {
+    if (c.isMesh && c.name === id) { selectedMesh = c; c.material.emissive?.setHex(0x222244); }
+  });
+};
+
+window._threeSetColorMode = function(mode) {
+  if (!shipModel) return;
+  if (mode === 'part') { applyPartColors(); return; }
+  const fea = window.state?.feaResult;
+  if (mode === 'stress') {
+    const maxS = fea?.structural?.max_von_mises_mpa || 200;
+    const ps = fea?.structural?.part_stresses_mpa || {};
+    shipModel.traverse(c => { if (c.isMesh) { c.material.color.copy(stressColor(ps[c.name]||0, maxS)); c.material.wireframe = wireframe; }});
+  } else if (mode === 'temp') {
+    const maxT = fea?.thermal?.max_temperature_k || 500, minT = fea?.thermal?.min_temperature_k || 300;
+    const temps = {
+      hull_main:maxT*.7, reactor_engine:maxT, habitat_ring:(maxT+minT)/2,
+      magnetic_nozzle:maxT*.95, radiator_array_0:minT+20, radiator_array_1:minT+20,
+      // shield stack: outer layers are hottest (direct particle impact), inner are near hull temp
+      shield_layer_0:maxT*.85, shield_layer_1:maxT*.9, shield_layer_2:maxT*.75,
+      shield_layer_3:maxT*.6, shield_layer_4:minT+30 /* ice */, shield_layer_5:maxT*.5, shield_layer_6:maxT*.4,
+    };
+    shipModel.traverse(c => { if (c.isMesh) { const frac = Math.min(((temps[c.name]||300)-minT)/(maxT-minT||1),1); c.material.color.copy(new THREE.Color(0x3b82f6).lerp(new THREE.Color(0xef4444),frac)); c.material.wireframe = wireframe; }});
+  }
+};
+
+// Window exports for onclick handlers in HTML
+window.setCameraPreset = function(p) {
+  // Scale preset distance to match ship size; closer so ship fills frame
+  const d = shipModel ? (() => { const b = new THREE.Box3().setFromObject(shipModel); return b.getSize(new THREE.Vector3()).length() * 1.05; })() : 200;
+  const t = shipModel ? (() => { const b = new THREE.Box3().setFromObject(shipModel); return b.getCenter(new THREE.Vector3()); })() : new THREE.Vector3();
+  // front: looks along +X toward stern (ring face-on), side: pure profile from +Z,
+  // iso: new strong 3/4 profile — ring as ellipse, hull along horizontal,
+  // radiator wings and aft propulsion cluster all clearly visible
+  const presets = {
+    front: [d, 0, 0],            // bow-on
+    back:  [-d, 0, 0],           // stern-on (nozzle front and centre)
+    top:   [0, d, 0],
+    side:  [0, d * 0.12, d],     // side profile, slight elevation
+    iso:   [d * 0.38, d * 0.26, d * 0.92],
+  };
+  const v = presets[p] || presets.iso;
+  // R4: tween to preset instead of snap (500 ms, preset views feel more premium)
+  tweenCameraTo(
+    new THREE.Vector3(t.x + v[0], t.y + v[1], t.z + v[2]),
+    t,
+    500,
+  );
+};
+window.fitCamera = fitCam;
+window.toggleWireframe = function() { wireframe = !wireframe; if (shipModel) shipModel.traverse(c => { if (c.isMesh) c.material.wireframe = wireframe; }); };
+window.toggleGrid = function() { if (grid) grid.visible = !grid.visible; };
+
+// Explicit zoom + rotate buttons (bottom-right view pad) for users who don't
+// discover mouse-drag / scroll. Each press is a fixed small step.
+window.viewZoom = function(dir) {
+  const vec = camera.position.clone().sub(controls.target);
+  const factor = dir > 0 ? 0.82 : 1.22;  // ~18 % per press
+  vec.multiplyScalar(factor);
+  // Respect the OrbitControls min/max distance bounds
+  const len = vec.length();
+  if (len < controls.minDistance) vec.setLength(controls.minDistance);
+  if (len > controls.maxDistance) vec.setLength(controls.maxDistance);
+  camera.position.copy(controls.target).add(vec);
+  controls.update();
+};
+// Focus the camera on a specific mesh so it fills the viewport. Uses the
+// current view direction (doesn't spin), just pulls closer and re-targets.
+function focusOnMesh(mesh) {
+  if (!mesh) return;
+  const box = new THREE.Box3().setFromObject(mesh);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3()).length();
+  if (!size || !isFinite(size)) return;
+  const dist = Math.max(size * 1.6, 25);   // 1.6× diagonal → part fills ~60 % of frame
+  const dir = camera.position.clone().sub(controls.target).normalize();
+  camera.near = Math.max(0.1, dist * 0.01);
+  camera.far  = Math.max(camera.far, dist * 50);
+  controls.minDistance = Math.max(0.5, size * 0.05);   // allow zooming in close to inspect
+  camera.updateProjectionMatrix();
+  // R4: tween instead of snap — 700 ms smoothstep looks natural for a part-focus move.
+  tweenCameraTo(
+    center.clone().add(dir.multiplyScalar(dist)),
+    center,
+    700,
+  );
+}
+window._threeFocusOnPart = function(id) {
+  if (!shipModel || !id) return;
+  let first = null;
+  shipModel.traverse(c => {
+    if (!first && c.isMesh && !c.name.endsWith('_glow') &&
+        (c.name === id || c.name.startsWith(id + '_'))) first = c;
+  });
+  if (first) focusOnMesh(first);
+};
+// Double-click in the viewport to zoom to whatever mesh is under the cursor.
+renderer.domElement.addEventListener('dblclick', e => {
+  if (!shipModel) return;
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const meshes = [];
+  shipModel.traverse(c => { if (c.isMesh && !c.name.endsWith('_glow')) meshes.push(c); });
+  const hits = raycaster.intersectObjects(meshes, false);
+  if (hits.length) focusOnMesh(hits[0].object);
+});
+
+// Turntable-style rotation: rotate the ship model itself around a world axis
+// so "left" visibly moves the ship left and "right" moves it right, without
+// the 3D camera-orbit effect (which users found disorienting).
+window.viewRotate = function(dir) {
+  if (!shipModel) return;
+  const STEP = Math.PI / 18;  // 10° per press
+  if (dir === 'left')       shipModel.rotation.y -= STEP;  // ship yaws to the viewer's left
+  else if (dir === 'right') shipModel.rotation.y += STEP;  // ship yaws to the viewer's right
+  else if (dir === 'up')    shipModel.rotation.x -= STEP;  // bow tips up toward viewer
+  else if (dir === 'down')  shipModel.rotation.x += STEP;  // bow tips down
+};
+
+// Signal that Three.js is ready
+window.ARIA.threeReady = true;
+window.ARIA.shipModel = shipModel;
+
+// Load the model
+loadModel();
+console.log('ARIA Engineering Lab: Three.js initialized');
+
+})(); // end initThreeJS
+</script>
+</body>
+</html>

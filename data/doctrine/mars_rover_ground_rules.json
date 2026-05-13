@@ -1,0 +1,47 @@
+[
+  {
+    "rule_id": "MARS-FR-COMM-1",
+    "kind": "flight_rule",
+    "title": "Direct-to-Earth vs orbiter relay priority",
+    "body": "Mars rovers shall prefer relay through MRO/MAVEN/Trace Gas Orbiter for high-volume science (UHF) and reserve DTE X-band for command + small daily summary. DTE used as fallback when no orbiter pass scheduled.",
+    "keywords": ["mars", "rover", "relay", "uhf", "dte", "orbiter"],
+    "citation": "Mars Network Operations Concept JPL-D-100128",
+    "parameters": ["UHF_PASS_AVAILABLE", "DTE_LINK_BUDGET_DBM"]
+  },
+  {
+    "rule_id": "MARS-FR-PWR-1",
+    "kind": "flight_rule",
+    "title": "Curiosity / Perseverance MMRTG power budget",
+    "body": "MMRTG power output decays at ~3 % per Earth-year. Daily-energy-budget algorithm shall account for measured battery state-of-charge and ambient temperature; deferred-load deferral allowed for tactical drives but not for thermal heaters or comms.",
+    "keywords": ["mmrtg", "curiosity", "perseverance", "power"],
+    "citation": "MSL Power Subsystem Design Description JPL D-71024",
+    "parameters": ["MMRTG_POWER_W", "BATTERY_SOC_PCT", "AMBIENT_TEMP_K"]
+  },
+  {
+    "rule_id": "MARS-FR-DRIVE-1",
+    "kind": "flight_rule",
+    "title": "Per-sol drive distance limit",
+    "body": "Without ground-team look-ahead imagery, autonomous drive limited to 200 m per sol on benign terrain, 50 m on challenging, 0 m where hazard-avoidance dynamic stop occurred in last sol. AutoNav re-engages after ground reviews hazard imagery.",
+    "keywords": ["autonav", "drive", "rover", "hazard"],
+    "citation": "MSL/M2020 Tactical Operations Plan",
+    "parameters": ["DRIVE_DIST_PER_SOL_M", "HAZARD_FLAG"]
+  },
+  {
+    "rule_id": "MARS-FR-DUST-1",
+    "kind": "flight_rule",
+    "title": "Solar-powered rover dust storm survival",
+    "body": "If solar input below 100 Wh/sol on MER (Spirit/Opportunity), enter low-power mode: heaters off, comms only on every 3rd sol, science off. Cleared to resume nominal at 200 Wh/sol sustained for 5 sols.",
+    "keywords": ["dust storm", "mer", "spirit", "opportunity", "solar"],
+    "citation": "MER Mission Operations Plan; Opportunity end-of-mission report",
+    "parameters": ["SOLAR_INPUT_WH_SOL"]
+  },
+  {
+    "rule_id": "MARS-MP-IMU-1",
+    "kind": "malfunction_procedure",
+    "title": "IMU drift on long autonomous drive",
+    "body": "If IMU heading drift exceeds 5 deg over a single drive, halt and acquire star-tracker fix (or sun-sensor at solar-noon equivalent). Reset heading. Re-plan path before resuming.",
+    "keywords": ["imu", "drift", "rover", "heading"],
+    "citation": "MSL IMU operations procedures",
+    "parameters": ["IMU_HEADING_DRIFT_DEG", "STAR_TRACKER_LOCK_FLAG"]
+  }
+]

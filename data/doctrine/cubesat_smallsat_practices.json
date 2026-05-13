@@ -1,0 +1,47 @@
+[
+  {
+    "rule_id": "CUBESAT-FR-PWR-1",
+    "kind": "flight_rule",
+    "title": "Battery deep-discharge protection",
+    "body": "CubeSat battery state-of-charge below 30 % shall trigger autonomous load-shed of all payload subsystems. Only ADCS, comms beacon, and EPS housekeeping continue. Recovery to nominal occurs after charge ≥ 60 %.",
+    "keywords": ["cubesat", "battery", "soc", "load shed"],
+    "citation": "NanoRacks CubeSat Deployer Interface Document NCDID-2018",
+    "parameters": ["BATTERY_SOC_PCT", "BUS_VOLTAGE_VDC"]
+  },
+  {
+    "rule_id": "CUBESAT-FR-COMMS-1",
+    "kind": "flight_rule",
+    "title": "Beacon-only safe mode after N missed contacts",
+    "body": "If a CubeSat misses N consecutive scheduled ground contacts (typical N=8), it shall enter beacon-only safe mode: ADCS off, payload off, beacon transmitter on for 60 s every 30 min. Recovery requires ground command or T+72 h watchdog reset.",
+    "keywords": ["cubesat", "safe mode", "beacon", "watchdog"],
+    "citation": "Libre Space Foundation SatNOGS recovery best-practices",
+    "parameters": ["MISSED_CONTACTS_COUNT", "BEACON_ENABLED_FLAG"]
+  },
+  {
+    "rule_id": "CUBESAT-FR-ATT-1",
+    "kind": "flight_rule",
+    "title": "Detumbling after deployment",
+    "body": "CubeSat shall execute B-dot detumbling for 90 minutes after deployment from launch vehicle. Body rates must converge to < 1 deg/s before any sun-pointing or comms attitude commanded.",
+    "keywords": ["b-dot", "detumble", "deployment", "attitude"],
+    "citation": "Wertz, Space Mission Engineering 4ed §11",
+    "parameters": ["BODY_RATE_X_DEG_S", "BODY_RATE_Y_DEG_S", "BODY_RATE_Z_DEG_S"]
+  },
+  {
+    "rule_id": "CUBESAT-FR-DEORBIT-1",
+    "kind": "flight_rule",
+    "title": "Post-mission deorbit compliance",
+    "body": "Per FCC and ITU rules, CubeSats in LEO shall passively deorbit within 5 years of mission end. Operators must demonstrate compliance via orbital decay calculation or active deorbit device (drag sail, brake).",
+    "keywords": ["deorbit", "fcc", "itu", "leo", "drag"],
+    "citation": "FCC Order 22-271 (2022); IADC 25-year rule",
+    "parameters": ["ORBIT_ALTITUDE_KM", "BALLISTIC_COEFFICIENT_KG_M2"]
+  },
+  {
+    "rule_id": "CUBESAT-MP-WATCHDOG-1",
+    "kind": "malfunction_procedure",
+    "title": "Watchdog timer reset recovery",
+    "body": "If on-board computer hangs > 30 minutes, hardware watchdog forces a power-cycle. After reset, EPS verifies battery state and re-runs deployment-config script. Deployment is idempotent (re-running is safe).",
+    "keywords": ["watchdog", "reset", "obc", "recovery"],
+    "citation": "AAUSAT-3 lessons-learned report (Aalborg Univ, 2014)",
+    "parameters": ["WATCHDOG_RESET_COUNT", "OBC_UPTIME_S"]
+  }
+]

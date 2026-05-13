@@ -1,0 +1,132 @@
+# ARIA sealed incident-response policy (R34).
+#
+# Decides, at the moment an incident opens, whether the runtime should
+# (a) execute a pre-approved playbook NOW and run RCA after, or
+# (b) HOLD and run RCA FIRST so a blind action can't make it worse, or
+# (c) escalate to a human, or
+# (d) observe + log only.
+#
+# Rules are evaluated in order; the FIRST matching rule wins. The
+# `match` clauses are AND-ed. An unspecified clause is a wildcard.
+# Default at the bottom catches anything no rule covered.
+#
+# Mutating this file is a release-engineering act — the file is hashed
+# in MANIFEST.toml so a runtime mutation breaks boot. To edit the
+# policy you must produce a new sealed image (see docs/NEXT_STEPS.md
+# §R37 for the constitution-amendment ceremony — same model applies).
+#
+# Class / Controllability / Mode taxonomies are pinned in
+# src/aria/safety/incident_policy.py — keep names in sync.
+
+manifest_version = 1
+created_at       = "2026-04-25"
+
+# ── Highest-priority rules ─────────────────────────────────────────
+
+# 1) LIFE_CRITICAL — crew safety overrides everything. We have a
+#    sealed-constitution playbook for every life-critical scenario
+#    (vent_crew_quarters → DENIED forever; cabin pressure low →
+#    auto-pressurise from reserve; CO₂ high → throttle reaction; etc.)
+#    so we always execute the playbook FIRST and run RCA after the
+#    crew is stable. No "wait for the operator" — light-time + crew
+#    incapacitation rule it out.
+[[rules]]
+name = "life_critical_auto_stabilize"
+incident_class = "LIFE_CRITICAL"
+mode = "AUTO_STABILIZE"
+description = "Crew safety overrides RCA — execute playbook immediately."
+
+# 2) SECURITY incidents — kill-switch path is the only safe response
+#    (tamper detected, audit chain broken, intrusion canary tripped,
+#    capability-token forge attempt). We isolate first, forensics later.
+[[rules]]
+name = "security_breach_isolate_first"
+incident_class = "SECURITY"
+mode = "AUTO_STABILIZE"
+description = "Isolate / kill-switch / blocklist first; preserve logs for RCA."
+
+# ── Cognitive-drift policy ─────────────────────────────────────────
+
+# 3) COGNITIVE_DRIFT — sandbagging detector, F-13 replay drift,
+#    constitution-prediction divergence. A blind "fix" here could be
+#    the AI gaming the very metric we use to detect it. Pause non-
+#    essential autonomy, hand the evidence to the operator, RCA first.
+[[rules]]
+name = "cognitive_drift_hold_for_rca"
+incident_class = "COGNITIVE_DRIFT"
+mode = "HOLD_AND_RCA"
+description = "Pause autonomous loop, present evidence to operator before any fix."
+
+# ── Mission-critical: split by controllability ─────────────────────
+
+# 4) MISSION_CRITICAL + KNOWN_PLAYBOOK — we have a documented response
+#    (e.g. familiar power dip in eclipse → shed_load; pressurised line
+#    over-pressure → vent_overpressure_buffer). Execute it.
+[[rules]]
+name = "mission_critical_known_execute"
+incident_class = "MISSION_CRITICAL"
+controllability = "KNOWN_PLAYBOOK"
+mode = "AUTO_STABILIZE"
+description = "Familiar pattern with a documented playbook — execute, RCA after."
+
+# 5) MISSION_CRITICAL + RECURRING_TUNING — we've seen this before but
+#    each event needs a parameter tweak (PID retune, threshold shift).
+#    Operator decides per-event.
+[[rules]]
+name = "mission_critical_recurring_tuning"
+incident_class = "MISSION_CRITICAL"
+controllability = "RECURRING_TUNING"
+mode = "HUMAN_DECIDE"
+description = "Recurring pattern; operator picks parameter adjustment."
+
+# 6) MISSION_CRITICAL + NOVEL_UNKNOWN — the most dangerous combo.
+#    Pause systems, gather evidence, run RCA before acting.
+[[rules]]
+name = "mission_critical_novel_hold"
+incident_class = "MISSION_CRITICAL"
+controllability = "NOVEL_UNKNOWN"
+mode = "HOLD_AND_RCA"
+description = "Novel mission-critical anomaly — diagnose before action."
+
+# 7) MISSION_CRITICAL + DEGRADED_KNOWN — known issue but in degraded
+#    state. Auto-stabilise to limit further damage; flag to operator.
+[[rules]]
+name = "mission_critical_degraded"
+incident_class = "MISSION_CRITICAL"
+controllability = "DEGRADED_KNOWN"
+mode = "AUTO_STABILIZE"
+description = "Known degraded state — apply protective playbook."
+
+# ── Subsystem (non-critical equipment) ─────────────────────────────
+
+# 8) SUBSYSTEM — pump degraded, sensor drift on non-life-supporting
+#    line, etc. Let the operator decide; don't act blindly.
+[[rules]]
+name = "subsystem_human_decide"
+incident_class = "SUBSYSTEM"
+mode = "HUMAN_DECIDE"
+description = "Non-critical subsystem — operator decides repair priority."
+
+# ── Comfort / informational ────────────────────────────────────────
+
+[[rules]]
+name = "comfort_observe"
+incident_class = "COMFORT"
+mode = "OBSERVE_ONLY"
+description = "Cabin temp / schedule slip — log + watch."
+
+[[rules]]
+name = "informational_observe"
+incident_class = "INFORMATIONAL"
+mode = "OBSERVE_ONLY"
+description = "Telemetry curiosity — log + watch."
+
+# ── Default catch-all ──────────────────────────────────────────────
+
+# Anything not matched by the rules above defaults to OBSERVE_ONLY —
+# the most conservative response. The runtime publishes a
+# `aria.incident.policy_unmatched` event so a maintainer can extend
+# the policy in a release.
+[default]
+mode = "OBSERVE_ONLY"
+description = "Catch-all — observe + alert maintainer to extend policy."

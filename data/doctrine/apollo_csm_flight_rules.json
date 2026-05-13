@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "APOLLO-FR-5-9",
+    "kind": "flight_rule",
+    "title": "Cryo tank pressure / temperature divergence",
+    "body": "Any sudden cryo tank pressure or temperature divergence > 3 sigma from steady-state shall be reported to the Flight Director and the affected tank isolated pending diagnosis. Co-locate fuel-cell reactant supply check on remaining tank.",
+    "keywords": ["cryo", "tank", "pressure", "o2", "h2", "fuel cell", "reactant"],
+    "citation": "Apollo Operations Handbook, Block II CSM, §5.9 + Mission Rules MSC-PA-FR-69",
+    "parameters": ["O2_TANK_2_PRESSURE", "O2_TANK_1_PRESSURE", "O2_TANK_2_TEMP", "O2_TANK_2_QUANTITY"]
+  },
+  {
+    "rule_id": "APOLLO-FR-5-12",
+    "kind": "flight_rule",
+    "title": "Loss of two of three fuel cells",
+    "body": "If two of three CSM fuel cells lose reactant supply or drop bus voltage below 27.0 VDC, descend to LM lifeboat configuration immediately. Power down CSM non-essential loads to conserve remaining cell capacity for re-entry.",
+    "keywords": ["fuel cell", "voltage", "lifeboat", "lm", "csm"],
+    "citation": "Apollo Mission Rules MSC-PA-FR-69, §5.12",
+    "parameters": ["FUEL_CELL_1_VOLTAGE", "FUEL_CELL_2_VOLTAGE", "FUEL_CELL_3_VOLTAGE"]
+  },
+  {
+    "rule_id": "APOLLO-MP-CRYO-1",
+    "kind": "malfunction_procedure",
+    "title": "O2 cryo tank pressure rise during stir",
+    "body": "1. Acknowledge master alarm and confirm with crew. 2. Close affected O2 tank isolation valve (SM REAC). 3. De-energize tank heaters and stir fans. 4. Verify O2 tank 1 pressure / quantity sensor validity. 5. Monitor fuel cells for reactant supply degradation. 6. Prepare LM lifeboat checklist as contingency.",
+    "keywords": ["cryo", "stir", "o2", "isolation", "valve"],
+    "citation": "Apollo CSM Malfunction Procedures, AOH §11.4",
+    "parameters": ["O2_TANK_2_PRESSURE", "O2_TANK_2_HEATER_CURRENT"]
+  },
+  {
+    "rule_id": "APOLLO-IR-13",
+    "kind": "incident_report",
+    "title": "Apollo 13 cryo tank rupture (1970-04-13, GET 55:54:53)",
+    "body": "Routine cryo-stir command at GET 55:53:18 ignited Teflon insulation in O2 tank 2 due to prior heater short. Tank 2 pressure ramped 887 -> 1008 psia over 95 seconds, then ruptured. Tank 1 secondary leak began at GET 55:57:00. Fuel cells 1 and 3 lost reactant pressure at GET 55:58:06. Crew transferred to LM Aquarius as lifeboat. Lessons: heater protection circuits insufficient; manual stir during transit risky if tank state uncertain.",
+    "keywords": ["apollo 13", "cryo", "tank rupture", "teflon", "lifeboat"],
+    "citation": "Cortright Commission Report NASA SP-1969 (1970); Mission Report MSC-02680 §5",
+    "parameters": ["O2_TANK_2_PRESSURE", "O2_TANK_2_TEMP", "FUEL_CELL_1_VOLTAGE", "FUEL_CELL_3_VOLTAGE"]
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "rule_id": "NPR-7150-2D-A",
+    "kind": "flight_rule",
+    "title": "NASA software classification gate",
+    "body": "Software classification A (human-rated) requires: formal methods OR equivalent rigour, redundant independent implementations for safety paths, minimum 100 % MC/DC test coverage on safety-critical code, independent V&V, and operational flight heritage demonstration before crewed missions.",
+    "keywords": ["nasa", "class a", "human-rated", "v&v", "mc/dc"],
+    "citation": "NASA NPR 7150.2D Software Engineering Requirements §3",
+    "parameters": ["SW_CLASS", "MC_DC_COVERAGE_PCT"]
+  },
+  {
+    "rule_id": "NPR-8705-2C-1",
+    "kind": "flight_rule",
+    "title": "Human-rating safety risk",
+    "body": "Human-rated systems shall demonstrate Loss-of-Crew (LoC) probability ≤ 1/270 for ascent, ≤ 1/270 for entry, and ≤ 1/500 for one-year orbital operations. Aggregate mission shall meet ≤ 1/200 LoC.",
+    "keywords": ["loc", "human-rated", "ascent", "entry", "probability"],
+    "citation": "NASA NPR 8705.2C Human-Rating Requirements §3.4",
+    "parameters": ["LOC_PROBABILITY_PER_PHASE"]
+  },
+  {
+    "rule_id": "NPR-8715-7-1",
+    "kind": "flight_rule",
+    "title": "Orbital debris mitigation",
+    "body": "All NASA missions in or transiting LEO shall demonstrate post-mission disposal within 25 years (passive) or active deorbit. Probability of human casualty from re-entry ≤ 1×10⁻⁴. Probability of accidental break-up during deorbit ≤ 0.001.",
+    "keywords": ["debris", "deorbit", "25-year", "casualty"],
+    "citation": "NASA NPR 8715.6B Limiting Orbital Debris §3.2",
+    "parameters": ["DEORBIT_LIFETIME_YR", "CASUALTY_PROBABILITY"]
+  },
+  {
+    "rule_id": "NPR-8705-5-1",
+    "kind": "flight_rule",
+    "title": "Probabilistic risk assessment scope",
+    "body": "All NASA Class B+ projects shall conduct PRA encompassing crew, mission, and asset loss with quantified uncertainty bounds (5th–95th percentile). PRA results inform design changes; numerical risk targets are confirmed at every design review.",
+    "keywords": ["pra", "probabilistic", "risk", "uncertainty"],
+    "citation": "NASA NPR 8705.5 Technical Probabilistic Risk Assessment Procedures",
+    "parameters": ["PRA_RISK_5TH", "PRA_RISK_95TH"]
+  },
+  {
+    "rule_id": "NASA-STD-8729-1",
+    "kind": "flight_rule",
+    "title": "Reliability allocation top-down",
+    "body": "Mission reliability target shall be allocated to subsystems via fault-tree analysis. Each subsystem shall demonstrate (test or analysis) achieving its allocation. No subsystem shall have reliability < 0.95 over mission duration without justified waiver.",
+    "keywords": ["reliability", "allocation", "fta", "waiver"],
+    "citation": "NASA-STD-8729.1A Planning, Developing and Managing an Effective Reliability Program §4",
+    "parameters": ["SUBSYSTEM_RELIABILITY"]
+  },
+  {
+    "rule_id": "MIL-STD-1540D-EVT-1",
+    "kind": "flight_rule",
+    "title": "Environmental test margins",
+    "body": "Hardware shall be qualified to acceptance environment +5 °C in temperature, +3 dB in vibration, +1 dB in shock, and equivalent margins for radiation. Acceptance retest after rework shall meet original acceptance levels.",
+    "keywords": ["mil-std-1540", "qual", "acceptance", "vibration", "shock"],
+    "citation": "MIL-STD-1540D Test Requirements for Launch, Upper-Stage and Space Vehicles §6",
+    "parameters": ["QUAL_VIB_DB", "QUAL_SHOCK_DB"]
+  }
+]

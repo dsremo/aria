@@ -1,0 +1,38 @@
+[
+  {
+    "rule_id": "EVA-FR-101",
+    "kind": "flight_rule",
+    "title": "EVA pre-breathe protocol",
+    "body": "Crew must perform 4-hour overnight campout at 10.2 psia (or equivalent N2-purge protocol) before EMU EVA to prevent decompression sickness (DCS). Skipping pre-breathe is contingency-only and triggers post-EVA medical observation.",
+    "keywords": ["eva", "pre-breathe", "campout", "dcs"],
+    "citation": "JSC EVA Operations Concept JSC-EVA-OPS",
+    "parameters": ["AIRLOCK_PRESSURE_PSIA", "PREBREATHE_DURATION_HR"]
+  },
+  {
+    "rule_id": "EVA-FR-102",
+    "kind": "flight_rule",
+    "title": "Maximum EMU O2 consumption",
+    "body": "EMU primary O2 budget covers 6.5 hours plus 30-min reserve. If consumption rate suggests budget exceeded, crewmate transfers to buddy-O2 via dual-tether or returns immediately. Mission rule: never let one crew solely depend on EVA-task O2 < 1 hour reserve.",
+    "keywords": ["emu", "o2", "consumption", "buddy"],
+    "citation": "EVA Cuff Checklist STS-CCL-A-EVA",
+    "parameters": ["EMU_O2_PRESSURE_PSIA", "EMU_O2_USE_RATE_LBS_HR"]
+  },
+  {
+    "rule_id": "EVA-MP-1",
+    "kind": "malfunction_procedure",
+    "title": "Glove leak during EVA",
+    "body": "Visible glove damage or measurable suit pressure leak: 1. Sister crew tethers to leaking crew. 2. Tether-relief return path planned. 3. Hand-over-hand return to airlock; primary tether kept attached. 4. EMU-suit-replacement kit deployed in airlock.",
+    "keywords": ["glove", "leak", "eva", "tether"],
+    "citation": "STS-118 EVA glove leak; JSC anomaly report",
+    "parameters": ["EMU_PRESSURE_PSIA", "GLOVE_INTEGRITY_FLAG"]
+  },
+  {
+    "rule_id": "EVA-FR-103",
+    "kind": "flight_rule",
+    "title": "Tether redundancy",
+    "body": "EVA crew shall always be tethered with two independent paths. SAFER (Simplified Aid For EVA Rescue) jetpack carried but reserved for total tether loss; never used as primary means.",
+    "keywords": ["tether", "safer", "eva", "redundancy"],
+    "citation": "EVA Operations Concept §3.4",
+    "parameters": ["TETHER_PRIMARY_FLAG", "TETHER_SECONDARY_FLAG"]
+  }
+]

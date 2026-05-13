@@ -1,0 +1,92 @@
+[
+  {
+    "rule_id": "ISS-FR-WATER-1",
+    "kind": "flight_rule",
+    "title": "Water Recovery System UPA fault tolerance",
+    "body": "Urine Processor Assembly (UPA) shall be tolerant to recycle-loop calcium buildup; if conductivity > 5000 µS/cm, halt UPA, schedule manual cleaning. ISS retains ~250 days of water reserve at any time to bridge UPA outage.",
+    "keywords": ["wrs", "upa", "urine", "calcium"],
+    "citation": "ISS Water Recovery Subsystem Lessons Learned (NASA, 2017)",
+    "parameters": ["UPA_CONDUCTIVITY_US_CM", "WATER_RESERVE_KG"]
+  },
+  {
+    "rule_id": "ISS-FR-WATER-2",
+    "kind": "flight_rule",
+    "title": "OGS hydrogen sensor",
+    "body": "Oxygen Generation System (OGS) ppH2 in cabin shall not exceed 0.4 % LEL. If exceeded, shut down OGS, vent hydrogen line, switch to backup oxygen via SFOG candles or Elektron.",
+    "keywords": ["ogs", "hydrogen", "elektron", "lel"],
+    "citation": "ISS OGS Operations Handbook §6",
+    "parameters": ["CABIN_PPH2_PCT_LEL", "OGS_STATE"]
+  },
+  {
+    "rule_id": "ISS-FR-FIRE-1",
+    "kind": "flight_rule",
+    "title": "Fire response: detection, suppression, recovery",
+    "body": "On smoke detector alarm: 1. Crew dons portable breathing apparatus (PBA). 2. Power down affected rack. 3. Apply CO2 portable fire extinguisher (PFE) into firepoint port. 4. Monitor combustion-product gas analyzer for re-ignition. 5. Vent module if smoke persists.",
+    "keywords": ["fire", "smoke", "pba", "pfe"],
+    "citation": "ISS Emergency Procedures EMER-FIRE-1",
+    "parameters": ["SMOKE_DETECTOR_STATE", "RACK_POWER_W"]
+  },
+  {
+    "rule_id": "ISS-FR-DEPRESS-1",
+    "kind": "flight_rule",
+    "title": "Cabin pressure decay",
+    "body": "If cabin pressure drops > 0.7 psi/hr (4.8 kPa/hr) and not attributable to commanded depress, isolate suspected module via hatch close. Crew safe-haven posture (Soyuz/Crew Dragon). Diagnose leak via PPRV / leak-locator.",
+    "keywords": ["depress", "leak", "hatch", "safe haven"],
+    "citation": "ISS Generic OFR ALL-FR-EMER-DEPRESS",
+    "parameters": ["CABIN_PRESSURE_KPA", "CABIN_PRESSURE_RATE_KPA_HR"]
+  },
+  {
+    "rule_id": "ISS-FR-TOXIC-1",
+    "kind": "flight_rule",
+    "title": "Ammonia / toxic atmosphere intrusion",
+    "body": "If cabin ammonia > 30 ppm or any toxic-atmosphere alarm, crew dons PBA, retreats to safe-haven module, and isolates affected segment. Reverse-flow scrubbers activated; ventilation isolated until atmosphere clears.",
+    "keywords": ["ammonia", "toxic", "pba", "scrubber"],
+    "citation": "ISS Emergency Procedures EMER-AMMONIA-1",
+    "parameters": ["CABIN_NH3_PPM", "TOXIC_ATM_ALARM_FLAG"]
+  },
+  {
+    "rule_id": "ISS-MP-CDRA-2",
+    "kind": "malfunction_procedure",
+    "title": "CDRA bed temperature high",
+    "body": "If CDRA bed temperature > 220 °C during heating cycle, suspected channel blockage. Halt cycle, switch to redundant CDRA, schedule channel-purge maintenance EVA / IVA.",
+    "keywords": ["cdra", "bed", "temperature", "blockage"],
+    "citation": "ISS CDRA Operations Handbook MAL-CDRA-2",
+    "parameters": ["CDRA_BED_TEMP_C"]
+  },
+  {
+    "rule_id": "ISS-MP-CMG-1",
+    "kind": "malfunction_procedure",
+    "title": "CMG bearing temperature trending high",
+    "body": "If CMG bearing temperature trends > 65 °C with stable load, schedule wheel-speed reduction during quiescent ops. Persistent > 80 °C indicates incipient failure; switch authority to remaining CMGs and schedule replacement.",
+    "keywords": ["cmg", "bearing", "temperature", "wheel"],
+    "citation": "ISS CMG Operations Handbook MAL-CMG-1",
+    "parameters": ["CMG_BEARING_TEMP_C", "CMG_RATE_RPM"]
+  },
+  {
+    "rule_id": "ISS-FR-RAD-1",
+    "kind": "flight_rule",
+    "title": "SAA crew radiation sheltering",
+    "body": "During South Atlantic Anomaly (SAA) high-flux passes, crew shall not perform EVAs. Radiation-sensitive experiments paused. ISS attitude bias may be commanded to maximise mass-shielding of crew quarters during SPE (Solar Particle Event).",
+    "keywords": ["saa", "radiation", "spe", "shielding"],
+    "citation": "ISS Radiation Operations Plan",
+    "parameters": ["SAA_FLAG", "SPE_FLUX"]
+  },
+  {
+    "rule_id": "ISS-FR-CONJ-1",
+    "kind": "flight_rule",
+    "title": "Late-notice conjunction sheltering",
+    "body": "If conjunction warning received with TCA < 12 hours and Pc > 1e-4 but PDAM not feasible, crew shall shelter in Soyuz/Crew Dragon for the close-approach window. Hatches closed. Module non-essential power down.",
+    "keywords": ["conjunction", "shelter", "tca", "pc"],
+    "citation": "JSC-66050 Late-Notice Conjunction Procedure",
+    "parameters": ["TCA_HOURS", "PROBABILITY_OF_COLLISION"]
+  },
+  {
+    "rule_id": "ISS-FR-CREW-602",
+    "kind": "flight_rule",
+    "title": "Crew sleep-cycle protection during nominal ops",
+    "body": "Crew sleep period 20:30–06:00 GMT shall not be interrupted by ground except for genuine safety emergencies. Pages outside this window queue to morning brief.",
+    "keywords": ["sleep", "crew", "fatigue"],
+    "citation": "ISS Crew Operations Plan §2.7",
+    "parameters": ["GMT_HOUR"]
+  }
+]

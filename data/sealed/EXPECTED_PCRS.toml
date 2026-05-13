@@ -1,0 +1,47 @@
+# R43 — DEV-tree PCR baseline (NOT a flight baseline).
+#
+# Captured on:  2026-04-26 08:00:29 IST
+# Captured by:  scripts/capture_dev_pcrs.py
+# Tree path:    src/aria/
+#
+# Caveats — read carefully:
+#   * These PCRs come from SoftwarePCRAttestor — software
+#     emulation, signing key on disk.  Strictly weaker than
+#     a real TPM 2.0 attestation key.
+#   * Re-run after every legitimate change to src/aria/ or
+#     data/sealed/, otherwise the runtime attestor will
+#     report mismatches against this stale baseline.
+#   * BEFORE FLIGHT: regenerate this file from the actual
+#     flight-CPU TPM 2.0 quote captured against the
+#     production-image measured-boot chain.
+#
+# See aria.security.attestation + docs/UNCERTAINTY.md.
+
+schema_version = 1
+hash_alg       = "sha256"
+populated      = true
+dev_baseline   = true
+
+[pcrs."0"]   # FIRMWARE_CODE
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+
+[pcrs."1"]   # FIRMWARE_CONFIG
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+
+[pcrs."2"]   # OPTION_ROMS
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+
+[pcrs."4"]   # KERNEL_AND_INITRD
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+
+[pcrs."5"]   # BOOT_LOADER
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+
+[pcrs."8"]   # ARIA_PACKAGE_TREE
+sha256 = "d362d069a464af502cb0eeb71b4fd5163b3321048cdc654c94eb2f6a4aa03395"
+
+[pcrs."9"]   # ARIA_SEALED_CONTENT
+sha256 = "98e105a2e55d8b092bbf987bdb11ee9ab67ef4fa63bae2ffeb904135c34be0e5"
+
+[pcrs."10"]   # ARIA_RUNTIME_CONFIG
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"

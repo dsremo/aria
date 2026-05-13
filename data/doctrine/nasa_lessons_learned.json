@@ -1,0 +1,185 @@
+[
+  {
+    "rule_id": "LL-apollo-13-cryo-stir",
+    "kind": "incident_report",
+    "title": "Apollo 13 cryo-tank rupture during stir command",
+    "body": "Routine cryo-stir command at GET 55:53:18 ignited Teflon insulation in O2 tank 2 due to prior heater short during ground processing. Tank pressure ramped 887\u21921008 psia in 95 s, then ruptured. Tank 1 secondary leak began GET 55:57:00. Crew transferred to LM Aquarius. Lesson: heater thermostat protection circuit was not redundant; manual stir during cruise risky if tank state uncertain.",
+    "keywords": [
+      "apollo",
+      "cryo",
+      "tank",
+      "rupture",
+      "stir",
+      "lifeboat"
+    ],
+    "citation": "Cortright Commission Report NASA SP-1969 (1970); MSC-02680 \u00a75",
+    "parameters": [
+      "O2_TANK_2_PRESSURE",
+      "O2_TANK_2_TEMP",
+      "FUEL_CELL_VOLTAGE"
+    ]
+  },
+  {
+    "rule_id": "LL-apollo-1-fire",
+    "kind": "incident_report",
+    "title": "Apollo 1 plugs-out test fire (1967-01-27)",
+    "body": "100% O2 cabin atmosphere at 16.7 psia ignited from chafed wire arc; crew lost in 17 seconds. Lessons: never operate 100% O2 above ambient pressure during ground tests; cabin outward-opening hatches replaced with quick-egress design; flammability of cabin materials in pure-O2 retested across all crew compartments; pad emergency egress drills hardened.",
+    "keywords": [
+      "apollo",
+      "fire",
+      "100% o2",
+      "pure oxygen",
+      "egress"
+    ],
+    "citation": "Apollo 204 Review Board Report (Thompson Report, 1967)",
+    "parameters": [
+      "CABIN_O2_FRACTION",
+      "CABIN_PRESSURE_KPA"
+    ]
+  },
+  {
+    "rule_id": "LL-sts-107-columbia",
+    "kind": "incident_report",
+    "title": "STS-107 Columbia foam-strike re-entry breakup (2003-02-01)",
+    "body": "External tank foam struck left wing leading edge at L+82 s, creating breach in RCC panel. On re-entry, hot plasma entered breach, melted internal structure, vehicle broke up at Mach 18. Lessons: foam shedding not validated as 'in family'; on-orbit imagery requests denied during mission; RCC inspection capability added post-flight; foam loss treated as immediate flight safety issue thereafter.",
+    "keywords": [
+      "columbia",
+      "foam",
+      "rcc",
+      "re-entry",
+      "thermal protection"
+    ],
+    "citation": "Columbia Accident Investigation Board Report Vol I (2003)",
+    "parameters": [
+      "LEADING_EDGE_TEMP_K",
+      "TPS_INTEGRITY"
+    ]
+  },
+  {
+    "rule_id": "LL-mir-spektr-collision",
+    "kind": "incident_report",
+    "title": "Mir Progress M-34 collision with Spektr (1997-06-25)",
+    "body": "Manual TORU-controlled docking of Progress M-34 cargo vessel failed; Progress struck Spektr module solar array, puncturing module. Crew sealed Spektr hatch within 30 min preventing cabin loss. Lesson: TORU manual docking from Mir without range-rate ranging is high-risk; subsequent dockings always used Kurs system with manual TORU as backup only.",
+    "keywords": [
+      "mir",
+      "spektr",
+      "depressurisation",
+      "docking",
+      "toru"
+    ],
+    "citation": "NASA-Mir Phase 1 Program Joint Report (1998)",
+    "parameters": [
+      "CABIN_PRESSURE_KPA",
+      "MODULE_HATCH_STATE"
+    ]
+  },
+  {
+    "rule_id": "LL-iss-quest-pca-2018",
+    "kind": "incident_report",
+    "title": "ISS Quest airlock leak (2018) \u2014 pre-EVA depress",
+    "body": "Slow leak in PCA (Pressure Control Assembly) line during Quest airlock pre-EVA depress detected by trending of ppN2 vs commanded profile. Crew aborted depress, isolated line, EVA delayed 24 h. Lesson: small leaks below master-alarm threshold detectable only by trend monitoring of multiple correlated parameters; raw-rate alarms insufficient for slow loss-of-pressure events.",
+    "keywords": [
+      "iss",
+      "quest",
+      "leak",
+      "eva",
+      "depress"
+    ],
+    "citation": "ISS On-Orbit Anomaly Log JSC-66050 (NASA, 2018)",
+    "parameters": [
+      "CABIN_PRESSURE_KPA",
+      "CABIN_PPN2_KPA",
+      "LEAK_RATE_KPA_PER_MIN"
+    ]
+  },
+  {
+    "rule_id": "LL-cassini-grand-finale-units",
+    "kind": "incident_report",
+    "title": "Cassini Grand Finale unit-convention near-miss",
+    "body": "During Grand Finale planning, propulsion model used thrust in pound-force while integrator expected newtons in one branch; caught by independent dual-team review before upload. Lesson: unit conventions must be machine-checked at every interface, not human-eyeballed; Mars Climate Orbiter (1999) loss had identical root cause.",
+    "keywords": [
+      "cassini",
+      "units",
+      "lbf",
+      "newton",
+      "propulsion"
+    ],
+    "citation": "Cassini Grand Finale End-of-Mission Report (JPL, 2017)",
+    "parameters": [
+      "THRUST_N",
+      "DELTA_V_M_S"
+    ]
+  },
+  {
+    "rule_id": "LL-soho-1998-attitude-loss",
+    "kind": "incident_report",
+    "title": "SOHO 1998-06-25 attitude loss + recovery",
+    "body": "Spacecraft entered emergency-sun-reacquisition mode after ground-uplink commanding sequence introduced by post-anomaly recovery procedure had a swapped-sign in Y-axis gyro calibration; cascade led to loss of lock on Sun for 4 months. Recovered via Arecibo radar pings and ground thermal model. Lesson: never push 'recovery' commands without independent verification of sign / unit / axis-frame conventions; have a thermal model good enough to predict recovery from any safe-mode.",
+    "keywords": [
+      "soho",
+      "attitude",
+      "gyro",
+      "safe mode",
+      "recovery"
+    ],
+    "citation": "SOHO Mission Interruption Investigation Board (NASA/ESA 1998)",
+    "parameters": [
+      "ATTITUDE_QUATERNION",
+      "GYRO_RATE_BODY"
+    ]
+  },
+  {
+    "rule_id": "LL-mco-1999-units",
+    "kind": "incident_report",
+    "title": "Mars Climate Orbiter unit-conversion loss (1999)",
+    "body": "Spacecraft entered Mars atmosphere ~57 km lower than intended due to pound-force-seconds vs newton-seconds discrepancy between Lockheed Martin (lbf-s) and JPL navigation (N-s) software. Spacecraft destroyed. Lesson: ICDs must specify SI units at every interface, machine-checked; build verification must include cross-team independent navigation simulation.",
+    "keywords": [
+      "mco",
+      "mars",
+      "units",
+      "lbf",
+      "navigation"
+    ],
+    "citation": "Mars Climate Orbiter Mishap Investigation Board Report (NASA, 1999)",
+    "parameters": [
+      "DELTA_V_M_S",
+      "PERIAPSIS_KM"
+    ]
+  },
+  {
+    "rule_id": "LL-iss-cdra-bed-failures",
+    "kind": "incident_report",
+    "title": "ISS CDRA bed switch repeated failures",
+    "body": "CDRA (Carbon Dioxide Removal Assembly) zeolite bed failed to perform automatic switch on multiple occasions due to valve sticking. Crew or ground rebooted CDRA; backup Vozdukh activated when both CDRAs unavailable. Lesson: single-string CRAs are insufficient for long-duration missions; redundancy must be maintained even if dispatch rate looks adequate.",
+    "keywords": [
+      "iss",
+      "cdra",
+      "co2",
+      "scrubber",
+      "vozdukh"
+    ],
+    "citation": "ISS Air Revitalization Subsystem Lessons Learned (NASA, 2014)",
+    "parameters": [
+      "CABIN_PPCO2_KPA",
+      "CDRA_BED_TEMP_C"
+    ]
+  },
+  {
+    "rule_id": "LL-apollo-12-sce-aux",
+    "kind": "incident_report",
+    "title": "Apollo 12 launch lightning strike \u2014 'SCE to AUX'",
+    "body": "Saturn V struck by lightning twice during ascent; CSM fuel cells offline, telemetry garbled. EECOM John Aaron recognised pattern from 1968 SCE test, called 'SCE to AUX'. Crew restored telemetry, mission continued. Lesson: pattern-matching across past anomalies is a high-leverage controller skill; trained-pattern catalog must be available to controllers (and AI advisors) in real-time.",
+    "keywords": [
+      "apollo",
+      "lightning",
+      "sce",
+      "aux",
+      "fuel cell"
+    ],
+    "citation": "Apollo 12 Mission Report MSC-01855 (1970)",
+    "parameters": [
+      "FUEL_CELL_VOLTAGE",
+      "TELEMETRY_LOCK_STATE"
+    ]
+  }
+]

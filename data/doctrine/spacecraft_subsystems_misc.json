@@ -1,0 +1,83 @@
+[
+  {
+    "rule_id": "SUBS-PROP-1",
+    "kind": "flight_rule",
+    "title": "Bipropellant pre-burn check",
+    "body": "Before any bipropellant maneuver: verify oxidiser tank pressure within 10 % nominal; verify fuel tank pressure within 10 % nominal; verify mixture ratio sensor health; arm ignition only after both verifications pass.",
+    "keywords": ["bipropellant", "oxidiser", "ignition"],
+    "citation": "JPL Propulsion Systems Engineering §6 (Sutton 9th ed)",
+    "parameters": ["PROP_OX_PRESSURE_PSIA", "PROP_FUEL_PRESSURE_PSIA"]
+  },
+  {
+    "rule_id": "SUBS-MECHANISM-1",
+    "kind": "flight_rule",
+    "title": "Deployable mechanism verification",
+    "body": "Solar array / antenna / boom deployments verified via 2-of-3 sensor concurrence (microswitch + tilt-sensor + strain-gauge). Deployment-failed annunciator triggers contingency sequence: re-attempt motor drive, then percussive release if mechanism allows.",
+    "keywords": ["deployment", "mechanism", "microswitch"],
+    "citation": "ESA mechanism handbook ECSS-E-ST-33-01C",
+    "parameters": ["DEPLOY_SENSOR_VOTE"]
+  },
+  {
+    "rule_id": "SUBS-OBC-1",
+    "kind": "flight_rule",
+    "title": "Watchdog reset rate limit",
+    "body": "On-board computer watchdog resets > 3 in 1 hour shall trigger downgrade to backup OBC. Watchdog state preserved through reset for ground forensic analysis.",
+    "keywords": ["obc", "watchdog", "reset"],
+    "citation": "AAUSAT-3 lessons learned; AAUS lecture series 2012",
+    "parameters": ["WATCHDOG_RESETS_PER_HR"]
+  },
+  {
+    "rule_id": "SUBS-MEMORY-1",
+    "kind": "flight_rule",
+    "title": "EDAC memory scrubbing cadence",
+    "body": "Single-bit EDAC errors shall be corrected and counted; > 100 corrections per day triggers diagnostic. Memory scrubbing frequency tuned to upset rate (typical 1/min for LEO, 1/hr for GEO).",
+    "keywords": ["edac", "scrubbing", "memory", "seu"],
+    "citation": "ECSS-Q-ST-30C Dependability §6.4",
+    "parameters": ["EDAC_SBE_RATE_PER_DAY"]
+  },
+  {
+    "rule_id": "SUBS-COMM-1",
+    "kind": "flight_rule",
+    "title": "Comm subsystem mode switching",
+    "body": "Comm modes: HIGH (HGA, full data rate), MEDIUM (omni, reduced rate), LOW (beacon-only, 4 bps housekeeping). Mode downgrade triggered by TX power degradation, attitude loss, or eclipse-margin breach. Mode upgrade requires 30-min stable nominal margin.",
+    "keywords": ["comm", "mode", "hga", "omni", "beacon"],
+    "citation": "JPL Telecommunications Link Design Handbook 810-005",
+    "parameters": ["COMM_MODE", "TX_POWER_DBW"]
+  },
+  {
+    "rule_id": "SUBS-FDIR-1",
+    "kind": "flight_rule",
+    "title": "FDIR escalation hierarchy",
+    "body": "Fault Detection / Isolation / Recovery: Level 1 = component-internal recovery (retry, watchdog); Level 2 = component switch to backup (within 10 s); Level 3 = subsystem mode demotion (within 60 s); Level 4 = spacecraft safe-hold (within 5 min). Escalation paths cited in ECSS-E-ST-70-32C.",
+    "keywords": ["fdir", "escalation", "safe hold"],
+    "citation": "ECSS-E-ST-70-32C Test and Verification §5.2",
+    "parameters": ["FDIR_LEVEL"]
+  },
+  {
+    "rule_id": "SUBS-AOCS-1",
+    "kind": "flight_rule",
+    "title": "Attitude knowledge requirement",
+    "body": "Attitude knowledge shall be ≤ 0.05 deg for science pointing, ≤ 0.5 deg for nominal ops, ≤ 5 deg for safe mode. Each requirement supported by sensor health: star tracker for science, sun + magnetometer for nominal, sun-only for safe mode.",
+    "keywords": ["aocs", "attitude", "star tracker", "magnetometer"],
+    "citation": "Wertz Spacecraft Attitude Determination & Control §11",
+    "parameters": ["ATTITUDE_KNOWLEDGE_ARCSEC"]
+  },
+  {
+    "rule_id": "SUBS-PROP-2",
+    "kind": "flight_rule",
+    "title": "Propellant budget reserve",
+    "body": "End-of-life propellant reserve shall be ≥ 10 % of total mission budget OR sufficient for: 1× contingency manoeuvre, 5× attitude desat, end-of-life deorbit/graveyard, whichever is greater.",
+    "keywords": ["propellant", "reserve", "deorbit", "desat"],
+    "citation": "NASA-STD-1006 (Spacecraft End-of-Life Disposal)",
+    "parameters": ["PROPELLANT_REMAINING_KG"]
+  },
+  {
+    "rule_id": "SUBS-COOLING-1",
+    "kind": "flight_rule",
+    "title": "Active cooling loop pressure",
+    "body": "Active cooling loop pressure shall be 200–800 kPa nominal. Pressure drop > 50 kPa/hour or pressure < 150 kPa indicates leak; isolate suspected segment, switch to redundant loop within 30 min.",
+    "keywords": ["cooling", "loop", "pressure", "leak"],
+    "citation": "ISS Active Thermal Control System Operations Handbook",
+    "parameters": ["LOOP_PRESSURE_KPA", "LOOP_PRESSURE_RATE_KPA_HR"]
+  }
+]

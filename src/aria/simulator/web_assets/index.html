@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA Generation Ship — Mission Dashboard</title>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<style>
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-panel: #111827;
+    --bg-panel-alt: #1a2234;
+    --border: #1e3a5f;
+    --text-primary: #e0e6ed;
+    --text-secondary: #8892a4;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-yellow: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #8b5cf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .header h1 span { color: var(--accent-cyan); }
+
+  .connection-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .connection-badge.connected {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--accent-green);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .connection-badge.disconnected {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-red);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .connection-badge.replay {
+    background: rgba(139, 92, 246, 0.15);
+    color: var(--accent-purple);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .connection-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  .year-display {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .phase-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(59, 130, 246, 0.2);
+    color: var(--accent-blue);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  /* --- GRID LAYOUT --- */
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 12px;
+    padding: 12px;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .panel-header .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+  }
+
+  .panel-body {
+    padding: 16px;
+  }
+
+  /* 3D trajectory takes full first row */
+  .panel-trajectory { grid-column: 1 / -1; }
+  .panel-trajectory .panel-body { padding: 0; }
+  #trajectory-plot { width: 100%; height: 420px; }
+
+  /* Subsystem health */
+  .health-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .health-item {
+    background: var(--bg-panel-alt);
+    border-radius: 6px;
+    padding: 12px;
+  }
+
+  .health-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .health-value {
+    font-size: 24px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .health-bar-track {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+
+  .health-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease, background 0.5s ease;
+  }
+
+  /* Timeline controls */
+  .timeline-panel { grid-column: 1 / -1; }
+
+  .timeline-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .timeline-slider {
+    flex: 1;
+    min-width: 200px;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--bg-panel-alt);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .timeline-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-cyan);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--bg-panel-alt);
+    color: var(--text-primary);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn:hover { background: rgba(59, 130, 246, 0.2); }
+  .btn.active {
+    background: rgba(6, 182, 212, 0.2);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+
+  .speed-group {
+    display: flex;
+    gap: 4px;
+  }
+
+  /* Event log */
+  .event-log {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 12px;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  .event-log::-webkit-scrollbar {
+    width: 6px;
+  }
+  .event-log::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .event-log::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+
+  .event-entry {
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .event-entry:hover { background: rgba(255,255,255,0.03); }
+
+  .event-year {
+    color: var(--text-secondary);
+    min-width: 50px;
+    flex-shrink: 0;
+  }
+
+  .event-sev {
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    min-width: 70px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .sev-NOMINAL { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+  .sev-WATCH { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+  .sev-WARNING { background: rgba(245, 158, 11, 0.15); color: var(--accent-yellow); }
+  .sev-CRITICAL { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+  .sev-EMERGENCY { background: rgba(239, 68, 68, 0.3); color: #ff6b6b; }
+
+  .event-text {
+    color: var(--text-primary);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .event-filters {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active {
+    color: var(--text-primary);
+    border-color: var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.1);
+  }
+
+  /* Challenge meters */
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .challenge-item {
+    background: var(--bg-panel-alt);
+    border-radius: 6px;
+    padding: 10px 12px;
+  }
+
+  .challenge-name {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .challenge-status {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .challenge-meter-track {
+    height: 6px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .challenge-meter-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease, background 0.5s ease;
+  }
+
+  /* Statistics charts */
+  .stats-charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stats-charts > div { height: 200px; }
+
+  /* Event detail modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay.visible { display: flex; }
+
+  .modal {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 500px;
+    width: 90%;
+  }
+
+  .modal h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .modal pre {
+    background: var(--bg-panel-alt);
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    color: var(--text-secondary);
+  }
+
+  .modal .close-btn {
+    margin-top: 16px;
+    float: right;
+  }
+
+  /* Replay file input */
+  .replay-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .file-input-wrapper {
+    position: relative;
+  }
+
+  .file-input-wrapper input[type="file"] {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .panel-trajectory { grid-column: 1; }
+    .timeline-panel { grid-column: 1; }
+    .health-grid { grid-template-columns: 1fr 1fr; }
+    .stats-charts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <h1>ARIA <span>Generation Ship</span></h1>
+    <div id="connection-badge" class="connection-badge disconnected">
+      <div class="connection-dot"></div>
+      <span id="connection-text">Disconnected</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="replay-controls">
+      <div class="file-input-wrapper">
+        <button class="btn" onclick="document.getElementById('replay-file').click()">Load Replay</button>
+        <input type="file" id="replay-file" accept=".json" onchange="loadReplayFile(event)">
+      </div>
+    </div>
+    <span id="phase-badge" class="phase-badge">--</span>
+    <span>Year</span>
+    <span id="year-display" class="year-display">0</span>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="dashboard-grid">
+
+  <!-- 1. 3D TRAJECTORY -->
+  <div class="panel panel-trajectory">
+    <div class="panel-header"><div class="dot"></div> 3D Trajectory</div>
+    <div class="panel-body">
+      <div id="trajectory-plot"></div>
+    </div>
+  </div>
+
+  <!-- 2. SUBSYSTEM HEALTH -->
+  <div class="panel">
+    <div class="panel-header"><div class="dot"></div> Subsystem Health</div>
+    <div class="panel-body">
+      <div class="health-grid" id="health-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. CHALLENGE STATUS -->
+  <div class="panel">
+    <div class="panel-header"><div class="dot"></div> Challenge Status</div>
+    <div class="panel-body">
+      <div class="challenge-grid" id="challenge-grid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. TIMELINE CONTROLS -->
+  <div class="panel timeline-panel">
+    <div class="panel-header"><div class="dot"></div> Timeline</div>
+    <div class="panel-body">
+      <div class="timeline-controls">
+        <button class="btn" id="btn-play" onclick="togglePlay()">Play</button>
+        <input type="range" class="timeline-slider" id="timeline-slider" min="0" max="1000" value="0" oninput="seekYear(this.value)">
+        <div class="speed-group">
+          <button class="btn active" onclick="setSpeed(1, this)">1x</button>
+          <button class="btn" onclick="setSpeed(10, this)">10x</button>
+          <button class="btn" onclick="setSpeed(100, this)">100x</button>
+          <button class="btn" onclick="setSpeed(0, this)">Max</button>
+        </div>
+        <span style="color: var(--text-secondary); font-size: 12px;">
+          <span id="distance-display">0.0</span> ly traveled
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. EVENT LOG -->
+  <div class="panel">
+    <div class="panel-header"><div class="dot"></div> Event Log</div>
+    <div class="panel-body">
+      <div class="event-filters" id="event-filters">
+        <button class="filter-btn active" data-filter="ALL" onclick="setEventFilter('ALL', this)">All</button>
+        <button class="filter-btn" data-filter="WARNING" onclick="setEventFilter('WARNING', this)">Warning</button>
+        <button class="filter-btn" data-filter="CRITICAL" onclick="setEventFilter('CRITICAL', this)">Critical</button>
+        <button class="filter-btn" data-filter="EMERGENCY" onclick="setEventFilter('EMERGENCY', this)">Emergency</button>
+      </div>
+      <div class="event-log" id="event-log"></div>
+    </div>
+  </div>
+
+  <!-- 6. STATISTICS -->
+  <div class="panel">
+    <div class="panel-header"><div class="dot"></div> Statistics</div>
+    <div class="panel-body">
+      <div class="stats-charts">
+        <div id="chart-severity"></div>
+        <div id="chart-food"></div>
+        <div id="chart-hull"></div>
+        <div id="chart-crew"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT DETAIL MODAL -->
+<div class="modal-overlay" id="event-modal" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3 id="modal-title">Event Detail</h3>
+    <pre id="modal-body"></pre>
+    <button class="btn close-btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+const state = {
+  mode: null,             // 'live' | 'replay'
+  ws: null,
+  playing: false,
+  speed: 1,               // 1, 10, 100, 0=max
+  currentYear: 0,
+  maxYear: 0,
+  snapshots: [],           // All snapshots for replay
+  snapshotIndex: 0,
+  events: [],              // Accumulated events
+  eventFilter: 'ALL',
+  playTimer: null,
+
+  // Time-series for charts
+  years: [],
+  foodHistory: [],
+  hullHistory: [],
+  crewHistory: [],
+  severityCounts: { NOMINAL: 0, WATCH: 0, WARNING: 0, CRITICAL: 0, EMERGENCY: 0 },
+
+  // Trajectory data
+  trajX: [],
+  trajY: [],
+  trajZ: [],
+  trajVel: [],
+};
+
+// ============================================================
+// PLOTLY LAYOUT DEFAULTS
+// ============================================================
+const DARK_LAYOUT = {
+  paper_bgcolor: '#111827',
+  plot_bgcolor: '#111827',
+  font: { color: '#8892a4', size: 11 },
+  margin: { l: 40, r: 20, t: 30, b: 30 },
+};
+
+// ============================================================
+// INITIALIZATION
+// ============================================================
+function init() {
+  renderHealthGrid();
+  renderChallengeGrid();
+  initTrajectoryPlot();
+  initStatsCharts();
+  connectWebSocket();
+}
+
+// ============================================================
+// WEBSOCKET
+// ============================================================
+function connectWebSocket() {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  const url = `${proto}//${location.host}/ws`;
+  try {
+    state.ws = new WebSocket(url);
+    state.ws.onopen = () => {
+      setBadge('connected', 'Live');
+      state.mode = 'live';
+    };
+    state.ws.onmessage = (evt) => {
+      const msg = JSON.parse(evt.data);
+      if (msg.type === 'snapshot') {
+        processSnapshot(msg.data);
+      } else if (msg.type === 'event') {
+        addEvent(msg.data);
+      } else if (msg.type === 'batch') {
+        if (msg.snapshots) msg.snapshots.forEach(s => processSnapshot(s));
+        if (msg.events) msg.events.forEach(e => addEvent(e));
+      }
+    };
+    state.ws.onclose = () => {
+      setBadge('disconnected', 'Disconnected');
+      setTimeout(connectWebSocket, 3000);
+    };
+    state.ws.onerror = () => {};
+  } catch(e) {
+    setBadge('disconnected', 'No server');
+  }
+}
+
+function setBadge(cls, text) {
+  const badge = document.getElementById('connection-badge');
+  badge.className = 'connection-badge ' + cls;
+  document.getElementById('connection-text').textContent = text;
+}
+
+// ============================================================
+// REPLAY FILE LOADING
+// ============================================================
+function loadReplayFile(evt) {
+  const file = evt.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      startReplay(data);
+    } catch(err) {
+      alert('Invalid JSON file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+function startReplay(data) {
+  // Accept either { snapshots: [...] } or raw array
+  let snapshots = Array.isArray(data) ? data : (data.snapshots || data.years || []);
+  if (snapshots.length === 0) {
+    alert('No snapshot data found in file.');
+    return;
+  }
+  // Close live connection
+  if (state.ws) { state.ws.close(); state.ws = null; }
+
+  resetState();
+  state.mode = 'replay';
+  state.snapshots = snapshots;
+  state.maxYear = snapshots.length;
+  setBadge('replay', 'Replay: ' + snapshots.length + ' years');
+
+  const slider = document.getElementById('timeline-slider');
+  slider.max = state.maxYear - 1;
+  slider.value = 0;
+
+  // Process first frame
+  processSnapshot(snapshots[0]);
+}
+
+function resetState() {
+  state.playing = false;
+  state.currentYear = 0;
+  state.snapshotIndex = 0;
+  state.events = [];
+  state.years = [];
+  state.foodHistory = [];
+  state.hullHistory = [];
+  state.crewHistory = [];
+  state.severityCounts = { NOMINAL: 0, WATCH: 0, WARNING: 0, CRITICAL: 0, EMERGENCY: 0 };
+  state.trajX = []; state.trajY = []; state.trajZ = []; state.trajVel = [];
+  if (state.playTimer) { clearInterval(state.playTimer); state.playTimer = null; }
+  document.getElementById('btn-play').textContent = 'Play';
+  document.getElementById('event-log').innerHTML = '';
+}
+
+// ============================================================
+// PROCESS A SNAPSHOT
+// ============================================================
+function processSnapshot(snap) {
+  state.currentYear = snap.mission_year || snap.year || 0;
+
+  // Update year display
+  document.getElementById('year-display').textContent = Math.round(state.currentYear);
+  document.getElementById('phase-badge').textContent = snap.phase || '--';
+  document.getElementById('distance-display').textContent = (snap.distance_ly || 0).toFixed(2);
+
+  // Slider
+  if (state.mode === 'replay') {
+    document.getElementById('timeline-slider').value = state.snapshotIndex;
+  }
+
+  // Health
+  updateHealthItem('hull', 'Hull Integrity', snap.hull_integrity, true);
+  updateHealthItem('shield', 'Shield Health', snap.shield_health != null ? snap.shield_health : snap.radiation_shielding_mass_kg / 10000, true);
+  updateHealthItem('power', 'Power Generation', snap.total_power_watts, false, 'W');
+  updateHealthItem('food', 'Food Production', snap.food_production_ratio != null ? snap.food_production_ratio : snap.hydroponic_capacity, true);
+  updateHealthItem('crew', 'Crew Population', snap.crew_count, false, '');
+  updateHealthItem('water', 'Water Reserves', snap.water_liters, false, 'L');
+
+  // Challenges
+  if (snap.challenges) {
+    const names = ['materials', 'food', 'knowledge', 'genetics', 'psychology', 'fuel'];
+    names.forEach(n => {
+      const ch = snap.challenges[n] || {};
+      updateChallengeItem(n, ch.status || 'nominal', ch.severity || 0);
+    });
+  }
+
+  // Trajectory
+  const x = snap.position_x != null ? snap.position_x : (snap.distance_ly || 0);
+  const y = snap.position_y != null ? snap.position_y : Math.sin((snap.distance_ly || 0) * 0.1) * 2;
+  const z = snap.position_z != null ? snap.position_z : Math.cos((snap.distance_ly || 0) * 0.15) * 1.5;
+  const vel = snap.velocity_c || 0;
+
+  state.trajX.push(x);
+  state.trajY.push(y);
+  state.trajZ.push(z);
+  state.trajVel.push(vel);
+  updateTrajectoryPlot(snap);
+
+  // Time-series
+  state.years.push(state.currentYear);
+  state.foodHistory.push(snap.food_production_ratio != null ? snap.food_production_ratio : (snap.hydroponic_capacity || 0));
+  state.hullHistory.push(snap.hull_integrity || 0);
+  state.crewHistory.push(snap.crew_count || 0);
+
+  // Events from snapshot
+  if (snap.events && Array.isArray(snap.events)) {
+    snap.events.forEach(e => addEvent(e));
+  }
+
+  // Update charts every 10 years or at end
+  if (state.years.length % 10 === 0 || !state.playing) {
+    updateStatsCharts();
+  }
+}
+
+// ============================================================
+// EVENTS
+// ============================================================
+function addEvent(evt) {
+  const sev = evt.severity || 'NOMINAL';
+  state.severityCounts[sev] = (state.severityCounts[sev] || 0) + 1;
+  state.events.push(evt);
+
+  if (state.eventFilter === 'ALL' || state.eventFilter === sev) {
+    appendEventToLog(evt);
+  }
+}
+
+function appendEventToLog(evt) {
+  const log = document.getElementById('event-log');
+  const entry = document.createElement('div');
+  entry.className = 'event-entry';
+  entry.onclick = () => showEventDetail(evt);
+
+  const yr = evt.year || evt.mission_year || '?';
+  const sev = evt.severity || 'NOMINAL';
+  const desc = evt.description || evt.message || JSON.stringify(evt);
+
+  entry.innerHTML = `
+    <span class="event-year">Y${Math.round(yr)}</span>
+    <span class="event-sev sev-${sev}">${sev}</span>
+    <span class="event-text">${escapeHtml(desc)}</span>
+  `;
+
+  log.appendChild(entry);
+  log.scrollTop = log.scrollHeight;
+
+  // Keep only last 500 DOM entries
+  while (log.children.length > 500) {
+    log.removeChild(log.firstChild);
+  }
+}
+
+function setEventFilter(filter, btn) {
+  state.eventFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Re-render events
+  const log = document.getElementById('event-log');
+  log.innerHTML = '';
+  const filtered = filter === 'ALL' ? state.events : state.events.filter(e => (e.severity || 'NOMINAL') === filter);
+  filtered.slice(-200).forEach(e => appendEventToLog(e));
+}
+
+function showEventDetail(evt) {
+  document.getElementById('modal-title').textContent =
+    `[${evt.severity || 'NOMINAL'}] ${evt.category || evt.subsystem || 'Event'}`;
+  document.getElementById('modal-body').textContent = JSON.stringify(evt, null, 2);
+  document.getElementById('event-modal').classList.add('visible');
+}
+
+function closeModal(evt) {
+  if (!evt || evt.target.id === 'event-modal') {
+    document.getElementById('event-modal').classList.remove('visible');
+  }
+}
+
+// ============================================================
+// HEALTH PANEL
+// ============================================================
+function renderHealthGrid() {
+  const items = [
+    { id: 'hull', label: 'Hull Integrity', pct: true },
+    { id: 'shield', label: 'Shield Health', pct: true },
+    { id: 'power', label: 'Power Generation', pct: false, unit: 'W' },
+    { id: 'food', label: 'Food Production', pct: true },
+    { id: 'crew', label: 'Crew Population', pct: false, unit: '' },
+    { id: 'water', label: 'Water Reserves', pct: false, unit: 'L' },
+  ];
+
+  const grid = document.getElementById('health-grid');
+  grid.innerHTML = items.map(it => `
+    <div class="health-item" id="health-${it.id}">
+      <div class="health-label">${it.label}</div>
+      <div class="health-value" id="hval-${it.id}">--</div>
+      <div class="health-bar-track">
+        <div class="health-bar-fill" id="hbar-${it.id}" style="width: 0%; background: var(--accent-green);"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateHealthItem(id, label, value, isPct, unit) {
+  const valEl = document.getElementById('hval-' + id);
+  const barEl = document.getElementById('hbar-' + id);
+  if (!valEl) return;
+
+  let displayVal, pct;
+  if (isPct) {
+    pct = Math.max(0, Math.min(1, value || 0));
+    displayVal = (pct * 100).toFixed(1) + '%';
+  } else {
+    displayVal = typeof value === 'number' ? formatNumber(value) + (unit ? ' ' + unit : '') : '--';
+    // For non-pct items, estimate a bar fill
+    if (id === 'power') pct = Math.min(1, (value || 0) / 500000);
+    else if (id === 'crew') pct = Math.min(1, (value || 0) / 100);
+    else if (id === 'water') pct = Math.min(1, (value || 0) / 50000);
+    else pct = 0;
+  }
+
+  valEl.textContent = displayVal;
+  barEl.style.width = (pct * 100) + '%';
+
+  // Color based on value
+  if (pct > 0.6) barEl.style.background = 'var(--accent-green)';
+  else if (pct > 0.3) barEl.style.background = 'var(--accent-yellow)';
+  else barEl.style.background = 'var(--accent-red)';
+}
+
+// ============================================================
+// CHALLENGE PANEL
+// ============================================================
+function renderChallengeGrid() {
+  const names = ['materials', 'food', 'knowledge', 'genetics', 'psychology', 'fuel'];
+  const grid = document.getElementById('challenge-grid');
+  grid.innerHTML = names.map(n => `
+    <div class="challenge-item" id="ch-${n}">
+      <div class="challenge-name">${n}</div>
+      <div class="challenge-status" id="chstat-${n}">nominal</div>
+      <div class="challenge-meter-track">
+        <div class="challenge-meter-fill" id="chbar-${n}" style="width: 0%; background: var(--accent-green);"></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function updateChallengeItem(name, status, severity) {
+  const statEl = document.getElementById('chstat-' + name);
+  const barEl = document.getElementById('chbar-' + name);
+  if (!statEl) return;
+
+  statEl.textContent = status;
+  const sev = Math.max(0, Math.min(1, severity));
+  barEl.style.width = (sev * 100) + '%';
+
+  if (sev < 0.3) { barEl.style.background = 'var(--accent-green)'; statEl.style.color = 'var(--accent-green)'; }
+  else if (sev < 0.6) { barEl.style.background = 'var(--accent-yellow)'; statEl.style.color = 'var(--accent-yellow)'; }
+  else if (sev < 0.85) { barEl.style.background = 'var(--accent-red)'; statEl.style.color = 'var(--accent-red)'; }
+  else { barEl.style.background = '#ff4444'; statEl.style.color = '#ff4444'; }
+}
+
+// ============================================================
+// 3D TRAJECTORY PLOT
+// ============================================================
+function initTrajectoryPlot() {
+  const traces = [
+    // Origin (Sol)
+    {
+      x: [0], y: [0], z: [0],
+      mode: 'markers',
+      marker: { size: 10, color: '#ffd700', symbol: 'circle' },
+      name: 'Sol',
+      type: 'scatter3d',
+    },
+    // Target star
+    {
+      x: [100], y: [0], z: [0],
+      mode: 'markers',
+      marker: { size: 10, color: '#3b82f6', symbol: 'diamond' },
+      name: 'Target',
+      type: 'scatter3d',
+    },
+    // Trajectory line
+    {
+      x: [], y: [], z: [],
+      mode: 'lines',
+      line: { width: 3, color: [], colorscale: [[0, '#3b82f6'], [0.7, '#06b6d4'], [1, '#ef4444']], cmin: 0, cmax: 0.12 },
+      name: 'Trajectory',
+      type: 'scatter3d',
+    },
+    // Current position
+    {
+      x: [0], y: [0], z: [0],
+      mode: 'markers',
+      marker: { size: 8, color: '#10b981', symbol: 'circle' },
+      name: 'Ship',
+      type: 'scatter3d',
+    },
+  ];
+
+  const layout = {
+    ...DARK_LAYOUT,
+    margin: { l: 0, r: 0, t: 0, b: 0 },
+    scene: {
+      xaxis: { title: 'Distance (ly)', color: '#8892a4', gridcolor: '#1e3a5f', zerolinecolor: '#1e3a5f' },
+      yaxis: { title: 'Y (ly)', color: '#8892a4', gridcolor: '#1e3a5f', zerolinecolor: '#1e3a5f' },
+      zaxis: { title: 'Z (ly)', color: '#8892a4', gridcolor: '#1e3a5f', zerolinecolor: '#1e3a5f' },
+      bgcolor: '#0a0e17',
+      camera: { eye: { x: 1.5, y: 0.8, z: 0.6 } },
+    },
+    showlegend: true,
+    legend: { x: 0, y: 1, bgcolor: 'rgba(0,0,0,0.3)', font: { color: '#e0e6ed' } },
+  };
+
+  Plotly.newPlot('trajectory-plot', traces, layout, { responsive: true, displayModeBar: false });
+}
+
+function updateTrajectoryPlot(snap) {
+  const n = state.trajX.length;
+  if (n === 0) return;
+
+  // Trajectory line with velocity coloring
+  Plotly.restyle('trajectory-plot', {
+    x: [state.trajX],
+    y: [state.trajY],
+    z: [state.trajZ],
+    'line.color': [state.trajVel],
+  }, [2]);
+
+  // Current position
+  Plotly.restyle('trajectory-plot', {
+    x: [[state.trajX[n - 1]]],
+    y: [[state.trajY[n - 1]]],
+    z: [[state.trajZ[n - 1]]],
+  }, [3]);
+}
+
+// ============================================================
+// STATISTICS CHARTS
+// ============================================================
+function initStatsCharts() {
+  // Severity bar chart
+  Plotly.newPlot('chart-severity', [{
+    x: ['NOMINAL', 'WATCH', 'WARNING', 'CRITICAL', 'EMERGENCY'],
+    y: [0, 0, 0, 0, 0],
+    type: 'bar',
+    marker: { color: ['#10b981', '#06b6d4', '#f59e0b', '#ef4444', '#ff4444'] },
+  }], {
+    ...DARK_LAYOUT,
+    title: { text: 'Events by Severity', font: { size: 12, color: '#8892a4' } },
+    xaxis: { tickangle: -30 },
+  }, { responsive: true, displayModeBar: false });
+
+  // Food line chart
+  Plotly.newPlot('chart-food', [{
+    x: [], y: [], type: 'scatter', mode: 'lines',
+    line: { color: '#10b981', width: 2 }, fill: 'tozeroy', fillcolor: 'rgba(16,185,129,0.1)',
+  }], {
+    ...DARK_LAYOUT,
+    title: { text: 'Food Production', font: { size: 12, color: '#8892a4' } },
+    yaxis: { range: [0, 1.1] },
+  }, { responsive: true, displayModeBar: false });
+
+  // Hull line chart
+  Plotly.newPlot('chart-hull', [{
+    x: [], y: [], type: 'scatter', mode: 'lines',
+    line: { color: '#3b82f6', width: 2 }, fill: 'tozeroy', fillcolor: 'rgba(59,130,246,0.1)',
+  }], {
+    ...DARK_LAYOUT,
+    title: { text: 'Hull Integrity', font: { size: 12, color: '#8892a4' } },
+    yaxis: { range: [0, 1.1] },
+  }, { responsive: true, displayModeBar: false });
+
+  // Crew line chart
+  Plotly.newPlot('chart-crew', [{
+    x: [], y: [], type: 'scatter', mode: 'lines',
+    line: { color: '#f59e0b', width: 2 }, fill: 'tozeroy', fillcolor: 'rgba(245,158,11,0.1)',
+  }], {
+    ...DARK_LAYOUT,
+    title: { text: 'Crew Population', font: { size: 12, color: '#8892a4' } },
+  }, { responsive: true, displayModeBar: false });
+}
+
+function updateStatsCharts() {
+  const sc = state.severityCounts;
+  Plotly.restyle('chart-severity', {
+    y: [[sc.NOMINAL || 0, sc.WATCH || 0, sc.WARNING || 0, sc.CRITICAL || 0, sc.EMERGENCY || 0]],
+  });
+
+  Plotly.restyle('chart-food', { x: [state.years], y: [state.foodHistory] });
+  Plotly.restyle('chart-hull', { x: [state.years], y: [state.hullHistory] });
+  Plotly.restyle('chart-crew', { x: [state.years], y: [state.crewHistory] });
+}
+
+// ============================================================
+// TIMELINE CONTROLS
+// ============================================================
+function togglePlay() {
+  if (state.mode !== 'replay' || state.snapshots.length === 0) return;
+  state.playing = !state.playing;
+  document.getElementById('btn-play').textContent = state.playing ? 'Pause' : 'Play';
+  document.getElementById('btn-play').classList.toggle('active', state.playing);
+
+  if (state.playing) {
+    startPlayback();
+  } else {
+    if (state.playTimer) { clearInterval(state.playTimer); state.playTimer = null; }
+  }
+}
+
+function startPlayback() {
+  if (state.playTimer) clearInterval(state.playTimer);
+  const interval = state.speed === 0 ? 1 : Math.max(1, 1000 / state.speed);
+
+  state.playTimer = setInterval(() => {
+    if (!state.playing) { clearInterval(state.playTimer); state.playTimer = null; return; }
+    if (state.snapshotIndex >= state.snapshots.length - 1) {
+      state.playing = false;
+      document.getElementById('btn-play').textContent = 'Play';
+      document.getElementById('btn-play').classList.remove('active');
+      clearInterval(state.playTimer);
+      state.playTimer = null;
+      updateStatsCharts(); // Final update
+      return;
+    }
+    state.snapshotIndex++;
+    processSnapshot(state.snapshots[state.snapshotIndex]);
+  }, interval);
+}
+
+function setSpeed(spd, btn) {
+  state.speed = spd;
+  document.querySelectorAll('.speed-group .btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (state.playing) startPlayback(); // Restart with new speed
+}
+
+function seekYear(idx) {
+  if (state.mode !== 'replay' || state.snapshots.length === 0) return;
+  idx = parseInt(idx);
+  // Reset accumulated data up to this point
+  resetState();
+  state.mode = 'replay';
+  setBadge('replay', 'Replay');
+
+  // Process all snapshots up to idx
+  for (let i = 0; i <= idx && i < state.snapshots.length; i++) {
+    processSnapshot(state.snapshots[i]);
+  }
+  state.snapshotIndex = idx;
+  updateStatsCharts();
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function formatNumber(n) {
+  if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+  if (n >= 1e3) return (n / 1e3).toFixed(1) + 'K';
+  if (Number.isInteger(n)) return n.toString();
+  return n.toFixed(1);
+}
+
+// Start
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

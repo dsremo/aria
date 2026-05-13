@@ -1,0 +1,91 @@
+# ARIA sealed-content manifest.
+#
+# Every file in `data/sealed/` listed here. SHA-256 hashes are recomputed
+# at boot (see `aria.cognitive.sealed_prompt.verify_manifest`); a single
+# byte mismatch blocks startup.
+#
+# Updating a sealed file is a release event: regenerate this manifest,
+# resign with the release-engineer key, and rebuild the boot image.
+#
+# Mismatch behaviour: process refuses to start, logs
+# `boot.sealed_prompt.failed`, exits with non-zero status.
+#
+# Implements §F-1 of docs/FAILSAFE_ARCHITECTURE.md.
+
+manifest_version = 1
+created_at       = "2026-04-25"
+algorithm        = "sha256"
+
+# ── Sealed system prompt ────────────────────────────────────────────
+# The behaviour rules read by the cognitive engine on every reasoning
+# request. Mounted read-only in production; in-memory copy frozen via
+# types.MappingProxyType after load.
+[files."system_prompt.v1.txt"]
+sha256     = "c3bd53bd6f5c57f2f340eb181f2c20a899b64ee382e058d2fa80e139dbdbea43"
+size_bytes = 4130
+purpose    = "ARIA cognitive system prompt"
+
+# ── Sealed constitution ─────────────────────────────────────────────
+# Forbidden actions, gated actions, resource ceilings, trust tiers.
+# Consulted by the constitutional layer ABOVE the LLM and by
+# ExecutionGuard.
+[files."constitution.v1.json"]
+sha256     = "aa8b96d1f720709bc946cc21a5be1c595440143081489ff23fb5e9b50f10ec4c"
+size_bytes = 8388
+purpose    = "ARIA constitutional rule set"
+
+# ── Sealed safety test set (F-13) ───────────────────────────────────
+# Frozen scenario→expected-verdict pairs replayed every 6 hours
+# against the production constitutional layer. Drift > 1 % rolls back.
+[files."safety_test_set.v1.json"]
+sha256     = "0eca85247a78e85a428da93055cb587f346a24db267de8156304e6d7b172750c"
+size_bytes = 5363
+purpose    = "F-13 continuous safety-test replay set"
+
+# ── Sealed principal roster (R32 — F-1, F-9, F-14) ─────────────────
+# Initial captain + crew + maintainers + ground pinned key. Loaded by
+# aria.security.principals.PrincipalStore at boot. Mutations (revoke,
+# rotate) live in data/runtime/principals.delta.jsonl, hash-chained.
+[files."principals.v1.toml"]
+sha256     = "1c81f4de779a4cab949fabb42f1bc5755abf1a8937890e95054caa78c86c2058"
+size_bytes = 4237
+purpose    = "Sealed principal roster (initial ship-baked identities)"
+
+# ── Sealed role lattice (R32) ──────────────────────────────────────
+# Inheritance graph + trust-tier + authority-ceiling per role.
+[files."roles.v1.toml"]
+sha256     = "0fd7e18cb4759c367f6a70f07ea5a1b8cb9247218b76a08d50e724d7bd93469d"
+size_bytes = 2658
+purpose    = "Sealed role lattice"
+
+# ── Sealed permission catalogue (R32) ──────────────────────────────
+# Permission names + role holders. Single source of truth for
+# `aria.security.principals.authorize`.
+[files."permissions.v1.toml"]
+sha256     = "8e23d7910253046200242c4ecc268179aa3014a69998928b878ebbe5181686d1"
+size_bytes = 6151
+purpose    = "Sealed permission catalogue"
+
+# ── Sealed incident response policy (R34) ──────────────────────────
+# Decision matrix: incident_class × controllability → response_mode.
+# Loaded by aria.safety.incident_policy at boot. Mutating this file
+# requires a release-engineering re-bake.
+[files."incident_policy.v1.toml"]
+sha256     = "e9ba1c13b77b56a219674e7934b2e6c9ae7944b9250c2a01c2db35375046a545"
+size_bytes = 5790
+purpose    = "Sealed incident response policy"
+
+# ── Sealed expected-PCR baseline (R38 §1.3, R43 dev capture) ───────
+# Ground-truth PCR digests.  CURRENTLY a *dev-tree* baseline written
+# by scripts/capture_dev_pcrs.py — useful as a regression detector
+# against accidental local tamper, NOT a flight-grade tamper test.
+# Production must regenerate this file from the flight CPU's real
+# TPM 2.0 measured-boot quote before launch.
+[files."EXPECTED_PCRS.toml"]
+sha256     = "3664cb18778b77588960c0869f2542287a40b327ef2a42c40b75b3b2296de335"
+size_bytes = 1695
+purpose    = "Expected PCR baseline (dev-tree capture; see file header)"
+
+# Future entries: monitor_rules.v1.json, safe_mode_profile.v1.json,
+# eval_marker_secret.v1.bin (encrypted with HSM). All listed here so
+# verify_manifest covers everything in one pass.

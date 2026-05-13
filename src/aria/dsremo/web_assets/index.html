@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSREMO · Mission Timeline · Operator</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0a0e17;
+      --bg-panel:   #111827;
+      --bg-panel-alt: #1a2234;
+      --border:     #1e3a5f;
+      --text-primary:   #e0e6ed;
+      --text-secondary: #8892a4;
+      --accent-blue:  #3b82f6;
+      --accent-cyan:  #06b6d4;
+      --accent-green: #10b981;
+      --accent-yellow:#f59e0b;
+      --accent-red:   #ef4444;
+      --accent-purple:#8b5cf6;
+      --critical: #ef4444;
+      --warning:  #eab308;
+      --info:     #3b82f6;
+      --debug:    #475569;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow: hidden;
+      height: 100vh;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 48px;
+    }
+    .header h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .header h1 span { color: var(--accent-cyan); }
+    .header-right {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    .sat-picker {
+      background: var(--bg-panel-alt);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      min-width: 160px;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      display: inline-block;
+      box-shadow: 0 0 6px var(--accent-green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50%      { opacity: 1; }
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      grid-template-rows: 1fr;
+      height: calc(100vh - 48px);
+    }
+    .sidebar {
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      padding: 14px;
+      overflow-y: auto;
+    }
+    .sidebar h2 {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-cyan);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .ctx-block {
+      background: var(--bg-panel-alt);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    .ctx-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-secondary);
+      margin-bottom: 3px;
+    }
+    .ctx-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .ctx-sub {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+    .progress {
+      margin-top: 6px;
+      height: 6px;
+      background: #0f172a;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress > div {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-yellow));
+      transition: width 0.4s ease;
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .gantt-container {
+      flex: 1 1 60%;
+      padding: 6px 10px;
+      min-height: 300px;
+    }
+    .bottom {
+      flex: 0 0 40%;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .bottom-header {
+      padding: 6px 14px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+    .anomaly-table {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 12px;
+    }
+    .anomaly-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .anomaly-table th {
+      text-align: left;
+      padding: 6px 12px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-panel);
+      position: sticky;
+      top: 0;
+    }
+    .anomaly-table td {
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(30, 58, 95, 0.4);
+      cursor: pointer;
+    }
+    .anomaly-table tr:hover td {
+      background: var(--bg-panel-alt);
+    }
+    .sev-pill {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .sev-critical { background: rgba(239, 68, 68, 0.2); color: var(--critical); border: 1px solid var(--critical); }
+    .sev-warning  { background: rgba(234, 179, 8, 0.2); color: var(--warning);  border: 1px solid var(--warning); }
+    .sev-info     { background: rgba(59, 130, 246, 0.2); color: var(--info);    border: 1px solid var(--info); }
+    .sev-debug    { background: rgba(71, 85, 105, 0.2); color: var(--debug);    border: 1px solid var(--debug); }
+    .empty-state {
+      padding: 24px 14px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .error {
+      color: var(--accent-red);
+      font-size: 11px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <h1>DSREMO <span>/ OPS</span></h1>
+      <select id="satPicker" class="sat-picker" aria-label="Satellite"><option>Loading…</option></select>
+    </div>
+    <div class="header-right">
+      <span><span class="live-dot"></span> live</span>
+      <span id="tokenStatus">no token</span>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <h2>Mission Context</h2>
+      <div id="ctxBody">
+        <div class="empty-state">Select a satellite</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="gantt-container">
+        <div id="gantt" style="width: 100%; height: 100%;"></div>
+      </div>
+      <div class="bottom">
+        <div class="bottom-header">Recent Anomalies</div>
+        <div class="anomaly-table" id="anomalyTable">
+          <div class="empty-state">No anomalies yet</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<script>
+/*
+  F-4 Operator Dashboard — vanilla ES module (no build step).
+  Consumes /api/v1 endpoints and renders a Plotly horizontal Gantt.
+  Poll cadences: context 30s, orbital events 60s, anomalies 10s.
+*/
+
+const API_BASE = "/api/v1";
+const SEV_COLORS = { critical: "#ef4444", warning: "#eab308", info: "#3b82f6", debug: "#475569" };
+const EVENT_COLORS = {
+  eclipse_entry: "#6366f1",
+  eclipse_exit:  "#6366f1",
+  gs_handover:   "#10b981",
+  maneuver:      "#f59e0b",
+  perigee:       "#8b5cf6",
+  apogee:        "#8b5cf6",
+  saa_passage:   "#ec4899",
+  custom:        "#94a3b8",
+};
+const SUBSYSTEM_ROWS = ["EPS", "ADCS", "THERMAL", "COMMS", "PAYLOAD"];
+const EVENT_ROWS = ["ECLIPSE", "AOS", "MANEUVER"];
+const ALL_ROWS = [...SUBSYSTEM_ROWS, ...EVENT_ROWS];
+const HORIZON_S = 86_400;  // ±24 h window (ECSS-E-ST-70C §5.4.2)
+
+const state = {
+  satellites: [],
+  current: null,
+  context: null,
+  events: [],
+  anomalies: [],
+  cursorEpoch: null,
+};
+
+function authHeaders() {
+  const tok = localStorage.getItem("dsremo_token");
+  return tok ? { "Authorization": `Bearer ${tok}` } : {};
+}
+
+async function api(path, opts = {}) {
+  const resp = await fetch(`${API_BASE}${path}`, {
+    ...opts,
+    headers: { "Content-Type": "application/json", ...authHeaders(), ...(opts.headers || {}) },
+  });
+  if (!resp.ok) {
+    const txt = await resp.text();
+    throw new Error(`${resp.status} ${resp.statusText}: ${txt.slice(0, 200)}`);
+  }
+  return resp.status === 204 ? null : resp.json();
+}
+
+function fmtDuration(s) {
+  if (s == null || !isFinite(s)) return "—";
+  const abs = Math.abs(s);
+  if (abs < 60)    return `${Math.round(s)} s`;
+  if (abs < 3600)  return `${(s / 60).toFixed(0)} min`;
+  if (abs < 86400) return `${(s / 3600).toFixed(1)} h`;
+  return `${(s / 86400).toFixed(1)} d`;
+}
+
+function fmtEpoch(epoch) {
+  if (!epoch) return "—";
+  const d = new Date(epoch * 1000);
+  return d.toISOString().replace("T", " ").replace(/\.\d+Z$/, " UTC");
+}
+
+function fmtMissionDay(elapsedSec) {
+  if (!isFinite(elapsedSec) || elapsedSec <= 0) return "—";
+  return Math.floor(elapsedSec / 86_400).toLocaleString();
+}
+
+// ----- Sidebar --------------------------------------------------------------
+
+function renderContext() {
+  const el = document.getElementById("ctxBody");
+  const c = state.context;
+  if (!c) {
+    el.innerHTML = `<div class="empty-state">No data</div>`;
+    return;
+  }
+  const launchLabel = c.launch_epoch
+    ? fmtEpoch(c.launch_epoch).slice(0, 10)
+    : "unset — PUT /mission_config";
+  const dayLabel = c.launch_epoch ? `Day ${fmtMissionDay(c.mission_elapsed_s)}` : "—";
+  const pct = c.design_life_pct_consumed;
+  const pctClamped = pct == null ? 0 : Math.max(0, Math.min(100, pct));
+  const pctLabel = pct == null ? "—" : `${pct.toFixed(1)} %`;
+
+  const eclipse = c.next_eclipse;
+  const contact = c.next_contact;
+  const maneuver = c.next_maneuver;
+
+  el.innerHTML = `
+    <div class="ctx-block">
+      <div class="ctx-label">Launch</div>
+      <div class="ctx-value">${launchLabel}</div>
+      <div class="ctx-sub">${dayLabel}</div>
+    </div>
+    <div class="ctx-block">
+      <div class="ctx-label">Design life consumed</div>
+      <div class="ctx-value">${pctLabel}</div>
+      <div class="progress"><div style="width: ${pctClamped}%;"></div></div>
+    </div>
+    <div class="ctx-block">
+      <div class="ctx-label">Next eclipse</div>
+      <div class="ctx-value">${eclipse ? (eclipse.starts_in_s < 0 ? "IN PROGRESS" : `in ${fmtDuration(eclipse.starts_in_s)}`) : "none queued"}</div>
+      <div class="ctx-sub">${eclipse ? `duration ${fmtDuration(eclipse.duration_s)}` : ""}</div>
+    </div>
+    <div class="ctx-block">
+      <div class="ctx-label">Next ground contact</div>
+      <div class="ctx-value">${contact ? `in ${fmtDuration(contact.starts_in_s)}` : "none queued"}</div>
+      <div class="ctx-sub">${contact?.description || ""}</div>
+    </div>
+    <div class="ctx-block">
+      <div class="ctx-label">Next maneuver</div>
+      <div class="ctx-value">${maneuver ? `in ${fmtDuration(maneuver.starts_in_s)}` : "none queued"}</div>
+      <div class="ctx-sub">${maneuver?.description || ""}</div>
+    </div>
+  `;
+}
+
+// ----- Gantt ----------------------------------------------------------------
+
+function buildGanttTraces() {
+  const now = Date.now();
+  const shapes = [];
+  const annotations = [];
+
+  // Event bars
+  for (const ev of state.events) {
+    let row = null;
+    if (ev.event_type === "eclipse_entry" || ev.event_type === "eclipse_exit") row = "ECLIPSE";
+    else if (ev.event_type === "gs_handover") row = "AOS";
+    else if (ev.event_type === "maneuver")    row = "MANEUVER";
+    if (!row) continue;
+
+    const x0 = new Date(ev.start_epoch * 1000).toISOString();
+    const x1 = new Date((ev.start_epoch + ev.duration_s) * 1000).toISOString();
+    const color = EVENT_COLORS[ev.event_type] || EVENT_COLORS.custom;
+    shapes.push({
+      type: "rect",
+      xref: "x",
+      yref: "y",
+      x0, x1,
+      y0: ALL_ROWS.indexOf(row) - 0.35,
+      y1: ALL_ROWS.indexOf(row) + 0.35,
+      fillcolor: color,
+      opacity: 0.55,
+      line: { width: 0 },
+    });
+  }
+
+  // Anomaly scatter grouped by severity
+  const bySev = { critical: [], warning: [], info: [], debug: [] };
+  for (const a of state.anomalies) {
+    const sev = (a.severity || "info").toLowerCase();
+    const bucket = bySev[sev] || bySev.info;
+    const subsys = (a.subsystem || "").toUpperCase();
+    const row = SUBSYSTEM_ROWS.includes(subsys) ? subsys : SUBSYSTEM_ROWS[0];
+    bucket.push({
+      x: new Date(a.timestamp).toISOString(),
+      y: ALL_ROWS.indexOf(row),
+      text: `${a.parameter} · ${a.severity} · ${(a.confidence || 0).toFixed(2)}`,
+    });
+  }
+
+  const traces = [];
+  for (const sev of ["critical", "warning", "info", "debug"]) {
+    const pts = bySev[sev];
+    if (pts.length === 0) continue;
+    traces.push({
+      type: "scatter",
+      mode: "markers",
+      name: sev,
+      x: pts.map(p => p.x),
+      y: pts.map(p => p.y),
+      text: pts.map(p => p.text),
+      hovertemplate: "%{text}<br>%{x}<extra></extra>",
+      marker: {
+        size: sev === "critical" ? 11 : 9,
+        color: SEV_COLORS[sev],
+        symbol: sev === "critical" ? "circle" : "circle-open",
+        line: { width: 1, color: SEV_COLORS[sev] },
+      },
+    });
+  }
+
+  // "Now" vertical line
+  shapes.push({
+    type: "line",
+    xref: "x",
+    yref: "paper",
+    x0: new Date(now).toISOString(),
+    x1: new Date(now).toISOString(),
+    y0: 0, y1: 1,
+    line: { color: "#06b6d4", width: 2, dash: "dash" },
+  });
+
+  // Cursor line when user clicks an anomaly
+  if (state.cursorEpoch) {
+    shapes.push({
+      type: "line",
+      xref: "x",
+      yref: "paper",
+      x0: new Date(state.cursorEpoch * 1000).toISOString(),
+      x1: new Date(state.cursorEpoch * 1000).toISOString(),
+      y0: 0, y1: 1,
+      line: { color: "#f59e0b", width: 1.5 },
+    });
+  }
+
+  return { traces, shapes, annotations };
+}
+
+function renderGantt() {
+  const { traces, shapes } = buildGanttTraces();
+  const now = Date.now();
+  const lo = new Date(now - HORIZON_S * 1000).toISOString();
+  const hi = new Date(now + HORIZON_S * 1000).toISOString();
+
+  const layout = {
+    margin: { t: 18, r: 14, b: 40, l: 80 },
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor:  "rgba(0,0,0,0)",
+    font: { family: "Segoe UI, system-ui", color: "#e0e6ed", size: 11 },
+    showlegend: true,
+    legend: { orientation: "h", y: -0.18, x: 0, bgcolor: "rgba(0,0,0,0)" },
+    xaxis: {
+      type: "date",
+      range: [lo, hi],
+      gridcolor: "rgba(30, 58, 95, 0.5)",
+      tickfont: { size: 10, color: "#8892a4" },
+    },
+    yaxis: {
+      range: [-0.5, ALL_ROWS.length - 0.5],
+      tickmode: "array",
+      tickvals: ALL_ROWS.map((_, i) => i),
+      ticktext: ALL_ROWS,
+      gridcolor: "rgba(30, 58, 95, 0.5)",
+      tickfont: { size: 11, color: "#e0e6ed" },
+      autorange: false,
+    },
+    shapes,
+    hovermode: "closest",
+  };
+  Plotly.react("gantt", traces, layout, { displayModeBar: false, responsive: true });
+}
+
+// ----- Anomaly table --------------------------------------------------------
+
+function renderAnomalyTable() {
+  const root = document.getElementById("anomalyTable");
+  const rows = state.anomalies.slice(0, 50);
+  if (rows.length === 0) {
+    root.innerHTML = `<div class="empty-state">No anomalies yet</div>`;
+    return;
+  }
+  const now = Date.now();
+  const body = rows.map(a => {
+    const ts = new Date(a.timestamp).getTime();
+    const ago = (now - ts) / 1000;
+    const sev = (a.severity || "info").toLowerCase();
+    return `
+      <tr data-epoch="${(ts / 1000).toFixed(3)}">
+        <td><span class="sev-pill sev-${sev}">${sev}</span></td>
+        <td>${escape(a.parameter || "—")}</td>
+        <td>${(a.confidence ?? 0).toFixed(3)}</td>
+        <td>${escape((a.subsystem || "—").toUpperCase())}</td>
+        <td>${fmtDuration(-ago)} ago</td>
+      </tr>
+    `;
+  }).join("");
+
+  root.innerHTML = `
+    <table>
+      <thead>
+        <tr><th>Sev</th><th>Param</th><th>Score</th><th>Subsystem</th><th>When</th></tr>
+      </thead>
+      <tbody>${body}</tbody>
+    </table>
+  `;
+
+  root.querySelectorAll("tr[data-epoch]").forEach(tr => {
+    tr.addEventListener("click", () => {
+      state.cursorEpoch = parseFloat(tr.getAttribute("data-epoch"));
+      renderGantt();
+    });
+  });
+}
+
+function escape(s) {
+  return String(s ?? "").replace(/[<>&"']/g, c => ({
+    "<": "&lt;", ">": "&gt;", "&": "&amp;", "\"": "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+// ----- Data loaders ---------------------------------------------------------
+
+async function loadSatellites() {
+  try {
+    const list = await api("/satellites");
+    const items = Array.isArray(list) ? list : (list.satellites || []);
+    state.satellites = items;
+    const sel = document.getElementById("satPicker");
+    if (items.length === 0) {
+      sel.innerHTML = `<option value="">(no satellites registered)</option>`;
+      return;
+    }
+    sel.innerHTML = items
+      .map(s => {
+        const id = typeof s === "string" ? s : s.satellite_id;
+        return `<option value="${escape(id)}">${escape(id)}</option>`;
+      })
+      .join("");
+    state.current = sel.value;
+  } catch (err) {
+    console.error("loadSatellites", err);
+  }
+}
+
+async function loadContext() {
+  if (!state.current) return;
+  try {
+    state.context = await api(`/satellites/${encodeURIComponent(state.current)}/context`);
+    renderContext();
+  } catch (err) {
+    console.error("loadContext", err);
+  }
+}
+
+async function loadEvents() {
+  if (!state.current) return;
+  try {
+    state.events = await api(`/satellites/${encodeURIComponent(state.current)}/orbital_events`);
+    renderGantt();
+  } catch (err) {
+    console.error("loadEvents", err);
+  }
+}
+
+async function loadAnomalies() {
+  if (!state.current) return;
+  try {
+    const list = await api(`/anomalies?satellite_id=${encodeURIComponent(state.current)}&limit=50`);
+    state.anomalies = Array.isArray(list) ? list : [];
+    renderAnomalyTable();
+    renderGantt();
+  } catch (err) {
+    console.error("loadAnomalies", err);
+  }
+}
+
+async function refreshAll() {
+  await loadContext();
+  await loadEvents();
+  await loadAnomalies();
+}
+
+// ----- Wiring ---------------------------------------------------------------
+
+function init() {
+  document.getElementById("tokenStatus").textContent =
+    localStorage.getItem("dsremo_token") ? "authed" : "no token";
+
+  document.getElementById("satPicker").addEventListener("change", (e) => {
+    state.current = e.target.value;
+    state.cursorEpoch = null;
+    refreshAll();
+  });
+
+  loadSatellites().then(() => {
+    if (state.current) refreshAll();
+    else renderGantt();
+  });
+
+  // Poll cadences (V3-F4): context 30s, events 60s, anomalies 10s.
+  setInterval(loadContext,   30_000);
+  setInterval(loadEvents,    60_000);
+  setInterval(loadAnomalies, 10_000);
+}
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>

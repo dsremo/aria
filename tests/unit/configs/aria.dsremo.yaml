@@ -1,0 +1,16 @@
+# Test fixture config loaded by test_sprint10.TestConfigKeys.
+#
+# The test asserts that the STL decomposition knobs introduced in Sprint 10
+# (V3-K2 adaptive STL window follow-up) are present with expected values.
+# These keys are otherwise hard-coded defaults in detector.py (_stl_window_factor,
+# _stl_max_window) and stl_decomposer.py (stl_max_fft_samples); this YAML
+# documents them as overridable config for Dynaconf loaders.
+#
+# Source-of-truth values:
+#   stl_max_fft_samples = 5000    — stl_decomposer.py:MAX_FFT_SAMPLES
+#   stl_window_factor   = 3       — detector.py:_stl_window_factor default
+#   stl_max_window      = 200000  — detector.py:_stl_max_window default (GEO support)
+detection:
+  stl_max_fft_samples: 5000
+  stl_window_factor:   3
+  stl_max_window:      200000

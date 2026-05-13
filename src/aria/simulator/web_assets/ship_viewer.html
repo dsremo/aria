@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIA Generation Ship — 3D Viewer</title>
+<style>
+  :root {
+    --bg-primary: #0a0e17;
+    --bg-panel: #111827;
+    --border: #1e3a5f;
+    --text-primary: #e0e6ed;
+    --text-secondary: #8892a4;
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-green: #10b981;
+    --accent-red: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #000;
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 48px;
+  }
+
+  .header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .header h1 span { color: var(--accent-cyan); }
+
+  .header-nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .header-nav a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .header-nav a:hover {
+    background: rgba(6, 182, 212, 0.15);
+  }
+
+  #viewer-canvas {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .info-panel {
+    position: fixed;
+    top: 60px;
+    right: 12px;
+    width: 280px;
+    background: rgba(17, 24, 39, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 50;
+    font-size: 13px;
+    backdrop-filter: blur(8px);
+  }
+
+  .info-panel h2 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .info-panel h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 10px 0 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(30, 58, 95, 0.3);
+  }
+
+  .info-label { color: var(--text-secondary); }
+
+  .info-value { color: var(--text-primary); font-weight: 500; }
+
+  .health-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+  }
+
+  .health-bar-label {
+    color: var(--text-secondary);
+    width: 70px;
+    font-size: 12px;
+  }
+
+  .health-bar-track {
+    flex: 1;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .health-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  .health-bar-value {
+    width: 40px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .legend {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(17, 24, 39, 0.92);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    z-index: 50;
+    font-size: 12px;
+    backdrop-filter: blur(8px);
+  }
+
+  .legend-title {
+    font-weight: 600;
+    color: var(--accent-cyan);
+    margin-bottom: 8px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 0;
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .loading-overlay {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .loading-overlay.hidden { display: none; }
+
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(6, 182, 212, 0.2);
+    border-top-color: var(--accent-cyan);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-msg {
+    color: var(--accent-red);
+    font-size: 14px;
+    text-align: center;
+    max-width: 400px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>ARIA</span> 3D Ship Viewer</h1>
+  <div class="header-nav">
+    <a href="/">Mission Dashboard</a>
+  </div>
+</div>
+
+<div id="viewer-canvas"></div>
+
+<div class="info-panel" id="info-panel">
+  <h2>Ship Dimensions</h2>
+  <div id="dimensions-info">
+    <div class="info-row"><span class="info-label">Loading...</span></div>
+  </div>
+
+  <h3>Subsystem Health</h3>
+  <div id="health-info">
+    <div class="info-row"><span class="info-label">Connecting...</span></div>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-title">Subsystem Colors</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#c0c0c0;"></div> Hull (Silver)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#4488ff;"></div> Radiators (Blue)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ff4444;"></div> Reactor (Red)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#44cc66;"></div> Shield (Green)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#ddaa33;"></div> Habitat Ring (Gold)</div>
+</div>
+
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div style="color: var(--text-secondary); font-size: 14px;" id="loading-text">Loading 3D model...</div>
+</div>
+
+<!-- Three.js via CDN -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+// ── Color map for subsystem identification ──
+const SUBSYSTEM_COLORS = {
+  hull:     0xc0c0c0,
+  radiator: 0x4488ff,
+  reactor:  0xff4444,
+  shield:   0x44cc66,
+  habitat:  0xddaa33,
+};
+
+// ── Scene setup ──
+const container = document.getElementById('viewer-canvas');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000);
+
+// Subtle star field
+const starGeometry = new THREE.BufferGeometry();
+const starPositions = new Float32Array(3000 * 3);
+for (let i = 0; i < 3000; i++) {
+  starPositions[i * 3]     = (Math.random() - 0.5) * 2000;
+  starPositions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+  starPositions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+}
+starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, sizeAttenuation: true });
+scene.add(new THREE.Points(starGeometry, starMaterial));
+
+// Camera
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / (window.innerHeight - 48), 0.1, 5000);
+camera.position.set(80, 40, 80);
+
+// Renderer
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight - 48);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+container.appendChild(renderer.domElement);
+
+// Lighting — distant star simulation
+const ambientLight = new THREE.AmbientLight(0x334466, 0.6);
+scene.add(ambientLight);
+
+const starLight = new THREE.DirectionalLight(0xffeedd, 1.5);
+starLight.position.set(200, 100, 150);
+starLight.castShadow = false;
+scene.add(starLight);
+
+const fillLight = new THREE.DirectionalLight(0x6688aa, 0.3);
+fillLight.position.set(-100, -50, -100);
+scene.add(fillLight);
+
+// Grid helper for scale reference
+const gridHelper = new THREE.GridHelper(200, 20, 0x1a3355, 0x0d1b2a);
+scene.add(gridHelper);
+
+// Axes helper (small, at origin)
+const axesHelper = new THREE.AxesHelper(15);
+scene.add(axesHelper);
+
+// Orbit controls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 10;
+controls.maxDistance = 500;
+controls.target.set(0, 0, 0);
+
+// ── Color-code glTF parts by subsystem name ──
+function colorCodeModel(gltfScene) {
+  gltfScene.traverse((child) => {
+    if (!child.isMesh) return;
+    const name = (child.name || '').toLowerCase();
+
+    let color = SUBSYSTEM_COLORS.hull; // default
+    if (name.includes('radiator') || name.includes('panel')) {
+      color = SUBSYSTEM_COLORS.radiator;
+    } else if (name.includes('reactor') || name.includes('engine')) {
+      color = SUBSYSTEM_COLORS.reactor;
+    } else if (name.includes('shield') || name.includes('deflect')) {
+      color = SUBSYSTEM_COLORS.shield;
+    } else if (name.includes('habitat') || name.includes('ring') || name.includes('torus')) {
+      color = SUBSYSTEM_COLORS.habitat;
+    }
+
+    child.material = new THREE.MeshStandardMaterial({
+      color: color,
+      metalness: 0.6,
+      roughness: 0.35,
+    });
+  });
+}
+
+// ── Build a procedural fallback ship if glTF fails ──
+function buildFallbackShip() {
+  const group = new THREE.Group();
+
+  // Hull cylinder
+  const hullGeo = new THREE.CylinderGeometry(12.6, 12.6, 60, 32);
+  const hullMat = new THREE.MeshStandardMaterial({ color: SUBSYSTEM_COLORS.hull, metalness: 0.7, roughness: 0.3 });
+  const hull = new THREE.Mesh(hullGeo, hullMat);
+  hull.name = 'hull_main';
+  hull.rotation.z = Math.PI / 2;
+  group.add(hull);
+
+  // Shield (front cone)
+  const shieldGeo = new THREE.ConeGeometry(14, 10, 32);
+  const shieldMat = new THREE.MeshStandardMaterial({ color: SUBSYSTEM_COLORS.shield, metalness: 0.4, roughness: 0.5, transparent: true, opacity: 0.7 });
+  const shield = new THREE.Mesh(shieldGeo, shieldMat);
+  shield.name = 'shield_bow';
+  shield.rotation.z = -Math.PI / 2;
+  shield.position.x = 35;
+  group.add(shield);
+
+  // Reactor (rear cylinder, red)
+  const reactorGeo = new THREE.CylinderGeometry(5, 5, 12, 16);
+  const reactorMat = new THREE.MeshStandardMaterial({ color: SUBSYSTEM_COLORS.reactor, metalness: 0.8, roughness: 0.2, emissive: 0xff2222, emissiveIntensity: 0.15 });
+  const reactor = new THREE.Mesh(reactorGeo, reactorMat);
+  reactor.name = 'reactor_core';
+  reactor.rotation.z = Math.PI / 2;
+  reactor.position.x = -36;
+  group.add(reactor);
+
+  // Habitat ring (torus)
+  const habitatGeo = new THREE.TorusGeometry(22, 3, 16, 48);
+  const habitatMat = new THREE.MeshStandardMaterial({ color: SUBSYSTEM_COLORS.habitat, metalness: 0.5, roughness: 0.4 });
+  const habitat = new THREE.Mesh(habitatGeo, habitatMat);
+  habitat.name = 'habitat_ring';
+  habitat.rotation.y = Math.PI / 2;
+  habitat.position.x = 5;
+  group.add(habitat);
+
+  // Radiator panels (4 fins)
+  for (let i = 0; i < 4; i++) {
+    const angle = (i / 4) * Math.PI * 2;
+    const radGeo = new THREE.BoxGeometry(20, 15, 0.3);
+    const radMat = new THREE.MeshStandardMaterial({ color: SUBSYSTEM_COLORS.radiator, metalness: 0.3, roughness: 0.6, side: THREE.DoubleSide });
+    const rad = new THREE.Mesh(radGeo, radMat);
+    rad.name = `radiator_panel_${i}`;
+    rad.position.set(-15, Math.sin(angle) * 18, Math.cos(angle) * 18);
+    rad.rotation.x = angle;
+    group.add(rad);
+  }
+
+  return group;
+}
+
+// ── Dimension extraction from model ──
+function extractDimensions(object) {
+  const box = new THREE.Box3().setFromObject(object);
+  const size = box.getSize(new THREE.Vector3());
+  return {
+    length: size.x.toFixed(1),
+    width: size.z.toFixed(1),
+    height: size.y.toFixed(1),
+  };
+}
+
+function updateDimensionsPanel(dims) {
+  const el = document.getElementById('dimensions-info');
+  el.innerHTML = `
+    <div class="info-row"><span class="info-label">Length</span><span class="info-value">${dims.length} m</span></div>
+    <div class="info-row"><span class="info-label">Width</span><span class="info-value">${dims.width} m</span></div>
+    <div class="info-row"><span class="info-label">Height</span><span class="info-value">${dims.height} m</span></div>
+  `;
+}
+
+// ── Health status panel ──
+function updateHealthPanel(data) {
+  const el = document.getElementById('health-info');
+  const subsystems = [
+    { key: 'hull_integrity',         label: 'Hull',    color: '#c0c0c0' },
+    { key: 'shield_health',          label: 'Shield',  color: '#44cc66' },
+    { key: 'food_production_ratio',  label: 'Food',    color: '#ddaa33' },
+    { key: 'electronics_health',     label: 'Electr.', color: '#4488ff' },
+    { key: 'crew_morale',            label: 'Morale',  color: '#bb66dd' },
+    { key: 'fuel_fraction',          label: 'Fuel',    color: '#ff4444' },
+  ];
+
+  let html = '';
+  for (const sub of subsystems) {
+    const val = data[sub.key] !== undefined ? data[sub.key] : 1.0;
+    const pct = (val * 100).toFixed(1);
+    const barColor = val > 0.5 ? sub.color : (val > 0.25 ? '#f59e0b' : '#ef4444');
+    html += `
+      <div class="health-bar">
+        <span class="health-bar-label">${sub.label}</span>
+        <div class="health-bar-track">
+          <div class="health-bar-fill" style="width:${pct}%; background:${barColor};"></div>
+        </div>
+        <span class="health-bar-value" style="color:${barColor};">${pct}%</span>
+      </div>`;
+  }
+  el.innerHTML = html;
+}
+
+// ── Fetch health status ──
+async function fetchShipStatus() {
+  try {
+    const resp = await fetch('/api/ship/status');
+    if (resp.ok) {
+      const data = await resp.json();
+      if (!data.error) {
+        updateHealthPanel(data);
+      }
+    }
+  } catch (e) {
+    // Silently ignore — will retry
+  }
+}
+
+// ── Load model ──
+const loadingOverlay = document.getElementById('loading-overlay');
+const loadingText = document.getElementById('loading-text');
+let shipModel = null;
+
+const loader = new GLTFLoader();
+loader.load(
+  '/api/ship.gltf',
+  (gltf) => {
+    // Success: glTF loaded
+    shipModel = gltf.scene;
+    colorCodeModel(shipModel);
+
+    // Center and scale
+    const box = new THREE.Box3().setFromObject(shipModel);
+    const center = box.getCenter(new THREE.Vector3());
+    shipModel.position.sub(center);
+
+    scene.add(shipModel);
+    updateDimensionsPanel(extractDimensions(shipModel));
+    loadingOverlay.classList.add('hidden');
+  },
+  (progress) => {
+    if (progress.total > 0) {
+      const pct = ((progress.loaded / progress.total) * 100).toFixed(0);
+      loadingText.textContent = `Loading 3D model... ${pct}%`;
+    }
+  },
+  (error) => {
+    // Fallback: build procedural ship
+    console.warn('glTF load failed, using procedural fallback:', error);
+    loadingText.textContent = 'glTF not found — loading procedural model...';
+
+    shipModel = buildFallbackShip();
+    scene.add(shipModel);
+    updateDimensionsPanel(extractDimensions(shipModel));
+
+    setTimeout(() => loadingOverlay.classList.add('hidden'), 600);
+  }
+);
+
+// ── Fetch health periodically ──
+fetchShipStatus();
+setInterval(fetchShipStatus, 5000);
+
+// ── Animation loop ──
+function animate() {
+  requestAnimationFrame(animate);
+  controls.update();
+
+  // Gentle rotation for the habitat ring if it exists
+  if (shipModel) {
+    shipModel.traverse((child) => {
+      if (child.isMesh && child.name.includes('habitat')) {
+        child.rotation.x += 0.002;
+      }
+    });
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// ── Resize handling ──
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / (window.innerHeight - 48);
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight - 48);
+});
+</script>
+</body>
+</html>

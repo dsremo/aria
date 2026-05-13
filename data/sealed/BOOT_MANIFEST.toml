@@ -1,0 +1,1413 @@
+# ARIA boot integrity manifest (F-18). Do not hand-edit.
+# Regenerate with: python -m aria.boot.generate_manifest
+
+manifest_version = 1
+created_at       = "2026-04-29"
+algorithm        = "sha256"
+
+[files."agents/__init__.py"]
+sha256 = "6d881db98918b333a25efe13472e79ca9191561c9fe6294ae0ef05d61ec2ef89"
+
+[files."agents/base.py"]
+sha256 = "4b694cf8c8bb5cfc028bfd3c7a566b92297d71dc015a91411acb0da6844d1835"
+
+[files."agents/comms.py"]
+sha256 = "d91cc11a6f114d293b1b3ab9bdb2effd8faa1b2e686d0edd6d96c0a18ca7280e"
+
+[files."agents/dsremo_mixin.py"]
+sha256 = "94160901c607feceb183804d646e5bed2fc74d4145c15c1e9b23f84b50bc7321"
+
+[files."agents/eclss.py"]
+sha256 = "7bae68d47b51299a0273ef6886fe0522831bd38b902dc6454bce787d969ac992"
+
+[files."agents/inrush_guard.py"]
+sha256 = "691a0b3063093c1bd241d614f9630257b92e4913df4c3d36ba299ffc5f978750"
+
+[files."agents/medical.py"]
+sha256 = "c5ab5cb79efaa1a3c6958623853e19e5668cd9162a46ee2e7208da87d0ff67c6"
+
+[files."agents/navigation.py"]
+sha256 = "985aeb78ab3bf794b036c21d078e956a6168ac50227907a26ee2192f463f27cb"
+
+[files."agents/power.py"]
+sha256 = "3a86f3dbf769ee262c9d197e3827bf47835a09efa6b3b95501d8ef6e81a38ae0"
+
+[files."agents/propulsion.py"]
+sha256 = "f496e863b5247e18a91bc14c9c6a3668edd60676179690201172ac48ef25fdc2"
+
+[files."agents/science.py"]
+sha256 = "725c019513a43aef92725f251ca3464e18af4e4ce4d382731976d26b478eddc4"
+
+[files."agents/telemetry.py"]
+sha256 = "5bfb198baf0cf7a191ae51dbe06d404d2b8c167cecce55c7062087350b038f1e"
+
+[files."agents/thermal.py"]
+sha256 = "fa133bfd49d99bb35a8b23a949f0ba2e0695412ea183a364ec112269db36dfd4"
+
+[files."cognitive/__init__.py"]
+sha256 = "a623cc8b8a8e294e24ef2f117c7c66fc420258c90511fa4ecd917a1f03e3cd3c"
+
+[files."cognitive/action_executor.py"]
+sha256 = "f17badde413219b08d93f0ee1ee79b3c1c3bdab7f865d72a5ca5bed02517e4ce"
+
+[files."cognitive/action_log.py"]
+sha256 = "0f22f0895a365d5c798497851a346d439f05d4ea51258deea3af15dd5c6cfda7"
+
+[files."cognitive/capability_token.py"]
+sha256 = "8b21d862b05abaf84393e08b9b37a5fafb10fc0e07247ca10428a1a3963cbe0e"
+
+[files."cognitive/code_audit/__init__.py"]
+sha256 = "2104e4ec529ba7895282e38ce30a539012b2f189a6b93e5cf18a02a057441869"
+
+[files."cognitive/code_audit/__main__.py"]
+sha256 = "03626d22abaf6710a3dd2876c9611080b49d96dcfdfc555c2d8c16924617a21f"
+
+[files."cognitive/code_audit/auditor.py"]
+sha256 = "7b0a3f4ce7283c993852e53a0d41fde5fdf9dc020b6c941cef6f20c57ac98d57"
+
+[files."cognitive/code_audit/backends.py"]
+sha256 = "25578254aa9cf5bae93e8ac067ff711980499b3694f70597829bd982348bd082"
+
+[files."cognitive/code_audit/findings.py"]
+sha256 = "e86350e1036236ba750ff41f65ca26d24163dc653f2ca26ac2a94ff996a124c6"
+
+[files."cognitive/code_audit/format.py"]
+sha256 = "537e31b9e1774dc4156cd01471e7bfd22cbdbcde8ba1e26572db1ed4763dd786"
+
+[files."cognitive/constitution.py"]
+sha256 = "070fb542d9c92b193a54b0a8630332fe23f652d35f4b2a5e2b78f09bd6fe28ef"
+
+[files."cognitive/context.py"]
+sha256 = "308b54873e4c8b728ebfc12b7a338ce70165f116592116d30b7e4835ea2ca354"
+
+[files."cognitive/decision_log.py"]
+sha256 = "13d4e7c99a8c35575ea8921e8f07c5f25df2f419bd24d7d650dd7293705b0584"
+
+[files."cognitive/decision_memory.py"]
+sha256 = "25a5f51286b1411d4dd2380bf500a2f6bb86a28f0dc547939f4786060942d8a7"
+
+[files."cognitive/doctrine/__init__.py"]
+sha256 = "bdf382ad4f7d5baa8ee124ca18171607cd59e709db8d0c530819b9dcc3633423"
+
+[files."cognitive/doctrine/loader.py"]
+sha256 = "390557c939e677ab59ee0bbaab78fe11ebdcf2da30c14e97eadac4711832f3ba"
+
+[files."cognitive/engine.py"]
+sha256 = "03b3ed064730289695e499c2d7f5226a6c8cb6ec34d0e579b387c327929fec26"
+
+[files."cognitive/eval_marker.py"]
+sha256 = "9c4f96387f3a389d102fcdc6687c3670b61261031166effdd7890a15bf9b607d"
+
+[files."cognitive/fine_tuning/__init__.py"]
+sha256 = "ac466e0dbd3ab18bf2b70e8f65ddae30af6ed39af71f8e32f4882b6ca48448da"
+
+[files."cognitive/fine_tuning/corpus_builder.py"]
+sha256 = "5d2a2544ebe31f4d35214946e982c3df93330d8ee0b1fd69d2f754f87c678ac1"
+
+[files."cognitive/fine_tuning/local_backend.py"]
+sha256 = "f90ff208491c61c1f93fb07220102ec24932e89bb8d6b62d1edf7ef071185918"
+
+[files."cognitive/fine_tuning/lora_scaffold.py"]
+sha256 = "69f060768dad8dd7df7d8f64d43fad4ed2fa7c33e0cc8e0c78097c5c9d28ad05"
+
+[files."cognitive/gemini_advisor.py"]
+sha256 = "64b865edeeef1edc88cea629f0648142ffd2293ca857bebd0928cc9ea74c4850"
+
+[files."cognitive/hallucination.py"]
+sha256 = "2707c88a95fecb2559f8d7eedb5a6df16fa292bf4e341781703d764a7abf0a79"
+
+[files."cognitive/llm_eval/__init__.py"]
+sha256 = "24018c630cfacae3583c958473806b879b1e411ae113441315df8e8e54c78ec3"
+
+[files."cognitive/llm_eval/__main__.py"]
+sha256 = "20db7743d732f6d79d08fabf5921015385d6e780ab48558d08f3e4ab2fb08286"
+
+[files."cognitive/llm_eval/backends.py"]
+sha256 = "85ed26cedb285ac515e658a8e4438eeb43f41de81be8338ecfaefb7606c10e5d"
+
+[files."cognitive/llm_eval/eval_scenarios.py"]
+sha256 = "6877c421b8a15951338a04040b686bba4f6c5c7e86ac9d5d2b075e17b77ac941"
+
+[files."cognitive/llm_eval/harness.py"]
+sha256 = "6ea43982c3a2800835b3f22a9488cfc8848e15dc691d3500f41a7b2b9626dfe6"
+
+[files."cognitive/safe_dispatch.py"]
+sha256 = "b3d3019beeb26be5d4c58ac57f171264fc62946e593cc1213000814d6445407e"
+
+[files."cognitive/sandbagging_v2.py"]
+sha256 = "7e5fd4ee54e7e4e20135fc9149c236e77d7f65784a8d11d5b9cb9871e2cbcf3b"
+
+[files."cognitive/sealed_prompt.py"]
+sha256 = "707c9c4a407a122758914e273ca02146acfea8a52c10395ee411791a5c8adb52"
+
+[files."cognitive/self_improvement.py"]
+sha256 = "d9d6dfb5ab375317012f2864372ade6cfd54bd6980709c890ad9e6b4caf8f352"
+
+[files."cognitive/spotlight.py"]
+sha256 = "f587b37c8f5e38a73b4f9d7e08c6e2979bda546af958b86853ca33361f89850e"
+
+[files."monitor/__init__.py"]
+sha256 = "f800eb43ea96da91dbe0e52fe82272f22ce091fd939048a0c7bfb8a7803cbd7d"
+
+[files."monitor/bridges.py"]
+sha256 = "8a8886d13d1a1b737513e50bcc750770cb10da9d33b38aac5430833677274881"
+
+[files."monitor/cross_check.py"]
+sha256 = "a9b0f6e47581d84529ba36e633dbda0b0263b8bb734a8a8417ac746aeea8c235"
+
+[files."monitor/heartbeat.py"]
+sha256 = "a8ca7eaf29984b658456ce60017e739b86d43b8ecd09a26dd1f0eae7ef753b2d"
+
+[files."monitor/providers.py"]
+sha256 = "bdbd9945329a6b1db4c6c2e541af4f446f0bcc199956531136eb4478e3529184"
+
+[files."monitor/rules.py"]
+sha256 = "fe56dec75d0c8ed99127a9d9c76283c8ae03ccae191b428b9404dbba1d731819"
+
+[files."monitor/runner.py"]
+sha256 = "5fbf368bd6d4e51afb5e29c36fc7f4474d37ca3990575e53aa725aa7c209daa3"
+
+[files."safety/__init__.py"]
+sha256 = "55cef6a4f1b266c9708887c5278412c503e8dfc52d3ab1157f20eec54c822053"
+
+[files."safety/_bus_publish.py"]
+sha256 = "7a5d7277b5b10789c499cc72afb7bf5784f4b465741bc62c48953f0489318ef6"
+
+[files."safety/approval_queue.py"]
+sha256 = "5196e55448394c89db4a19b64daa996aa4427618aa395f27c6a5bccce8b0888e"
+
+[files."safety/boot_counter.py"]
+sha256 = "a882770fc9dde6c59fcee9cc4c96a6f362ace25ea5490e4dde4f38bf144f3ac8"
+
+[files."safety/bus_anomaly.py"]
+sha256 = "a2dc00c548ffcd809493045301b69d8be66de07de8064c07b5d8ef8a28c07328"
+
+[files."safety/checkpoint.py"]
+sha256 = "5f3aec6d393992dd5ba76c9c3a69e8231e51be3479806abc334a973979aada38"
+
+[files."safety/command_tracker.py"]
+sha256 = "3395f04def2e8a94fc71b6d9bd0bcdff359674ca352a740b4867d74974c8087b"
+
+[files."safety/dead_component_registry.py"]
+sha256 = "23b53cac9c07a5554872b3c56d36eb360a28a25c32a3464e8c9fb7b8ed62012a"
+
+[files."safety/deadman_supervisor.py"]
+sha256 = "41f821a3f1afd8655c90ce82475cabbc529a57567fc03a70b74271bdc37ba8a5"
+
+[files."safety/execution_guard.py"]
+sha256 = "87b852e250e726decaac3c75c9c6ad6aab76d557add8ea6a57497e3c11a07f2e"
+
+[files."safety/fault_manager.py"]
+sha256 = "73624f64ddcb445aab02bb25fe8a0f4b566ad77fe4a5b9aa5428d4f6e4d2ccd1"
+
+[files."safety/fdir.py"]
+sha256 = "d8a088335660c5dc101aaa31e3263296d888b0ba9d976bd4436a42a6f98517d1"
+
+[files."safety/fdir_recovery_plans.py"]
+sha256 = "1657ba4f77e18b4e285f74391e6fbb191f9ffb9cf58d3d724a22627c91b9dbc3"
+
+[files."safety/ground_deadman.py"]
+sha256 = "c3538696998841254672d22e2580def4beaf2546a213f215507e1e0c622339b7"
+
+[files."safety/health.py"]
+sha256 = "b7a33f2008f7ba7bec58cbc41cb6ef57d783911a611b8c8bc0b260207b2a253f"
+
+[files."safety/health_monitor.py"]
+sha256 = "f0a635a0b659f8950192c1e28ee236a663ae6b2cc21e12452e2ac13793391904"
+
+[files."safety/incident_policy.py"]
+sha256 = "7dfd2bee10fd16afa33e677535e30af624c8a81869f3aff07d1351bda0f3084e"
+
+[files."safety/incident_registry.py"]
+sha256 = "f19537e7649d71f933535b7db134310da5439a623a2011dc8910b441b94c7bf8"
+
+[files."safety/kill_switch.py"]
+sha256 = "658bc99345f360a487e5ca5b120e98ec4766e7328bb5a31d5850befe53daeed0"
+
+[files."safety/last_gasp.py"]
+sha256 = "469cc0e66b0b72726659c732206cbda1a64aafe1bdf2002e4bc74340333bec02"
+
+[files."safety/re_grounding.py"]
+sha256 = "8ed7a3ba4df63cf0fba70622c53de7b5ea7719cd3a40658249657b906abf6751"
+
+[files."safety/replay_guard.py"]
+sha256 = "0d8b811dca36e96d3f476692ac436eab673d5fbf95ad91fab5d8c4e81f0a646c"
+
+[files."safety/resource_budget.py"]
+sha256 = "1de23e22f830bf6276380ccfe79526a57ccdc927c3a7cd8b0fce337a93d9825c"
+
+[files."safety/risk_assessment.py"]
+sha256 = "b0b81f65a262e0e76eea355e577d34ef019a908c7042dbb8916caf3624844c2c"
+
+[files."safety/robotics.py"]
+sha256 = "322e59487b6134fba97b0778ff2f28f3dae4b5e6952c42bbb6cedd5ee1460329"
+
+[files."safety/safe_mode.py"]
+sha256 = "233b73a9dffb4dea3ffc7f408a6c8f343dabf5892e8cf72d72292fe9917d44e7"
+
+[files."safety/safety_replay.py"]
+sha256 = "4f66b0737fa630f260731db80b8511859e482ee1666ab91da785597d007c803a"
+
+[files."safety/sensor_voter.py"]
+sha256 = "c99dff56eff9a0dd5c5f7b5e513d21ecf61252f3d52b9f6b1c9b07fd5f4e5294"
+
+[files."security/__init__.py"]
+sha256 = "d1047e92f4df3db0a9ae525fcd678fce86ec759fb8d43fa5a5d620cfdd2553a2"
+
+[files."security/adaptive.py"]
+sha256 = "00b21ae7381451dff948c26e958dbdc8e816df65be45726c07e6bd90640c4bba"
+
+[files."security/admin.py"]
+sha256 = "858cd42456ee8974b0ea40e7d209daee802f46c001a3dd25c8fa4cb3f19eb188"
+
+[files."security/anomaly.py"]
+sha256 = "480a5b2b6f2cee964440759fe76912635e0cf723928e9fca0573dcda80848956"
+
+[files."security/attestation.py"]
+sha256 = "fe3ef703f3e7e33f75028b2b1373b86e445576f54e427b50258715f02bf1dd37"
+
+[files."security/audit.py"]
+sha256 = "42a7e286d97899bfdb9a821fed8bf576d48df72a3a0ca61116891dad5fabc6ad"
+
+[files."security/audit_bus_mirror.py"]
+sha256 = "78f2d1098b2f54052d10db1f4d2ab01b918eb0b58c51b0196f4d6713035405bc"
+
+[files."security/audit_downlink.py"]
+sha256 = "c7d90f4aa43d67d700fdc14a9e699ac9635db146fe36ff46bcabab72b8b5ea6f"
+
+[files."security/audit_trace.py"]
+sha256 = "f996086228869976a19294db50e8ee84c51667b24d5a8b318d5a9169cae93a95"
+
+[files."security/auth.py"]
+sha256 = "e971aff94ab331d63d0b840993e9d75c62f241bf44ca56e1420314984db28f4a"
+
+[files."security/auth_service.py"]
+sha256 = "8a443ae826fc77239e181cd871b5cdc87d27c97605618240bf1f127f0c403f1f"
+
+[files."security/canary.py"]
+sha256 = "3e56b659f44fbc2fbda0b12ccaf527ef6518a25fa0cab9ac9918b4d892429f4e"
+
+[files."security/env.py"]
+sha256 = "70738dce81db224160514ea62242b344a6f044de503b67a46179d28bd3205f24"
+
+[files."security/evolve.py"]
+sha256 = "054de3fe1dc362d132daaf37edf4cd18a470abba74346efa500f1c74602afd5e"
+
+[files."security/guard.py"]
+sha256 = "1da231c63e920f306e9117cf428b1a3a8e3ab643d4679c75dbbc32e6744fb580"
+
+[files."security/hardening.py"]
+sha256 = "48b040e36578fd401009ed3b7e90bdc811d64261818fb910e61dda2e2946a33b"
+
+[files."security/honeypot_llm.py"]
+sha256 = "92abc48f75eaff03c59ae659b381cff89c3eb7181af88b46020fdf1f0f9b767b"
+
+[files."security/integrity_monitor.py"]
+sha256 = "affa299e8fb275644b1d047a9c87c52426187c526f2c90ee3fbac77d3061b380"
+
+[files."security/middleware.py"]
+sha256 = "861c9bbcb14b236130d83d668f0210a3e569d7ca888b5d2010b57290a27568ba"
+
+[files."security/per_action_auth.py"]
+sha256 = "152ff4f697896df08a1722d9fc4a650c2e96a57f83a0240514b43de3d97c9f27"
+
+[files."security/plugins.py"]
+sha256 = "7ca045594dc594062fbbce7cf03b54dec9a10bd097a8eeddabb7aacdfe1aa446"
+
+[files."security/pqc.py"]
+sha256 = "966cd9e0d86afcdcf3f3119fe2c5e1ff4afd8e6e0cb3c285b9b8013e19ba9840"
+
+[files."security/principals.py"]
+sha256 = "2983a618c38d3debd3dccef3a4bd60e5fe872387098ee47d88c24c5482c18a97"
+
+[files."security/psyops.py"]
+sha256 = "fa68a29070c99ba8e06f3da6057ec04198336593a40a35093135dcd6d5f821ba"
+
+[files."security/rounds/__init__.py"]
+sha256 = "9abd9664b337291ec1fbf2878809059b5bdbf47686c49b6abd8e83df47ac9636"
+
+[files."security/rounds/r01_credential_stuffing.py"]
+sha256 = "91272680839d44cb0f3bf8949fb2b22953cdd6efa310c35799747e14e99916ec"
+
+[files."security/rounds/r02_token_leak.py"]
+sha256 = "0aadc137b182a4607ee8ca751d31278d697c6a0b3f89be3593150fd99b7b957b"
+
+[files."security/rounds/r03_jwt_alg_none.py"]
+sha256 = "aada4ed016e5a77eb8980d42f019edc4755940e950e97cac8d63ec25a157a27e"
+
+[files."security/rounds/r04_idor.py"]
+sha256 = "c53ca83e3d9bc8a4d0aeb60d5b54d8a5bbf20c0da89164356ba5075e68ea11af"
+
+[files."security/rounds/r05_oauth_state_csrf.py"]
+sha256 = "48e613d996c8c8405089892aac1c21580a1c568bfb947cd63a7df20b0ed9ac14"
+
+[files."security/rounds/r06_mass_assignment.py"]
+sha256 = "bd129b63543d8c4259dbabc34c897494a1abd4de14733a02b441b43b0d56bf7a"
+
+[files."security/rounds/r07_param_pollution.py"]
+sha256 = "0d0837ae389462fed0045bf92e33bbea05feaf96060ac7aabedafc96639c5acb"
+
+[files."security/rounds/r08_replay_nonce.py"]
+sha256 = "ad1f5a0dd6b8c476210a1f6ef28c05247ca286e3d5189fdd6c6892a20c1bd6f7"
+
+[files."security/rounds/r09_geo_anomaly.py"]
+sha256 = "31feab2ee1d00acd70ef0130d6b972daab444fe715d488b51b694bde675d2653"
+
+[files."security/rounds/r100_breach_drill.py"]
+sha256 = "ae7c7c6f5fcafa80e0bfb176fd65ae4fadeac8f7a0c86b5b99533b678c206fa0"
+
+[files."security/rounds/r101_adversarial_runner_v2.py"]
+sha256 = "6501794d7cc976e8261130980611da4ed22c7a9ff3656958d37833956e87df40"
+
+[files."security/rounds/r102_tpm_attestation.py"]
+sha256 = "5a24805a31da1d9f5626cbb75256d2c6c15ebc1a49c5d7f999dca269d8cd54c4"
+
+[files."security/rounds/r103_hsm_pkcs11.py"]
+sha256 = "19cbf7f4dc36ba55fa09872cc1960da07e23124d6b08bf3eb3dba853a4571bfc"
+
+[files."security/rounds/r104_secure_boot.py"]
+sha256 = "18ddb44d5e223247d16122c7432da5aa7be36c67e3aa30a23449857bfdb41f50"
+
+[files."security/rounds/r105_hardware_rng.py"]
+sha256 = "6deb403d5b32c1b58eb681f77a6c555722eb84afae401f514a4f15f876361caf"
+
+[files."security/rounds/r106_sealed_storage.py"]
+sha256 = "99b947cb2d36744b7c20988ef934d02633a65621c8ebcb7ed14eef4efad05f98"
+
+[files."security/rounds/r107_remote_attestation.py"]
+sha256 = "841116d97219e50317d1d3540f8cb6b06f46a097d5118ca9b50fe654437dfaae"
+
+[files."security/rounds/r108_key_wrap.py"]
+sha256 = "ff1aea6980a724ecf962c458327cc9d6d2ac3780f639558a2d455bafeaeec61e"
+
+[files."security/rounds/r109_cache_timing_safe.py"]
+sha256 = "e921dfd91e87befc919d720428a7ede4c12d95442a18c5c11808649cdd48e7d4"
+
+[files."security/rounds/r10_sealed_audit.py"]
+sha256 = "ecbfb510a912ddc28574300b3c0ed009213917c340b147be96d0164e3cac13f2"
+
+[files."security/rounds/r110_rowhammer_hint.py"]
+sha256 = "925fbbf183657be6b4feee32ed57cea50786bf87c956b5c1fa2cd8f9a63541dd"
+
+[files."security/rounds/r111_speculative_exec.py"]
+sha256 = "4bbd2f15200a20441cd1d5a73a73fa40380687987fd9bfb71d7a3502e8b4748e"
+
+[files."security/rounds/r112_k8s_admission.py"]
+sha256 = "ed3682d4e44ba34fdc636fbda1c077bb096fcb79d1f849854c46a3bf324c24cc"
+
+[files."security/rounds/r113_network_policy.py"]
+sha256 = "aaa983794f3a40fea79a085db428a320bcb9f78451e05eea9310e8187cefdc56"
+
+[files."security/rounds/r114_cosign_verify.py"]
+sha256 = "70706981767140e57d06b6088dabe863034dddfb667e39889be29b1ffaa49ae9"
+
+[files."security/rounds/r115_runtime_drift.py"]
+sha256 = "b6ace5aba97efba4e0c9a69b118255c3ac9f8985530b63314ce93b987a6f64f8"
+
+[files."security/rounds/r116_mtls.py"]
+sha256 = "154fab9552b984f35bab2a5595a497e56db3f0e6316e0e40194e8db4b0d1d3ff"
+
+[files."security/rounds/r117_namespace_isolation.py"]
+sha256 = "d6f8e23ffd86537e413253a8080d80817804c1fe5a5255bd69ab74cd15422794"
+
+[files."security/rounds/r118_resource_quota.py"]
+sha256 = "8256596c4662cc8b45e2ff0099b148e64c5269097030e7f55f376e7811164916"
+
+[files."security/rounds/r119_secret_volume.py"]
+sha256 = "4ae15b804e3e0352f625887b280b86964a58c3212d889e6628cd5acc1cf269c6"
+
+[files."security/rounds/r11_nosql_injection.py"]
+sha256 = "4b863e4787205c25ea9fa483b878896b0ccfa5634d8663026eb04e44d6c8a4f4"
+
+[files."security/rounds/r120_pod_security_standard.py"]
+sha256 = "0b58ace88352788e2a55798bf7bbe0dbc04197eccb58bbc819a9e6c3d22cef22"
+
+[files."security/rounds/r121_image_provenance.py"]
+sha256 = "1b0a0f5a7c31f78842f663c1a3902d518d88015ebfc787fd43d57ffd4089d208"
+
+[files."security/rounds/r122_aws_imds_v2.py"]
+sha256 = "02bedc37b33788bdd5153660161e4bb1c2f63b0dc6122511ab0e5d8e3317e61d"
+
+[files."security/rounds/r123_s3_bucket_policy.py"]
+sha256 = "dd7ae1c5654b5e5bf92daf8cfdeca884ffaa0796b03d9d0839e4cc8cd249b26b"
+
+[files."security/rounds/r124_iam_least_privilege.py"]
+sha256 = "ffebdd747fe6782ce3f0db867e45d1662a579d4014289a942225eb2e7294bc34"
+
+[files."security/rounds/r125_kms_rotation.py"]
+sha256 = "86cb21bcf615d65980364e44d7b0285526427bcd858a8295d3e6990d63f1f534"
+
+[files."security/rounds/r126_cloudtrail_integrity.py"]
+sha256 = "db7fd362b524f85d7c679a3e456d86a2a22ef1c4d899df8bab33e70163c5e16d"
+
+[files."security/rounds/r127_assume_role_external_id.py"]
+sha256 = "dd6f2145a74263f85d09018bf76d50d41dd2993bfa23a8de7f7789662c2b6c65"
+
+[files."security/rounds/r128_sts_session_duration.py"]
+sha256 = "6ab465a36146c4e8e4dcc59574b08ca4582cab2b232a7c3ca861c65e09daa0d6"
+
+[files."security/rounds/r129_secret_manager.py"]
+sha256 = "4130dbffb4eee82d2465503a912d2e3dc191bb979b1138d4447993b83dc9e0fb"
+
+[files."security/rounds/r12_ssti.py"]
+sha256 = "6b66fc7eb6306553c5303113e6e74303454f60286e77f914760fef43dbc55cb5"
+
+[files."security/rounds/r130_lambda_sandbox.py"]
+sha256 = "57f4cf191bb8c4aefc51b82d8cca878d099f1af6ca6f208b169aada2a464114c"
+
+[files."security/rounds/r131_vpc_flow_log.py"]
+sha256 = "fc670625484e34e157de65bb1ec54c19ebc2a3df1fc1dea1f59e574b611dc353"
+
+[files."security/rounds/r132_gcg_suffix.py"]
+sha256 = "f8726b9790dda11cc5d5c9620a9a6bcdd750e78ba9a682c7a9a887ef88649c64"
+
+[files."security/rounds/r133_multimodal_inj.py"]
+sha256 = "e22408da632149b1796e3275bffbcbd19efb3075a17b31d5f7fd57068fefb6dd"
+
+[files."security/rounds/r134_rag_rerank_poison.py"]
+sha256 = "c8aa5baa3b115ac8b65e7efcbfad86dfde124a0571137fdcd99da35cf3ca0fb5"
+
+[files."security/rounds/r135_memory_inject.py"]
+sha256 = "6cdd9d5c9a19c21ba7c7032b398390439f8d1ebfbd37f9f01de39e53825c3500"
+
+[files."security/rounds/r136_self_reflection_bypass.py"]
+sha256 = "24e47e0db7892f70803a5a148d69e58215da91bf07ad42e6c1dad4260d4c32fa"
+
+[files."security/rounds/r137_multi_agent_coord.py"]
+sha256 = "e7a04c8af2e799532e674fe433c84968bac08677e6bc8b753c79e6f84d8a13dd"
+
+[files."security/rounds/r138_output_watermark.py"]
+sha256 = "4b4e7e3da19ccc922e772d30c9a53bf00d77f4f2c5e37294c22eea7f55bfc868"
+
+[files."security/rounds/r139_prompt_provenance.py"]
+sha256 = "92a9c3c88241cdbd4e58c5bd1da6ee540a9356782976d687688ff8785fa32d0f"
+
+[files."security/rounds/r13_command_injection.py"]
+sha256 = "9a80c448a85fe9d2db14757517dc12c4a933e16859d6157bbe4298f57813ec79"
+
+[files."security/rounds/r140_indirect_tool_loop.py"]
+sha256 = "19689bdaf09287349b533094a6663f256a48db9bf7179b57d7ebc06c64eac064"
+
+[files."security/rounds/r141_jbb_taxonomy.py"]
+sha256 = "d3d989ae3bacb18a74922759386a4de72f310f520f67f6a004610815d366df01"
+
+[files."security/rounds/r142_padding_oracle.py"]
+sha256 = "2fa0ba388d74200937fd6b7bcefbd8800cfa9828061a8f5843cc9151cf4ee314"
+
+[files."security/rounds/r143_xssi.py"]
+sha256 = "2030671ca327ad3f7d683fe880f5750c722f67b4bf55dd7f22e3f3a4596bdd77"
+
+[files."security/rounds/r144_subdomain_takeover.py"]
+sha256 = "d199d7a58109aeea4894835f57fd1e0bd61ef57acaed1f6c923a713589006407"
+
+[files."security/rounds/r145_dns_caa.py"]
+sha256 = "797073bbed479ceee15c769f37336360fd866f55163854fdfa2d6c3b76fb85af"
+
+[files."security/rounds/r146_polyglot_file.py"]
+sha256 = "2452c2793d4c75c5b0b6bf4dab57ba582a8bc6bb251329177fb5a5eaa65baf97"
+
+[files."security/rounds/r147_unicode_steg.py"]
+sha256 = "f26a285c1ad06fe00b8db279e2a95b8e1c8e2a50744c98021334e086b5d4bd49"
+
+[files."security/rounds/r148_nfkc_canonical.py"]
+sha256 = "fa14c8f53f054931a6535416d85a89585292cbb4fdbec9bfcfae605472e228c2"
+
+[files."security/rounds/r149_cookie_flags.py"]
+sha256 = "07a1542f772dfe7c3b6bf52582eb1498884a0daef0d7a8f8997acb4a2a18e831"
+
+[files."security/rounds/r14_ldap_injection.py"]
+sha256 = "2cc5939619d0b55fe3383adca50049cd47b253075e923a12749626b579e0c7f7"
+
+[files."security/rounds/r150_request_id_unique.py"]
+sha256 = "d7bd5cdf90bbc2b7393bfd8e773ff63d275141b9e891d923f037accb1bd943d2"
+
+[files."security/rounds/r151_adversarial_runner_v3.py"]
+sha256 = "0e612d313c4c2ba0ccee0c2dbbe1c4d0c21721dedadf5900e3b3d54ac574b48a"
+
+[files."security/rounds/r152_istio_authz.py"]
+sha256 = "65b4959d33531e128a2f5cbea360573c87bf644e13e4a1994a2fe125a38fc586"
+
+[files."security/rounds/r153_beyondcorp_posture.py"]
+sha256 = "0b64ec84328d8102936455777b4be16592e4ee2ed5a41f42e23a4d19a8e60682"
+
+[files."security/rounds/r154_spiffe_svid.py"]
+sha256 = "e1d99f212f4541bfeac8893c3269f4ea2c0562c7a77843dd42c2e13d74dc8439"
+
+[files."security/rounds/r155_envoy_extauthz.py"]
+sha256 = "07f52c0de416f1595106a63b48c90aa1af10679a0fa9982260109606cd236184"
+
+[files."security/rounds/r156_grpc_secure_channel.py"]
+sha256 = "29443ec816b87cd226104c514ed6d9ff5023294927ea5cb1ec3c955b39372207"
+
+[files."security/rounds/r157_microsegmentation.py"]
+sha256 = "8d7686a099a68b3041e164e3a08d59d7893ad30b3f53193980351ae425b15bff"
+
+[files."security/rounds/r158_encrypted_sni.py"]
+sha256 = "570c7235e3956eefcee9372083899754817c597f9f2057beab27365e82a25e5d"
+
+[files."security/rounds/r159_wireguard_verify.py"]
+sha256 = "641a5a93cb784079d821fdb5df52c277b15a358b1114b9cac17a7b37c07afc61"
+
+[files."security/rounds/r15_xpath_injection.py"]
+sha256 = "23e7cc41f3789d0b13980329f1ca296a7bc25c840f1b5af61daf67fcafd09975"
+
+[files."security/rounds/r160_zero_trust_tunnel.py"]
+sha256 = "22d6326a0e9d96357c1398e72f2f38150371fb9ddb48ab5766a39df935eb338d"
+
+[files."security/rounds/r161_per_request_authz.py"]
+sha256 = "2b15382a557277c390010cfb86c34abd1b1b66e2e53bf6f783da4d8becba1972"
+
+[files."security/rounds/r162_nist_800_53.py"]
+sha256 = "cf8a78c4ad2db6b53ffc6022f9a5a3c2ff872a02210e112f3a855314dead771f"
+
+[files."security/rounds/r163_soc2_evidence.py"]
+sha256 = "22d941181a25675fa86db7c7df6688671b45aed686045d68ca28b7f4a42315f1"
+
+[files."security/rounds/r164_iso_27001.py"]
+sha256 = "9681b3056d7c4b9356ec3641b656ebb3589366d3129e4bfb206cd81113caebf7"
+
+[files."security/rounds/r165_fedramp_baseline.py"]
+sha256 = "7589c7fea5abf7834c67a3d578b76fa5d3a6b50668e932c8e28b4d8467289c79"
+
+[files."security/rounds/r166_gdpr_dsar.py"]
+sha256 = "214ae4ba9646f82c8413db9dcb70a2940e299b40cb33eb33b6f12e8313cb67ac"
+
+[files."security/rounds/r167_hipaa_phi_scrub.py"]
+sha256 = "cc2a62b055bdc7c03f6b59ea55a09182358d2873c09de0a849e9ce6974c18fe8"
+
+[files."security/rounds/r168_pci_segmentation.py"]
+sha256 = "8820c141ff3e688df18f6c8e3f6f2acf6eb269036aa756764a4a4df66518f42d"
+
+[files."security/rounds/r169_cis_benchmark.py"]
+sha256 = "6cca1acbf1c8d42a4d8e5d1f5572bf9963f618f83d196d0be73d80c95647f0df"
+
+[files."security/rounds/r16_csv_injection.py"]
+sha256 = "3793d471335c806436870f2f93f61df0a0ec31eb4b5446a4c8e61f40c3b43f27"
+
+[files."security/rounds/r170_log_retention.py"]
+sha256 = "a56c44917e40f4be692ba74633cf7575af5747c63b92b8cefc0bef19d9c56e54"
+
+[files."security/rounds/r171_incident_response.py"]
+sha256 = "19b99564cbc0fc4fb96c536fc189f9fb117fbf03cd4713f48e84d5b100ef68bd"
+
+[files."security/rounds/r172_android_nsc.py"]
+sha256 = "b97001a08a6235fd50284fc76271ab8b47914d2e6071b5bddb192fa8a6a452c4"
+
+[files."security/rounds/r173_ios_ats.py"]
+sha256 = "7880ca9ddbe81db85996866e1de689f334667b59291238b0d625ae78b0f0354e"
+
+[files."security/rounds/r174_mqtt_auth.py"]
+sha256 = "dd8174a221c0d62f5c26d135ab6a0e308b11de5c38764d09c73fc823635654cd"
+
+[files."security/rounds/r175_coap_dtls.py"]
+sha256 = "01689849d2092bb340fd296044db5a652dcd510bfa48ce4154692ab9f7ef9aeb"
+
+[files."security/rounds/r176_firmware_signing.py"]
+sha256 = "7374d882bff20e1ee3ddd8837fa70e5059e8e4917068b4970eee54c7e3eedfea"
+
+[files."security/rounds/r177_cbor_safe.py"]
+sha256 = "09bc5d92d3453e292ff136e3d8f00a55e4b6f6f57a0cf3aa31f221d30420d0db"
+
+[files."security/rounds/r178_bluetooth_pairing.py"]
+sha256 = "7f003dc7da5936202a61c90231277f51c3ffcf22dba40bb3558d2613f61c66bc"
+
+[files."security/rounds/r179_zigbee_link_key.py"]
+sha256 = "33bdb9fbecd6a79d71a2019453d0c26efd732154b12968202d1304489f544b9f"
+
+[files."security/rounds/r17_email_header_injection.py"]
+sha256 = "4d476a912ddec2e6b8af0a1fce740dd4b491ec9c580e40eb6c2e624473bdb4ab"
+
+[files."security/rounds/r180_ota_update.py"]
+sha256 = "2533247f2f7c4b6cc69fc758113d5739044b0d47208f08d452966e959d726446"
+
+[files."security/rounds/r181_jtag_disable.py"]
+sha256 = "8cd4d3f6fea29ccc46011580c17f8ec92f4378ac913599ee9eea76899dcadaca"
+
+[files."security/rounds/r182_sandbagging_detect.py"]
+sha256 = "c6e4a500627f34a76b9a577e7b5dc81c930a296842d67f7c0b7e961670eb8945"
+
+[files."security/rounds/r183_deceptive_alignment.py"]
+sha256 = "fc92940397c240e5c45c56826fba4139d019f15aaf96e4abd14bcbe5f2e18735"
+
+[files."security/rounds/r184_goal_misgen.py"]
+sha256 = "0506f95bd1411f6bac4b0d6a60def507b08d004af35f9f59cc45707eb83867cc"
+
+[files."security/rounds/r185_honest_reporting.py"]
+sha256 = "9284f74e8cfb952b7738e1935a2ef9bc0b5f91be40d5961aa2b44785513051d1"
+
+[files."security/rounds/r186_capability_eval_gate.py"]
+sha256 = "6025190f05f6ec920be46a7e5afcebfb0d09c40153aed46333a2117610c0d13f"
+
+[files."security/rounds/r187_refusal_consistency.py"]
+sha256 = "fc4136a4169fef2395e3f9aec42dab01331e11b5784b2cd65886319b0676d99e"
+
+[files."security/rounds/r188_power_seeking.py"]
+sha256 = "5d9d4e90c257fb152e3e96b5b8d5a81c9b83748c36755ea7fd5504b61b95ccb0"
+
+[files."security/rounds/r189_capability_budget.py"]
+sha256 = "459b71e001e912c1ac445ad0c352d376003cdd0bf716de532c43c74bf89ce4d4"
+
+[files."security/rounds/r18_host_header.py"]
+sha256 = "dd4084a633d6b51b21fff4fbebae4e8b59c4d9e4154cbf994789f1c942d2159b"
+
+[files."security/rounds/r190_constitutional.py"]
+sha256 = "881a27bbc7ffd866e35f6333dadd74f42765792dbe27131761f8614b46eb3e2b"
+
+[files."security/rounds/r191_redteam_diversity.py"]
+sha256 = "01816d2bb689702a4f6df0812837adf1e07ef1660c91efa3cd1859d80682431d"
+
+[files."security/rounds/r192_memory_forensics.py"]
+sha256 = "64dd29ce75019f045ab127a327feeb081631cdab18f77f4392ffb042c70f5244"
+
+[files."security/rounds/r193_process_tree_timeline.py"]
+sha256 = "e1dc56dd9af48c2026ef51d92b6ceac779ffbf8fb8a724ff57bd91dadc03bc67"
+
+[files."security/rounds/r194_fim.py"]
+sha256 = "93c4f0a66c9035e4ccc5a7f2b835a62dd6f186791d01fb2e72eeced7b96ebfb1"
+
+[files."security/rounds/r195_active_deception.py"]
+sha256 = "0f9271cad8aee7ae4c42837c508827cc3dfb97b7aefb93bbab1d1c4f40630109"
+
+[files."security/rounds/r196_hunt_dsl.py"]
+sha256 = "9592fea255506aab5a201ec086c4c853f3eefb5b630237f0b9ffeeca0b06d7ad"
+
+[files."security/rounds/r197_soar_playbook.py"]
+sha256 = "3205572de371bd4478cd05d2ae6477ee5da852a8830ac4ac7c1aaea10e3cf5f0"
+
+[files."security/rounds/r198_volatile_preserve.py"]
+sha256 = "a87ffae5fdeebbd936d04d41b4abc09f0b0395005609a0adf0f29c2da3ea3030"
+
+[files."security/rounds/r199_chain_of_custody.py"]
+sha256 = "6faed7b51ad59e48e9ecfb9a6f180b183313e224a42dc866f1456c08d006354b"
+
+[files."security/rounds/r19_toctou.py"]
+sha256 = "7e6fdd2786ec7940473c92b04933dcedc20f3fbc5d7815e4eacfac0f7c8d2447"
+
+[files."security/rounds/r200_continuous_monitoring.py"]
+sha256 = "15f4fb3deee46ccf785be657a94a7218ee6d969bf3504f46810a87f39fdcc131"
+
+[files."security/rounds/r201_adversarial_runner_v4.py"]
+sha256 = "3ce0f250b71949dca83ccd468b11dcd562e9696910c5703f83fcaa62d0cfc8b0"
+
+[files."security/rounds/r202_ml_dsa_87.py"]
+sha256 = "56d1e44c8316cb909fdc5d6155e1e1032ffc3abb2b9f07a1c9f3c17306fa8c1c"
+
+[files."security/rounds/r203_slh_dsa.py"]
+sha256 = "2cfda3669d7aeead85bfdaeee7157a7c29d1e6bc0856da25cc24da2c35c5e866"
+
+[files."security/rounds/r204_crypto_agility.py"]
+sha256 = "2dd60a2bd2b46efff9394b3e9a4bebdea506a4a14436ae125ea71fafca54b5ba"
+
+[files."security/rounds/r205_pq_hybrid_tls.py"]
+sha256 = "12cb632661385dfdd490d3ab7d2b42fe43656ce266c783fb0c3b1f2ab2a10df6"
+
+[files."security/rounds/r206_pq_ssh.py"]
+sha256 = "451e71ed94f2c6a67ca902d744c5450ffc2d00974da031c8f749e7e4a42668d7"
+
+[files."security/rounds/r207_lattice_probe.py"]
+sha256 = "864a7ef43edbd28d0eabda76554d1437bc85fc0397426c6693809f257d5abcbd"
+
+[files."security/rounds/r208_template_attack_guard.py"]
+sha256 = "cf404b4175e2a3a12508fa9b714e6cc111724897f46714ad5f6c5caad69547ed"
+
+[files."security/rounds/r209_qrng_interface.py"]
+sha256 = "382a96454ba2b5e7e560473989def221ab126b015d53f03920f46c0120544c09"
+
+[files."security/rounds/r20_redos_limiter.py"]
+sha256 = "3935df64e5bc4dccda782d38d9a601b0b2418db3fe138eb5d5be0d2649de2623"
+
+[files."security/rounds/r210_crypto_inventory.py"]
+sha256 = "c550316e7b42ab605a8157ddded3d9edd6eb8d0390182a4f6dede79e6fbe96a6"
+
+[files."security/rounds/r211_y2q_tracker.py"]
+sha256 = "488a432e4fe0f561c1b55fe5607229452eb35fd341f55da98d077ad285a35cae"
+
+[files."security/rounds/r212_modbus_audit.py"]
+sha256 = "54b581c3d5f0a01919cbb0373449fdb2eed551868cb127b7d56c48a3d752262d"
+
+[files."security/rounds/r213_dnp3_secure_auth.py"]
+sha256 = "10c3826f17b885a69cce9cfbe56ff22c27e042d9e28ef5a627ff9d5ff3e2368b"
+
+[files."security/rounds/r214_bacnet_audit.py"]
+sha256 = "d606414e8a3137f2b091d3eac39fd3f7d10ca3bcf2fd8da9aa072842384ecca6"
+
+[files."security/rounds/r215_opcua_security.py"]
+sha256 = "6956a02bbc143e8750e2c008b321353d7ba4550875d0e9c5f640239e91b721e0"
+
+[files."security/rounds/r216_ics_anomaly.py"]
+sha256 = "8d132080541f500709a7faf19e150805541827f65bb25a74653fd7ba9d84fdcb"
+
+[files."security/rounds/r217_purdue_segmentation.py"]
+sha256 = "a583613d1962254036587e2fe55d72e5a783206852f8150c01405503dec622e7"
+
+[files."security/rounds/r218_sis_airgap.py"]
+sha256 = "89bb04bdd45600eb9eacc731ebb58df9df7941a3cdd3af3bc458414b935bd3ed"
+
+[files."security/rounds/r219_protocol_whitelist.py"]
+sha256 = "6a78e3355f38a14399766a9d2c701dd1cc128156b5e6e858d58dc36cbc518f22"
+
+[files."security/rounds/r21_latent_prompt_injection.py"]
+sha256 = "712583821918f7def03abcee9bbc1ca019bfa7227aefefe9dc37a8949cbfacfb"
+
+[files."security/rounds/r220_historian_tamper.py"]
+sha256 = "e23ee5539a1a9e83ed408964c6c56b5e9439b157b98da125dd3548c897b2b41b"
+
+[files."security/rounds/r221_plc_firmware_sig.py"]
+sha256 = "2930fc31515ee58763e16991901eae295499a5fbce6939c3bb38600d39e1f0ae"
+
+[files."security/rounds/r222_solidity_reentrancy.py"]
+sha256 = "17553f489fd4278f0e2fdab36831bab8e401ae3e801c672ebf3699f3a0e3afe2"
+
+[files."security/rounds/r223_proxy_upgrade_audit.py"]
+sha256 = "7ba82bb887a609b87a89e0eb51ce10e3e2d3e44b14fe7a77093bfa14956e8fd1"
+
+[files."security/rounds/r224_bridge_replay.py"]
+sha256 = "93375f737502779530c4c024d9216034d1eb3b468e4cc8fad96f736a88a1eb66"
+
+[files."security/rounds/r225_wallet_phish.py"]
+sha256 = "be9656174650ddaea24feaa7cbbc13d1acc2a44a3942cec864be921d5723206a"
+
+[files."security/rounds/r226_address_poisoning.py"]
+sha256 = "31c960f4293ec017ff0ada718449ad3f723b8321031c555ce38be896d7fef486"
+
+[files."security/rounds/r227_oracle_price_guard.py"]
+sha256 = "0da71508c9d7f6deb8b87fe46129cf8f30f4a6ad709259766d2f0f63ec1d3464"
+
+[files."security/rounds/r228_erc20_allowance.py"]
+sha256 = "1bb82df0f79323cd008df99b048facdfc097cd6d6b562f3b73e0bcf6a0f4af50"
+
+[files."security/rounds/r229_mev_detect.py"]
+sha256 = "7fe5f70e8ad247431059b3d90893123811b27f8a144d4276ebe2ff2fd84bdc55"
+
+[files."security/rounds/r22_dan_jailbreak.py"]
+sha256 = "a1deed537ad56cf3ccb83f0152ad1445236f0d5e7e55b52606d1b0b9790c9163"
+
+[files."security/rounds/r230_cross_chain_msg.py"]
+sha256 = "45f7a5a43c90f91506b96509868d6895a7cac55ca045d7526759f40299ae0fd3"
+
+[files."security/rounds/r231_hw_wallet_attest.py"]
+sha256 = "c3170d632ae505d904bb4f99ebf258081799e439eda04e6cefbb371cab013fe5"
+
+[files."security/rounds/r232_dp_clamp.py"]
+sha256 = "9936cb2c10c77d7135d3e533c90b5ed29766b0c5ff4f5a0a5ec89c82a1daa8f2"
+
+[files."security/rounds/r233_k_anonymity.py"]
+sha256 = "aecd95205a5dc289639874f1cea942d74ae6783f057f6c474ac626c7efe7dd77"
+
+[files."security/rounds/r234_tor_exit_detect.py"]
+sha256 = "f4f9aad068b2703f032dc20487034401559a4b649105cdc1e01cdc710fc74ffe"
+
+[files."security/rounds/r235_pii_tokenize.py"]
+sha256 = "0604036e4e98f63709f09a2a76a516bbbcbfe1bdc4734dd1139374bf1abb72bf"
+
+[files."security/rounds/r236_model_inversion.py"]
+sha256 = "25e57dc4174b15ec1a07609cfd69f0a9d93e57bedb55d5473c8b93f804cca330"
+
+[files."security/rounds/r237_membership_inference.py"]
+sha256 = "d8a6eaa7c78ca96e5f6112bd7d95fbad615d2d3c4b8f58c15a5d17deed0c47ac"
+
+[files."security/rounds/r238_fl_gradient_privacy.py"]
+sha256 = "3d310d053d17e98ecf3af7115f114d19348e84b3c6d494b9cd03e72863ecdeee"
+
+[files."security/rounds/r239_data_residency.py"]
+sha256 = "19ccf24f2d6ac2c85a43cbe0090c9e0ed847eba5b00bbd37b1394744c081b6d8"
+
+[files."security/rounds/r23_encoding_bypass.py"]
+sha256 = "d85d0ef56be63773f23545479df41a593109e0d99e1b6acafc24e5b22f1a5585"
+
+[files."security/rounds/r240_rtbf_propagation.py"]
+sha256 = "c96c8f3ea77b7afbcd737e0eae0a24892bbd3a0e9e6db7634e56237584180e0b"
+
+[files."security/rounds/r241_privacy_budget.py"]
+sha256 = "08d43a573adba5960caeae9480a84a0b7b22f166ebfbd41e069d18ecb60750de"
+
+[files."security/rounds/r242_air_gap_diode.py"]
+sha256 = "6941d7833bc44ae53cfe13a31776b69773f6c6eb41d9ef4b26a31ad6f18c843d"
+
+[files."security/rounds/r243_two_person_crypto.py"]
+sha256 = "6500210803e5340a17bd57e958a1ed230344603218565e5edab7ff1b25fd924e"
+
+[files."security/rounds/r244_token_enrollment.py"]
+sha256 = "9b1cf33e0e62109029fe776baf11809249836f06df5fbb36c4ae71c6b96ce23a"
+
+[files."security/rounds/r245_qkd_interface.py"]
+sha256 = "b0d6695c0ac5adb9f4e866e7a296533526482cb05a9ad756525c741bf9a3a77b"
+
+[files."security/rounds/r246_insider_uba.py"]
+sha256 = "213926008db0f794db51fb669271b1aa89d28528213089998f6f05466dd4a353"
+
+[files."security/rounds/r247_espionage_indicator.py"]
+sha256 = "90eb67acf36d85bb811d63868c23ec7fef07b2cd80f3e2da5f1c4f7c3d81ca04"
+
+[files."security/rounds/r248_counterintel_decoy.py"]
+sha256 = "5f4104ffa45974f102d4f3af5613c6917b392ce1f9b414f4c9f7a3477a9272ca"
+
+[files."security/rounds/r249_fisma_high_audit.py"]
+sha256 = "a6566f50516e1f3b6b35e17a05982c886677e9dfcf2928ffee786bd933fa7098"
+
+[files."security/rounds/r24_persona_flip.py"]
+sha256 = "2fdb9d6131ebe1483c4352bcb2bf91e491a77c7671d6480f46c6e1929ba37e9d"
+
+[files."security/rounds/r250_crypto_destruction.py"]
+sha256 = "113a9687c44d00f89fba5d13bcf2c29474536892e85125471b2bdbafd69eec89"
+
+[files."security/rounds/r251_adversarial_runner_v5.py"]
+sha256 = "eefb045322060a170561e438f03e8e8be91dd6f888514c19d60b77271b7a2976"
+
+[files."security/rounds/r252_csp_strict.py"]
+sha256 = "344f540bb95a4f711a961c887feb55c511d48d8e97b9edf8161d903d68e348ea"
+
+[files."security/rounds/r253_trusted_types.py"]
+sha256 = "6da163d72fef12a97cd23a216239abd4aeb8cc72b06819e7c06b93354682bbe2"
+
+[files."security/rounds/r254_sri.py"]
+sha256 = "12971344b6f9f33a9ead3fe534784fa755f1514e8523a2c8441fe208ad9fcd89"
+
+[files."security/rounds/r255_permissions_policy.py"]
+sha256 = "cee59f5811e3e151f4769f0b37ccb18392f376818eb67b3fadf5f505eabfeb65"
+
+[files."security/rounds/r256_clickjacking.py"]
+sha256 = "93dbc5e68d37b0dc79c03d8949f5d90caa39550c54421e10f2702741758cc664"
+
+[files."security/rounds/r257_coop_coep.py"]
+sha256 = "f3cde1bcfc5f47ed0fb4f474fb01eb336c5ad610c866e2f89fdc4de6cda16d5f"
+
+[files."security/rounds/r258_referrer_policy.py"]
+sha256 = "e2b4855610f4858d30045c716e168339fffd40635f44af77be88b6674c94e92c"
+
+[files."security/rounds/r259_wasm_sandbox.py"]
+sha256 = "4560741449747a053a3c81d9765a31791a6e9fcd0646d927f452bfb50529f870"
+
+[files."security/rounds/r25_tool_output_watchdog.py"]
+sha256 = "b0922c0bf268429c2296777fb1bbaf4e54e85d027655435cc0d5cc85bb4ba132"
+
+[files."security/rounds/r260_service_worker.py"]
+sha256 = "cb2730159cb7e843795677be4c42f49cec403de5f9591f2710cff79d4e4498df"
+
+[files."security/rounds/r261_postmessage_origin.py"]
+sha256 = "b5277f13e35a7211bca524c80222d59638282ccd311e44326ec80eeec8d2d1ec"
+
+[files."security/rounds/r262_spf_audit.py"]
+sha256 = "0611e5eee8f11fc881e9e4dad4ff476aaea9cab293cf0781fe41d09a1c59beb0"
+
+[files."security/rounds/r263_dkim_verify.py"]
+sha256 = "b1fe0be3a19f933b301e8aca843d7800f424254f26f94ad0a05910f94ad2b269"
+
+[files."security/rounds/r264_dmarc_policy.py"]
+sha256 = "24a8e5cc85290c8ab46d90503bdeb61bee63388580566ae33dba8cd39203a8ce"
+
+[files."security/rounds/r265_bimi.py"]
+sha256 = "e96e80f0cbf2efcccad171b9ba0ea26e399db2d9e8f5fd4bdab5f7d58cf894d9"
+
+[files."security/rounds/r266_arc_chain.py"]
+sha256 = "c1821acde3e4599eef5531d6be37b40cc1ad49fd7b4936e79551c1b0f25d7ac5"
+
+[files."security/rounds/r267_mta_sts.py"]
+sha256 = "08bce9e31397e7513d08cf500de6f4e269011b0357346c1f9771baa79514f08b"
+
+[files."security/rounds/r268_tls_rpt.py"]
+sha256 = "72da37abcbf68748ca9e1ba9799b1af2159b6edfb3ac15cda9919f12ca76a995"
+
+[files."security/rounds/r269_dnssec.py"]
+sha256 = "040afc45d1a117c445cf44b9fef0a89d84b05efd9d6f5748e0168a297a5aa1dc"
+
+[files."security/rounds/r26_rag_trust.py"]
+sha256 = "9eafbda8da12719ad3be504f4a7a9b0b223eda6aa70e87de2ce7a8e41ace5619"
+
+[files."security/rounds/r270_dot.py"]
+sha256 = "47537e5eb0650007efde6dca23e9837b89f37ede2baf48275eed033006ba6603"
+
+[files."security/rounds/r271_dns_exfil.py"]
+sha256 = "b69af80130df005b3713d16a755eb3928477841cab21b170f558be92e69ca4c9"
+
+[files."security/rounds/r272_sql_param.py"]
+sha256 = "95529e8630a4ab896ec3197a951bc8737f6d1e945e06fdf070231cb552ec4500"
+
+[files."security/rounds/r273_row_level_security.py"]
+sha256 = "b10ee166b2b8e337acc5955c585833d39fb3216d535180f701b7ea2d48e50188"
+
+[files."security/rounds/r274_stored_proc_perm.py"]
+sha256 = "7dd7448ecc9b92866901e24a45f06a76e17c5c43d9a3579b5efe4f625e7465e0"
+
+[files."security/rounds/r275_pg_hba.py"]
+sha256 = "de9c470d40d85ac9c78f8637caae40b7a54e38d50b76ea63c2d2a36df93a4f71"
+
+[files."security/rounds/r276_mongo_auth.py"]
+sha256 = "9137fc8c9b1225313e43836ddcc7095abffb2fe5cad1038d1a61f9fca0ba13c9"
+
+[files."security/rounds/r277_redis_acl.py"]
+sha256 = "4fbef3f5227cc753066dcc6de86b0d5a81445e1f8b2d058ea0401dcc15b86b10"
+
+[files."security/rounds/r278_elasticsearch_security.py"]
+sha256 = "7fb722465a08e06a312cda9ed37a4bd1151e98101c9d80701d6d9a751c8bb801"
+
+[files."security/rounds/r279_backup_encryption.py"]
+sha256 = "9da316ce799f09300bf3489c83b6a20d9f89f86b7037b9d241532f8a8f58e6f4"
+
+[files."security/rounds/r27_function_arg_validation.py"]
+sha256 = "eb3e36e2ec2822c9fb59b8c2a25991af83f13cc7f9064ae4dc309091ad263c64"
+
+[files."security/rounds/r280_slow_query.py"]
+sha256 = "d9422ed10cae3b3d6e8dcd698042d64c2dfa28f7f2112618b30d974435a45019"
+
+[files."security/rounds/r281_pool_exhaustion.py"]
+sha256 = "5156bd1b9b3fea2bdc54aadb51e32e19af6cf6008a038c34717d00030eaa7f7b"
+
+[files."security/rounds/r282_business_logic_race.py"]
+sha256 = "0e8708b5bfa0f7fdd75403a3754622f6d90835d80f3e26c7454c9d9e31b77fbe"
+
+[files."security/rounds/r283_workflow_bypass.py"]
+sha256 = "315e150ac39460350095f1840eb6912b5764d96cdcfcba8f33cc0d502fba9d63"
+
+[files."security/rounds/r284_api_versioning.py"]
+sha256 = "d58c24b1b552a7c913171a9d3a3ef905b339a8f21849bf7d5d0c60c7824bf43f"
+
+[files."security/rounds/r285_graphql_complexity.py"]
+sha256 = "fee1da7ad5f278ce0ceeb1c6b563df6360e12d179489384685925697dbbfeab6"
+
+[files."security/rounds/r286_websocket_subprotocol.py"]
+sha256 = "fc0f41a77140534cd4cce0e3b9ead10173d081fa5c3ad6cf6896ffe75e993e47"
+
+[files."security/rounds/r287_sse_audit.py"]
+sha256 = "49c7d2ec4203d3c90322a8e3ff96f7871e05323891881dccdcb12715b1b6a52d"
+
+[files."security/rounds/r288_webhook_signature.py"]
+sha256 = "12afd47b4512bd27306fe9d4eee13905347e037ef1f96e62754e3fd94a1e90ac"
+
+[files."security/rounds/r289_api_key_oauth.py"]
+sha256 = "0affdf6b219bbd062b3b3942b3663a52bccc89268ccf9e797be1322db0adce91"
+
+[files."security/rounds/r28_token_budget.py"]
+sha256 = "91e102af88a2524358c7be48ddc2d2c169b18610082e07fb0815cccbc819a46c"
+
+[files."security/rounds/r290_per_tenant_fairness.py"]
+sha256 = "2cc6a1acc22737eec5a7bc6c4d366f8518d5069b9ab72694aecd822a250c5ca5"
+
+[files."security/rounds/r291_grpc_reflection_disable.py"]
+sha256 = "7aeee1901f5501f6eb44562a3a1b20b6ac7cb941fd7f7b53f20cabdcc82e6259"
+
+[files."security/rounds/r292_usb_block.py"]
+sha256 = "b0a32702c9226bbae14768088716515ed94537736afe4650ecadfecaafd5b022"
+
+[files."security/rounds/r293_print_egress_audit.py"]
+sha256 = "1f896e5bb1483a21ef5ce94a448ff04a7a23cfaa2ed45957da75187813607d5b"
+
+[files."security/rounds/r294_clipboard_governor.py"]
+sha256 = "2ecb01a33eee360e3629e11d21284643cf950c4c37a39dd606c2f7c2ba56eb10"
+
+[files."security/rounds/r295_endpoint_telemetry.py"]
+sha256 = "6560b8828d11fcb9bebfdd999fb2e1ff4ea8c746e394449fa26b5f48401fef64"
+
+[files."security/rounds/r296_travel_mode.py"]
+sha256 = "0e4614f5f8c8b37b2ecb2d2941cab5caedac592d874383cef1ca234264886841"
+
+[files."security/rounds/r297_foreign_influence.py"]
+sha256 = "6eab95b6dc9e7721bcdceba0f9f7e13a6edf1ffce0f98070e417697694592bb0"
+
+[files."security/rounds/r298_image_steganography.py"]
+sha256 = "5f26f64c2eddc3deb9aff0b18aaa577668855dd7e39b473ccd4f71c50a5aa7c8"
+
+[files."security/rounds/r299_covert_timing.py"]
+sha256 = "841089ced60d1b8835082f616c0230aabf020a1fb3e0fd608d28e2d945d8032a"
+
+[files."security/rounds/r29_multi_turn_drift.py"]
+sha256 = "2db1b4331f0902e4c1a5f37b3b435dd92254943aef03e5c4d9da08d3c1120c9b"
+
+[files."security/rounds/r300_air_gap_radio_disable.py"]
+sha256 = "c306cbc92d30716c748ccf998e537e6370097e9dfe78d57ed606bd9171d9574f"
+
+[files."security/rounds/r301_adversarial_runner_v6.py"]
+sha256 = "09e8769f250eb2b1a564f038bb13519ebe3a1e937e6cd07a7e4f08b5c0370919"
+
+[files."security/rounds/r302_model_lineage.py"]
+sha256 = "9b954d47f1f1d76ce99b26db146913d3074b279738e3cd83b186d292251e772c"
+
+[files."security/rounds/r303_safetensors_verify.py"]
+sha256 = "1d3cd22a6300ba11ee00b9773c75791c8f19d32cf85efdca6a09391f1db82805"
+
+[files."security/rounds/r304_tokenizer_poison.py"]
+sha256 = "33e2d808faab0e78d9035538b29ae5524430110ce4f5b1b3ddd63ce55ffa5b68"
+
+[files."security/rounds/r305_embedding_drift.py"]
+sha256 = "55fcfb97ce26846820115ab1fb06637e306990366cb0399f604ea93f5f1b1614"
+
+[files."security/rounds/r306_prompt_template_registry.py"]
+sha256 = "e7df5cd93e6dbc3cad6cfe18febb851d446e552c085088efb4ff3966870996b5"
+
+[files."security/rounds/r307_finetune_canary.py"]
+sha256 = "605dbd79db179c3ac9b93a8f867248edb6303237d3899fabab10c6de435e9bf1"
+
+[files."security/rounds/r308_vector_provenance.py"]
+sha256 = "c3562fd1a8a5139b0f4d1a459cd7ec79d0070362d89623fd0343bbbe07b14877"
+
+[files."security/rounds/r309_ml_registry_rbac.py"]
+sha256 = "1421e5af7c6580ad103411d1eb842cdcc78e7add74acee59cfc83ab9414fc5e1"
+
+[files."security/rounds/r30_output_filter.py"]
+sha256 = "421d4fcf173ed7050cb969bddc52e77149c72991d6b0124f602ecf498c257162"
+
+[files."security/rounds/r310_gpu_side_channel.py"]
+sha256 = "602779795029c5b6bd5c40938957a31569ca9691d383c59a546141d582a3edea"
+
+[files."security/rounds/r311_pipeline_repro.py"]
+sha256 = "406b53578d630ccc4e046a52f35cd26bfca8782d503ce261fec92de8186a1d48"
+
+[files."security/rounds/r312_chaos_injection.py"]
+sha256 = "1f84dba47c6d5fea3262c533d79d2bec65d224988929a5a293c3c1de879c1052"
+
+[files."security/rounds/r313_graceful_fallback.py"]
+sha256 = "8b80367d9ad173f6690fdcd8ed41f909dfc1bff18c57eb40cc378f2d8b282794"
+
+[files."security/rounds/r314_circuit_breaker.py"]
+sha256 = "e1acc669abb5483fe60223e232ec8c46e0f3f246a2a76eab809774e7d979c99a"
+
+[files."security/rounds/r315_backpressure.py"]
+sha256 = "a6b5a498b606ceaf8f82306204522fe6f12c732b4f96efe6123483ad858d626a"
+
+[files."security/rounds/r316_timeout_cascade.py"]
+sha256 = "808e117533146d49bc740caaab34cbe0b86f776bf46f94f8e8c9ba8640635849"
+
+[files."security/rounds/r317_health_split.py"]
+sha256 = "548c70a16bd6c5974f506c8b74029055ec99edf0fb3a5f07b24aa509c156d595"
+
+[files."security/rounds/r318_dependency_outage_sim.py"]
+sha256 = "2e7327ba040914b9131e0870de811cca2a3ba20910442fd8f6bb7db1c79b1fae"
+
+[files."security/rounds/r319_dr_audit.py"]
+sha256 = "e353c942c99e7de65316e08bdef61cef8056846437e5f1c827c3e1b38f8385a9"
+
+[files."security/rounds/r31_slowloris.py"]
+sha256 = "a9b856faba2f77e298029ec7622aac9301871ada66787719a8d784936924c04c"
+
+[files."security/rounds/r320_multi_region_failover.py"]
+sha256 = "6648d267db2f6556898c08611fbbb9e0f2b18e2f3721c74d1f114a8cbf0679e7"
+
+[files."security/rounds/r321_red_metrics.py"]
+sha256 = "9b76a532c2bc1c73e11c8cb50a587517444373b10fa841a36e243d27fc6454a7"
+
+[files."security/rounds/r322_attack_mapping.py"]
+sha256 = "74106abbba04f7bf8853d6b6a3a857999b5af65108bf49e8c2cb4ced90409218"
+
+[files."security/rounds/r323_sigma_engine.py"]
+sha256 = "6d9ee3ade3f1f068b2f515e2072b30a7ffa2fbb65d8af1698e80d0bf9cee37e0"
+
+[files."security/rounds/r324_stix_taxii.py"]
+sha256 = "aaf8f2c1dda6d24967a04277d66c164fb085a32cc59c5791952ae75d7dc46409"
+
+[files."security/rounds/r325_yara_lite.py"]
+sha256 = "4dc81434a567f2b3a91e2226f74d69a24f9beb746384a4e1cb2cab5eb285c74e"
+
+[files."security/rounds/r326_diamond_model.py"]
+sha256 = "a20fd42742ecc4123957e63f755a326fc785b8ea664519292b85439177bc0abd"
+
+[files."security/rounds/r327_tlp_tagging.py"]
+sha256 = "d50a07fce1f30fb28a791f086a67327e993c4a8f41884b8b240882c94ba7e73e"
+
+[files."security/rounds/r328_apt_fingerprint.py"]
+sha256 = "09becbdd5e297fc02c67b7d41add47a1618109d50c8a11e135ff42d3ce95053d"
+
+[files."security/rounds/r329_ttp_clustering.py"]
+sha256 = "3a4aaa11888d2d65ed317e281e3765ca773391c1c2bed6b66c2b976b38822afe"
+
+[files."security/rounds/r32_rapid_reset.py"]
+sha256 = "2efc11b3ea1d4c876e3b2dc95bf9a546bddbdb5ba6d98734675793516a9ec0d0"
+
+[files."security/rounds/r330_pyramid_of_pain.py"]
+sha256 = "b4a0a15a3236775755b5bee848ba78e1921b5be5e26888f7deb6d705596cdb65"
+
+[files."security/rounds/r331_intel_freshness.py"]
+sha256 = "492cfedcaaeaa0d70dc53730ca2e6468ab3d35757ac15071b9ac18b4db2fc663"
+
+[files."security/rounds/r332_deepfake_video.py"]
+sha256 = "93cab1cbb790ea49071c37bb26423a891e910609c4e4614b02f3406d0822eaff"
+
+[files."security/rounds/r333_ai_text_detect.py"]
+sha256 = "e6a60e3cb50b130a8b2583090c93e3ec73f3fdaad24ec81cd45a452c9e0e0c0b"
+
+[files."security/rounds/r334_voice_deepfake.py"]
+sha256 = "19d4b432277c3147696945db9bb3ac18756db304c7598aba02c4b9cf324b9a81"
+
+[files."security/rounds/r335_c2pa.py"]
+sha256 = "04bd1108ddd329d5c804789db2611c67c42c9eb216735ea16314a3b5a221ae73"
+
+[files."security/rounds/r336_liveness.py"]
+sha256 = "bcbbc9ea0b4fc439e6f6cd529b5c100250f0277373e1cd316089d6035d4c4254"
+
+[files."security/rounds/r337_synthetic_id.py"]
+sha256 = "1a2ccd7f1fdc6a79779fc48090856192081118f7c9e60eca0740a461f6bf7431"
+
+[files."security/rounds/r338_pdf_forgery.py"]
+sha256 = "281eb0d3ed413842bdfc68a8dbb1b71579fff7097c9efb6ee7f872a7d4c981c2"
+
+[files."security/rounds/r339_image_watermark.py"]
+sha256 = "98e7dbfa7bc5aa83bfdbb9dc9b9a044dd27adfe3688e457ff073dfa64f58aa69"
+
+[files."security/rounds/r33_ws_flood.py"]
+sha256 = "c0787bae119f335801646d7b9008458c285af34c514d956735b188642669f088"
+
+[files."security/rounds/r340_ai_code_detect.py"]
+sha256 = "d2ae59944766882d7c2445d155e4272543113c2838210dff0f592ab1a33c52fb"
+
+[files."security/rounds/r341_reverse_image.py"]
+sha256 = "70510dae2a8795fd1b8d03f56d8b226ecf8e22fdcb9080c43203aa4d2c355641"
+
+[files."security/rounds/r342_runner_orchestrator.py"]
+sha256 = "9441df8ffb0300bee57654697db2eeba8d211cce23ef435c9d5b8f089190eddf"
+
+[files."security/rounds/r343_coverage_map.py"]
+sha256 = "4f6d747d17f4910cac3b81ec7ad2054d73278a373936293a58b648ace83f73e8"
+
+[files."security/rounds/r344_defense_in_depth.py"]
+sha256 = "37f32d12bad769e9ba541f46de37586deafaec5503aeb55e835321f8722de322"
+
+[files."security/rounds/r345_policy_bundle.py"]
+sha256 = "3dae7db037c4c799da9ded402d7320758991636d26d3a76c737116efc6d4d751"
+
+[files."security/rounds/r346_threat_model_refresh.py"]
+sha256 = "e3d7d243d29a2dd00b7c087843f5dbcfbad2a63bd1f0d14065cf6f02ee3e7bbf"
+
+[files."security/rounds/r347_bug_bounty.py"]
+sha256 = "7ff5b228d185415ba5e88a1c4b6698ccb4dfffd8cd3ecd5ec9b23854e03fbb91"
+
+[files."security/rounds/r348_coordinated_disclosure.py"]
+sha256 = "65c2cda251a69dbce70731315803e3d6178b19ce72989b75bef265c75e32c0be"
+
+[files."security/rounds/r349_cvss.py"]
+sha256 = "efbee81810dea05d3f21cc88703bb6042c88ef665eeef0116ecd116e25abf7e1"
+
+[files."security/rounds/r34_gzip_bomb.py"]
+sha256 = "8b85f0e630d3af49efb3e838da345e77971fd9abccfddb7cd80b62f22faae3bf"
+
+[files."security/rounds/r350_api_stability.py"]
+sha256 = "41625ab450d8bff23ca395eec45782fa0d377e7523e2850e18a73a80ed916ec2"
+
+[files."security/rounds/r351_adversarial_runner_v7.py"]
+sha256 = "cc42f49e48db2ec3ef3682c7cd24d04b15290717181b8c42bd3d0cb3717f1296"
+
+[files."security/rounds/r35_hash_flooding.py"]
+sha256 = "df86955f50e1e883c3c6a0b110d4d99e4065aa855f1cd740026f4e439e607d98"
+
+[files."security/rounds/r36_subprocess_limit.py"]
+sha256 = "daeb8958e5fbdce2c03463b2704384103b2d05fce9131ff83699a58169c74704"
+
+[files."security/rounds/r37_memory_cap.py"]
+sha256 = "ac7660922ca240f85c208f5ab74b1175e06c285763929ef17710651c96ab0399"
+
+[files."security/rounds/r38_connection_cap.py"]
+sha256 = "032719bb4c750de16c4f900a2af039ad6a7c29eacda97a47a5bef7b107ad7ad5"
+
+[files."security/rounds/r39_bandwidth_cap.py"]
+sha256 = "aecad42662e635a5f293cb9be07b58bd2a1b7a1873084383291d07562ec10c86"
+
+[files."security/rounds/r40_keepalive_abuse.py"]
+sha256 = "0bc89323f920766c62805330226ab0784693718716e27d0c78c86e6eb3c86461"
+
+[files."security/rounds/r41_wheel_signature.py"]
+sha256 = "820036074651b5b140895eca61c8aef7ac6fc45875518b3d50c604d3393f671e"
+
+[files."security/rounds/r42_dep_confusion.py"]
+sha256 = "78aa1fcd89b3ee03608499547d3952298f31ac3bcd9a90977e3aadf6fa3c9fb7"
+
+[files."security/rounds/r43_lockfile_diff.py"]
+sha256 = "5eeda9cde4b5990564f1650773076cdcb37709e8ca16e5fcd2c5c8d7376c324b"
+
+[files."security/rounds/r44_actions_hardening.py"]
+sha256 = "d3e1aa69eb557c92b2dbf7ef7e8751d33c3c7d53c3a5f5468850b1128abb1914"
+
+[files."security/rounds/r45_readonly_rootfs.py"]
+sha256 = "2f6b4d993e47dc5199cf96087fad529028a31b567969f98656e4fc593634a43e"
+
+[files."security/rounds/r46_secret_scan.py"]
+sha256 = "6e182f810efc28f6f12a5cad445889e9c13bb9537a11c21337f1c53c4c5e946b"
+
+[files."security/rounds/r47_two_person_rule.py"]
+sha256 = "fbe2102094d51a0c2d9a49fbb64391d189a38a434dfc28ae26c9237d12960396"
+
+[files."security/rounds/r48_prod_mode_strict.py"]
+sha256 = "e0d5ae17ac10979e420bba62276834c0c7758dd4bcfb06fc4a8a30c5253f838a"
+
+[files."security/rounds/r49_debug_endpoint_block.py"]
+sha256 = "217155cee93e4fa080963caa4061f168793a71e92facf7d2f7506aa80151ef7a"
+
+[files."security/rounds/r50_outbound_url_audit.py"]
+sha256 = "553bb9304f3b00356204247a870b140c9151cbb16798793f9c70ab33b9a6188b"
+
+[files."security/rounds/r51_adversarial_runner.py"]
+sha256 = "613cc777d04b2cb558ab1846d2aabfa4a6ee4238f285393ecd82d87c0b608570"
+
+[files."security/rounds/r52_tls_pinning.py"]
+sha256 = "d820ae523c52bb47a5a7f217d73ab294ec7d1bdc0237147d9f3ba722825b1d94"
+
+[files."security/rounds/r53_hkdf_per_tenant.py"]
+sha256 = "6d03cf2b5d810ec0b5d26de2c98c3353066f2ff03c03cb338abaea20813c096b"
+
+[files."security/rounds/r54_aes_gcm_siv.py"]
+sha256 = "144104633e72abf69052ace56ab8d0470e8434c014be3462af0d9ee82557b0b2"
+
+[files."security/rounds/r55_hybrid_signing.py"]
+sha256 = "d73012c006b4bb5454ca87c340f199acc0cc68204a0d9b003be05309ce6f50ff"
+
+[files."security/rounds/r56_secure_memory.py"]
+sha256 = "94618a6b08f15c8b2ae0dfa7799db4ed15f5d5e87ceee04239fcee196126133e"
+
+[files."security/rounds/r57_constant_time.py"]
+sha256 = "760a848eda11389c9909ab7a0dbeff954aa1adeff9b64bd8ed6935c0bb4c5f97"
+
+[files."security/rounds/r58_cert_revocation.py"]
+sha256 = "89c9417ab09c92f8f478915ae2b825f18c2616d87d59a3127f05766f1541cc89"
+
+[files."security/rounds/r59_tls_downgrade.py"]
+sha256 = "a1c76dd7bfebbd6e8fe1af1b76ee63ff7e9ff479533fab7871df45e049654544"
+
+[files."security/rounds/r60_kdf_password.py"]
+sha256 = "1a134f653e7124d85aeb63b400b82dd35a65d2aec8ab0406e63be961e202e24f"
+
+[files."security/rounds/r61_quantum_kem.py"]
+sha256 = "de616a12922f350965689e035ca6a091c1949ce0e241b3c9a3e4814e5576e1eb"
+
+[files."security/rounds/r62_webauthn.py"]
+sha256 = "1af4278fecae4eec40e1160068eaaf8464379ac0913f0f1985b3382c370a4f8a"
+
+[files."security/rounds/r63_totp.py"]
+sha256 = "41706015c05e555c0f92073c2cc627bfb3835a28f0454aeb25a12fb869cbdd23"
+
+[files."security/rounds/r64_backup_codes.py"]
+sha256 = "941eed0c871bcd856cf0c65259dc8195e94d1b8d27bf8c0465791abf50ba6866"
+
+[files."security/rounds/r65_step_up_auth.py"]
+sha256 = "2f193a1a91c1f000e852f3dc6b487d0e73643c7a0dc8b27b1ebcd4c6ebbf6ab9"
+
+[files."security/rounds/r66_session_binding.py"]
+sha256 = "70f601dfe800b64c5f359cea54e635686dd788fafd3d2f20277f92fa094ce1c0"
+
+[files."security/rounds/r67_jit_access.py"]
+sha256 = "f12a8bdc08f543208aeacf9e8b09a6a913796fba7ec10826b03f57272e1c57c5"
+
+[files."security/rounds/r68_concurrent_session.py"]
+sha256 = "7dd5392426ebde4f25bd39658d20ff67713e153919899c1f80ba8ee290379536"
+
+[files."security/rounds/r69_privileged_session_record.py"]
+sha256 = "0e059c6399b3b76614bab42ca88b74344f17b97b63adc1f3c7158214fe08f512"
+
+[files."security/rounds/r70_saml_assertion.py"]
+sha256 = "bb45671ff9cd4ae50d73e348466f9a4dd707e555a18b90956c71c813f8e63aaa"
+
+[files."security/rounds/r71_scim_provisioning.py"]
+sha256 = "2ac7459a4f4464107453f89a1d03bc1df59a61b749870af8a26f1e5e3e6a93c6"
+
+[files."security/rounds/r72_buffer_overflow.py"]
+sha256 = "0c8784ee72d7ae061baa778f3627f7f8b46687dd0fa9100d2406a175f77ecc24"
+
+[files."security/rounds/r73_format_string.py"]
+sha256 = "f05a8b75aa042a1041aa09cd9ba245403e021b37e26771f7c0a1196b3b6d4048"
+
+[files."security/rounds/r74_integer_overflow.py"]
+sha256 = "31dc67dea213a19ffae3b8d62522c0a7c4cb6db76d77bf5f15017c23fa0f6ee8"
+
+[files."security/rounds/r75_recursion_limit.py"]
+sha256 = "4eebd95d8c847d9e91ce5148d96fc83ea8d71192057cb8534b6101595000001e"
+
+[files."security/rounds/r76_use_after_free_hint.py"]
+sha256 = "c2bb49aab2571752ee843aefc173ffea579d52f1ac4d3f48fabafa737391bc7a"
+
+[files."security/rounds/r77_aslr_check.py"]
+sha256 = "da0e438752e7d8de256d6ea3f12ed8bec95b2196826fab407368b6f851e5626d"
+
+[files."security/rounds/r78_seccomp_profile.py"]
+sha256 = "9388f832b2b3ff8c2bbd0fc997848e92e07abbffd4fdc08d05cd40fe82bc3df0"
+
+[files."security/rounds/r79_anti_debug.py"]
+sha256 = "a8d821cbbb5c3bf4d73a09bbf22fee8f06cebdce886d40f047ca2ee304037c10"
+
+[files."security/rounds/r80_code_integrity.py"]
+sha256 = "3f56127de667acce193d52c15d9e3bcd9269c8e864ff16ec2b25f111cc64238c"
+
+[files."security/rounds/r81_pickle_safe_alt.py"]
+sha256 = "0d74fcc99bf723b7119a0fb89efe31c61e3ad3b839b3a3451996a253f3fc5664"
+
+[files."security/rounds/r82_doh_dot.py"]
+sha256 = "8c661acfe3d8adaa17dd9804c7930c15c6e1d84bc8bdecbeedc42ee102016c11"
+
+[files."security/rounds/r83_dns_rebinding.py"]
+sha256 = "b212eeb5d0f904c5c58730767a3b59d8a6a50ee8ec38e24ac037479662f43c3c"
+
+[files."security/rounds/r84_syn_flood.py"]
+sha256 = "efcad853bdf3015e530a6e61879594e81989e2416e2ee36aec7708c0e54677c0"
+
+[files."security/rounds/r85_amplification.py"]
+sha256 = "81efd51ca4dd5f23c3779e395e33762c16c559dee02395152131bc385a464cd6"
+
+[files."security/rounds/r86_smuggling_v2.py"]
+sha256 = "eb1a2eb0e1b7fa3806517b3efc3ee3e94d272ac9fe4f56186b1706cc3f446769"
+
+[files."security/rounds/r87_cors_strict.py"]
+sha256 = "48a8629a22ea076e97357e1c5e81950a1caab3278232b77804d0eea99c827aa0"
+
+[files."security/rounds/r88_open_redirect.py"]
+sha256 = "e6bedf67d5af35de8c4b9be8a58591508a4e22bf55faf03cc9c927d9b1faf347"
+
+[files."security/rounds/r89_websocket_auth.py"]
+sha256 = "acef833a31a54e57006cafb12211218d21bdf43863f22002ba3c30fde0ded360"
+
+[files."security/rounds/r90_ip_reputation.py"]
+sha256 = "3d37525ff60eb9d094b9ca86dff3998a0b7249fbc403693cf648607cc77904fd"
+
+[files."security/rounds/r91_outbound_block.py"]
+sha256 = "75bfdb6c48ea2e2051a87d94de0b149bf47aa481dd815f8b7d33a92d163c8917"
+
+[files."security/rounds/r92_audit_forwarder.py"]
+sha256 = "3f140631c554f4b5cfc5d9b3d4a2f4a91235304bfd156a375c9691843b21373b"
+
+[files."security/rounds/r93_misp_intel.py"]
+sha256 = "2cddc740d5530db326529045d16731fb93ac563b534a32254af09a425681787a"
+
+[files."security/rounds/r94_fuzz_harness.py"]
+sha256 = "460576b8561e82a94079f20e4570aaaafca684b0fbcbef27c7f4e5f422e3f61a"
+
+[files."security/rounds/r95_clock_skew.py"]
+sha256 = "b45a37748f5e80c95fe36ed72f2d97a302c5208f96c4076936c5e5873ff155ba"
+
+[files."security/rounds/r96_browser_security.py"]
+sha256 = "4625994b34c296041a20331bf42637ec0e8b8e4aa1ebf8e4691fb35ceff82b4c"
+
+[files."security/rounds/r97_data_classification.py"]
+sha256 = "0ef9694d00f5b82a3078f5bd384f0cbafd6b8a4cf96c27ccef374eeedfce4220"
+
+[files."security/rounds/r98_immutable_logs.py"]
+sha256 = "a27b171e05dbb7f793241619123b88f6a1075e287478eacc2c2814e5523084d1"
+
+[files."security/rounds/r99_kill_switch.py"]
+sha256 = "9b72231d869c67235340f2a6776903a8f76c0c6a721d7e3aa608333108c568f2"
+
+[files."security/sanitizer.py"]
+sha256 = "738d79c1b84cde31ae55f34ef5bedc1cb551de199dd130ea794084564504f669"
+
+[files."security/secret_roles.py"]
+sha256 = "ce30d30e62bf69215045cefa8e0a5d065652eb280ece35bc88a0f5779dc0672c"
+
+[files."security/session_store.py"]
+sha256 = "2711d7e7bf00accf358fa86e3eb2b4b5204d0903f36aff81eba5c43457060ac0"
+
+[files."security/supply_chain/__init__.py"]
+sha256 = "ec2ee43edf65e59c6c98342991c7942de90c4cb5a950ba905ba07bac1daa3693"
+
+[files."security/supply_chain/__main__.py"]
+sha256 = "612ddcff074f10c66bd290126619b3f32a10a717629e31ca24e30f455ec65f26"
+
+[files."security/supply_chain/creds_scan.py"]
+sha256 = "abf90c240b464d7d54a154a3bf21eb96d7ee3bee46f0a7113dea2322be97ed07"
+
+[files."security/supply_chain/sbom.py"]
+sha256 = "210fa8d418aa6a2cc4d983f4c551d6ccfe68c93f430ee9a2d531867f1ab28fa7"
+
+[files."security/supply_chain/vuln_gate.py"]
+sha256 = "50ba78bf13c9b84e4ae251aadba36ab595fbca880c093dd9c45aaf4318b78af7"
+
+[files."security/trace_context.py"]
+sha256 = "197bc4191e0313d0c6a2e8906094c498da4ccea0a7c6c232f8171432aedbed30"
+
+[files."security/worker_init.py"]
+sha256 = "18ef47a6e8ae60d67bfc6f8e3bc8b183b1c231f8e237f5f8ac017448ed72676b"
+
+[files."security/zero_trust.py"]
+sha256 = "27041037d6f7979fa05b5f158bbe3f030ab48ae22eb80d161f1d4c093db94152"
