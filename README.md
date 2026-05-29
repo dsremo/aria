@@ -38,11 +38,14 @@
 - [What ARIA is](#what-aria-is)
 - [The shape of the system](#the-shape-of-the-system)
 - [Honest status](#honest-status)
+- [The Apollo 13 closed-loop demonstration](#the-apollo-13-closed-loop-demonstration)
 - [Quick start](#quick-start)
 - [Safety architecture](#safety-architecture)
 - [The subsystems, in one line each](#the-subsystems-in-one-line-each)
+- [Subsystem deep-dives](#subsystem-deep-dives)
 - [Data the system ships with](#data-the-system-ships-with)
 - [Web dashboard](#web-dashboard)
+- [Generation-ship engineering lab](#generation-ship-engineering-lab)
 - [cFS bridge](#cfs-bridge)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -115,7 +118,7 @@ What is actually true today, in this repo:
 | Security & service tests | **715** discrete checks |
 | Failsafe controls | **19 (F-1 … F-19)** implemented in code |
 | Web dashboard | **109 .tsx files**, Vite + React, REST + WebSocket |
-| Mission scenarios | Lunar TLI ΔV within **0.28 %** of Apollo 11; reentry peak-g matches Artemis 2 at L/D = 0.3 |
+| Mission scenarios | Lunar TLI ΔV within **~0.9 %** of Apollo 11 (test-enforced < 1 %); reentry peak-g matches Artemis 2 at L/D = 0.3 |
 | Conjunction pipeline | NASA CARA flow: TLE → SGP4 → Smart Sieve → Foster/Chan/Monte-Carlo Pc → CDM |
 | Anomaly detection | 12-detector Dsremo ensemble; validated on EDEN ISS telemetry baselines |
 | External IP / customer data | **None** — all bundled datasets are public-source (NASA, LSF, CISA, ECSS, NOAA) |
@@ -128,6 +131,18 @@ What is honestly *not* there yet:
 - The cFS bridge (`cfs_bridge/`) is a working skeleton, not a flight integration.
 
 If any of those are exciting problems rather than dealbreakers, you are the kind of person I want to hear from.
+
+---
+
+## The Apollo 13 closed-loop demonstration
+
+Architecture diagrams are cheap. The one result worth pointing at is a *falsifiable* end-to-end run: ARIA's full anomaly → LLM-advisor → cross-monitor → HAL loop, fed reconstructed Apollo 13 cryo-tank telemetry.
+
+Watching the same channels a 1970 EECOM watched, the stack flagged the O₂ tank 2 pressure excursion at **GET 55:53:19 — 94 seconds before the historical master alarm** at GET 55:54:53. The advisor (the Claude CLI in the advisory seat, no API key required) returned in ~8 s with `isolate_o2_tank_2` at confidence 0.78 and six immediate steps that match documented EECOM procedure — notify the Flight Director, close the tank isolation valve, de-energize the heaters and fans, watch the fuel cells, cross-check tank 1, and *prepare the LM lifeboat checklist as a contingency* (an order the real flight didn't issue for another ~13 minutes). Cross-monitor approved; the HAL command was applied. End-to-end wall time: under 16 seconds.
+
+This is **not** a claim that ARIA would have flown the mission better than the crew that did. The telemetry is reconstructed from the Cortright Commission Report (NASA SP-1969) and the Apollo 13 Mission Report (MSC-02680), the clean synthetic variance inflates the z-score, the cross-monitor was a stub in this run, and the HAL has no cryo-valve drivers. What it *does* show is that the loop closes on real-anomaly data with a real LLM in the seat, and that the advisor's recommendations land on doctrine rather than plausible-sounding noise.
+
+The full result, the honest "what this does NOT demonstrate" list, and a copy-pasteable reproduction are in **[docs/APOLLO13_REPLAY_REPORT.md](docs/APOLLO13_REPLAY_REPORT.md)**. The harness that produced it is the [replay subsystem](docs/subsystems/replay.md).
 
 ---
 
@@ -230,7 +245,7 @@ Safe mode is not boolean. It is a 4-level hierarchy (`safe_mode.py`):
 
 ```
 src/aria/
-├── agents/           Subsystem-agent framework (crew, power, nav, propulsion, science)
+├── agents/           Subsystem-agent framework (power, thermal, ECLSS, nav, propulsion, comms, science, medical)
 ├── analysis/         Post-run analysis helpers
 ├── api/              REST + WebSocket API for the captain's dashboard
 ├── boot/             Sealed-boot manifest verification (F-18)
@@ -243,15 +258,15 @@ src/aria/
 ├── db/               Persistence helpers (SQLite + optional Redis)
 ├── digital_twin/     CAD import, FEA solvers, materials DB, mass/power budgets
 ├── dsremo/           12-detector telemetry anomaly-detection ensemble
-├── genastra/         Generational / interstellar physics + astrobiology helpers
-├── integrations/     SatNOGS live decoders, ECSS standards, NASA LLIS ingest
+├── genastra/         Genome & astrobiology analysis (spectroscopy, radiation biology, gene expression, protein)
+├── integrations/     External-tool bridges (GMAT, OpenC3, Basilisk, NASA-42, OpenMCT), SatNOGS decoders, HAL sidecar
 ├── knowledge/        Doctrine + lessons-learned retrieval (TF-IDF over 2k+ records)
 ├── memory/           Long-term mission memory & narrative log
 ├── metrics/          Prometheus-style counters & exporters
 ├── monitor/          Independent oversight monitor (F-7)
 ├── notifications/    Operator alerting & priority routing
 ├── persistence/      Snapshot / restore of mission state
-├── physics/          26 physics pods (gravity, attitude, CFD, thermal, radiation, impact, …)
+├── physics/          34 physics pods (gravity, attitude, CFD, thermal, radiation, impact, …)
 ├── products/         Product-line wrappers (cubesat-deorbit, conjunction-screener)
 ├── replay/           Historical scenario replay, noise profiles, action translation
 ├── reporting/        One-page markdown mission reports
@@ -262,12 +277,24 @@ src/aria/
 ├── simulation/       Mission scenarios (Moon, Mars, generation ship, reentry, ECLSS)
 ├── simulator/        Mission runner + web backend
 ├── state/            Subsystem state machines
-├── tools/            55-tool registry callable from the cognitive engine
+├── tools/            60-tool registry callable from the cognitive engine
 ├── validation/       Cross-checks & invariant assertions
 └── visualization/    Plot helpers, 3-D viewer support code
 ```
 
 (There are no orphan packages — every directory above has either tests, callers, or a CLI surface.)
+
+---
+
+## Subsystem deep-dives
+
+The one-liners above are the index; the detail lives in **[docs/subsystems/](docs/subsystems/)**. Each doc is written from the source on disk — verified counts, real class names, and an honest *limitations* section per subsystem.
+
+**Reasoning core** — [Cognitive engine](docs/subsystems/cognitive.md) · [Subsystem agents & core types](docs/subsystems/agents-and-core.md)
+**Guardrails** — [Security & guard library](docs/subsystems/security.md) · [Safety & the independent monitor](docs/subsystems/safety-and-monitor.md)
+**Domain models** — [Physics pods](docs/subsystems/physics.md) · [Digital twin](docs/subsystems/digital-twin.md) · [Telemetry anomaly detection](docs/subsystems/anomaly-detection.md) · [Conjunction screening](docs/subsystems/conjunction.md) · [Genastra (genome & astrobiology)](docs/subsystems/genastra.md)
+**Simulation & evidence** — [Mission simulation](docs/subsystems/simulation.md) · [Generation-ship engineering lab](docs/subsystems/engineering-lab.md) · [Replay & the closed-loop demo](docs/subsystems/replay.md)
+**Edges, tooling & products** — [Integrations & bridges](docs/subsystems/integrations.md) · [Doctrine & lessons retrieval](docs/subsystems/knowledge.md) · [Product-line wrappers](docs/subsystems/products.md) · [The `aria` CLI](docs/subsystems/cli.md) · [Supporting packages](docs/subsystems/supporting-packages.md)
 
 ---
 
@@ -300,6 +327,20 @@ cd web && npm install && npm run dev
 ```
 
 Build artefacts are served by the same backend as the API in production (`deploy/screener/`).
+
+---
+
+## Generation-ship engineering lab
+
+Beyond the captain's dashboard, `src/aria/simulator/` is an interactive **whole-ship engineering simulator** — built on the digital-twin geometry and the physics pods, exposing the entire ship as a tickable, queryable, persistable simulation behind a large REST API (`aria-dashboard`) and a React console. The use case is operational: *drive the ship through a multi-decade interstellar cruise, watch every subsystem react, inject failures, see the cascades, save and reload mission state.*
+
+It models the part-dependency graph and failure cascades, a mission-phase state machine and cold-start sequence, the central tick engine, subsystem physics (habitat-ring bearing, propulsion-thermal feedback, HVDC power allocation, ECLSS trace contaminants, single-event-upset radiation), mission state (trajectory, fuel, crew health), one-click failure-injection drills, comms budget with light-time delay, a hydroponic food model, background auto-tick playback up to ~31 M× real time, hull-damage fatigue, save/load persistence, mission objectives, crew scheduling, a captain's-log narrative, and the in-loop AI advisor (`/api/ai/advise`).
+
+```bash
+aria-dashboard            # REST API + console
+```
+
+Full route map, module breakdown, and honest limits: **[docs/subsystems/engineering-lab.md](docs/subsystems/engineering-lab.md)**.
 
 ---
 
