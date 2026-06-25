@@ -4,6 +4,9 @@
 
 > Source-available · research prototype (TRL 3–5) · not flight-qualified
 
+![ARIA Engineering Lab](docs/img/dashboard.png)
+*The ARIA Engineering Lab — mission scenarios (Apollo replay, interstellar route planning), live telemetry, and an AI console.*
+
 ## The idea
 
 Most "AI for space" projects build a clever model and stop there. ARIA's hard part is the *wiring* — keeping an AI useful while making it incapable of doing something catastrophic on its own:
